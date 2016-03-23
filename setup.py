@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name='stardust-rpg',
-    version='1.0.0',
+    version='0.0.1',
 
     description='',
     long_description=open('README.rst').read(),
@@ -14,7 +14,6 @@ setuptools.setup(
     url='https://github.com/johnthagen/stardust-rpg',
     license='MIT',
 
-    install_requires=open('requirements.txt').readlines(),
     zip_safe=False,
 
     classifiers=[
