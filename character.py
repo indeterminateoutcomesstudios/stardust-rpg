@@ -144,3 +144,27 @@ class Character:
     @property
     def bmac(self) -> int:
         return round(self.cls.mac + (self.bmac_lvl_cha_mod * self.cha))
+
+    @property
+    def ath(self) -> int:
+        return self.str * self.cls.ath
+
+    @property
+    def ste(self) -> int:
+        return self.dex * self.cls.ste
+
+    @property
+    def fort(self) -> int:
+        return self.con * self.cls.fort
+
+    @property
+    def apt(self) -> int:
+        return self.int * self.cls.apt
+
+    @property
+    def per(self) -> int:
+        return self.wis * self.cls.per
+
+    @property
+    def spe(self) -> int:
+        return self.cha * self.cls.spe
