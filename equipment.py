@@ -52,12 +52,12 @@ _enum_value = itertools.count(1)
 
 @enum.unique
 class Attribute(enum.Enum):
-    strength = next(_enum_value)
-    dexterity = next(_enum_value)
-    constitution = next(_enum_value)
-    intelligence = next(_enum_value)
-    wisdom = next(_enum_value)
-    charisma = next(_enum_value)
+    strength = 1
+    dexterity = 2
+    constitution = 3
+    intelligence = 4
+    wisdom = 5
+    charisma = 6
 
 
 @enum.unique

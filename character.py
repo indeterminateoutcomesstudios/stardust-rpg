@@ -67,7 +67,6 @@ class Character:
     bmac_lvl_cha_mod = 1
 
     def __init__(self, cls: Class=Class(), lvl: int=0,
-                 stren: int=0, dex: int=0, con: int=0, intel: int=0, wis: int=0, cha: int=0,
                  starting_ap: int=0,
                  utilities: Tuple[equipment.Utility, equipment.Utility, equipment.Utility,
                                   equipment.Utility]=(
@@ -80,15 +79,12 @@ class Character:
                  right_hand: equipment.Hand=items.empty_hand,
                  left_hand: equipment.Hand=items.empty_hand,
                  weapons: Tuple[equipment.Weapon, equipment.Weapon, equipment.Weapon]=(
-                    items.empty_weapon, items.empty_weapon, items.empty_weapon)):
+                    items.empty_weapon, items.empty_weapon, items.empty_weapon),
+                 hd_rolls: Tuple[int, ...]=None, md_rolls: Tuple[int, ...]=None,
+                 sd_rolls: Tuple[int, ...]=None, ad_rolls: Tuple[int, ...]=None,
+                 selected_attributes: Tuple[equipment.Attribute, ...]=None):
         self.cls = cls
         self.lvl = lvl
-        self.str = stren
-        self.dex = dex
-        self.con = con
-        self.int = intel
-        self.wis = wis
-        self.cha = cha
         self.starting_ap = starting_ap
         self.head = head
         self.neck = neck
@@ -105,11 +101,74 @@ class Character:
         self.weapon2 = weapons[1]
         self.weapon3 = weapons[2]
 
+        if hd_rolls is not None:
+            self.hd_rolls = hd_rolls
+        else:
+            self.hd_rolls = tuple()  # type: Tuple[int, ...]
+
+        if md_rolls is not None:
+            self.md_rolls = md_rolls
+        else:
+            self.md_rolls = tuple()  # type: Tuple[int, ...]
+
+        if sd_rolls is not None:
+            self.sd_rolls = sd_rolls
+        else:
+            self.sd_rolls = tuple()  # type: Tuple[int, ...]
+
+        if ad_rolls is not None:
+            self.ad_rolls = ad_rolls
+        else:
+            self.ad_rolls = tuple()  # type: Tuple[int, ...]
+
+        if selected_attributes is not None:
+            self.selected_attributes = selected_attributes
+        else:
+            self.selected_attributes = tuple()  # type: Tuple[equipment.Attribute, ...]
+
+        # TODO: Misc attributes.
+
     @property
     def wearables(self) -> Tuple[equipment.Wearable, ...]:
         return (self.head, self.neck, self.chest, self.shield, self.right_hand, self.left_hand,
                 self.feet, self.utility1, self.utility2, self.utility3, self.utility4,
                 self.weapon1, self.weapon2, self.weapon3)
+
+    @property
+    def str(self):
+        return (sum([roll == equipment.Attribute.strength.value for roll in self.ad_rolls]) +
+                sum([attribute == equipment.Attribute.strength
+                     for attribute in self.selected_attributes]))
+
+    @property
+    def dex(self):
+        return (sum([roll == equipment.Attribute.dexterity.value for roll in self.ad_rolls]) +
+                sum([attribute == equipment.Attribute.dexterity
+                     for attribute in self.selected_attributes]))
+
+    @property
+    def con(self):
+        return (sum([roll == equipment.Attribute.constitution.value for roll in self.ad_rolls]) +
+                sum([attribute == equipment.Attribute.constitution
+                     for attribute in self.selected_attributes]))
+
+    @property
+    def int(self):
+        return (sum([roll == equipment.Attribute.intelligence.value for roll in self.ad_rolls]) +
+                sum([attribute == equipment.Attribute.intelligence
+                     for attribute in self.selected_attributes]))
+
+    @property
+    def wis(self):
+        return (sum([roll == equipment.Attribute.wisdom.value for roll in self.ad_rolls]) +
+                sum([attribute == equipment.Attribute.intelligence
+                     for attribute in self.selected_attributes]))
+
+    @property
+    def cha(self):
+        return (sum([roll == equipment.Attribute.charisma.value for roll in self.ad_rolls]) +
+                sum([attribute == equipment.Attribute.intelligence
+                     for attribute in self.selected_attributes]))
 
     @property
     def max_atp(self) -> int:
@@ -123,16 +182,16 @@ class Character:
     @property
     def hp(self) -> int:
         return round(self.lvl * self.hp_lvl_con_mod * self.con +
-                     sum([wearable.stats.hp for wearable in self.wearables]))
+                     sum([wearable.stats.hp for wearable in self.wearables]) + sum(self.hd_rolls))
 
     @property
     def mp(self) -> int:
-        return self.lvl * self.mp_lvl_int_mod * self.int
+        return (self.lvl * self.mp_lvl_int_mod * self.int) + sum(self.md_rolls)
 
     @property
     def max_sp(self) -> int:
         return (self.lvl * self.sp_lvl_int_mod * self.int +
-                sum([wearable.stats.sp for wearable in self.wearables]))
+                sum([wearable.stats.sp for wearable in self.wearables]) + sum(self.sd_rolls))
 
     @property
     def pdef(self) -> int:
