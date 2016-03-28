@@ -13,6 +13,7 @@ setuptools.setup(
     author_email='johnthagen@gmail.com',
     url='https://github.com/johnthagen/stardust-rpg',
     license='MIT',
+    install_requires=open('requirements.txt').readlines(),
 
     zip_safe=False,
 
