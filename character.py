@@ -260,7 +260,8 @@ class Character:
 
     @property
     def ath(self) -> int:
-        return (self.stren * self.cls.ath) + sum([wearable.stats.ath for wearable in self.wearables])
+        return ((self.stren * self.cls.ath) +
+                sum([wearable.stats.ath for wearable in self.wearables]))
 
     @property
     def ste(self) -> int:
@@ -273,7 +274,8 @@ class Character:
 
     @property
     def apt(self) -> int:
-        return (self.intel * self.cls.apt) + sum([wearable.stats.apt for wearable in self.wearables])
+        return ((self.intel * self.cls.apt) +
+                sum([wearable.stats.apt for wearable in self.wearables]))
 
     @property
     def per(self) -> int:
