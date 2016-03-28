@@ -3,6 +3,8 @@
 import enum
 import itertools
 
+import dice
+
 _enum_value = itertools.count(1)
 
 
@@ -108,12 +110,11 @@ class DamageType(enum.Enum):
 
 
 class Stats:
-    # TODO: RD
     def __init__(self, stren: int=0, dex: int=0, con: int=0, intel: int=0, wis: int=0, cha: int=0,
                  ath: int=0, ste: int=0, fort: int=0, apt: int=0, per: int=0, spe: int=0,
                  ap: int=0, hp: int=0, mp: int=0, sp: int=0, pdef: int=0, mdef: int=0,
-                 pred: float=0.0, mred: float=0.0, reg: int=0, speed: float=0, vis: int=0,
-                 bpac: int=0, bmac: int=0):
+                 pred: float=0.0, mred: float=0.0, reg: int=0, rd: int=0, speed: float=0,
+                 vis: int=0, bpac: int=0, bmac: int=0):
         self.str = stren
         self.dex = dex
         self.con = con
@@ -135,6 +136,7 @@ class Stats:
         self.pred = pred
         self.mred = mred
         self.reg = reg
+        self.rd = rd
         self.speed = speed
         self.vis = vis
         self.bpac = bpac
@@ -214,7 +216,7 @@ class Weapon(Hand):
                  equip_type: Type, stats: Stats, is_two_handed: bool,
                  min_range: int, max_range: int, shape: Shape, attacks: int,
                  pac: int, damage_type: DamageType, cran: int, cdam: int,
-                 pdam: str=None, mdam: str=None):
+                 pdam: dice.DiceFormula=None, mdam: dice.DiceFormula=None):
         self.min_range = min_range
         self.max_range = max_range
         self.shape = shape

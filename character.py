@@ -2,6 +2,7 @@
 
 from typing import Tuple
 
+import dice
 import equipment
 import items
 
@@ -61,6 +62,7 @@ class Character:
     pred_con_mod = 0.5
     mred_int_mod = 0.5
     starting_reg = 18
+    rd_char_mod = 0.25
     speed_dex_mod = 0.5
     vis_con_mod = 0.5
     bpac_lvl_str_mod = 1
@@ -135,37 +137,37 @@ class Character:
                 self.weapon1, self.weapon2, self.weapon3)
 
     @property
-    def str(self):
+    def stren(self) -> int:
         return (sum([roll == equipment.Attribute.strength.value for roll in self.ad_rolls]) +
                 sum([attribute == equipment.Attribute.strength
                      for attribute in self.selected_attributes]))
 
     @property
-    def dex(self):
+    def dex(self) -> int:
         return (sum([roll == equipment.Attribute.dexterity.value for roll in self.ad_rolls]) +
                 sum([attribute == equipment.Attribute.dexterity
                      for attribute in self.selected_attributes]))
 
     @property
-    def con(self):
+    def con(self) -> int:
         return (sum([roll == equipment.Attribute.constitution.value for roll in self.ad_rolls]) +
                 sum([attribute == equipment.Attribute.constitution
                      for attribute in self.selected_attributes]))
 
     @property
-    def int(self):
+    def intel(self) -> int:
         return (sum([roll == equipment.Attribute.intelligence.value for roll in self.ad_rolls]) +
                 sum([attribute == equipment.Attribute.intelligence
                      for attribute in self.selected_attributes]))
 
     @property
-    def wis(self):
+    def wis(self) -> int:
         return (sum([roll == equipment.Attribute.wisdom.value for roll in self.ad_rolls]) +
                 sum([attribute == equipment.Attribute.intelligence
                      for attribute in self.selected_attributes]))
 
     @property
-    def cha(self):
+    def cha(self) -> int:
         return (sum([roll == equipment.Attribute.charisma.value for roll in self.ad_rolls]) +
                 sum([attribute == equipment.Attribute.intelligence
                      for attribute in self.selected_attributes]))
@@ -186,11 +188,11 @@ class Character:
 
     @property
     def mp(self) -> int:
-        return (self.lvl * self.mp_lvl_int_mod * self.int) + sum(self.md_rolls)
+        return (self.lvl * self.mp_lvl_int_mod * self.intel) + sum(self.md_rolls)
 
     @property
     def max_sp(self) -> int:
-        return (self.lvl * self.sp_lvl_int_mod * self.int +
+        return (self.lvl * self.sp_lvl_int_mod * self.intel +
                 sum([wearable.stats.sp for wearable in self.wearables]) + sum(self.sd_rolls))
 
     @property
@@ -209,7 +211,7 @@ class Character:
 
     @property
     def mred(self) -> int:
-        return round(self.cls.mred + (self.mred_int_mod * self.int) +
+        return round(self.cls.mred + (self.mred_int_mod * self.intel) +
                      sum([wearable.stats.mred for wearable in self.wearables]))
 
     @property
@@ -218,20 +220,23 @@ class Character:
                      sum([wearable.stats.reg for wearable in self.wearables]))
 
     @property
-    def rd(self) -> str:
-        # TODO: 0.25 * CHA + wearables
+    def rd(self) -> dice.DiceFormula:
+        rd_modifier = round((self.rd_char_mod * self.cha) +
+                            sum([wearable.stats.rd for wearable in self.wearables]))
         if self.lvl <= 3:
-            return 'd2'
+            reg_dice = dice.Dice.from_str('d2')
         elif 4 <= self.lvl <= 6:
-            return 'd4'
+            reg_dice = dice.Dice.from_str('d4')
         elif 7 <= self.lvl <= 9:
-            return 'd6'
+            reg_dice = dice.Dice.from_str('d6')
         elif 10 <= self.lvl <= 12:
-            return 'd8'
+            reg_dice = dice.Dice.from_str('d8')
         elif 13 <= self.lvl <= 15:
-            return 'd10'
+            reg_dice = dice.Dice.from_str('d10')
         else:
-            return 'd12'
+            reg_dice = dice.Dice.from_str('d12')
+
+        return dice.DiceFormula(dice_pool=(reg_dice, ), modifier=rd_modifier)
 
     @property
     def speed(self) -> int:
@@ -245,7 +250,7 @@ class Character:
 
     @property
     def bpac(self) -> int:
-        return round(self.cls.pac + (self.bpac_lvl_str_mod * self.str) +
+        return round(self.cls.pac + (self.bpac_lvl_str_mod * self.stren) +
                      sum([wearable.stats.bpac for wearable in self.wearables]))
 
     @property
@@ -255,7 +260,7 @@ class Character:
 
     @property
     def ath(self) -> int:
-        return (self.str * self.cls.ath) + sum([wearable.stats.ath for wearable in self.wearables])
+        return (self.stren * self.cls.ath) + sum([wearable.stats.ath for wearable in self.wearables])
 
     @property
     def ste(self) -> int:
@@ -268,7 +273,7 @@ class Character:
 
     @property
     def apt(self) -> int:
-        return (self.int * self.cls.apt) + sum([wearable.stats.apt for wearable in self.wearables])
+        return (self.intel * self.cls.apt) + sum([wearable.stats.apt for wearable in self.wearables])
 
     @property
     def per(self) -> int:
