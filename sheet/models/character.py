@@ -2,8 +2,8 @@
 
 from typing import Tuple
 
-from sheet import equipment
 from . import dice
+from . import equipment
 from . import items
 
 
