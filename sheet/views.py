@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render
 
-from .character import Character
+from .models.character import Character
 
 
 def index(request: HttpRequest) -> HttpResponse:
