@@ -2,7 +2,7 @@
 
 """Temporary module to store items until database solution is created."""
 
-import equipment
+from sheet import equipment
 
 empty_utility = equipment.Utility(name='Empty', rarity=equipment.Rarity.common, price=0,
                                   effect='', equip_type=equipment.Type.light,

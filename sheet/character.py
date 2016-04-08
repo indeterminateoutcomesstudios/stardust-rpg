@@ -2,9 +2,9 @@
 
 from typing import Tuple
 
-import dice
-import equipment
-import items
+from sheet import equipment
+from . import dice
+from . import items
 
 
 class Class:
@@ -72,16 +72,16 @@ class Character:
                  starting_ap: int=0,
                  utilities: Tuple[equipment.Utility, equipment.Utility, equipment.Utility,
                                   equipment.Utility]=(
-                                     items.empty_utility, items.empty_utility, items.empty_utility,
-                                     items.empty_utility),
-                 head: equipment.Head=items.empty_head,
-                 neck: equipment.Neck=items.empty_neck, chest: equipment.Chest=items.empty_chest,
-                 shield: equipment.Shield=items.empty_shield,
-                 feet: equipment.Feet=items.empty_feet,
-                 right_hand: equipment.Hand=items.empty_hand,
-                 left_hand: equipment.Hand=items.empty_hand,
+                         items.empty_utility, items.empty_utility, items.empty_utility,
+                         items.empty_utility),
+                 head: equipment.Head= items.empty_head,
+                 neck: equipment.Neck= items.empty_neck, chest: equipment.Chest= items.empty_chest,
+                 shield: equipment.Shield= items.empty_shield,
+                 feet: equipment.Feet= items.empty_feet,
+                 right_hand: equipment.Hand= items.empty_hand,
+                 left_hand: equipment.Hand= items.empty_hand,
                  weapons: Tuple[equipment.Weapon, equipment.Weapon, equipment.Weapon]=(
-                    items.empty_weapon, items.empty_weapon, items.empty_weapon),
+                         items.empty_weapon, items.empty_weapon, items.empty_weapon),
                  hd_rolls: Tuple[int, ...]=None, md_rolls: Tuple[int, ...]=None,
                  sd_rolls: Tuple[int, ...]=None, ad_rolls: Tuple[int, ...]=None,
                  selected_attributes: Tuple[equipment.Attribute, ...]=None):
@@ -236,7 +236,7 @@ class Character:
         else:
             reg_dice = dice.Dice.from_str('d12')
 
-        return dice.DiceFormula(dice_pool=(reg_dice, ), modifier=rd_modifier)
+        return dice.DiceFormula(dice_pool=(reg_dice,), modifier=rd_modifier)
 
     @property
     def speed(self) -> int:

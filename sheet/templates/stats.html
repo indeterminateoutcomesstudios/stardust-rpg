@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stats</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        td, th {
+            color: black;
+        }
+        td {
+            padding: 5px;
+            border: 1px solid #cccccc;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        tr:nth-child(even) {
+            background-color: gainsboro;
+        }
+        #title th {
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr id="title">
+                <th>Name</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>HP</td>
+            <td>{{ character.hp }}</td>
+        </tr>
+        <tr>
+            <td>MP</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>SPEED</td>
+            <td>6</td>
+        </tr>
+    </table>
+</body>
+</html>

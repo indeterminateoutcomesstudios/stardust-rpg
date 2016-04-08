@@ -3,7 +3,7 @@
 import enum
 import itertools
 
-import dice
+from sheet import dice
 
 _enum_value = itertools.count(1)
 
