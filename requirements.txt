@@ -1,1 +1,4 @@
+autoenum
 django
+django-enumfields
+frozendict
