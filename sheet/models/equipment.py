@@ -5,17 +5,6 @@ import enum
 import autoenum
 import enumfields
 from django.db import models
-from frozendict import frozendict
-
-
-@enum.unique
-class Attribute(enum.Enum):
-    strength = 1
-    dexterity = 2
-    constitution = 3
-    intelligence = 4
-    wisdom = 5
-    charisma = 6
 
 
 class Slot(autoenum.AutoEnum):
@@ -28,18 +17,6 @@ class Slot(autoenum.AutoEnum):
     shield = ()
     hand = ()
     feet = ()
-
-slot_min_attribute = frozendict(
-    {Slot.item: None,
-     Slot.utility: Attribute.intelligence,
-     Slot.weapon: Attribute.dexterity,
-     Slot.head: Attribute.intelligence,
-     Slot.neck: Attribute.wisdom,
-     Slot.chest: Attribute.strength,
-     Slot.shield: Attribute.strength,
-     Slot.hand: Attribute.charisma,
-     Slot.feet: Attribute.strength}
-)
 
 
 class Rarity(autoenum.AutoEnum):

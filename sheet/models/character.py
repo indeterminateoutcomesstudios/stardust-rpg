@@ -1,11 +1,24 @@
 #!/usr/bin/env python3
 
+import enum
 from typing import Tuple
+
+from frozendict import frozendict
 
 from . import class_type
 from . import dice
 from . import equipment
 from . import items
+
+
+@enum.unique
+class Attribute(enum.Enum):
+    strength = 1
+    dexterity = 2
+    constitution = 3
+    intelligence = 4
+    wisdom = 5
+    charisma = 6
 
 
 class Character:
@@ -23,6 +36,18 @@ class Character:
     bpac_lvl_str_mod = 1
     bmac_lvl_cha_mod = 1
 
+    slot_min_attribute = frozendict(
+        {equipment.Slot.item: None,
+         equipment.Slot.utility: Attribute.intelligence,
+         equipment.Slot.weapon: Attribute.dexterity,
+         equipment.Slot.head: Attribute.intelligence,
+         equipment.Slot.neck: Attribute.wisdom,
+         equipment.Slot.chest: Attribute.strength,
+         equipment.Slot.shield: Attribute.strength,
+         equipment.Slot.hand: Attribute.charisma,
+         equipment.Slot.feet: Attribute.strength}
+    )
+
     def __init__(self, cls: class_type.Class=class_type.Class(), lvl: int=0,
                  utilities: Tuple[equipment.Wearable, equipment.Wearable, equipment.Wearable,
                                   equipment.Wearable]=(
@@ -39,7 +64,7 @@ class Character:
                          items.empty_weapon, items.empty_weapon, items.empty_weapon),
                  hd_rolls: Tuple[int, ...]=None, md_rolls: Tuple[int, ...]=None,
                  sd_rolls: Tuple[int, ...]=None, ad_rolls: Tuple[int, ...]=None,
-                 selected_attributes: Tuple[equipment.Attribute, ...]=None):
+                 selected_attributes: Tuple[Attribute, ...]=None):
         self.cls = cls
         self.lvl = lvl
         self.head = head
@@ -80,7 +105,7 @@ class Character:
         if selected_attributes is not None:
             self.selected_attributes = selected_attributes
         else:
-            self.selected_attributes = tuple()  # type: Tuple[equipment.Attribute, ...]
+            self.selected_attributes = tuple()  # type: Tuple[Attribute, ...]
 
         # TODO: Misc attributes.
 
@@ -92,38 +117,38 @@ class Character:
 
     @property
     def stren(self) -> int:
-        return (sum([roll == equipment.Attribute.strength.value for roll in self.ad_rolls]) +
-                sum([attribute == equipment.Attribute.strength
+        return (sum([roll == Attribute.strength.value for roll in self.ad_rolls]) +
+                sum([attribute == Attribute.strength
                      for attribute in self.selected_attributes]))
 
     @property
     def dex(self) -> int:
-        return (sum([roll == equipment.Attribute.dexterity.value for roll in self.ad_rolls]) +
-                sum([attribute == equipment.Attribute.dexterity
+        return (sum([roll == Attribute.dexterity.value for roll in self.ad_rolls]) +
+                sum([attribute == Attribute.dexterity
                      for attribute in self.selected_attributes]))
 
     @property
     def con(self) -> int:
-        return (sum([roll == equipment.Attribute.constitution.value for roll in self.ad_rolls]) +
-                sum([attribute == equipment.Attribute.constitution
+        return (sum([roll == Attribute.constitution.value for roll in self.ad_rolls]) +
+                sum([attribute == Attribute.constitution
                      for attribute in self.selected_attributes]))
 
     @property
     def intel(self) -> int:
-        return (sum([roll == equipment.Attribute.intelligence.value for roll in self.ad_rolls]) +
-                sum([attribute == equipment.Attribute.intelligence
+        return (sum([roll == Attribute.intelligence.value for roll in self.ad_rolls]) +
+                sum([attribute == Attribute.intelligence
                      for attribute in self.selected_attributes]))
 
     @property
     def wis(self) -> int:
-        return (sum([roll == equipment.Attribute.wisdom.value for roll in self.ad_rolls]) +
-                sum([attribute == equipment.Attribute.intelligence
+        return (sum([roll == Attribute.wisdom.value for roll in self.ad_rolls]) +
+                sum([attribute == Attribute.intelligence
                      for attribute in self.selected_attributes]))
 
     @property
     def cha(self) -> int:
-        return (sum([roll == equipment.Attribute.charisma.value for roll in self.ad_rolls]) +
-                sum([attribute == equipment.Attribute.intelligence
+        return (sum([roll == Attribute.charisma.value for roll in self.ad_rolls]) +
+                sum([attribute == Attribute.intelligence
                      for attribute in self.selected_attributes]))
 
     @property
