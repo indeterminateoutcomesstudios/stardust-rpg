@@ -24,7 +24,6 @@ class Character:
     bmac_lvl_cha_mod = 1
 
     def __init__(self, cls: class_type.Class=class_type.Class(), lvl: int=0,
-                 starting_ap: int=0,
                  utilities: Tuple[equipment.Wearable, equipment.Wearable, equipment.Wearable,
                                   equipment.Wearable]=(
                          items.empty_utility, items.empty_utility, items.empty_utility,
@@ -43,7 +42,6 @@ class Character:
                  selected_attributes: Tuple[equipment.Attribute, ...]=None):
         self.cls = cls
         self.lvl = lvl
-        self.starting_ap = starting_ap
         self.head = head
         self.neck = neck
         self.chest = chest
@@ -134,7 +132,7 @@ class Character:
 
     @property
     def ap(self) -> int:
-        return (self.starting_ap + (self.ap_lvl_mod * self.lvl) + self.wis + self.cha +
+        return (self.cls.starting_ap + (self.ap_lvl_mod * self.lvl) + self.wis + self.cha +
                 sum([wearable.ap for wearable in self.wearables]))
 
     @property

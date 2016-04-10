@@ -6,7 +6,7 @@ class Class:
                  pdef: int=0, mdef: float=0.0, pred: float=0.0, mred: float=0.0,
                  reg: float=0.0, vis: int=0, pac: float=0.0, mac: float=0.0,
                  ath: int=0, ste: int=0, fort: int=0, apt: int=0, per: int=0, spe: int=0,
-                 starting_abilities: int=0,
+                 starting_ap: int=0,
                  use_melee_light: bool=False, use_melee_medium: bool=False,
                  use_melee_heavy: bool=False, use_ranged_light: bool=False,
                  use_ranged_medium: bool=False, use_ranged_heavy: bool=False,
@@ -32,7 +32,7 @@ class Class:
         self.apt = apt
         self.per = per
         self.spe = spe
-        self.starting_abilities = starting_abilities
+        self.starting_ap = starting_ap
         self.use_melee_light = use_melee_light
         self.use_melee_medium = use_melee_medium
         self.use_melee_heavy = use_melee_heavy
