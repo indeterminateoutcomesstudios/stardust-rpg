@@ -3,8 +3,8 @@
 import enum
 
 import autoenum
-import enumfields
-from django.db import models
+
+from . import dice
 
 
 class Slot(autoenum.AutoEnum):
@@ -82,57 +82,105 @@ class DamageType(autoenum.AutoEnum):
     psychic = ()
 
 
-class Equipment(models.Model):
-    slot = enumfields.EnumIntegerField(Slot)
-    name = models.TextField()
-    rarity = enumfields.EnumField(Rarity, default=Rarity.common)
-    price = models.IntegerField(default=0)
-    effect = models.TextField(default='')
+class Equipment:
+    def __init__(self, slot: Slot, name: str, rarity: Rarity, price: int, effect: str):
+        self.slot = slot
+        self.name = name
+        self.rarity = rarity
+        self.price = price
+        self.effect = effect
 
 
 class Wearable(Equipment):
-    type = enumfields.EnumIntegerField(Type, default=Type.light)
-
-    stren = models.IntegerField(default=0)
-    dex = models.IntegerField(default=0)
-    con = models.IntegerField(default=0)
-    intel = models.IntegerField(default=0)
-    wis = models.IntegerField(default=0)
-    cha = models.IntegerField(default=0)
-    ath = models.IntegerField(default=0)
-    ste = models.IntegerField(default=0)
-    fort = models.IntegerField(default=0)
-    apt = models.IntegerField(default=0)
-    per = models.IntegerField(default=0)
-    spe = models.IntegerField(default=0)
-    ap = models.IntegerField(default=0)
-    hp = models.IntegerField(default=0)
-    mp = models.IntegerField(default=0)
-    sp = models.IntegerField(default=0)
-    pdef = models.IntegerField(default=0)
-    mdef = models.IntegerField(default=0)
-    pred = models.FloatField(default=0)
-    mred = models.FloatField(default=0)
-    reg = models.IntegerField(default=0)
-    rd = models.IntegerField(default=0)
-    speed = models.FloatField(default=0)
-    vis = models.IntegerField(default=0)
-    bpac = models.IntegerField(default=0)
-    bmac = models.IntegerField(default=0)
+    def __init__(self, slot: Slot, name: str, rarity: Rarity=Rarity.common, price: int=0,
+                 effect: str='', equip_type: Type=Type.light,
+                 stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
+                 cha: int = 0,
+                 ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
+                 spe: int = 0,
+                 ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
+                 pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
+                 vis: int = 0, bpac: int = 0, bmac: int = 0):
+        self.type = equip_type
+        self.str = stren
+        self.dex = dex
+        self.con = con
+        self.int = intel
+        self.wis = wis
+        self.cha = cha
+        self.ath = ath
+        self.ste = ste
+        self.fort = fort
+        self.apt = apt
+        self.per = per
+        self.spe = spe
+        self.ap = ap
+        self.hp = hp
+        self.mp = mp
+        self.sp = sp
+        self.pdef = pdef
+        self.mdef = mdef
+        self.pred = pred
+        self.mred = mred
+        self.reg = reg
+        self.rd = rd
+        self.speed = speed
+        self.vis = vis
+        self.bpac = bpac
+        self.bmac = bmac
+        super().__init__(slot=slot, name=name, rarity=rarity, price=price, effect=effect)
 
 
 class Hand(Wearable):
-    is_two_handed = models.BooleanField(default=False)
+    def __init__(self, name: str, rarity: Rarity=Rarity.common, price: int=0, effect: str='',
+                 equip_type: Type=Type.light,
+                 stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
+                 cha: int = 0,
+                 ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
+                 spe: int = 0,
+                 ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
+                 pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
+                 vis: int = 0, bpac: int = 0, bmac: int = 0,
+                 is_two_handed: bool=False):
+        self.is_two_handed = is_two_handed
+        super().__init__(slot=Slot.hand, name=name, rarity=rarity, price=price, effect=effect,
+                         stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
+                         ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
+                         mp=mp, sp=sp, pdef=pdef, mdef=mdef, pred=pred, mred=mred, reg=reg, rd=rd,
+                         speed=speed, vis=vis, bpac=bpac, bmac=bmac,
+                         equip_type=equip_type)
 
 
-class Weapon(Hand):
-    min_range = models.IntegerField(default=1)
-    max_range = models.IntegerField(default=1)
-    shape = enumfields.EnumField(Shape, max_length=100)
-    attacks = models.IntegerField(default=1)
-    pac = models.IntegerField(default=0)
-    damage_type = enumfields.EnumIntegerField(DamageType)
-    cran = models.IntegerField(default=0)
-    cdam = models.IntegerField(default=0)
-    pdam = models.TextField(default='')
-    mdam = models.TextField(default='')
+class Weapon(Wearable):
+    def __init__(self, name: str, rarity: Rarity=Rarity.common, price: int=0, effect: str='',
+                 equip_type: Type=Type.light,
+                 stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
+                 cha: int = 0,
+                 ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
+                 spe: int = 0,
+                 ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
+                 pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
+                 vis: int = 0, bpac: int = 0, bmac: int = 0,
+                 is_two_handed: bool=False,
+                 min_range: int=1, max_range: int=1, shape: Shape=Shape.point,
+                 attacks: int=1,
+                 pac: int=0, damage_type: DamageType=DamageType.slashing,
+                 cran: int=0, cdam: int=0,
+                 pdam: dice.DiceFormula=None, mdam: dice.DiceFormula=None):
+        self.is_two_handed = is_two_handed
+        self.min_range = min_range
+        self.max_range = max_range
+        self.shape = shape
+        self.attacks = attacks
+        self.pac = pac
+        self.damage_type = damage_type
+        self.cran = cran
+        self.cdam = cdam
+        self.pdam = pdam
+        self.mdam = mdam
+        super().__init__(slot=Slot.weapon, name=name, rarity=rarity, price=price, effect=effect,
+                         stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
+                         ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
+                         mp=mp, sp=sp, pdef=pdef, mdef=mdef, pred=pred, mred=mred, reg=reg, rd=rd,
+                         speed=speed, vis=vis, bpac=bpac, bmac=bmac,
+                         equip_type=equip_type)

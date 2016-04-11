@@ -2,22 +2,71 @@
 
 """Temporary module to store items until database solution is created."""
 
+import autoenum
+from frozendict import frozendict
+
 from . import equipment
 
-empty_utility = equipment.Wearable(slot=equipment.Slot.utility, name='Empty')
 
-empty_head = equipment.Wearable(slot=equipment.Slot.head, name='Empty')
+class Utilities(autoenum.AutoEnum):
+    empty = ()
 
-empty_neck = equipment.Wearable(slot=equipment.Slot.neck, name='Empty')
+utilities = frozendict(
+    {Utilities.empty: equipment.Wearable(slot=equipment.Slot.utility, name='Empty Utility')}
+)
 
-empty_chest = equipment.Wearable(slot=equipment.Slot.chest, name='Empty')
 
-empty_shield = equipment.Wearable(slot=equipment.Slot.shield, name='Empty')
+class Heads(autoenum.AutoEnum):
+    empty = ()
 
-empty_hand = equipment.Hand(slot=equipment.Slot.hand, name='Empty')
+heads = frozendict(
+    {Heads.empty: equipment.Wearable(slot=equipment.Slot.head, name='Empty Head')}
+)
 
-empty_feet = equipment.Wearable(slot=equipment.Slot.feet, name='Empty')
 
-empty_weapon = equipment.Weapon(name='Empty', min_range=0, max_range=0,
-                                shape=equipment.Shape.point, attacks=0, pac=0,
-                                damage_type=equipment.DamageType.slashing, cran=0, cdam=0)
+class Necks(autoenum.AutoEnum):
+    empty = ()
+
+necks = frozendict(
+    {Necks.empty: equipment.Wearable(slot=equipment.Slot.neck, name='Empty Neck')}
+)
+
+
+class Chests(autoenum.AutoEnum):
+    empty = ()
+
+chests = frozendict(
+    {Chests.empty: equipment.Wearable(slot=equipment.Slot.chest, name='Empty Chest')}
+)
+
+
+class Shields(autoenum.AutoEnum):
+    empty = ()
+
+shields = frozendict(
+    {Shields.empty: equipment.Wearable(slot=equipment.Slot.shield, name='Empty Shield')}
+)
+
+
+class Hands(autoenum.AutoEnum):
+    empty = ()
+
+hands = frozendict(
+    {Hands.empty: equipment.Hand(name='Empty Hand')}
+)
+
+
+class Feets(autoenum.AutoEnum):
+    empty = ()
+
+feets = frozendict(
+    {Feets.empty: equipment.Wearable(slot=equipment.Slot.feet, name='Empty Feet')}
+)
+
+
+class Weapons(autoenum.AutoEnum):
+    empty = ()
+
+weapons = frozendict(
+    {Weapons.empty: equipment.Weapon(name='Empty Weapon')}
+)

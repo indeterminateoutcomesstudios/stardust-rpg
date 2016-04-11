@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 
+import autoenum
+from frozendict import frozendict
+
+
+class Classes(autoenum.AutoEnum):
+    empty = ()
+
 
 class Class:
-    def __init__(self, name: str='', hd: int=0, md: int=0, sd: int=0, speed: int=0,
+    def __init__(self, name: str='Empty Class', hd: int=0, md: int=0, sd: int=0, speed: int=0,
                  pdef: int=0, mdef: float=0.0, pred: float=0.0, mred: float=0.0,
                  reg: float=0.0, vis: int=0, pac: float=0.0, mac: float=0.0,
                  ath: int=0, ste: int=0, fort: int=0, apt: int=0, per: int=0, spe: int=0,
@@ -45,3 +52,8 @@ class Class:
         self.use_light_armor = use_light_armor
         self.use_medium_armor = use_medium_armor
         self.use_heavy_armor = use_heavy_armor
+
+
+class_map = frozendict(
+    {Classes.empty: Class()}
+)

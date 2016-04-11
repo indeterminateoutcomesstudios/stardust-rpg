@@ -9,7 +9,7 @@ def index(request: HttpRequest) -> HttpResponse:
 
 
 def stats(request: HttpRequest) -> HttpResponse:
-    character = Character(hd_rolls=(2, 4))
+    character = Character()
     return render(request, 'stats.html', context={'character': character})
 
 
