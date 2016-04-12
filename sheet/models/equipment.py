@@ -2,12 +2,12 @@
 
 import enum
 
-import autoenum
+import aenum
 
 from . import dice
 
 
-class Slot(autoenum.AutoEnum):
+class Slot(aenum.AutoNumberEnum):
     item = ()
     utility = ()
     weapon = ()
@@ -19,20 +19,20 @@ class Slot(autoenum.AutoEnum):
     feet = ()
 
 
-class Rarity(autoenum.AutoEnum):
+class Rarity(aenum.AutoNumberEnum):
     common = ()
     rare = ()
     unique = ()
     set = ()
 
 
-class Style(autoenum.AutoEnum):
+class Style(aenum.AutoNumberEnum):
     melee = ()
     ranged = ()
     magic = ()
 
 
-class Type(enum.Enum):
+class Type(aenum.AutoNumberEnum):
     light = ()
     medium = ()
     heavy = ()
@@ -69,7 +69,7 @@ class Shape(enum.Enum):
     cone_3 = 'http://i.imgur.com/5qYh6je.png'
 
 
-class DamageType(autoenum.AutoEnum):
+class DamageType(aenum.AutoNumberEnum):
     slashing = ()
     piercing = ()
     bludgeoning = ()
