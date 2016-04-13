@@ -2,6 +2,7 @@
 
 import autoenum
 from frozendict import frozendict
+from typing import Dict  # noqa
 
 
 class Classes(autoenum.AutoEnum):
@@ -56,4 +57,5 @@ class Class:
 
 class_map = frozendict(
     {Classes.empty: Class()}
-)
+)  # type: Dict[Classes, Class]
+

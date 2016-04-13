@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 import enum
-from typing import Tuple
 
 import enumfields
 from django.db import models
+from typing import Tuple
 
 from . import class_type
 from . import equipment
@@ -21,17 +21,8 @@ class Attribute(enum.Enum):
     charisma = 6
 
 
-class LevelUp(models.Model):
-    hd_roll = models.IntegerField(default=0)
-    md_roll = models.IntegerField(default=0)
-    sd_roll = models.IntegerField(default=0)
-    ad_roll = enumfields.EnumIntegerField(Attribute)
-    selected_attribute = enumfields.EnumIntegerField(Attribute)
-
-
 class Character(models.Model):
     class_type = enumfields.EnumIntegerField(class_type.Classes, default=class_type.Classes.empty)
-    lvl = models.IntegerField(default=0)
     utility_type = enumfields.EnumIntegerField(items.Utilities, default=items.Utilities.empty)
     head_type = enumfields.EnumIntegerField(items.Heads, default=items.Heads.empty)
     neck_type = enumfields.EnumIntegerField(items.Necks, default=items.Necks.empty)
@@ -40,6 +31,10 @@ class Character(models.Model):
     hand_type = enumfields.EnumIntegerField(items.Hands, default=items.Hands.empty)
     feet_type = enumfields.EnumIntegerField(items.Feets, default=items.Feets.empty)
     weapon_type = enumfields.EnumIntegerField(items.Weapons, default=items.Weapons.empty)
+
+    def __str__(self):
+        return 'Level {} {}'.format(len(self.levelup_set.all()),
+                                    class_type.class_map[self.class_type].name)
 
     @property
     def cls(self):
@@ -86,6 +81,15 @@ class Character(models.Model):
     def pdef(self) -> int:
         # TODO: + self.dex
         return self.cls.pdef + sum([wearable.pdef for wearable in self.wearables])
+
+
+class LevelUp(models.Model):
+    character = models.ForeignKey(Character, on_delete=models.CASCADE)
+    hd_roll = models.IntegerField(default=0)
+    md_roll = models.IntegerField(default=0)
+    sd_roll = models.IntegerField(default=0)
+    ad_roll = enumfields.EnumIntegerField(Attribute, default=Attribute.strength)
+    selected_attribute = enumfields.EnumIntegerField(Attribute, default=Attribute.strength)
 
 # class Character(models.Model):
 #     atp_lvl_mod = 2
