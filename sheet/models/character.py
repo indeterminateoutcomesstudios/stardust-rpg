@@ -33,7 +33,7 @@ class Character(models.Model):
     weapon_type = enumfields.EnumIntegerField(items.Weapons, default=items.Weapons.empty)
 
     def __str__(self):
-        return 'Level {} {}'.format(len(self.levelup_set.all()),
+        return 'Level {} {}'.format(self.levelup_set.count(),
                                     class_type.class_map[self.class_type].name)
 
     @property

@@ -58,4 +58,3 @@ class Class:
 class_map = frozendict(
     {Classes.empty: Class()}
 )  # type: Dict[Classes, Class]
-
