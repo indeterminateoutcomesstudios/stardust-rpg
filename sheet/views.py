@@ -9,7 +9,7 @@ def index(request: HttpRequest) -> HttpResponse:
 
 
 def stats(request: HttpRequest) -> HttpResponse:
-    character = Character()
+    character = Character.objects.get(pk=1)
     return render(request, 'stats.html', context={'character': character})
 
 

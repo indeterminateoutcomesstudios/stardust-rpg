@@ -29,10 +29,14 @@
     <table>
         <thead>
             <tr id="title">
-                <th>Name</th>
+                <th>Stat</th>
                 <th>Value</th>
             </tr>
         </thead>
+        <tr>
+            <td>ID</td>
+            <td>{{ character.id }}</td>
+        </tr>
         <tr>
             <td>LVL</td>
             <td>{{ character.lvl }}</td>
@@ -72,6 +76,10 @@
         <tr>
             <td>Weapon</td>
             <td>{{ character.weapon.name }}</td>
+        </tr>
+        <tr>
+            <td>STR</td>
+            <td>{{ character.str }}</td>
         </tr>
         <tr>
             <td>PDEF</td>

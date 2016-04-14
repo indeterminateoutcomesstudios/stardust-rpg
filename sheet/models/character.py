@@ -33,7 +33,7 @@ class Character(models.Model):
     weapon_type = enumfields.EnumIntegerField(items.Weapons, default=items.Weapons.empty)
 
     def __str__(self):
-        return 'Level {} {}'.format(self.levelup_set.count(),
+        return 'Level {} {}'.format(self.lvl,
                                     class_type.class_map[self.class_type].name)
 
     @property
@@ -76,6 +76,18 @@ class Character(models.Model):
     def wearables(self) -> Tuple[equipment.Wearable, ...]:
         return (self.head, self.neck, self.chest, self.shield, self.hand, self.feet, self.utility,
                 self.weapon)
+
+    @property
+    def lvl(self):
+        return self.levelup_set.count()
+
+    @property
+    def str(self) -> int:
+        return (
+            sum([level_up.ad_roll == Attribute.strength for level_up in self.levelup_set.all()]) +
+            sum([level_up.selected_attribute == Attribute.strength
+                 for level_up in self.levelup_set.all()]) +
+            sum([wearable.str for wearable in self.wearables]))
 
     @property
     def pdef(self) -> int:
