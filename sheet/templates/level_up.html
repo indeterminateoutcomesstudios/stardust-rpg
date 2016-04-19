@@ -42,7 +42,7 @@
             <label for="selected_attribute">Selected Attribute: </label>
             <select id="selected_attribute">
                 {% for attribute in attributes %}
-                    <option value="STR">{{ attribute }}</option>
+                    <option value="STR">{{ attribute.name }}</option>
                 {% endfor %}
             </select>
         </div>

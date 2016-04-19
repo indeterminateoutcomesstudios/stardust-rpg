@@ -17,4 +17,4 @@ def level_up(request: HttpRequest) -> HttpResponse:
     lvl_up = LevelUp()
     return render(request, 'level_up.html',
                   context={'level_up': lvl_up,
-                           'attributes': [attribute.name for attribute in Attribute]})
+                           'attributes': [attribute for attribute in Attribute]})
