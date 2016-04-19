@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render
 
-from .models.character import Character
+from .models.character import Attribute, Character, LevelUp
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -14,4 +14,7 @@ def stats(request: HttpRequest) -> HttpResponse:
 
 
 def level_up(request: HttpRequest) -> HttpResponse:
-    return render(request, 'level_up.html')
+    lvl_up = LevelUp()
+    return render(request, 'level_up.html',
+                  context={'level_up': lvl_up,
+                           'attributes': [attribute.name for attribute in Attribute]})
