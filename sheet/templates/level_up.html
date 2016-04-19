@@ -22,6 +22,7 @@
 </head>
 <body>
     <form action="/sheet/level_up" method="post">
+        {% csrf_token %}
         <div>
             <label for="hd_roll">HD Roll: </label>
             <input id="hd_roll" type="text" name="hd_roll" value="">
