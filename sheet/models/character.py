@@ -21,6 +21,13 @@ class Attribute(enum.Enum):
     wis = 5
     cha = 6
 
+    @classmethod
+    def from_string(cls, string_name: str) -> 'Attribute':
+        for attribute in cls:
+            if attribute.name == string_name:
+                return attribute
+        raise ValueError('Invalid {} name.'.format(cls.__name__))
+
 
 class Character(models.Model):
 
