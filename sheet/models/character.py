@@ -22,55 +22,55 @@ class Attribute(enum.Enum):
 
 
 class Character(models.Model):
-    class_type = enumfields.EnumIntegerField(class_type.Classes, default=class_type.Classes.empty)
-    utility_type = enumfields.EnumIntegerField(items.Utilities, default=items.Utilities.empty)
-    head_type = enumfields.EnumIntegerField(items.Heads, default=items.Heads.empty)
-    neck_type = enumfields.EnumIntegerField(items.Necks, default=items.Necks.empty)
-    chest_type = enumfields.EnumIntegerField(items.Chests, default=items.Chests.empty)
-    shield_type = enumfields.EnumIntegerField(items.Shields, default=items.Shields.empty)
-    hand_type = enumfields.EnumIntegerField(items.Hands, default=items.Hands.empty)
-    feet_type = enumfields.EnumIntegerField(items.Feets, default=items.Feets.empty)
-    weapon_type = enumfields.EnumIntegerField(items.Weapons, default=items.Weapons.empty)
+    class_enum = enumfields.EnumIntegerField(class_type.Classes, default=class_type.Classes.empty)
+    utility_enum = enumfields.EnumIntegerField(items.Utilities, default=items.Utilities.empty)
+    head_enum = enumfields.EnumIntegerField(items.Heads, default=items.Heads.empty)
+    neck_enum = enumfields.EnumIntegerField(items.Necks, default=items.Necks.empty)
+    chest_enum = enumfields.EnumIntegerField(items.Chests, default=items.Chests.empty)
+    shield_enum = enumfields.EnumIntegerField(items.Shields, default=items.Shields.empty)
+    hand_enum = enumfields.EnumIntegerField(items.Hands, default=items.Hands.empty)
+    feet_enum = enumfields.EnumIntegerField(items.Feets, default=items.Feets.empty)
+    weapon_enum = enumfields.EnumIntegerField(items.Weapons, default=items.Weapons.empty)
 
     def __str__(self):
         return 'Level {} {}'.format(self.lvl,
-                                    class_type.class_map[self.class_type].name)
+                                    self.cls.name)
 
     @property
-    def cls(self):
-        return class_type.class_map[self.class_type]
+    def cls(self) -> class_type.Class:
+        return class_type.class_map[self.class_enum]
 
     @property
-    def utility(self):
-        return items.utilities[self.utility_type]
+    def utility(self) -> equipment.Wearable:
+        return items.utilities[self.utility_enum]
 
     @property
-    def head(self):
-        return items.heads[self.head_type]
+    def head(self) -> equipment.Wearable:
+        return items.heads[self.head_enum]
 
     @property
-    def neck(self):
-        return items.necks[self.neck_type]
+    def neck(self) -> equipment.Wearable:
+        return items.necks[self.neck_enum]
 
     @property
-    def chest(self):
-        return items.chests[self.chest_type]
+    def chest(self) -> equipment.Wearable:
+        return items.chests[self.chest_enum]
 
     @property
-    def shield(self):
-        return items.shields[self.shield_type]
+    def shield(self) -> equipment.Wearable:
+        return items.shields[self.shield_enum]
 
     @property
-    def hand(self):
-        return items.hands[self.hand_type]
+    def hand(self) -> equipment.Hand:
+        return items.hands[self.hand_enum]
 
     @property
-    def feet(self):
-        return items.feets[self.feet_type]
+    def feet(self) -> equipment.Wearable:
+        return items.feets[self.feet_enum]
 
     @property
-    def weapon(self):
-        return items.weapons[self.weapon_type]
+    def weapon(self) -> equipment.Weapon:
+        return items.weapons[self.weapon_enum]
 
     @property
     def wearables(self) -> Tuple[equipment.Wearable, ...]:

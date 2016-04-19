@@ -2,13 +2,13 @@
 
 """Temporary module to store items until database solution is created."""
 
-import autoenum
+import aenum
 from frozendict import frozendict
 
 from . import equipment
 
 
-class Utilities(autoenum.AutoEnum):
+class Utilities(aenum.AutoNumberEnum):
     empty = ()
 
 utilities = frozendict(
@@ -16,7 +16,7 @@ utilities = frozendict(
 )
 
 
-class Heads(autoenum.AutoEnum):
+class Heads(aenum.AutoNumberEnum):
     empty = ()
 
 heads = frozendict(
@@ -24,7 +24,7 @@ heads = frozendict(
 )
 
 
-class Necks(autoenum.AutoEnum):
+class Necks(aenum.AutoNumberEnum):
     empty = ()
 
 necks = frozendict(
@@ -32,7 +32,7 @@ necks = frozendict(
 )
 
 
-class Chests(autoenum.AutoEnum):
+class Chests(aenum.AutoNumberEnum):
     empty = ()
 
 chests = frozendict(
@@ -40,7 +40,7 @@ chests = frozendict(
 )
 
 
-class Shields(autoenum.AutoEnum):
+class Shields(aenum.AutoNumberEnum):
     empty = ()
 
 shields = frozendict(
@@ -48,7 +48,7 @@ shields = frozendict(
 )
 
 
-class Hands(autoenum.AutoEnum):
+class Hands(aenum.AutoNumberEnum):
     empty = ()
 
 hands = frozendict(
@@ -56,7 +56,7 @@ hands = frozendict(
 )
 
 
-class Feets(autoenum.AutoEnum):
+class Feets(aenum.AutoNumberEnum):
     empty = ()
 
 feets = frozendict(
@@ -64,7 +64,7 @@ feets = frozendict(
 )
 
 
-class Weapons(autoenum.AutoEnum):
+class Weapons(aenum.AutoNumberEnum):
     empty = ()
 
 weapons = frozendict(

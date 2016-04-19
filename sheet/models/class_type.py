@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-import autoenum
+import aenum
 from frozendict import frozendict
 from typing import Dict  # noqa
 
 
-class Classes(autoenum.AutoEnum):
+class Classes(aenum.AutoNumberEnum):
     empty = ()
 
 
