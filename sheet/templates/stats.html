@@ -26,7 +26,7 @@
     </style>
 </head>
 <body>
-    <table>
+    <table style="float:left">
         <thead>
             <tr id="title">
                 <th>Stat</th>
@@ -45,6 +45,14 @@
             <td>Class</td>
             <td>{{ character.cls.name }}</td>
         </tr>
+    </table>
+    <table style="float:right">
+        <thead>
+            <tr id="title">
+                <th>Slot</th>
+                <th>Equipment</th>
+            </tr>
+        </thead>
         <tr>
             <td>Utility</td>
             <td>{{ character.utility.name }}</td>
@@ -77,13 +85,133 @@
             <td>Weapon</td>
             <td>{{ character.weapon.name }}</td>
         </tr>
+    </table>
+    <table style="float:right">
+        <thead>
+            <tr id="title">
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+        </thead>
         <tr>
             <td>STR</td>
-            <td>{{ character.str }}</td>
+            <td>{{ character.stren }}</td>
+        </tr>
+        <tr>
+            <td>DEX</td>
+            <td>{{ character.dex }}</td>
+        </tr>
+        <tr>
+            <td>CON</td>
+            <td>{{ character.con }}</td>
+        </tr>
+        <tr>
+            <td>INT</td>
+            <td>{{ character.intel }}</td>
+        </tr>
+        <tr>
+            <td>WIS</td>
+            <td>{{ character.wis }}</td>
+        </tr>
+        <tr>
+            <td>CHA</td>
+            <td>{{ character.cha }}</td>
+        </tr>
+    </table>
+    <table>
+        <thead>
+            <tr id="title">
+                <th>Stat</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>AP</td>
+            <td>{{ character.ap }}</td>
+        </tr>
+        <tr>
+            <td>HP</td>
+            <td>{{ character.hp }}</td>
+        </tr>
+        <tr>
+            <td>MP</td>
+            <td>{{ character.mp }}</td>
+        </tr>
+        <tr>
+            <td>SP</td>
+            <td>{{ character.sp }}</td>
         </tr>
         <tr>
             <td>PDEF</td>
             <td>{{ character.pdef }}</td>
+        </tr>
+        <tr>
+            <td>MDEF</td>
+            <td>{{ character.mdef }}</td>
+        </tr>
+        <tr>
+            <td>PRED</td>
+            <td>{{ character.pred }}</td>
+        </tr>
+        <tr>
+            <td>MRED</td>
+            <td>{{ character.mred }}</td>
+        </tr>
+        <tr>
+            <td>REG</td>
+            <td>{{ character.reg }}</td>
+        </tr>
+        <tr>
+            <td>RD</td>
+            <td>{{ character.rd }}</td>
+        </tr>
+        <tr>
+            <td>SPEED</td>
+            <td>{{ character.speed }}</td>
+        </tr>
+        <tr>
+            <td>VIS</td>
+            <td>{{ character.speed }}</td>
+        </tr>
+        <tr>
+            <td>BPAC</td>
+            <td>{{ character.bpac }}</td>
+        </tr>
+        <tr>
+            <td>BMAC</td>
+            <td>{{ character.bmac }}</td>
+        </tr>
+    </table>
+    <table>
+        <thead>
+            <tr id="title">
+                <th>Skill</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>ATH</td>
+            <td>{{ character.ath }}</td>
+        </tr>
+        <tr>
+            <td>STE</td>
+            <td>{{ character.ste }}</td>
+        </tr>
+        <tr>
+            <td>FOR</td>
+            <td>{{ character.fort }}</td>
+        </tr>
+        <tr>
+            <td>APT</td>
+            <td>{{ character.apt }}</td>
+        </tr>
+        <tr>
+            <td>PER</td>
+            <td>{{ character.per }}</td>
+        </tr>
+        <tr>
+            <td>SPE</td>
+            <td>{{ character.spe }}</td>
         </tr>
     </table>
 </body>
