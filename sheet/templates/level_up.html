@@ -1,53 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Level Up</title>
-    <style>
-        form {
-            font-family: sans-serif;
-            width: 700px;
-            margin: 0 auto;
-        }
-        label {
-            width: 70px;
-            text-align: right;
-            display: inline-block;
-        }
-        input[type="text"] {
-            width: 20px;
-            margin: 0 auto;
-        }
-    </style>
-</head>
 <body>
-    <form action="/sheet/level_up" method="post">
-        {% csrf_token %}
-        <div>
-            <label for="hd_roll">HD Roll: </label>
-            <input id="hd_roll" type="text" name="hd_roll" value="">
-        </div>
-        <div>
-            <label for="md_roll">MD Roll: </label>
-            <input id="md_roll" type="text" name="md_roll" value="">
-        </div>
-        <div>
-            <label for="sd_roll">SD Roll: </label>
-            <input id="sd_roll" type="text" name="sd_roll" value="">
-        </div>
-        <div>
-            <label for="ad_roll">AD Roll: </label>
-            <input id="ad_roll" type="text" name="ad_roll" value="">
-        </div>
-        <div>
-            <label for="selected_attribute">Selected Attribute: </label>
-            <select id="selected_attribute">
-                {% for attribute in attributes %}
-                    <option value="{{ attribute.name }}">{{ attribute.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <input type="submit" value="OK">
-    </form>
+    <form action="/sheet/level_up/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
 </body>
 </html>

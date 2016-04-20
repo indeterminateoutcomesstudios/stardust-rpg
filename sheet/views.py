@@ -1,7 +1,8 @@
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render
 
-from .models.character import Attribute, Character, LevelUp
+from .forms import LevelUpForm
+from .models.character import Character
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -14,7 +15,15 @@ def stats(request: HttpRequest) -> HttpResponse:
 
 
 def level_up(request: HttpRequest) -> HttpResponse:
-    lvl_up = LevelUp()
+    if request.method == 'POST':
+        form = LevelUpForm(request.POST)
+        if form.is_valid():
+            print('VALID!', form.cleaned_data['hd_roll'], form.cleaned_data['md_roll'],
+                  form.cleaned_data['sd_roll'], form.cleaned_data['ad_roll'],
+                  form.cleaned_data['selected_attribute'])
+            return HttpResponseRedirect('/sheet/stats/')
+    else:
+        form = LevelUpForm()
+
     return render(request, 'level_up.html',
-                  context={'level_up': lvl_up,
-                           'attributes': [attribute for attribute in Attribute]})
+                  context={'form': form})
