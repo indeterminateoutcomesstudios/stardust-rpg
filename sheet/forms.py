@@ -1,9 +1,9 @@
 from django import forms
 
-from .models.character import LevelUp
+from .models import level_up
 
 
 class LevelUpForm(forms.ModelForm):
     class Meta:
-        model = LevelUp
+        model = level_up.LevelUp
         fields = ['hd_roll', 'md_roll', 'sd_roll', 'ad_roll', 'selected_attribute']

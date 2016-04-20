@@ -3,7 +3,6 @@
 import enum
 
 import enumfields
-from django.core import validators
 from django.db import models
 from typing import Tuple
 
@@ -266,17 +265,3 @@ class Character(models.Model):
     @property
     def spe(self) -> int:
         return self.cha * self.cls.spe + sum([wearable.spe for wearable in self.wearables])
-
-
-class LevelUp(models.Model):
-    character = models.ForeignKey(Character, on_delete=models.CASCADE)
-    hd_roll = models.IntegerField(verbose_name='HD Roll',
-                                  validators=[validators.MinValueValidator(1)])
-    md_roll = models.IntegerField(verbose_name='MD Roll',
-                                  validators=[validators.MinValueValidator(1)])
-    sd_roll = models.IntegerField(verbose_name='SD Roll',
-                                  validators=[validators.MinValueValidator(1)])
-    ad_roll = enumfields.EnumIntegerField(verbose_name='AD Roll',
-                                          enum=Attribute, default=Attribute.stren)
-    selected_attribute = enumfields.EnumIntegerField(verbose_name='Selected Attribute',
-                                                     enum=Attribute, default=Attribute.stren)
