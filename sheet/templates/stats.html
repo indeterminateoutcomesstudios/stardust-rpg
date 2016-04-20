@@ -26,6 +26,8 @@
     </style>
 </head>
 <body>
+    <a href="{% url 'sheet.views.cls' character.id %}">Class</a>
+    <a href="{% url 'sheet.views.level_up' character.id %}">Level Up</a>
     <table style="float:left">
         <thead>
             <tr id="title">
@@ -214,6 +216,5 @@
             <td>{{ character.spe }}</td>
         </tr>
     </table>
-    <a href="{% url 'sheet.views.level_up' character.id %}">Level Up</a>
 </body>
 </html>

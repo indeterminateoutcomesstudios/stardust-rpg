@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stats</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        td, th {
+            color: black;
+        }
+        td {
+            padding: 5px;
+            border: 1px solid #cccccc;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        tr:nth-child(even) {
+            background-color: gainsboro;
+        }
+        #title th {
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'sheet.views.stats' character.id %}">Stats</a>
+    <table>
+        <thead>
+            <tr id="title">
+                <th>Stat</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>Class</td>
+            <td>{{ character.cls.name }}</td>
+        </tr>
+        <tr>
+            <td>HD</td>
+            <td>{{ character.cls.hd }}</td>
+        </tr>
+        <tr>
+            <td>MD</td>
+            <td>{{ character.cls.md }}</td>
+        </tr>
+        <tr>
+            <td>SD</td>
+            <td>{{ character.cls.sd }}</td>
+        </tr>
+        <tr>
+            <td>SPEED</td>
+            <td>{{ character.cls.speed }}</td>
+        </tr>
+        <tr>
+            <td>PDEF</td>
+            <td>{{ character.cls.pdef }}</td>
+        </tr>
+        <tr>
+            <td>MDEF</td>
+            <td>{{ character.cls.mdef }}</td>
+        </tr>
+        <tr>
+            <td>PRED</td>
+            <td>{{ character.cls.pred }}</td>
+        </tr>
+        <tr>
+            <td>MRED</td>
+            <td>{{ character.cls.mred }}</td>
+        </tr>
+        <tr>
+            <td>REG</td>
+            <td>{{ character.cls.reg }}</td>
+        </tr>
+        <tr>
+            <td>VIS</td>
+            <td>{{ character.cls.vis }}</td>
+        </tr>
+        <tr>
+            <td>PAC</td>
+            <td>{{ character.cls.pac }}</td>
+        </tr>
+        <tr>
+            <td>MAC</td>
+            <td>{{ character.cls.mac }}</td>
+        </tr>
+        <tr>
+            <td>ATH</td>
+            <td>{{ character.cls.ath }}</td>
+        </tr>
+        <tr>
+            <td>STE</td>
+            <td>{{ character.cls.ste }}</td>
+        </tr>
+        <tr>
+            <td>FOR</td>
+            <td>{{ character.cls.fort }}</td>
+        </tr>
+        <tr>
+            <td>APT</td>
+            <td>{{ character.cls.apt }}</td>
+        </tr>
+        <tr>
+            <td>PER</td>
+            <td>{{ character.cls.per }}</td>
+        </tr>
+        <tr>
+            <td>SPE</td>
+            <td>{{ character.cls.spe }}</td>
+        </tr>
+        <tr>
+            <td>Starting AP</td>
+            <td>{{ character.cls.starting_ap }}</td>
+        </tr>
+        <tr>
+            <td>Melee Light Weapons</td>
+            <td>{{ character.cls.use_melee_light }}</td>
+        </tr>
+        <tr>
+            <td>Melee Medium Weapons</td>
+            <td>{{ character.cls.use_melee_medium }}</td>
+        </tr>
+        <tr>
+            <td>Melee Heavy Weapons</td>
+            <td>{{ character.cls.use_melee_heavy }}</td>
+        </tr>
+        <tr>
+            <td>Ranged Light Weapons</td>
+            <td>{{ character.cls.use_ranged_light }}</td>
+        </tr>
+        <tr>
+            <td>Ranged Medium Weapons</td>
+            <td>{{ character.cls.use_ranged_medium }}</td>
+        </tr>
+        <tr>
+            <td>Ranged Heavy Weapons</td>
+            <td>{{ character.cls.use_ranged_heavy }}</td>
+        </tr>
+        <tr>
+            <td>Magic Light Weapons</td>
+            <td>{{ character.cls.use_magic_light }}</td>
+        </tr>
+        <tr>
+            <td>Magic Medium Weapons</td>
+            <td>{{ character.cls.use_magic_medium }}</td>
+        </tr>
+        <tr>
+            <td>Magic Heavy Weapons</td>
+            <td>{{ character.cls.use_magic_heavy }}</td>
+        </tr>
+        <tr>
+            <td>Light Armor</td>
+            <td>{{ character.cls.use_light_armor }}</td>
+        </tr>
+        <tr>
+            <td>Medium Armor</td>
+            <td>{{ character.cls.use_medium_armor }}</td>
+        </tr>
+        <tr>
+            <td>Heavy Armor</td>
+            <td>{{ character.cls.use_heavy_armor }}</td>
+        </tr>
+    </table>
+</body>
+</html>

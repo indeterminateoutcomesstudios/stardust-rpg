@@ -15,14 +15,19 @@ def stats(request: HttpRequest, character_id: int) -> HttpResponse:
     return render(request, 'stats.html', context={'character': character})
 
 
+def cls(request: HttpRequest, character_id: int) -> HttpResponse:
+    character = get_object_or_404(Character, pk=character_id)
+    return render(request, 'class.html', context={'character': character})
+
+
 def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
     # TODO: Display previous levels.
     # TODO: Allow removal/modification of previous levels.
+    character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST':
         level_up_form = LevelUpForm(request.POST)
         if level_up_form.is_valid():
-            character = get_object_or_404(Character, pk=character_id)
 
             hd_roll = level_up_form.cleaned_data['hd_roll']
             if hd_roll > character.cls.hd:
@@ -49,4 +54,4 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
 
     return render(request, 'level_up.html',
                   context={'level_up_form': level_up_form,
-                           'character_id': character_id})
+                           'character': character})
