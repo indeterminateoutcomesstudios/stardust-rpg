@@ -7,10 +7,11 @@ from typing import Dict  # noqa
 
 class Classes(aenum.AutoNumberEnum):
     empty = ()
+    paladin = ()
 
 
 class Class:
-    def __init__(self, name: str='Empty Class', hd: int=0, md: int=0, sd: int=0, speed: int=0,
+    def __init__(self, name: str='Empty Class', hd: int=1, md: int=1, sd: int=1, speed: int=0,
                  pdef: int=0, mdef: float=0.0, pred: float=0.0, mred: float=0.0,
                  reg: float=0.0, vis: int=0, pac: float=0.0, mac: float=0.0,
                  ath: int=0, ste: int=0, fort: int=0, apt: int=0, per: int=0, spe: int=0,
@@ -55,6 +56,12 @@ class Class:
         self.use_heavy_armor = use_heavy_armor
 
 
+class Paladin(Class):
+    def __init__(self):
+        super().__init__(name=self.__class__.__name__, hd=12)
+
 class_map = frozendict(
-    {Classes.empty: Class()}
+    {Classes.empty: Class(),
+     Classes.paladin: Paladin(),
+     }
 )  # type: Dict[Classes, Class]
