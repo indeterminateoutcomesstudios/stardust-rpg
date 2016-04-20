@@ -59,8 +59,7 @@ class Character(models.Model):
     bmac_lvl_cha_mod = 1
 
     def __str__(self):
-        return 'Level {} {}'.format(self.lvl,
-                                    self.cls.name)
+        return '{}: Level {} {}'.format(self.id, self.lvl, self.cls.name)
 
     @property
     def cls(self) -> class_type.Class:
