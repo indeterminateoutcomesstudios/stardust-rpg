@@ -14,3 +14,10 @@ class LevelUpForm(forms.ModelForm):
     class Meta:
         model = level_up.LevelUp
         fields = ['hd_roll', 'md_roll', 'sd_roll', 'ad_roll', 'selected_attribute']
+
+
+class SkillPointsForm(forms.ModelForm):
+    class Meta:
+        model = character.Character
+        fields = ['assigned_ath', 'assigned_ste', 'assigned_for', 'assigned_apt',
+                  'assigned_per', 'assigned_spe']

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import enumfields
+from django.core import validators
 from django.db import models
 from typing import Tuple
 
@@ -24,6 +25,19 @@ class Character(models.Model):
     hand_enum = enumfields.EnumIntegerField(items.Hands, default=items.Hands.empty)
     feet_enum = enumfields.EnumIntegerField(items.Feets, default=items.Feets.empty)
     weapon_enum = enumfields.EnumIntegerField(items.Weapons, default=items.Weapons.empty)
+
+    assigned_ath = models.IntegerField(verbose_name='Assigned ATH', default=0,
+                                       validators=[validators.MinValueValidator(0)])
+    assigned_ste = models.IntegerField(verbose_name='Assigned STE', default=0,
+                                       validators=[validators.MinValueValidator(0)])
+    assigned_for = models.IntegerField(verbose_name='Assigned FOR', default=0,
+                                       validators=[validators.MinValueValidator(0)])
+    assigned_apt = models.IntegerField(verbose_name='Assigned APT', default=0,
+                                       validators=[validators.MinValueValidator(0)])
+    assigned_per = models.IntegerField(verbose_name='Assigned PER', default=0,
+                                       validators=[validators.MinValueValidator(0)])
+    assigned_spe = models.IntegerField(verbose_name='Assigned SPE', default=0,
+                                       validators=[validators.MinValueValidator(0)])
 
     # Class constants
     ap_lvl_mod = 2
@@ -160,6 +174,11 @@ class Character(models.Model):
                 sum(level_up.sd_roll for level_up in self.levelup_set.all()))
 
     @property
+    def available_sp(self) -> int:
+        return (self.sp - self.assigned_ath - self.assigned_ste - self.assigned_apt -
+                self.assigned_for - self.assigned_per - self.assigned_spe)
+
+    @property
     def pdef(self) -> int:
         return self.cls.pdef + self.dex + sum([wearable.pdef for wearable in self.wearables])
 
@@ -222,30 +241,32 @@ class Character(models.Model):
         return round(self.cls.mac + (self.bmac_lvl_cha_mod * self.cha) +
                      sum([wearable.bmac for wearable in self.wearables]))
 
-    # TODO: Assigned skill points.
     @property
     def ath(self) -> int:
-        return ((self.stren * self.cls.ath) +
+        return ((self.stren * self.cls.ath) + self.assigned_ath +
                 sum([wearable.ath for wearable in self.wearables]))
 
     @property
     def ste(self) -> int:
-        return (self.dex * self.cls.ste) + sum([wearable.ste for wearable in self.wearables])
+        return ((self.dex * self.cls.ste) + self.assigned_ste +
+                sum([wearable.ste for wearable in self.wearables]))
 
     @property
     def fort(self) -> int:
-        return (self.con * self.cls.fort) + sum([wearable.fort for wearable in
-                                                 self.wearables])
+        return ((self.con * self.cls.fort) + self.assigned_for +
+                sum([wearable.fort for wearable in self.wearables]))
 
     @property
     def apt(self) -> int:
-        return ((self.intel * self.cls.apt) +
+        return ((self.intel * self.cls.apt) + self.assigned_apt +
                 sum([wearable.apt for wearable in self.wearables]))
 
     @property
     def per(self) -> int:
-        return (self.wis * self.cls.per) + sum([wearable.per for wearable in self.wearables])
+        return ((self.wis * self.cls.per) + self.assigned_per +
+                sum([wearable.per for wearable in self.wearables]))
 
     @property
     def spe(self) -> int:
-        return self.cha * self.cls.spe + sum([wearable.spe for wearable in self.wearables])
+        return ((self.cha * self.cls.spe) + self.assigned_spe +
+                sum([wearable.spe for wearable in self.wearables]))

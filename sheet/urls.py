@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^(?P<character_id>[0-9]+)/abilities/$', views.abilities, name='Abilities'),
     url(r'^(?P<character_id>[0-9]+)/equip/$', views.equip, name='Equip'),
     url(r'^(?P<character_id>[0-9]+)/level_up/$', views.level_up, name='Level Up'),
+    url(r'^(?P<character_id>[0-9]+)/skill_points/$', views.skill_points, name='Skill Points'),
 ]

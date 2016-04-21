@@ -2,7 +2,7 @@ from django.forms import ValidationError
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
-from .forms import LevelUpForm, CharacterEquipForm
+from .forms import CharacterEquipForm, LevelUpForm, SkillPointsForm
 from .models.character import Character
 
 
@@ -95,4 +95,46 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
 
     return render(request, 'level_up.html',
                   context={'level_up_form': level_up_form,
+                           'character': character})
+
+
+def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
+    # TODO: Display previous levels.
+    # TODO: Allow removal/modification of previous levels.
+    character = get_object_or_404(Character, pk=character_id)
+
+    if request.method == 'POST':
+        skill_points_form = SkillPointsForm(request.POST)
+        if skill_points_form.is_valid():
+            assigned_ath = skill_points_form.cleaned_data['assigned_ath']
+            assigned_ste = skill_points_form.cleaned_data['assigned_ste']
+            assigned_for = skill_points_form.cleaned_data['assigned_for']
+            assigned_apt = skill_points_form.cleaned_data['assigned_apt']
+            assigned_per = skill_points_form.cleaned_data['assigned_per']
+            assigned_spe = skill_points_form.cleaned_data['assigned_spe']
+            if (assigned_ath + assigned_ste + assigned_for + assigned_apt + assigned_per +
+               assigned_spe > character.sp):
+                raise ValidationError('Too many SP assigned. Max: {}'.format(character.sp))
+            else:
+                character.assigned_ath = assigned_ath
+                character.assigned_ste = assigned_ste
+                character.assigned_for = assigned_for
+                character.assigned_apt = assigned_apt
+                character.assigned_per = assigned_per
+                character.assigned_spe = assigned_spe
+                character.save()
+
+            return HttpResponseRedirect('/sheet/{}/stats/'.format(character_id))
+    else:
+        skill_points_form = SkillPointsForm(
+            initial={'assigned_ath': character.assigned_ath,
+                     'assigned_ste': character.assigned_ste,
+                     'assigned_for': character.assigned_for,
+                     'assigned_apt': character.assigned_apt,
+                     'assigned_per': character.assigned_per,
+                     'assigned_spe': character.assigned_spe}
+        )
+
+    return render(request, 'skill_points.html',
+                  context={'skill_points_form': skill_points_form,
                            'character': character})
