@@ -20,6 +20,11 @@ def cls(request: HttpRequest, character_id: int) -> HttpResponse:
     return render(request, 'class.html', context={'character': character})
 
 
+def abilities(request: HttpRequest, character_id: int) -> HttpResponse:
+    character = get_object_or_404(Character, pk=character_id)
+    return render(request, 'abilities.html', context={'character': character})
+
+
 def equip(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 

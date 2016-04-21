@@ -27,7 +27,8 @@
 </head>
 <body>
     <a href="{% url 'sheet.views.cls' character.id %}">Class</a>
-        <a href="{% url 'sheet.views.equip' character.id %}">Equip</a>
+    <a href="{% url 'sheet.views.abilities' character.id %}">Abilities</a>
+    <a href="{% url 'sheet.views.equip' character.id %}">Equip</a>
     <a href="{% url 'sheet.views.level_up' character.id %}">Level Up</a>
     <table style="float:left">
         <thead>

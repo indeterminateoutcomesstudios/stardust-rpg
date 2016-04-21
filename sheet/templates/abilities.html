@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stats</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        td, th {
+            color: black;
+        }
+        td {
+            padding: 5px;
+            border: 1px solid #cccccc;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        tr:nth-child(even) {
+            background-color: gainsboro;
+        }
+        #title th {
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'sheet.views.stats' character.id %}">Stats</a>
+    <table>
+        <thead>
+            <tr id="title">
+                <th>Name</th>
+                <th>Prereqs</th>
+                <th>MP</th>
+                <th>Effect</th>
+                <th>Attacks</th>
+                <th>PDAM</th>
+                <th>MDAM</th>
+                <th>DAM Type</th>
+                <th>MDEF?</th>
+                <th>Time</th>
+                <th>Min Range</th>
+                <th>Max Range</th>
+                <th>Shape</th>
+                <th>Target Area</th>
+                <th>Duration</th>
+                <th>Duration Unit</th>
+            </tr>
+        </thead>
+        {% for ability in character.cls.abilities %}
+            <tr>
+                <td>{{ ability.name }}</td>
+                <td>{{ ability.prerequisites }}</td>
+                <td>{{ ability.mp_cost }}</td>
+                <td>{{ ability.effect }}</td>
+                <td>{{ ability.attacks }}</td>
+                <td>{{ ability.pdam }}</td>
+                <td>{{ ability.mdam }}</td>
+                <td>{{ ability.damage_type }}</td>
+                <td>{{ ability.targets_mdef }}</td>
+                <td>{{ ability.time.name }}</td>
+                <td>{{ ability.min_range }}</td>
+                <td>{{ ability.max_range }}</td>
+                <td>{{ ability.shape.name }}</td>
+                <td>{{ ability.target_area }}</td>
+                <td>{{ ability.duration }}</td>
+                <td>{{ ability.duration_unit.name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

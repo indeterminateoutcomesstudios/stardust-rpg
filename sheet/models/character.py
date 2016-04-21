@@ -5,6 +5,7 @@ from django.db import models
 from typing import Tuple
 
 from . import class_type
+from . import classes
 from . import dice
 from . import equipment
 from . import items
@@ -14,7 +15,7 @@ from .equipment import Attribute
 class Character(models.Model):
 
     # Fields
-    class_enum = enumfields.EnumIntegerField(class_type.Classes, default=class_type.Classes.empty)
+    class_enum = enumfields.EnumIntegerField(classes.Classes, default=classes.Classes.empty)
     utility_enum = enumfields.EnumIntegerField(items.Utilities, default=items.Utilities.empty)
     head_enum = enumfields.EnumIntegerField(items.Heads, default=items.Heads.empty)
     neck_enum = enumfields.EnumIntegerField(items.Necks, default=items.Necks.empty)
@@ -44,7 +45,7 @@ class Character(models.Model):
 
     @property
     def cls(self) -> class_type.Class:
-        return class_type.class_map[self.class_enum]
+        return classes.classes[self.class_enum]
 
     @property
     def utility(self) -> equipment.Wearable:

@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 
-import aenum
+from typing import Tuple
 
-
-class Classes(aenum.AutoNumberEnum):
-    empty = ()
-    paladin = ()
+from .ability import Ability
 
 
 class Class:
@@ -13,7 +10,7 @@ class Class:
                  pdef: int=0, mdef: float=0.0, pred: float=0.0, mred: float=0.0,
                  reg: float=0.0, vis: int=0, pac: float=0.0, mac: float=0.0,
                  ath: int=0, ste: int=0, fort: int=0, apt: int=0, per: int=0, spe: int=0,
-                 starting_ap: int=0,
+                 starting_ap: int=0, abilities: Tuple[Ability, ...]=(),
                  use_melee_light: bool=False, use_melee_medium: bool=False,
                  use_melee_heavy: bool=False, use_ranged_light: bool=False,
                  use_ranged_medium: bool=False, use_ranged_heavy: bool=False,
@@ -40,6 +37,7 @@ class Class:
         self.per = per
         self.spe = spe
         self.starting_ap = starting_ap
+        self.abilities = abilities
         self.use_melee_light = use_melee_light
         self.use_melee_medium = use_melee_medium
         self.use_melee_heavy = use_melee_heavy
@@ -52,13 +50,3 @@ class Class:
         self.use_light_armor = use_light_armor
         self.use_medium_armor = use_medium_armor
         self.use_heavy_armor = use_heavy_armor
-
-
-class Paladin(Class):
-    def __init__(self):
-        super().__init__(name=self.__class__.__name__, hd=12)
-
-class_map = {
-    Classes.empty: Class(),
-    Classes.paladin: Paladin(),
-}
