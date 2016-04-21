@@ -110,7 +110,6 @@ class Equipment(abc.ABC):
 
 
 class Wearable(Equipment):
-    # TODO: min_attribute_value
     def __init__(self, slot: Slot, name: str, min_attribute: Attribute, min_attribute_value: int=0,
                  rarity: Rarity=Rarity.common, price: int=0,
                  effect: str='', equip_type: Type=Type.light,

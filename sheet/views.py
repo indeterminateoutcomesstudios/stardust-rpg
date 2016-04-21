@@ -105,8 +105,6 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
 
 
 def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
-    # TODO: Display previous levels.
-    # TODO: Allow removal/modification of previous levels.
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST':
