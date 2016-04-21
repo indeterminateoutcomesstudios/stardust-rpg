@@ -6,6 +6,9 @@ from .forms import CharacterEquipForm, LevelUpForm, SkillPointsForm
 from .models.character import Character
 
 
+# TODO: Share CSS instead of copying.
+
+
 def index(request: HttpRequest, character_id: int) -> HttpResponse:
     return HttpResponse('Welcome {}\n'.format(get_object_or_404(Character, pk=character_id)))
 
@@ -68,7 +71,6 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
 
 
 def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
-    # TODO: Display previous levels.
     # TODO: Allow removal/modification of previous levels.
     character = get_object_or_404(Character, pk=character_id)
 
