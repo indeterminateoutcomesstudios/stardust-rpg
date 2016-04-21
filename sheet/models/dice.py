@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import re
+
 from typing import Tuple
 
 
@@ -10,9 +11,9 @@ class Dice:
         self.num_dice = num_dice
 
     @classmethod
-    def from_str(cls, string: str) -> 'Dice':
+    def from_str(cls, dice_string: str) -> 'Dice':
         # Examples: d4 2d10 d20 10d20
-        match = re.fullmatch(r'^(?P<num_dice>\d*)d(?P<sides>\d+)?', string)
+        match = re.fullmatch(r'^(?P<num_dice>\d*)d(?P<sides>\d+)?', dice_string)
 
         if match is not None:
             sides = int(match.group('sides'))
@@ -34,6 +35,26 @@ class DiceFormula:
     def __init__(self, dice_pool: Tuple[Dice, ...], modifier: int=0):
         self.dice_pool = dice_pool
         self.modifier = modifier
+
+    @classmethod
+    def from_str(cls, formula_string: str) -> 'DiceFormula':
+        # Examples: 'd4' 'd4 + d6' 'd4 + 2d4 + 1'
+        dice_pool = []
+        modifier = None
+        for token in formula_string.split():
+            if token == '+':
+                continue
+            elif 'd' in token:
+                dice_pool.append(Dice.from_str(token))
+            elif modifier is None:
+                modifier = int(token)
+            else:
+                raise ValueError('Invald token: {}'.format(token))
+
+        if modifier is None:
+            return cls(dice_pool=tuple(dice_pool))
+        else:
+            return cls(dice_pool=tuple(dice_pool), modifier=modifier)
 
     def __str__(self) -> str:
         s = ''

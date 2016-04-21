@@ -1,4 +1,3 @@
 aenum
 django
 django-enumfields
-frozendict

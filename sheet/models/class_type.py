@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 import aenum
-from frozendict import frozendict
-from typing import Dict  # noqa
 
 
 class Classes(aenum.AutoNumberEnum):
@@ -60,8 +58,7 @@ class Paladin(Class):
     def __init__(self):
         super().__init__(name=self.__class__.__name__, hd=12)
 
-class_map = frozendict(
-    {Classes.empty: Class(),
-     Classes.paladin: Paladin(),
-     }
-)  # type: Dict[Classes, Class]
+class_map = {
+    Classes.empty: Class(),
+    Classes.paladin: Paladin(),
+}

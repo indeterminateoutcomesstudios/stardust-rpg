@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import enum
-
 import enumfields
 from django.db import models
 from typing import Tuple
@@ -10,23 +8,7 @@ from . import class_type
 from . import dice
 from . import equipment
 from . import items
-
-
-@enum.unique
-class Attribute(enum.Enum):
-    stren = 1
-    dex = 2
-    con = 3
-    intel = 4
-    wis = 5
-    cha = 6
-
-    @classmethod
-    def from_string(cls, string_name: str) -> 'Attribute':
-        for attribute in cls:
-            if attribute.name == string_name:
-                return attribute
-        raise ValueError('Invalid {} name.'.format(cls.__name__))
+from .equipment import Attribute
 
 
 class Character(models.Model):
@@ -167,6 +149,7 @@ class Character(models.Model):
     @property
     def mp(self) -> int:
         return ((self.lvl * self.mp_lvl_int_mod * self.intel) +
+                sum([wearable.mp for wearable in self.wearables]) +
                 sum(level_up.md_roll for level_up in self.levelup_set.all()))
 
     @property

@@ -2,7 +2,7 @@ from django.forms import ValidationError
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
-from .forms import LevelUpForm
+from .forms import LevelUpForm, CharacterEquipForm
 from .models.character import Character
 
 
@@ -18,6 +18,42 @@ def stats(request: HttpRequest, character_id: int) -> HttpResponse:
 def cls(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'class.html', context={'character': character})
+
+
+def equip(request: HttpRequest, character_id: int) -> HttpResponse:
+    character = get_object_or_404(Character, pk=character_id)
+
+    if request.method == 'POST':
+        equip_form = CharacterEquipForm(request.POST)
+        if equip_form.is_valid():
+            # TODO: Validate character meets requirements for equipment.
+            character.utility_enum = equip_form.cleaned_data['utility_enum']
+            character.head_enum = equip_form.cleaned_data['head_enum']
+            character.neck_enum = equip_form.cleaned_data['neck_enum']
+            character.chest_enum = equip_form.cleaned_data['chest_enum']
+            character.shield_enum = equip_form.cleaned_data['shield_enum']
+            character.hand_enum = equip_form.cleaned_data['hand_enum']
+            character.feet_enum = equip_form.cleaned_data['feet_enum']
+            character.weapon_enum = equip_form.cleaned_data['weapon_enum']
+            character.save()
+
+            return HttpResponseRedirect('/sheet/{}/stats/'.format(character_id))
+    else:
+        equip_form = CharacterEquipForm(
+            initial={
+                'utility_enum': character.utility_enum,
+                'head_enum': character.head_enum,
+                'neck_enum': character.neck_enum,
+                'chest_enum': character.chest_enum,
+                'shield_enum': character.shield_enum,
+                'hand_enum': character.hand_enum,
+                'feet_enum': character.feet_enum,
+                'weapon_enum': character.weapon_enum
+            })
+
+    return render(request, 'equip.html',
+                  context={'equip_form': equip_form,
+                           'character': character})
 
 
 def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
