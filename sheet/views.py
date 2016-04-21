@@ -31,7 +31,6 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
     if request.method == 'POST':
         equip_form = CharacterEquipForm(request.POST)
         if equip_form.is_valid():
-            # TODO: Validate character meets requirements for equipment.
             character.utility_enum = equip_form.cleaned_data['utility_enum']
             character.head_enum = equip_form.cleaned_data['head_enum']
             character.neck_enum = equip_form.cleaned_data['neck_enum']
@@ -40,8 +39,15 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
             character.hand_enum = equip_form.cleaned_data['hand_enum']
             character.feet_enum = equip_form.cleaned_data['feet_enum']
             character.weapon_enum = equip_form.cleaned_data['weapon_enum']
-            character.save()
 
+            # Validate character meets requirements for equipment.
+            for wearable in character.wearables:
+                if character.get_attribute(wearable.min_attribute) < wearable.min_attribute_value:
+                    raise ValidationError('Requirements not met for {}.  Need {} {}.'.format(
+                        wearable.name, wearable.min_attribute_value,
+                        wearable.min_attribute.name))
+
+            character.save()
             return HttpResponseRedirect('/sheet/{}/stats/'.format(character_id))
     else:
         equip_form = CharacterEquipForm(

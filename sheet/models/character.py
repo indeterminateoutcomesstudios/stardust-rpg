@@ -102,6 +102,20 @@ class Character(models.Model):
     def lvl(self):
         return self.levelup_set.count()
 
+    def get_attribute(self, attribute: Attribute) -> int:
+        if attribute is Attribute.stren:
+            return self.stren
+        elif attribute is Attribute.dex:
+            return self.dex
+        elif attribute is Attribute.con:
+            return self.con
+        elif attribute is Attribute.intel:
+            return self.intel
+        elif attribute is Attribute.wis:
+            return self.wis
+        elif attribute is Attribute.cha:
+            return self.cha
+
     @property
     def stren(self) -> int:
         return (
