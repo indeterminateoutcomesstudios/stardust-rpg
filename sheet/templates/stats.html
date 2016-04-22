@@ -26,6 +26,7 @@
     </style>
 </head>
 <body>
+    <Label>Player: {{ request.user }}</Label>
     <a href="{% url 'sheet.views.cls' character.id %}">Class</a>
     <a href="{% url 'sheet.views.abilities' character.id %}">Abilities</a>
     <a href="{% url 'sheet.views.equip' character.id %}">Equip</a>

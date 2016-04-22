@@ -1,5 +1,6 @@
 import re
 
+from django.contrib.auth.decorators import login_required
 from django.forms import ValidationError
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import get_object_or_404, redirect, render
@@ -11,25 +12,30 @@ from .models.level_up import LevelUp
 # TODO: Share CSS instead of copying.
 
 
+@login_required
 def index(request: HttpRequest, character_id: int) -> HttpResponse:
     return HttpResponse('Welcome {}\n'.format(get_object_or_404(Character, pk=character_id)))
 
 
+@login_required
 def stats(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'stats.html', context={'character': character})
 
 
+@login_required
 def cls(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'class.html', context={'character': character})
 
 
+@login_required
 def abilities(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'abilities.html', context={'character': character})
 
 
+@login_required
 def equip(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
@@ -72,6 +78,7 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
                            'character': character})
 
 
+@login_required
 def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
@@ -106,7 +113,7 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
             new_level_up.character = character
             new_level_up.save()
 
-            return redirect('/sheet/{}/stats/'.format(character_id))
+            return redirect('/sheet/{}/level_up/'.format(character_id))
     else:
         level_up_form = LevelUpForm()
 
@@ -115,6 +122,7 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
                            'character': character})
 
 
+@login_required
 def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
