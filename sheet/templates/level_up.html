@@ -28,33 +28,39 @@
 <body>
     <a href="{% url 'sheet.views.stats' character.id %}">Stats</a>
     <br>
-    <label>Previous Levels</label>
-    <table>
-        <thead>
-            <tr id="title">
-                <th>LVL</th>
-                <th>HD Roll</th>
-                <th>MD Roll</th>
-                <th>SD Roll</th>
-                <th>AD Roll</th>
-                <th>Selected Attribute</th>
-            </tr>
-        </thead>
-        {% for level_up in character.levelup_set.all %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ level_up.hd_roll }}</td>
-                <td>{{ level_up.md_roll }}</td>
-                <td>{{ level_up.sd_roll }}</td>
-                <td>{{ level_up.ad_roll.name }}</td>
-                <td>{{ level_up.selected_attribute.name }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <label>New Level</label>
     <form action="/sheet/{{ character.id }}/level_up/" method="post">
         {% csrf_token %}
+        <label>Previous Levels</label>
+        <table>
+            <thead>
+                <tr id="title">
+                    <th>LVL</th>
+                    <th>HD Roll</th>
+                    <th>MD Roll</th>
+                    <th>SD Roll</th>
+                    <th>AD Roll</th>
+                    <th>Selected Attribute</th>
+                </tr>
+            </thead>
+            {% for level_up in character.levelup_set.all %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ level_up.hd_roll }}</td>
+                    <td>{{ level_up.md_roll }}</td>
+                    <td>{{ level_up.sd_roll }}</td>
+                    <td>{{ level_up.ad_roll.name }}</td>
+                    <td>{{ level_up.selected_attribute.name }}</td>
+                    <td>
+                        <button type="submit" name="delete"
+                               value="delete {{ level_up.id }}" style="background: #DE2A00;">
+                            Delete</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <label>New Level</label>
+        <br>
         {{ level_up_form }}
         <input type="submit" value="Submit" />
     </form>

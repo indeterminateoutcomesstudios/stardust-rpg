@@ -1,10 +1,12 @@
+import re
+
 from django.forms import ValidationError
-from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpRequest
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CharacterEquipForm, LevelUpForm, SkillPointsForm
 from .models.character import Character
-
+from .models.level_up import LevelUp
 
 # TODO: Share CSS instead of copying.
 
@@ -51,7 +53,7 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
                         wearable.min_attribute.name))
 
             character.save()
-            return HttpResponseRedirect('/sheet/{}/stats/'.format(character_id))
+            return redirect('/sheet/{}/stats/'.format(character_id))
     else:
         equip_form = CharacterEquipForm(
             initial={
@@ -71,11 +73,18 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
 
 
 def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
-    # TODO: Allow removal/modification of previous levels.
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST':
         level_up_form = LevelUpForm(request.POST)
+
+        # Check if a delete input button was pressed to remove an old LevelUp.
+        for parameter, value in request.POST.items():
+            match = re.match(r'^delete\s(?P<levelup_id>[0-9]+)$', value)
+            if match is not None:
+                LevelUp.objects.get(pk=match.group('levelup_id')).delete()
+                return redirect('/sheet/{}/level_up/'.format(character_id))
+
         if level_up_form.is_valid():
 
             hd_roll = level_up_form.cleaned_data['hd_roll']
@@ -97,7 +106,7 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
             new_level_up.character = character
             new_level_up.save()
 
-            return HttpResponseRedirect('/sheet/{}/stats/'.format(character_id))
+            return redirect('/sheet/{}/stats/'.format(character_id))
     else:
         level_up_form = LevelUpForm()
 
@@ -130,7 +139,7 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
                 character.assigned_spe = assigned_spe
                 character.save()
 
-            return HttpResponseRedirect('/sheet/{}/stats/'.format(character_id))
+            return redirect('/sheet/{}/stats/'.format(character_id))
     else:
         skill_points_form = SkillPointsForm(
             initial={'assigned_ath': character.assigned_ath,
