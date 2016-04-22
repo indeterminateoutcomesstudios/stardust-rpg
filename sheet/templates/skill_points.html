@@ -4,7 +4,7 @@
     <a href="{% url 'sheet.views.stats' character.id %}">Stats</a>
     <br>
     <label>Available SP: {{ character.available_sp }}</label>
-    <form action="/sheet/{{ character.id }}/skill_points/" method="post">
+    <form method="post">
         {% csrf_token %}
         {{ skill_points_form }}
         <input type="submit" value="Submit" />

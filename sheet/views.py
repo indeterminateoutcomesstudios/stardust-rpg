@@ -13,8 +13,8 @@ from .models.level_up import LevelUp
 
 
 @login_required
-def index(request: HttpRequest, character_id: int) -> HttpResponse:
-    return HttpResponse('Welcome {}\n'.format(get_object_or_404(Character, pk=character_id)))
+def characters(request: HttpRequest) -> HttpResponse:
+    return render(request, 'characters.html', context={'characters': Character.objects.all()})
 
 
 @login_required
