@@ -85,8 +85,8 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
                 LevelUp.objects.get(pk=match.group('levelup_id')).delete()
                 return redirect('/sheet/{}/level_up/'.format(character_id))
 
+        # Otherwise, user is creating a new LevelUp.
         if level_up_form.is_valid():
-
             hd_roll = level_up_form.cleaned_data['hd_roll']
             if hd_roll > character.cls.hd:
                 raise ValidationError('HD roll higher than HD: {}>{}'.format(
