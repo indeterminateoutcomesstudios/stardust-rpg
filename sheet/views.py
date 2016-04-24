@@ -1,6 +1,7 @@
 import re
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.forms import ValidationError
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import get_object_or_404, redirect, render
@@ -10,6 +11,11 @@ from .models.character import Character
 from .models.level_up import LevelUp
 
 # TODO: Share CSS instead of copying.
+
+
+def check_is_admin_or_owns_character(user: User, character: Character) -> None:
+    if not (user.username == 'admin' or character.user.username == user.username):
+        raise ValidationError('User not authorized to edit this character.')
 
 
 @login_required
@@ -40,6 +46,8 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST':
+        check_is_admin_or_owns_character(request.user, character)
+
         equip_form = CharacterEquipForm(request.POST)
         if equip_form.is_valid():
             character.utility_enum = equip_form.cleaned_data['utility_enum']
@@ -83,6 +91,8 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST':
+        check_is_admin_or_owns_character(request.user, character)
+
         level_up_form = LevelUpForm(request.POST)
 
         # Check if a delete input button was pressed to remove an old LevelUp.
@@ -127,6 +137,7 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST':
+        check_is_admin_or_owns_character(request.user, character)
         skill_points_form = SkillPointsForm(request.POST)
         if skill_points_form.is_valid():
             assigned_ath = skill_points_form.cleaned_data['assigned_ath']

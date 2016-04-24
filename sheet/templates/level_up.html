@@ -35,10 +35,10 @@
             <thead>
                 <tr id="title">
                     <th>LVL</th>
-                    <th>HD Roll</th>
-                    <th>MD Roll</th>
-                    <th>SD Roll</th>
-                    <th>AD Roll</th>
+                    <th>HD Roll [d{{ character.cls.hd }}]</th>
+                    <th>MD Roll [d{{ character.cls.md }}]</th>
+                    <th>SD Roll [d{{ character.cls.sd }}]</th>
+                    <th>AD Roll [d6]</th>
                     <th>Selected Attribute</th>
                 </tr>
             </thead>
@@ -62,7 +62,7 @@
         <label>New Level</label>
         <br>
         {{ level_up_form }}
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Level Up" />
     </form>
 </body>
 </html>

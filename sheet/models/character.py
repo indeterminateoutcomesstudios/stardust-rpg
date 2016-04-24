@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import enumfields
+from django.contrib.auth.models import User
 from django.core import validators
 from django.db import models
 from typing import Tuple
@@ -16,6 +17,8 @@ from .equipment import Attribute
 class Character(models.Model):
 
     # Fields
+    user = models.ForeignKey(User, unique=False)
+
     class_enum = enumfields.EnumIntegerField(classes.Classes, default=classes.Classes.empty)
     utility_enum = enumfields.EnumIntegerField(items.Utilities, default=items.Utilities.empty)
     head_enum = enumfields.EnumIntegerField(items.Heads, default=items.Heads.empty)
