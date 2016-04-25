@@ -29,7 +29,6 @@ def characters(request: HttpRequest) -> HttpResponse:
 @login_required
 def stats(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
-    print(character.abilities)
     return render(request, 'stats.html', context={'character': character})
 
 
@@ -79,7 +78,7 @@ def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
                     else:
                         raise ValidationError('Not enough available AP.')
 
-        return redirect(reverse('sheet.views.unlock_abilities', args=[character_id]))
+        return redirect(reverse(unlock_abilities, args=[character_id]))
 
     return render(request, 'abilities.html', context={'character': character})
 
@@ -110,7 +109,7 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
                         wearable.min_attribute.name))
 
             character.save()
-            return redirect(reverse('sheet.views.stats', args=[character_id]))
+            return redirect(reverse(stats, args=[character_id]))
     else:
         equip_form = CharacterEquipForm(
             initial={
@@ -143,7 +142,7 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
             match = re.match(r'^delete\s(?P<levelup_id>[0-9]+)$', value)
             if match is not None:
                 LevelUp.objects.get(pk=match.group('levelup_id')).delete()
-                return redirect(reverse('sheet.views.level_up', args=[character_id]))
+                return redirect(reverse(level_up, args=[character_id]))
 
         # Otherwise, user is creating a new LevelUp.
         if level_up_form.is_valid():
@@ -166,7 +165,7 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
             new_level_up.character = character
             new_level_up.save()
 
-            return redirect(reverse('sheet.views.level_up', args=[character_id]))
+            return redirect(reverse(level_up, args=[character_id]))
     else:
         level_up_form = LevelUpForm()
 
@@ -219,7 +218,7 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
                 character.assigned_spe = assigned_spe
                 character.save()
 
-            return redirect(reverse('sheet.views.skill_points', args=[character_id]))
+            return redirect(reverse(skill_points, args=[character_id]))
     else:
         skill_points_form = SkillPointsForm(
             initial={'assigned_ath': character.assigned_ath,

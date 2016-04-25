@@ -28,15 +28,15 @@
 <body>
     <Label>Player: {{ request.user }}</Label>
     <br>
-    <a href="{% url 'sheet.views.characters' %}">All Characters</a>
-    <a href="{% url 'sheet.views.cls' character.id %}">Class</a>
-    <a href="{% url 'sheet.views.unlock_abilities' character.id %}">
+    <a href="{% url 'sheet-views-characters' %}">All Characters</a>
+    <a href="{% url 'sheet-views-class' character.id %}">Class</a>
+    <a href="{% url 'sheet-views-abilities' character.id %}">
         Abilities ({{ character.available_ap }})</a>
-    <a href="{% url 'sheet.views.equip' character.id %}">Equip</a>
-    <a href="{% url 'sheet.views.level_up' character.id %}">Level Up</a>
-    <a href="{% url 'sheet.views.skill_points' character.id %}">
+    <a href="{% url 'sheet-views-equip' character.id %}">Equip</a>
+    <a href="{% url 'sheet-views-level-up' character.id %}">Level Up</a>
+    <a href="{% url 'sheet-views-skill-points' character.id %}">
         Assign Skill Points ({{ character.available_sp }})</a>
-    <a href="/accounts/logout/">Logout</a>
+    <a href= {% url 'app-accounts-logout' %}>Logout</a>
     <br>
     <table style="float:left">
         <thead>
