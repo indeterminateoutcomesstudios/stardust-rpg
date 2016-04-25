@@ -6,6 +6,8 @@ from django.core import validators
 from django.db import models
 from typing import Tuple
 
+from . import abilities
+from . import ability
 from . import class_type
 from . import classes
 from . import dice
@@ -173,6 +175,14 @@ class Character(models.Model):
                 sum([wearable.ap for wearable in self.wearables]))
 
     @property
+    def available_ap(self) -> int:
+        return self.ap - self.unlockedability_set.count()
+
+    @property
+    def abilities(self) -> Tuple[ability.Ability]:
+        return [unlocked_ability.ability for unlocked_ability in self.unlockedability_set.all()]
+
+    @property
     def hp(self) -> int:
         return round(self.lvl * self.hp_lvl_con_mod * self.con +
                      sum([wearable.hp for wearable in self.wearables]) +
@@ -287,3 +297,12 @@ class Character(models.Model):
     def spe(self) -> int:
         return ((self.cha * self.cls.spe) + self.assigned_spe +
                 sum([wearable.spe for wearable in self.wearables]))
+
+
+class UnlockedAbility(models.Model):
+    character = models.ForeignKey(Character, on_delete=models.CASCADE)
+    ability_enum = enumfields.EnumIntegerField(abilities.Abilities)
+
+    @property
+    def ability(self) -> ability.Ability:
+        return abilities.abilities[self.ability_enum]

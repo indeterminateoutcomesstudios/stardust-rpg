@@ -2,8 +2,9 @@
 
 import aenum
 
-from .paladin import Paladin
-from ..class_type import Class
+
+from . import paladin
+from .. import class_type
 
 
 class Classes(aenum.AutoNumberEnum):
@@ -11,6 +12,6 @@ class Classes(aenum.AutoNumberEnum):
     paladin = ()
 
 classes = {
-    Classes.empty: Class(),
-    Classes.paladin: Paladin(),
+    Classes.empty: class_type.Class(),
+    Classes.paladin: paladin.Paladin(),
 }

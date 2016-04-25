@@ -7,8 +7,9 @@ from django.http import HttpResponse, HttpRequest
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CharacterEquipForm, LevelUpForm, SkillPointsForm
-from .models.character import Character
+from .models.character import Character, UnlockedAbility
 from .models.level_up import LevelUp
+from .models.abilities import inverse_abilities
 
 # TODO: Share CSS instead of copying.
 
@@ -26,6 +27,7 @@ def characters(request: HttpRequest) -> HttpResponse:
 @login_required
 def stats(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
+    print(character.abilities)
     return render(request, 'stats.html', context={'character': character})
 
 
@@ -36,8 +38,47 @@ def cls(request: HttpRequest, character_id: int) -> HttpResponse:
 
 
 @login_required
-def abilities(request: HttpRequest, character_id: int) -> HttpResponse:
+def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
+
+    if request.method == 'POST':
+        check_is_admin_or_owns_character(request.user, character)
+
+        for parameter, value in request.POST.items():
+            match = re.match(r'^(?P<action_type>lock|unlock)\s(?P<ability_index>[0-9]+)$', value)
+            if match is not None:
+                ability_index = int(match.group('ability_index'))
+                ability = character.cls.abilities[ability_index]
+
+                action_type = match.group('action_type')
+                if action_type == 'lock':
+                    for unlocked_ability in character.unlockedability_set.all():
+                        if unlocked_ability.ability is ability:
+                            # Do not allow the player to re-lock an ability if it is a
+                            # prerequisite for another ability they have already unlocked.
+                            for owned_ability in character.abilities:
+                                if ability in owned_ability.prerequisites:
+                                    raise ValidationError(
+                                        'Cannot lock ability {} because it is a prerequisite '
+                                        'for {}.'.format(ability.name, owned_ability.name))
+                            unlocked_ability.delete()
+                elif action_type == 'unlock':
+                    for prerequisite in ability.prerequisites:
+                        if prerequisite not in character.abilities:
+                            raise ValidationError('Prerequisite {} not met for ability {}.'.format(
+                                prerequisite.name, ability.name))
+
+                    new_unlocked_ability = UnlockedAbility(
+                        character=character,
+                        ability_enum=inverse_abilities[ability])
+
+                    if character.available_ap > 0:
+                        new_unlocked_ability.save()
+                    else:
+                        raise ValidationError('Not enough available AP.')
+
+        return redirect('/sheet/{}/abilities/'.format(character_id))
+
     return render(request, 'abilities.html', context={'character': character})
 
 
