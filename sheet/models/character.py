@@ -58,6 +58,7 @@ class Character(models.Model):
     vis_con_mod = 0.5
     bpac_lvl_str_mod = 1
     bmac_lvl_cha_mod = 1
+    extra_max_sp_per_skill = 3
 
     def __str__(self):
         return '{}: Level {} {}'.format(self.id, self.lvl, self.cls.name)
@@ -204,6 +205,10 @@ class Character(models.Model):
     def available_sp(self) -> int:
         return (self.sp - self.assigned_ath - self.assigned_ste - self.assigned_apt -
                 self.assigned_for - self.assigned_per - self.assigned_spe)
+
+    @property
+    def max_sp_per_skill(self) -> int:
+        return self.lvl + self.extra_max_sp_per_skill
 
     @property
     def pdef(self) -> int:

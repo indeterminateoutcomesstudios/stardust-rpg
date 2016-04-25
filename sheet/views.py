@@ -12,6 +12,7 @@ from .models.level_up import LevelUp
 from .models.abilities import inverse_abilities
 
 # TODO: Share CSS instead of copying.
+# TODO: Handle exceptions in a user-friendly way.
 
 
 def check_is_admin_or_owns_character(user: User, character: Character) -> None:
@@ -190,6 +191,24 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
             if (assigned_ath + assigned_ste + assigned_for + assigned_apt + assigned_per +
                assigned_spe > character.sp):
                 raise ValidationError('Too many SP assigned. Max: {}'.format(character.sp))
+            elif assigned_ath > character.max_sp_per_skill:
+                raise ValidationError('Assigned ATH too high. Max: {}'.format(
+                    character.max_sp_per_skill))
+            elif assigned_ste > character.max_sp_per_skill:
+                raise ValidationError('Assigned STE too high. Max: {}'.format(
+                    character.max_sp_per_skill))
+            elif assigned_for > character.max_sp_per_skill:
+                raise ValidationError('Assigned FOR too high. Max: {}'.format(
+                    character.max_sp_per_skill))
+            elif assigned_apt > character.max_sp_per_skill:
+                raise ValidationError('Assigned APT too high. Max: {}'.format(
+                    character.max_sp_per_skill))
+            elif assigned_per > character.max_sp_per_skill:
+                raise ValidationError('Assigned PER too high. Max: {}'.format(
+                    character.max_sp_per_skill))
+            elif assigned_spe > character.max_sp_per_skill:
+                raise ValidationError('Assigned SPE too high. Max: {}'.format(
+                    character.max_sp_per_skill))
             else:
                 character.assigned_ath = assigned_ath
                 character.assigned_ste = assigned_ste
