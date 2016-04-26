@@ -18,6 +18,7 @@ from .equipment import Attribute
 
 
 class Character(models.Model):
+    # TODO: Vulnerabilities and resistances.
 
     # Fields
     user = models.ForeignKey(User, unique=False)

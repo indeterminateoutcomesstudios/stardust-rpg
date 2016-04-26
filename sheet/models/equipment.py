@@ -307,6 +307,7 @@ class Hand(Wearable):
 
 
 class Weapon(Wearable):
+    # TODO: Weapon pictures.
     def __init__(self, name: str, style: Style, min_attribute_value: int=0,
                  rarity: Rarity=Rarity.common,
                  price: int=0, effect: str='', equip_type: Type=Type.light,

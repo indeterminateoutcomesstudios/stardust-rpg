@@ -13,6 +13,8 @@ class AbilityPictures(enum.Enum):
     # TODO: Enumerate
     pass
 
+# TODO: Shape pictures.
+
 
 class DurationUnit(aenum.AutoNumberEnum):
     instant = ()
