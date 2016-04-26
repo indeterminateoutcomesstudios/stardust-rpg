@@ -37,6 +37,7 @@
                 <th>MP</th>
                 <th>Effect</th>
                 <th>Attacks</th>
+                <th>MAC</th>
                 <th>PDAM</th>
                 <th>MDAM</th>
                 <th>DAM Type</th>
@@ -70,6 +71,11 @@
                 <td>{{ combo.mp_cost }}</td>
                 <td>{{ combo.effect }}</td>
                 <td>{{ combo.attacks }}</td>
+                <td>
+                        {% if combo.targets_mdef %}
+                            {{ character.bmac|add:combo.mac }}
+                        {% endif %}
+                    </td>
                 <td>{{ combo.pdam }}</td>
                 <td>{{ combo.mdam }}</td>
                 <td>{{ combo.damage_type.name }}</td>

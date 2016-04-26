@@ -40,6 +40,7 @@
                     <th>MP</th>
                     <th>Effect</th>
                     <th>Attacks</th>
+                    <th>MAC</th>
                     <th>PDAM</th>
                     <th>MDAM</th>
                     <th>DAM Type</th>
@@ -78,6 +79,11 @@
                     <td>{{ ability.mp_cost }}</td>
                     <td>{{ ability.effect }}</td>
                     <td>{{ ability.attacks }}</td>
+                    <td>
+                        {% if ability.targets_mdef %}
+                            {{ character.bmac|add:ability.mac }}
+                        {% endif %}
+                    </td>
                     <td>{{ ability.pdam }}</td>
                     <td>{{ ability.mdam }}</td>
                     <td>{{ ability.damage_type.name }}</td>

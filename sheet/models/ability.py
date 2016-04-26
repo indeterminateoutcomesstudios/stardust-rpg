@@ -32,6 +32,8 @@ class Time(aenum.AutoNumberEnum):
 
 
 class Ability:
+    mp_mac_modifier = 0.25
+
     def __init__(self, name: str, mp_cost: int, target_area: str, duration: str=None,
                  duration_unit: DurationUnit=DurationUnit.instant,
                  prerequisites: Tuple['Ability', ...]=(), damage_type: DamageType=None, effect='',
@@ -55,3 +57,6 @@ class Ability:
         self.min_range = min_range
         self.max_range = max_range
         self.shape = shape
+
+    def mac(self) -> int:
+        return round(self.mp_cost * self.mp_mac_modifier)
