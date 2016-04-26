@@ -84,6 +84,12 @@ def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
 
 
 @login_required
+def combos(request: HttpRequest, character_id: int) -> HttpResponse:
+    character = get_object_or_404(Character, pk=character_id)
+    return render(request, 'combos.html', context={'character': character})
+
+
+@login_required
 def equip(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 

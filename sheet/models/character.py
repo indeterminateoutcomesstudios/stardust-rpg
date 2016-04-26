@@ -10,6 +10,7 @@ from . import abilities
 from . import ability
 from . import class_type
 from . import classes
+from . import combos
 from . import dice
 from . import equipment
 from . import items
@@ -182,6 +183,15 @@ class Character(models.Model):
     @property
     def abilities(self) -> Tuple[ability.Ability]:
         return [unlocked_ability.ability for unlocked_ability in self.unlockedability_set.all()]
+
+    @property
+    def combos(self) -> Tuple[combos.Combo]:
+        # TODO: Make this part of cls?  Import issues.
+        character_combos = []
+        for combo in combos.combos:
+            if self.cls.__class__ in combo.classes:
+                character_combos.append(combo)
+        return tuple(character_combos)
 
     @property
     def hp(self) -> int:
