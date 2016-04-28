@@ -49,6 +49,7 @@
                 <th>Target Area</th>
                 <th>Duration</th>
                 <th>Duration Unit</th>
+                <th>Macro</th>
             </tr>
         </thead>
         {% for combo in character.combos %}
@@ -87,6 +88,9 @@
                 <td>{{ combo.target_area }}</td>
                 <td>{{ combo.duration }}</td>
                 <td>{{ combo.duration_unit.name }}</td>
+                <td>
+                        <pre>{{ combo.macro }}</pre>
+                </td>
             </tr>
         {% endfor %}
     </table>

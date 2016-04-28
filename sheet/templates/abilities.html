@@ -52,6 +52,7 @@
                     <th>Target Area</th>
                     <th>Duration</th>
                     <th>Duration Unit</th>
+                    <th>Macro</th>
                 </tr>
             </thead>
             {% for ability in character.cls.abilities %}
@@ -95,6 +96,9 @@
                     <td>{{ ability.target_area }}</td>
                     <td>{{ ability.duration }}</td>
                     <td>{{ ability.duration_unit.name }}</td>
+                    <td>
+                        <pre>{{ ability.macro }}</pre>
+                    </td>
                 </tr>
             {% endfor %}
         </table>

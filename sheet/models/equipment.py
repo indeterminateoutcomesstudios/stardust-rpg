@@ -99,6 +99,10 @@ class DamageType(aenum.AutoNumberEnum):
     force = ()
     psychic = ()
 
+    @property
+    def cap_name(self) -> str:
+        return self.name.title()
+
 
 class Equipment(abc.ABC):
     def __init__(self, slot: Slot, name: str, rarity: Rarity, price: int, effect: str):
