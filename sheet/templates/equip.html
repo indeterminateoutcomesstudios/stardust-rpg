@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
 <head>
     <meta charset="UTF-8">
     <title>Equip</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'sheet/style.css' %}">
 </head>
 <body>
     <a href="{% url 'sheet-views-stats' character.id %}">Stats</a>
