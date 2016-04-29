@@ -114,6 +114,8 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
                         wearable.name, wearable.min_attribute_value,
                         wearable.min_attribute.name))
 
+            # TODO: Validate 2 handed equipment.
+
             character.save()
             return redirect(reverse(stats, args=[character_id]))
     else:
