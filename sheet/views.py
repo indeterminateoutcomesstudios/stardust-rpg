@@ -12,7 +12,6 @@ from .models.character import Character, UnlockedAbility
 from .models.level_up import LevelUp
 from .models.abilities import inverse_abilities
 
-# TODO: Share CSS instead of copying.
 # TODO: Handle exceptions in a user-friendly way.
 
 
