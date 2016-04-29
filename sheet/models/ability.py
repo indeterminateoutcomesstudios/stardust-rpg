@@ -417,7 +417,7 @@ class AbilityPicture(enum.Enum):
     tomahawk = ('http://img2.wikia.nocookie.net/__cb20140918073139/finalfantasy/images/e/ee/'
                 'FFXIVARR_Tomahawk_Icon.png')
     touch_of_death = ('http://img2.wikia.nocookie.net/__cb20141208215352/finalfantasy/images/b/b5/'
-                     'FFXIV_Touch_of_Death_Icon.png')
+                      'FFXIV_Touch_of_Death_Icon.png')
     transpose = ('http://img4.wikia.nocookie.net/__cb20141208212452/finalfantasy/images/c/c5/'
                  'FFXIV_Transpose_Icon.png')
     tri_disaster = ('http://img4.wikia.nocookie.net/__cb20140918072432/finalfantasy/images/0/01/'
@@ -444,6 +444,7 @@ class AbilityPicture(enum.Enum):
                    'FFXIV_Wide_Volley_Icon.png')
     wind_bite = ('http://img3.wikia.nocookie.net/__cb20141208211709/finalfantasy/images/0/0d/'
                  'FFXIV_Windbite_Icon.png')
+
 
 class DurationUnit(aenum.AutoNumberEnum):
     instant = ()
