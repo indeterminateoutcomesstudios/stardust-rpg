@@ -1,28 +1,32 @@
 #!/usr/bin/env python3
 
-from ..ability import Ability, DurationUnit, Time
+from ..ability import Ability, AbilityPicture, DurationUnit, Time
 from ..class_type import Class
 from ..equipment import DamageType, Shape
 
 reflect_1 = Ability(
-    name='Reflect [Counter] I', mp_cost=2, target_area='Self', time=Time.free_a,
+    name='Reflect [Counter] I', picture=AbilityPicture.shield_oath,
+    mp_cost=2, target_area='Self', time=Time.free_a,
     effect='If hit with melee attack, can reflect 1PDAM'
 )
 
 reflect_2 = Ability(
-    name='Reflect [Counter] II', mp_cost=3, target_area='Self', time=Time.free_a,
+    name='Reflect [Counter] II', picture=AbilityPicture.shield_oath,
+    mp_cost=3, target_area='Self', time=Time.free_a,
     effect='If hit with melee attack, can reflect [[1+WIS]]PDAM',
     prerequisites=(reflect_1,),
 )
 
 reflect_3 = Ability(
-    name='Reflect [Counter] III', mp_cost=3, target_area='Self', time=Time.free_a,
+    name='Reflect [Counter] III', picture=AbilityPicture.shield_oath,
+    mp_cost=3, target_area='Self', time=Time.free_a,
     effect='If hit with magic attack, can reflect [[1+WIS]]MDAM',
     prerequisites=(reflect_2,),
 )
 
 telekinesis_1 = Ability(
-    name='Telekinesis I', mp_cost=1, attacks=1, mdam='1d6',
+    name='Telekinesis I', picture=AbilityPicture.huton,
+    mp_cost=1, attacks=1, mdam='1d6',
     damage_type=DamageType.force, targets_mdef=True, max_range=8,
     target_area='Object < 20lb (Small)',
     effect='Can telekinetically interact/(move 4DIS) object (or self) doing MDAM if thrown '
@@ -30,7 +34,8 @@ telekinesis_1 = Ability(
 )
 
 telekinesis_2 = Ability(
-    name='Telekinesis II', mp_cost=2, attacks=1, mdam='1d8 + WIS',
+    name='Telekinesis II', picture=AbilityPicture.huton,
+    mp_cost=2, attacks=1, mdam='1d8 + WIS',
     damage_type=DamageType.force, targets_mdef=True, max_range=8,
     target_area='Object < 200lb (Medium)',
     effect='Can telekinetically interact/(move 6DIS) object (or self) doing MDAM if thrown '
@@ -39,7 +44,8 @@ telekinesis_2 = Ability(
 )
 
 telekinesis_3 = Ability(
-    name='Telekinesis III', mp_cost=4, attacks=1, mdam='1d12 + 2*WIS',
+    name='Telekinesis III', picture=AbilityPicture.huton,
+    mp_cost=4, attacks=1, mdam='1d12 + 2*WIS',
     damage_type=DamageType.force, targets_mdef=True, max_range=8,
     target_area='Object < 800lb (Large)',
     effect='Can telekinetically interact/(move 8DIS) object (or self) doing MDAM if thrown '
@@ -48,28 +54,32 @@ telekinesis_3 = Ability(
 )
 
 protect_1 = Ability(
-    name='Protect I', mp_cost=2, max_range=1, target_area='One ally',
+    name='Protect I', picture=AbilityPicture.cover,
+    mp_cost=2, max_range=1, target_area='One ally',
     duration='1+WIS', duration_unit=DurationUnit.rnd,
     effect='+1PDEF Caster. Target gets caster PDEF. +1PRED. Take ½ DAM for protected target. '
            '-2SPEED.  Can end early.'
 )
 
 protect_2 = Ability(
-    name='Protect II', mp_cost=3, max_range=1, target_area='One ally',
+    name='Protect II', picture=AbilityPicture.cover,
+    mp_cost=3, max_range=1, target_area='One ally',
     duration='1+WIS', duration_unit=DurationUnit.rnd,
     effect='+2PDEF, Take 3/4 DAM for protected target. Can stop at any time.  Can end early.',
     prerequisites=(protect_1,),
 )
 
 protect_3 = Ability(
-    name='Protect III', mp_cost=4, max_range=1, target_area='One ally',
+    name='Protect III', picture=AbilityPicture.cover,
+    mp_cost=4, max_range=1, target_area='One ally',
     duration='1+WIS', duration_unit=DurationUnit.rnd,
     effect='+[[3+WIS]]PDEF, Take All DAM for protected target.  Can end early.',
     prerequisites=(protect_2,),
 )
 
 shell_1 = Ability(
-    name='Shell I', mp_cost=5, time=Time.full_a, shape=Shape.circle,
+    name='Shell I', picture=AbilityPicture.sacred_soil,
+    mp_cost=5, time=Time.full_a, shape=Shape.circle,
     target_area='Up to [[4+WIS]]RAD',
     duration='1+WIS', duration_unit=DurationUnit.rnd,
     effect='Protective spherical shield blocks abilities/projectiles/objects. '
@@ -79,7 +89,8 @@ shell_1 = Ability(
 )
 
 shell_2 = Ability(
-    name='Shell II', mp_cost=7, time=Time.full_a, shape=Shape.circle,
+    name='Shell II', picture=AbilityPicture.sacred_soil,
+    mp_cost=7, time=Time.full_a, shape=Shape.circle,
     target_area='Up to [[4+(2*WIS)]]RAD',
     duration='2+WIS', duration_unit=DurationUnit.rnd,
     effect='Protective spherical shield blocks abilities/projectiles/objects. '
@@ -89,7 +100,8 @@ shell_2 = Ability(
 )
 
 shell_3 = Ability(
-    name='Shell III', mp_cost=9, time=Time.full_a, shape=Shape.circle,
+    name='Shell III', picture=AbilityPicture.sacred_soil,
+    mp_cost=9, time=Time.full_a, shape=Shape.circle,
     target_area='Up to [[4+(2*WIS)]]RAD',
     duration='3+WIS', duration_unit=DurationUnit.rnd,
     effect='Protective spherical shield blocks abilities/projectiles/objects. '

@@ -39,19 +39,23 @@
             {% for ability in character.cls.abilities %}
                 <tr>
                     <td>
-                            <button type="submit" name="lock"
-                                {% if ability in character.abilities %}
-                                    value="lock {{ forloop.counter0 }}"
-                                    style="background: #00ff00;">
-                                        Unlocked
-                                {% else %}
-                                    value="unlock {{ forloop.counter0  }}"
-                                    style="background: #00ffff;">
-                                        Locked
-                            </button>
-                        {% endif %}
+                        <button type="submit" name="lock"
+                            {% if ability in character.abilities %}
+                                value="lock {{ forloop.counter0 }}"
+                                style="background: #00ff00;">
+                                    Unlocked
+                            {% else %}
+                                value="unlock {{ forloop.counter0  }}"
+                                style="background: #00ffff;">
+                                    Locked
+                        </button>
+                            {% endif %}
                     </td>
-                    <td>{{ ability.name }}</td>
+                    <td>
+                        <img src="{{ ability.picture.value }}"
+                             style="width: 40px;height: 40px">
+                        {{ ability.name }}
+                    </td>
                     <td>
                         {% for prerequisite in ability.prerequisites %}
                             {{ prerequisite.name }}
@@ -73,7 +77,10 @@
                     <td>{{ ability.time.name }}</td>
                     <td>{{ ability.min_range }}</td>
                     <td>{{ ability.max_range }}</td>
-                    <td>{{ ability.shape.name }}</td>
+                    <td>
+                        {{ ability.shape.name }}
+                        <img src="{{ ability.shape.value }}">
+                    </td>
                     <td>{{ ability.target_area }}</td>
                     <td>{{ ability.duration }}</td>
                     <td>{{ ability.duration_unit.name }}</td>

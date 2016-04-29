@@ -48,7 +48,11 @@
                         </button>
                     {% endif %}
                 </td>
-                <td>{{ combo.name }}</td>
+                <td>
+                    <img src="{{ combo.picture.value }}"
+                         style="width: 40px;height: 40px">
+                    {{ combo.name }}
+                </td>
                 <td>{{ combo.prerequisite_lvl }}</td>
                 <td>{{ combo.mp_cost }}</td>
                 <td>{{ combo.effect }}</td>
@@ -65,7 +69,10 @@
                 <td>{{ combo.time.name }}</td>
                 <td>{{ combo.min_range }}</td>
                 <td>{{ combo.max_range }}</td>
-                <td>{{ combo.shape.name }}</td>
+                <td>
+                    <img src="{{ combo.shape.value }}">
+                    {{ combo.shape.name }}
+                </td>
                 <td>{{ combo.target_area }}</td>
                 <td>{{ combo.duration }}</td>
                 <td>{{ combo.duration_unit.name }}</td>
