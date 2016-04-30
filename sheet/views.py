@@ -11,8 +11,10 @@ from .forms import CharacterEquipForm, LevelUpForm, SkillPointsForm
 from .models.character import Character, UnlockedAbility
 from .models.level_up import LevelUp
 from .models.abilities import inverse_abilities
+from .models import items
 
 # TODO: Handle exceptions in a user-friendly way.
+# TODO: Show which classes use the combo.
 
 
 def check_is_admin_or_owns_character(user: User, character: Character) -> None:
@@ -113,8 +115,14 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
                         wearable.name, wearable.min_attribute_value,
                         wearable.min_attribute.name))
 
-            # TODO: Validate 2 handed equipment.
-            # TODO: Validate style and type requirements.
+            if (character.weapon.is_two_handed and
+               character.shield_enum is not items.Shields.empty):
+                raise ValidationError('Cannot equip a shield and a two-handed weapon.')
+
+            if not character.can_use_weapon:
+                raise ValidationError('Class {cls} cannot use {style} {type} weapons'.format(
+                    cls=character.cls.name, style=character.weapon.style.name,
+                    type=character.weapon.type.name))
 
             character.save()
             return redirect(reverse(stats, args=[character_id]))

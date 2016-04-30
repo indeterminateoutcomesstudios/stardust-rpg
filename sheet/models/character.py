@@ -314,6 +314,30 @@ class Character(models.Model):
         return ((self.cha * self.cls.spe) + self.assigned_spe +
                 sum([wearable.spe for wearable in self.wearables]))
 
+    @property
+    def can_use_weapon(self) -> bool:
+        if self.weapon.style is equipment.Style.melee:
+            if self.weapon.type is equipment.Type.light:
+                return self.cls.use_melee_light
+            elif self.weapon.type is equipment.Type.medium:
+                return self.cls.use_melee_medium
+            elif self.weapon.type is equipment.Type.heavy:
+                return self.cls.use_melee_heavy
+        elif self.weapon.style is equipment.Style.ranged:
+            if self.weapon.type is equipment.Type.light:
+                return self.cls.use_ranged_light
+            elif self.weapon.type is equipment.Type.medium:
+                return self.cls.use_ranged_medium
+            elif self.weapon.type is equipment.Type.heavy:
+                return self.cls.use_ranged_heavy
+        elif self.weapon.style is equipment.Style.magic:
+            if self.weapon.type is equipment.Type.light:
+                return self.cls.use_magic_light
+            elif self.weapon.type is equipment.Type.medium:
+                return self.cls.use_magic_medium
+            elif self.weapon.type is equipment.Type.heavy:
+                return self.cls.use_magic_heavy
+
 
 class UnlockedAbility(models.Model):
     character = models.ForeignKey(Character, on_delete=models.CASCADE)

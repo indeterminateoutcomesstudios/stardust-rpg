@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 
-"""Temporary module to store items until database solution is created."""
-
 import aenum
 
 from .dice import DiceFormula
-from .equipment import Chest, Feet, Hand, Head, Neck, Shield, Style, Utility, Weapon
+from .equipment import (Chest, DamageType, Feet, Hand, Head, Neck, Shape, Shield, Style, Utility,
+                        Weapon)
 
 
 class Utilities(aenum.AutoNumberEnum):
@@ -83,10 +82,16 @@ feets = {
 class Weapons(aenum.AutoNumberEnum):
     empty = ()
     fists = ()
+    bronze_shuriken = ()
 
 weapons = {
     Weapons.empty: Weapon(name=Weapons.empty.name, style=Style.melee),
     Weapons.fists: Weapon(
         name=Weapons.fists.name, style=Style.melee, is_two_handed=True,
-        pdam=DiceFormula.from_str('d4'))
+        pdam=DiceFormula.from_str('d4')),
+    Weapons.bronze_shuriken: Weapon(
+        name=Weapons.bronze_shuriken.name, style=Style.ranged, is_two_handed=True,
+        min_range=1, max_range=6, shape=Shape.range_point,
+        attacks=2, pac=0, pdam=DiceFormula.from_str('d4'), damage_type=DamageType.piercing,
+        cran=0, cdam=2)
 }

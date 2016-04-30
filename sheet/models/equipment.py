@@ -157,7 +157,7 @@ class Wearable(Equipment):
 
 
 class Utility(Wearable):
-    def __init__(self, name: str, min_attribute_value: int=0, rarity: Rarity=Rarity.common,
+    def __init__(self, name: str, min_int: int=0, rarity: Rarity=Rarity.common,
                  price: int = 0, effect: str = '', equip_type: Type=Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
@@ -169,7 +169,7 @@ class Utility(Wearable):
                  is_two_handed: bool=False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.utility, name=name, min_attribute=Attribute.intel,
-                         min_attribute_value=min_attribute_value, rarity=rarity, price=price,
+                         min_attribute_value=min_int, rarity=rarity, price=price,
                          effect=effect,
                          stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
                          ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
@@ -179,7 +179,7 @@ class Utility(Wearable):
 
 
 class Head(Wearable):
-    def __init__(self, name: str, min_attribute_value: int=0, rarity: Rarity=Rarity.common,
+    def __init__(self, name: str, min_int: int=0, rarity: Rarity=Rarity.common,
                  price: int=0, effect: str='', equip_type: Type=Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
@@ -191,7 +191,7 @@ class Head(Wearable):
                  is_two_handed: bool=False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.head, name=name, min_attribute=Attribute.intel,
-                         min_attribute_value=min_attribute_value, rarity=rarity, price=price,
+                         min_attribute_value=min_int, rarity=rarity, price=price,
                          effect=effect,
                          stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
                          ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
@@ -201,7 +201,7 @@ class Head(Wearable):
 
 
 class Neck(Wearable):
-    def __init__(self, name: str, min_attribute_value: int=0, rarity: Rarity=Rarity.common,
+    def __init__(self, name: str, min_wis: int=0, rarity: Rarity=Rarity.common,
                  price: int=0, effect: str='', equip_type: Type=Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
@@ -213,7 +213,7 @@ class Neck(Wearable):
                  is_two_handed: bool=False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.neck, name=name, min_attribute=Attribute.wis,
-                         min_attribute_value=min_attribute_value, rarity=rarity, price=price,
+                         min_attribute_value=min_wis, rarity=rarity, price=price,
                          effect=effect,
                          stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
                          ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
@@ -223,7 +223,7 @@ class Neck(Wearable):
 
 
 class Chest(Wearable):
-    def __init__(self, name: str, min_attribute_value: int=0, rarity: Rarity=Rarity.common,
+    def __init__(self, name: str, min_str: int=0, rarity: Rarity=Rarity.common,
                  price: int=0, effect: str='', equip_type: Type=Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
@@ -235,7 +235,7 @@ class Chest(Wearable):
                  is_two_handed: bool=False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.chest, name=name, min_attribute=Attribute.stren,
-                         min_attribute_value=min_attribute_value, rarity=rarity, price=price,
+                         min_attribute_value=min_str, rarity=rarity, price=price,
                          effect=effect,
                          stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
                          ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
@@ -245,7 +245,7 @@ class Chest(Wearable):
 
 
 class Shield(Wearable):
-    def __init__(self, name: str, min_attribute_value: int=0, rarity: Rarity=Rarity.common,
+    def __init__(self, name: str, min_str: int=0, rarity: Rarity=Rarity.common,
                  price: int=0, effect: str='', equip_type: Type=Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
@@ -257,7 +257,7 @@ class Shield(Wearable):
                  is_two_handed: bool=False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.shield, name=name, min_attribute=Attribute.stren,
-                         min_attribute_value=min_attribute_value, rarity=rarity, price=price,
+                         min_attribute_value=min_str, rarity=rarity, price=price,
                          effect=effect,
                          stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
                          ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
@@ -267,7 +267,7 @@ class Shield(Wearable):
 
 
 class Feet(Wearable):
-    def __init__(self, name: str, min_attribute_value: int=0, rarity: Rarity=Rarity.common,
+    def __init__(self, name: str, min_str: int=0, rarity: Rarity=Rarity.common,
                  price: int=0, effect: str='', equip_type: Type=Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
@@ -279,7 +279,7 @@ class Feet(Wearable):
                  is_two_handed: bool=False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.feet, name=name, min_attribute=Attribute.stren,
-                         min_attribute_value=min_attribute_value, rarity=rarity, price=price,
+                         min_attribute_value=min_str, rarity=rarity, price=price,
                          effect=effect,
                          stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
                          ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
@@ -289,7 +289,7 @@ class Feet(Wearable):
 
 
 class Hand(Wearable):
-    def __init__(self, name: str, min_attribute_value: int=0, rarity: Rarity=Rarity.common,
+    def __init__(self, name: str, min_cha: int=0, rarity: Rarity=Rarity.common,
                  price: int=0, effect: str='', equip_type: Type=Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
@@ -301,7 +301,7 @@ class Hand(Wearable):
                  is_two_handed: bool=False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.hand, name=name, min_attribute=Attribute.cha,
-                         min_attribute_value=min_attribute_value, rarity=rarity, price=price,
+                         min_attribute_value=min_cha, rarity=rarity, price=price,
                          effect=effect,
                          stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
                          ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
@@ -312,7 +312,7 @@ class Hand(Wearable):
 
 class Weapon(Wearable):
     # TODO: Weapon pictures.
-    def __init__(self, name: str, style: Style, min_attribute_value: int=0,
+    def __init__(self, name: str, style: Style, min_dex: int=0,
                  rarity: Rarity=Rarity.common,
                  price: int=0, effect: str='', equip_type: Type=Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
@@ -340,8 +340,8 @@ class Weapon(Wearable):
         self.cdam = cdam
         self.pdam = pdam
         self.mdam = mdam
-        super().__init__(slot=Slot.weapon, name=name, min_attribute=Attribute.stren,
-                         min_attribute_value=min_attribute_value, rarity=rarity, price=price,
+        super().__init__(slot=Slot.weapon, name=name, min_attribute=Attribute.dex,
+                         min_attribute_value=min_dex, rarity=rarity, price=price,
                          effect=effect,
                          stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
                          ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
