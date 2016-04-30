@@ -196,25 +196,25 @@
         </thead>
         <tr>
             <td>
-                {{ character.weapon.name}}
+                {{ character.weapon.name|capfirst }}
                 <img src="{{ character.weapon.picture.value }}"
                      style="width: 40px;height: 40px">
             </td>
-            <td>{{ character.weapon.rarity.name}}</td>
-            <td>{{ character.weapon.style.name}}</td>
-            <td>{{ character.weapon.type.name}}</td>
+            <td>{{ character.weapon.rarity.name|capfirst }}</td>
+            <td>{{ character.weapon.style.name|capfirst }}</td>
+            <td>{{ character.weapon.type.name|capfirst }}</td>
             <td>{{ character.weapon.min_attribute_value }}</td>
             <td>{{ character.weapon.is_two_handed}}</td>
             <td>{{ character.weapon.min_range}} - {{ character.weapon.max_range }}</td>
             <td>
-                {{ character.weapon.shape.name }}
+                {{ character.weapon.shape.name|capfirst }}
                 <img src="{{ character.weapon.shape.value }}">
             </td>
             <td>{{ character.weapon.attacks}}</td>
             <td>{{ character.weapon.pac}}</td>
             <td>{{ character.weapon.pdam}}</td>
             <td>{{ character.weapon.mdam}}</td>
-            <td>{{ character.weapon.damage_type.name }}</td>
+            <td>{{ character.weapon.damage_type.name|capfirst }}</td>
             <td>{{ character.weapon.cran }}</td>
             <td>{{ character.weapon.cdam }}</td>
             <td>{{ character.weapon.effect}}</td>
@@ -232,8 +232,8 @@
         </thead>
         {% for wearable in character.non_weapon_wearables %}
             <tr>
-                <td>{{ wearable.slot.name }}</td>
-                <td>{{ wearable.name }}</td>
+                <td>{{ wearable.slot.name|capfirst }}</td>
+                <td>{{ wearable.name|capfirst }}</td>
             </tr>
         {% endfor %}
     </table>

@@ -29,8 +29,8 @@
                     <td>{{ level_up.hd_roll }}</td>
                     <td>{{ level_up.md_roll }}</td>
                     <td>{{ level_up.sd_roll }}</td>
-                    <td>{{ level_up.ad_roll.name }}</td>
-                    <td>{{ level_up.selected_attribute.name }}</td>
+                    <td>{{ level_up.ad_roll.name|upper }} ({{ level_up.ad_roll.value }})</td>
+                    <td>{{ level_up.selected_attribute.name|upper }}</td>
                     <td>
                         <button type="submit" name="delete"
                                value="delete {{ level_up.id }}" style="background: #DE2A00;">

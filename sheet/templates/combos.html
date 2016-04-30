@@ -71,18 +71,18 @@
                     </td>
                 <td>{{ combo.pdam }}</td>
                 <td>{{ combo.mdam }}</td>
-                <td>{{ combo.damage_type.name }}</td>
+                <td>{{ combo.damage_type.name|capfirst }}</td>
                 <td>{{ combo.targets_mdef }}</td>
-                <td>{{ combo.time.name }}</td>
+                <td>{{ combo.time.name|capfirst }}</td>
                 <td>{{ combo.min_range }}</td>
                 <td>{{ combo.max_range }}</td>
                 <td>
                     <img src="{{ combo.shape.value }}">
-                    {{ combo.shape.name }}
+                    {{ combo.shape.name|capfirst }}
                 </td>
                 <td>{{ combo.target_area }}</td>
                 <td>{{ combo.duration }}</td>
-                <td>{{ combo.duration_unit.name }}</td>
+                <td>{{ combo.duration_unit.name|capfirst }}</td>
                 <td>
                         <pre>{{ combo.macro }}</pre>
                 </td>
