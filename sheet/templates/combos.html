@@ -15,6 +15,7 @@
                 <th>Unlock</th>
                 <th>Name</th>
                 <th>Prereq LVL</th>
+                <th>Classes</th>
                 <th>MP</th>
                 <th>Effect</th>
                 <th>Attacks</th>
@@ -54,6 +55,12 @@
                     {{ combo.name }}
                 </td>
                 <td>{{ combo.prerequisite_lvl }}</td>
+                <td>
+                    {% for class in combo.classes %}
+                        {{ class.name }}
+                        <br>
+                    {% endfor %}
+                </td>
                 <td>{{ combo.mp_cost }}</td>
                 <td>{{ combo.effect }}</td>
                 <td>{{ combo.attacks }}</td>

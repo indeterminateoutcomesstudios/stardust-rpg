@@ -14,7 +14,6 @@ from .models.abilities import inverse_abilities
 from .models import items
 
 # TODO: Handle exceptions in a user-friendly way.
-# TODO: Show which classes use the combo.
 
 
 def check_is_admin_or_owns_character(user: User, character: Character) -> None:
