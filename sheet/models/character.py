@@ -107,6 +107,10 @@ class Character(models.Model):
                 self.weapon)
 
     @property
+    def non_weapon_wearables(self) -> Tuple[equipment.Wearable, ...]:
+        return self.head, self.neck, self.chest, self.shield, self.hand, self.feet, self.utility
+
+    @property
     def lvl(self):
         return self.levelup_set.count()
 

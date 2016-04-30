@@ -4,7 +4,7 @@ import aenum
 
 from .dice import DiceFormula
 from .equipment import (Chest, DamageType, Feet, Hand, Head, Neck, Shape, Shield, Style, Utility,
-                        Weapon)
+                        Weapon, WeaponPicture)
 
 
 class Utilities(aenum.AutoNumberEnum):
@@ -85,12 +85,15 @@ class Weapons(aenum.AutoNumberEnum):
     bronze_shuriken = ()
 
 weapons = {
-    Weapons.empty: Weapon(name=Weapons.empty.name, style=Style.melee),
+    Weapons.empty: Weapon(name=Weapons.empty.name, picture=WeaponPicture.hands, style=Style.melee),
     Weapons.fists: Weapon(
-        name=Weapons.fists.name, style=Style.melee, is_two_handed=True,
-        pdam=DiceFormula.from_str('d4')),
+        name=Weapons.fists.name, picture=WeaponPicture.hands,
+        style=Style.melee, is_two_handed=True,
+        shape=Shape.melee_point,
+        pdam=DiceFormula.from_str('d4'), damage_type=DamageType.bludgeoning),
     Weapons.bronze_shuriken: Weapon(
-        name=Weapons.bronze_shuriken.name, style=Style.ranged, is_two_handed=True,
+        name=Weapons.bronze_shuriken.name, picture=WeaponPicture.grey_shuriken,
+        style=Style.ranged, is_two_handed=True,
         min_range=1, max_range=6, shape=Shape.range_point,
         attacks=2, pac=0, pdam=DiceFormula.from_str('d4'), damage_type=DamageType.piercing,
         cran=0, cdam=2)

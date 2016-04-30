@@ -20,7 +20,7 @@
         Assign Skill Points ({{ character.available_sp }})</a>
     <a href= {% url 'app-accounts-logout' %}>Logout</a>
     <br>
-    <table style="float:left">
+    <table>
         <thead>
             <tr id="title">
                 <th>Stat</th>
@@ -44,47 +44,7 @@
             <td>{{ character.cls.name }}</td>
         </tr>
     </table>
-    <table style="float:right">
-        <thead>
-            <tr id="title">
-                <th>Slot</th>
-                <th>Equipment</th>
-            </tr>
-        </thead>
-        <tr>
-            <td>Utility</td>
-            <td>{{ character.utility.name }}</td>
-        </tr>
-        <tr>
-            <td>Head</td>
-            <td>{{ character.head.name }}</td>
-        </tr>
-        <tr>
-            <td>Neck</td>
-            <td>{{ character.neck.name }}</td>
-        </tr>
-        <tr>
-            <td>Chest</td>
-            <td>{{ character.chest.name }}</td>
-        </tr>
-        <tr>
-            <td>Shield</td>
-            <td>{{ character.shield.name }}</td>
-        </tr>
-        <tr>
-            <td>Hand</td>
-            <td>{{ character.hand.name }}</td>
-        </tr>
-        <tr>
-            <td>Feet</td>
-            <td>{{ character.feet.name }}</td>
-        </tr>
-        <tr>
-            <td>Weapon</td>
-            <td>{{ character.weapon.name }}</td>
-        </tr>
-    </table>
-    <table style="float:right">
+    <table>
         <thead>
             <tr id="title">
                 <th>Attribute</th>
@@ -211,6 +171,67 @@
             <td>SPE</td>
             <td>{{ character.spe }}</td>
         </tr>
+    </table>
+    <table>
+        <thead>
+            <tr id="title">
+                <th>Weapon</th>
+                <th>Rarity</th>
+                <th>Style</th>
+                <th>Type</th>
+                <th>Min {{ character.weapon.min_attribute.name }}</th>
+                <th>2-Hand</th>
+                <th>Range</th>
+                <th>Shape</th>
+                <th>Attacks</th>
+                <th>PAC</th>
+                <th>PDAM</th>
+                <th>MDAM</th>
+                <th>Damage Type</th>
+                <th>CRAN</th>
+                <th>CDAM</th>
+                <th>Effect</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                {{ character.weapon.name}}
+                <img src="{{ character.weapon.picture.value }}"
+                     style="width: 40px;height: 40px">
+            </td>
+            <td>{{ character.weapon.rarity.name}}</td>
+            <td>{{ character.weapon.style.name}}</td>
+            <td>{{ character.weapon.type.name}}</td>
+            <td>{{ character.weapon.min_attribute_value }}</td>
+            <td>{{ character.weapon.is_two_handed}}</td>
+            <td>{{ character.weapon.min_range}} - {{ character.weapon.max_range }}</td>
+            <td>
+                {{ character.weapon.shape.name }}
+                <img src="{{ character.weapon.shape.value }}">
+            </td>
+            <td>{{ character.weapon.attacks}}</td>
+            <td>{{ character.weapon.pac}}</td>
+            <td>{{ character.weapon.pdam}}</td>
+            <td>{{ character.weapon.mdam}}</td>
+            <td>{{ character.weapon.damage_type.name }}</td>
+            <td>{{ character.weapon.cran }}</td>
+            <td>{{ character.weapon.cdam }}</td>
+            <td>{{ character.weapon.effect}}</td>
+        </tr>
+    </table>
+    <table>
+        <thead>
+            <tr id="title">
+                <th>Slot</th>
+                <th>Equipment</th>
+            </tr>
+        </thead>
+        {% for wearable in character.non_weapon_wearables %}
+            <tr>
+                <td>{{ wearable.slot.name }}</td>
+                <td>{{ wearable.name }}</td>
+            </tr>
+        {% endfor %}
     </table>
 </body>
 </html>
