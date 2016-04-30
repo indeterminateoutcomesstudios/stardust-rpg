@@ -498,8 +498,8 @@ class Ability:
     def macro(self) -> str:
         common_template = ('{template_tag}'
                            '{color}'
-                           '{{{{title=**{ability_name}**}}}}'
-                           '{{{{subheader= Ability}}}}'
+                           '{{{{title=**{ability_name}** [p]({picture})}}}}'
+                           '{{{{subheader=Ability}}}}'
                            '{{{{subheaderright={time}}}}}'
                            '{{{{subheader2={mp_cost}MP}}}}'
                            '{{{{emote=@{{Name}} casts at @{{target|Name}}}}}}'
@@ -524,6 +524,7 @@ class Ability:
         macro_str = common_template.format(template_tag=macro.template_tag,
                                            color=macro.MacroColorTag.purple.value,
                                            ability_name=self.name,
+                                           picture=self.picture.value,
                                            time=self.time.name,
                                            mp_cost=self.mp_cost,
                                            min_range=self.min_range,

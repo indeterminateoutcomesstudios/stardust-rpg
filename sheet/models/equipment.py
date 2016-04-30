@@ -6,6 +6,7 @@ import enum
 import aenum
 
 from . import dice
+from . import macro
 
 
 @enum.unique
@@ -837,3 +838,81 @@ class Weapon(Wearable):
                          mp=mp, sp=sp, pdef=pdef, mdef=mdef, pred=pred, mred=mred, reg=reg, rd=rd,
                          speed=speed, vis=vis, bpac=bpac, bmac=bmac,
                          equip_type=equip_type)
+
+    @property
+    def macro(self):
+        common_template = ('{template_tag}'
+                           '{color}'
+                           '{{{{title=**{name}** [p]({picture})}}}}'
+                           '{{{{subheader={type} {style} Weapon}}}}'
+                           '{{{{subheaderright={time}}}}}'
+                           '{{{{emote=@{{Name}} attacks @{{target|Name}}}}}}'
+                           '{{{{Crit=[[{cdam}]]CDAM}}}}'
+                           '{{{{Range=[[{min_range}]]-[[{max_range}]]}}}}'
+                           '{{{{Shape=[p]({shape_picture}) ({shape})}}}}'
+                           '{template_terminator}')
+
+        macro_str = common_template.format(template_tag=macro.template_tag,
+                                           color=macro.MacroColorTag.green.value,
+                                           name=self.name,
+                                           picture=self.picture.value,
+                                           type=self.type.name,
+                                           style=self.style.name,
+                                           time='StdA',
+                                           cdam=self.cdam,
+                                           min_range=self.min_range,
+                                           max_range=self.max_range,
+                                           shape_picture=self.shape.value,
+                                           shape=self.shape.name,
+                                           template_terminator=macro.template_terminator)
+
+        for i in range(self.attacks):
+            attack_template = ('{template_tag}'
+                               '{{{{title=Attack}}}}'
+                               '{color}'
+                               '{hit}'
+                               '{pdam}'
+                               '{mdam}'
+                               '{template_terminator}')
+
+            hit = ('{{{{Hit=[[{{d20cs>{cran}+@{{BPAC}}+{weapon_pac}}}>'
+                   '@{{target|PDEF}}]] vs PDEF}}}}'.format(
+                        cran=(20 - self.cran),
+                        weapon_pac=self.pac))
+
+            damage_template = ('{{{{{damage_category}='
+                               '[[round({dam}-@{{target|{reduction_type}}})'
+                               '*(1+@{{target|{damage_type}VUL}})'
+                               '/(1+@{{target|{damage_type}RES}})'
+                               '*(1-@{{target|{damage_type}IMU}})'
+                               ']]{damage_category} [{damage_type}]}}}}'
+                               '{{{{{damage_type}='
+                               'VUL:@{{target|{damage_type}VUL}} '
+                               'RES:@{{target|{damage_type}RES}} '
+                               'IMU:@{{target|{damage_type}IMU}}'
+                               '}}}}')
+
+            pdam = ''
+            if self.pdam is not None:
+                pdam = damage_template.format(damage_category='PDAM',
+                                              dam=self.pdam,
+                                              reduction_type='PRED',
+                                              damage_type=self.damage_type.cap_name)
+
+            mdam = ''
+            if self.mdam is not None:
+                mdam = damage_template.format(damage_category='MDAM',
+                                              dam=self.mdam,
+                                              reduction_type='MRED',
+                                              damage_type=self.damage_type.cap_name)
+
+            macro_str += '\n' + attack_template.format(
+                template_tag=macro.template_tag,
+                color=macro.MacroColorTag.green.value,
+                hit=hit,
+                pdam=pdam,
+                mdam=mdam,
+                template_terminator=macro.template_terminator,
+            )
+
+        return macro.escape_attributes(macro_str)
