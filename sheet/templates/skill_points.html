@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load staticfiles %}
-<head>
-    <meta charset="UTF-8">
-    <title>Skill Points</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'sheet/style.css' %}">
-</head>
-<body>
-    <a href="{% url 'sheet-views-stats' character.id %}">Stats</a>
-    <br>
+{% extends "base.html" %}
+
+{% block title %}Skill Points{% endblock %}
+
+{% block content %}
     <label>Available SP: {{ character.available_sp }}</label>
     <br>
     <label>Max SP Per Skill: {{ character.max_sp_per_skill }}</label>
@@ -17,5 +11,4 @@
         {{ skill_points_form }}
         <input type="submit" value="Assign SP" />
     </form>
-</body>
-</html>
+{% endblock %}

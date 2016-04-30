@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load staticfiles %}
-<head>
-    <meta charset="UTF-8">
-    <title>Level Up</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'sheet/style.css' %}">
-</head>
-<body>
-    <a href="{% url 'sheet-views-stats' character.id %}">Stats</a>
-    <br>
+{% extends "base.html" %}
+
+{% block title %}Level Up{% endblock %}
+
+{% block content %}
     <form method="post">
         {% csrf_token %}
         <label>Previous Levels</label>
@@ -45,5 +39,4 @@
         {{ level_up_form }}
         <input type="submit" value="Level Up" />
     </form>
-</body>
-</html>
+{% endblock %}

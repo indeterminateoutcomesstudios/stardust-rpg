@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load staticfiles %}
-<head>
-    <meta charset="UTF-8">
-    <title>Class</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'sheet/style.css' %}">
-</head>
-<body>
-    <a href="{% url 'sheet-views-stats' character.id %}">Stats</a>
+{% extends "base.html" %}
+
+{% block title %}Class{% endblock %}
+
+
+{% block content %}
     <table>
         <thead>
             <tr id="title">
@@ -144,5 +140,4 @@
             <td>{{ character.cls.use_heavy_armor }}</td>
         </tr>
     </table>
-</body>
-</html>
+{% endblock %}
