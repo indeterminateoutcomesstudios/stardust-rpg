@@ -3,7 +3,7 @@
 {% block title %}Stats{% endblock %}
 
 {% block content %}
-    <table>
+    <table style="display: inline-block">
         <thead>
             <tr id="title">
                 <th>Stat</th>
@@ -27,7 +27,7 @@
             <td>{{ character.cls.name }}</td>
         </tr>
     </table>
-    <table>
+    <table style="display: inline-block">
         <thead>
             <tr id="title">
                 <th>Attribute</th>
@@ -59,7 +59,39 @@
             <td>{{ character.cha }}</td>
         </tr>
     </table>
-    <table>
+    <table style="display: inline-block">
+        <thead>
+            <tr id="title">
+                <th>Skill</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>ATH</td>
+            <td>{{ character.ath }}</td>
+        </tr>
+        <tr>
+            <td>STE</td>
+            <td>{{ character.ste }}</td>
+        </tr>
+        <tr>
+            <td>FOR</td>
+            <td>{{ character.fort }}</td>
+        </tr>
+        <tr>
+            <td>APT</td>
+            <td>{{ character.apt }}</td>
+        </tr>
+        <tr>
+            <td>PER</td>
+            <td>{{ character.per }}</td>
+        </tr>
+        <tr>
+            <td>SPE</td>
+            <td>{{ character.spe }}</td>
+        </tr>
+    </table>
+    <table style="display: inline-block">
         <thead>
             <tr id="title">
                 <th>Stat</th>
@@ -121,38 +153,6 @@
         <tr>
             <td>BMAC</td>
             <td>{{ character.bmac }}</td>
-        </tr>
-    </table>
-    <table>
-        <thead>
-            <tr id="title">
-                <th>Skill</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tr>
-            <td>ATH</td>
-            <td>{{ character.ath }}</td>
-        </tr>
-        <tr>
-            <td>STE</td>
-            <td>{{ character.ste }}</td>
-        </tr>
-        <tr>
-            <td>FOR</td>
-            <td>{{ character.fort }}</td>
-        </tr>
-        <tr>
-            <td>APT</td>
-            <td>{{ character.apt }}</td>
-        </tr>
-        <tr>
-            <td>PER</td>
-            <td>{{ character.per }}</td>
-        </tr>
-        <tr>
-            <td>SPE</td>
-            <td>{{ character.spe }}</td>
         </tr>
     </table>
     <table>
