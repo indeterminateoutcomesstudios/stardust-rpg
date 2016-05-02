@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load staticfiles %}
-<head>
-    <meta charset="UTF-8">
-    <title>Characters</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'sheet/style.css' %}">
-</head>
-<body>
+{% extends "browser_base.html" %}
+
+{% block title %}Characters{% endblock %}
+
+{% block content %}
     <table>
         <thead>
             <tr id="title">
@@ -23,6 +19,4 @@
             </tr>
         {% endfor %}
     </table>
-
-</body>
-</html>
+{% endblock %}

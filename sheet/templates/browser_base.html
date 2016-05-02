@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <link rel="stylesheet" href="{% static 'sheet/style.css' %}" />
+    <title>{% block title %}Browser Base{% endblock %}</title>
+</head>
+
+<body>
+    <div id="linkbar">
+        {% block linkbar %}
+        <Label>Player: {{ request.user }}</Label>
+        <a href="{% url 'sheet-views-characters' %}">All Characters</a>
+        <a href= {% url 'app-accounts-logout' %}>Logout</a>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
