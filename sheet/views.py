@@ -11,7 +11,7 @@ from .forms import CharacterEquipForm, LevelUpForm, SkillPointsForm
 from .models.character import Character, UnlockedAbility
 from .models.level_up import LevelUp
 from .models.abilities import inverse_abilities
-from .models import items
+from .models import classes, items
 
 # TODO: Handle exceptions in a user-friendly way.
 
@@ -24,6 +24,11 @@ def check_is_admin_or_owns_character(user: User, character: Character) -> None:
 @login_required
 def characters(request: HttpRequest) -> HttpResponse:
     return render(request, 'characters.html', context={'characters': Character.objects.all()})
+
+
+@login_required
+def all_classes(request: HttpRequest) -> HttpResponse:
+    return render(request, 'classes.html', context={'classes': classes.classes.values()})
 
 
 @login_required

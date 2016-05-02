@@ -1,0 +1,80 @@
+{% extends "browser_base.html" %}
+
+{% block title %}Classes{% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr id="title">
+                <th>Name</th>
+                <th>HD</th>
+                <th>MD</th>
+                <th>SD</th>
+                <th>SPEED</th>
+                <th>PDEF</th>
+                <th>MDEF</th>
+                <th>PRED</th>
+                <th>MRED</th>
+                <th>REG</th>
+                <th>VIS</th>
+                <th>PAC</th>
+                <th>MAC</th>
+                <th>ATH</th>
+                <th>STE</th>
+                <th>FOR</th>
+                <th>APT</th>
+                <th>PER</th>
+                <th>SPE</th>
+                <th>Starting AP</th>
+                <th>Melee Light Weapons</th>
+                <th>Melee Medium Weapons</th>
+                <th>Melee Heavy Weapons</th>
+                <th>Ranged Light Weapons</th>
+                <th>Ranged Medium Weapons</th>
+                <th>Ranged Heavy Weapons</th>
+                <th>Magic Light Weapons</th>
+                <th>Magic Medium Weapons</th>
+                <th>Magic Heavy Weapons</th>
+                <th>Light Armor</th>
+                <th>Medium Armor</th>
+                <th>Heavy Armor</th>
+            </tr>
+        </thead>
+        {% for class in classes %}
+            <tr>
+                <td>{{ class.name }}</td>
+                <td>{{ class.hd }}</td>
+                <td>{{ class.md }}</td>
+                <td>{{ class.sd }}</td>
+                <td>{{ class.speed }}</td>
+                <td>{{ class.pdef }}</td>
+                <td>{{ class.mdef }}</td>
+                <td>{{ class.pred }}</td>
+                <td>{{ class.mred }}</td>
+                <td>{{ class.reg }}</td>
+                <td>{{ class.vis }}</td>
+                <td>{{ class.pac }}</td>
+                <td>{{ class.mac }}</td>
+                <td>{{ class.ath }}</td>
+                <td>{{ class.ste }}</td>
+                <td>{{ class.fort }}</td>
+                <td>{{ class.apt }}</td>
+                <td>{{ class.per }}</td>
+                <td>{{ class.spe }}</td>
+                <td>{{ class.starting_ap }}</td>
+                <td>{{ class.use_melee_light }}</td>
+                <td>{{ class.use_melee_medium }}</td>
+                <td>{{ class.use_melee_heavy }}</td>
+                <td>{{ class.use_ranged_light }}</td>
+                <td>{{ class.use_ranged_medium }}</td>
+                <td>{{ class.use_ranged_heavy }}</td>
+                <td>{{ class.use_magic_light }}</td>
+                <td>{{ class.use_magic_medium }}</td>
+                <td>{{ class.use_magic_heavy }}</td>
+                <td>{{ class.use_light_armor }}</td>
+                <td>{{ class.use_medium_armor }}</td>
+                <td>{{ class.use_heavy_armor }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
