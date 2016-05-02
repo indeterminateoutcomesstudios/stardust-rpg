@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import copy
 import enumfields
 from django.contrib.auth.models import User
 from django.core import validators
@@ -61,6 +62,9 @@ class Character(models.Model):
     bpac_lvl_str_mod = 1
     bmac_lvl_cha_mod = 1
     extra_max_sp_per_skill = 3
+    light_weapon_str_damage_mod = 0.5
+    medium_weapon_str_damage_mod = 1.0
+    heavy_weapon_str_damage_mod = 1.5
 
     def __str__(self):
         return '{}: Level {} {}'.format(self.id, self.lvl, self.cls.name)
@@ -285,6 +289,10 @@ class Character(models.Model):
                      sum([wearable.bmac for wearable in self.wearables]))
 
     @property
+    def cran(self) -> int:
+        return sum([wearable.cran for wearable in self.wearables])
+
+    @property
     def ath(self) -> int:
         return ((self.stren * self.cls.ath) + self.assigned_ath +
                 sum([wearable.ath for wearable in self.wearables]))
@@ -337,6 +345,35 @@ class Character(models.Model):
                 return self.cls.use_magic_medium
             elif self.weapon.type is equipment.Type.heavy:
                 return self.cls.use_magic_heavy
+
+    @property
+    def _str_damage(self) -> int:
+        str_damage = 0
+        if self.weapon.type is equipment.Type.light:
+            str_damage = round(self.light_weapon_str_damage_mod * self.stren)
+        elif self.weapon.type is equipment.Type.medium:
+            str_damage = round(self.medium_weapon_str_damage_mod * self.stren)
+        elif self.weapon.type is equipment.Type.heavy:
+            str_damage = round(self.heavy_weapon_str_damage_mod * self.stren)
+        return str_damage
+
+    @property
+    def weapon_pdam(self) -> dice.DiceFormula:
+        if self.weapon.pdam is None:
+            return self.weapon.pdam
+        else:
+            pdam_dice = copy.deepcopy(self.weapon.pdam)
+            pdam_dice.modifier += self._str_damage
+            return pdam_dice
+
+    @property
+    def weapon_mdam(self) -> dice.DiceFormula:
+        if self.weapon.mdam is None:
+            return self.weapon.mdam
+        else:
+            mdam_dice = copy.deepcopy(self.weapon.mdam)
+            mdam_dice.modifier += self._str_damage
+            return mdam_dice
 
 
 class UnlockedAbility(models.Model):

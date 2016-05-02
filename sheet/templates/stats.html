@@ -194,11 +194,11 @@
                 <img src="{{ character.weapon.shape.value }}">
             </td>
             <td>{{ character.weapon.attacks}}</td>
-            <td>{{ character.weapon.pac}}</td>
-            <td>{{ character.weapon.pdam}}</td>
-            <td>{{ character.weapon.mdam}}</td>
+            <td>{{ character.bpac|add:character.weapon.pac }} (+{{ character.weapon.pac}})</td>
+            <td>{{ character.weapon_pdam }} ({{ character.weapon.pdam}})</td>
+            <td>{{ character.weapon_mdam }} ({{ character.weapon.mdam}})</td>
             <td>{{ character.weapon.damage_type.name|capfirst }}</td>
-            <td>{{ character.weapon.cran }}</td>
+            <td>{{ character.cran|add:character.weapon.cran }} (+{{ character.weapon.cran }})</td>
             <td>{{ character.weapon.cdam }}</td>
             <td>{{ character.weapon.effect}}</td>
             <td>

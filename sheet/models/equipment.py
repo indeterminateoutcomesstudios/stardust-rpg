@@ -124,7 +124,7 @@ class Wearable(Equipment):
                  spe: int = 0,
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
-                 vis: int = 0, bpac: int = 0, bmac: int = 0):
+                 vis: int = 0, bpac: int = 0, bmac: int = 0, cran: int = 0):
         self.min_attribute = min_attribute
         self.min_attribute_value = min_attribute_value
         self.type = equip_type
@@ -154,6 +154,7 @@ class Wearable(Equipment):
         self.vis = vis
         self.bpac = bpac
         self.bmac = bmac
+        self.cran = cran
         super().__init__(slot=slot, name=name, rarity=rarity, price=price, effect=effect)
 
 
