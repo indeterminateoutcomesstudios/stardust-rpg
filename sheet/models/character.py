@@ -30,7 +30,8 @@ class Character(models.Model):
     neck_enum = enumfields.EnumIntegerField(items.Necks, default=items.Necks.empty)
     chest_enum = enumfields.EnumIntegerField(items.Chests, default=items.Chests.empty)
     shield_enum = enumfields.EnumIntegerField(items.Shields, default=items.Shields.empty)
-    hand_enum = enumfields.EnumIntegerField(items.Hands, default=items.Hands.empty)
+    right_hand_enum = enumfields.EnumIntegerField(items.Hands, default=items.Hands.empty)
+    left_hand_enum = enumfields.EnumIntegerField(items.Hands, default=items.Hands.empty)
     feet_enum = enumfields.EnumIntegerField(items.Feets, default=items.Feets.empty)
     weapon_enum = enumfields.EnumIntegerField(items.Weapons, default=items.Weapons.empty)
 
@@ -94,8 +95,12 @@ class Character(models.Model):
         return items.shields[self.shield_enum]
 
     @property
-    def hand(self) -> equipment.Hand:
-        return items.hands[self.hand_enum]
+    def right_hand(self) -> equipment.Hand:
+        return items.hands[self.right_hand_enum]
+
+    @property
+    def left_hand(self) -> equipment.Hand:
+        return items.hands[self.left_hand_enum]
 
     @property
     def feet(self) -> equipment.Wearable:
@@ -107,8 +112,8 @@ class Character(models.Model):
 
     @property
     def wearables(self) -> Tuple[equipment.Wearable, ...]:
-        return (self.head, self.neck, self.chest, self.shield, self.hand, self.feet, self.utility,
-                self.weapon)
+        return (self.head, self.neck, self.chest, self.shield, self.right_hand, self.left_hand,
+                self.feet, self.utility, self.weapon)
 
     @property
     def lvl(self):

@@ -103,7 +103,8 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
             character.neck_enum = equip_form.cleaned_data['neck_enum']
             character.chest_enum = equip_form.cleaned_data['chest_enum']
             character.shield_enum = equip_form.cleaned_data['shield_enum']
-            character.hand_enum = equip_form.cleaned_data['hand_enum']
+            character.right_hand_enum = equip_form.cleaned_data['right_hand_enum']
+            character.left_hand_enum = equip_form.cleaned_data['left_hand_enum']
             character.feet_enum = equip_form.cleaned_data['feet_enum']
             character.weapon_enum = equip_form.cleaned_data['weapon_enum']
 
@@ -111,12 +112,18 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
             for wearable in character.wearables:
                 if character.get_attribute(wearable.min_attribute) < wearable.min_attribute_value:
                     raise ValidationError('Requirements not met for {}.  Need {} {}.'.format(
-                        wearable.name, wearable.min_attribute_value,
-                        wearable.min_attribute.name))
+                        wearable.name, wearable.min_attribute_value, wearable.min_attribute.name))
 
             if (character.weapon.is_two_handed and
                character.shield_enum is not items.Shields.empty):
                 raise ValidationError('Cannot equip a shield and a two-handed weapon.')
+
+            if ((character.right_hand.is_two_handed and
+                character.left_hand_enum is not items.Hands.empty) or
+                (character.left_hand.is_two_handed and
+                 character.right_hand_enum is not items.Hands.empty)):
+                raise ValidationError('Cannot equip two-handed Hand item and an item in other '
+                                      'hand.')
 
             if not character.can_use_weapon:
                 raise ValidationError('Class {cls} cannot use {style} {type} weapons'.format(
@@ -133,7 +140,8 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
                 'neck_enum': character.neck_enum,
                 'chest_enum': character.chest_enum,
                 'shield_enum': character.shield_enum,
-                'hand_enum': character.hand_enum,
+                'right_hand_enum': character.right_hand_enum,
+                'left_hand_enum': character.left_hand_enum,
                 'feet_enum': character.feet_enum,
                 'weapon_enum': character.weapon_enum
             })

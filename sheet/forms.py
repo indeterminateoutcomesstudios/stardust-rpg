@@ -7,7 +7,7 @@ class CharacterEquipForm(forms.ModelForm):
     class Meta:
         model = character.Character
         fields = ['utility_enum', 'head_enum', 'neck_enum', 'chest_enum', 'shield_enum',
-                  'hand_enum', 'feet_enum', 'weapon_enum']
+                  'right_hand_enum', 'left_hand_enum', 'feet_enum', 'weapon_enum']
 
 
 class LevelUpForm(forms.ModelForm):
