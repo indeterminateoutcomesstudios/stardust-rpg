@@ -65,7 +65,8 @@ class Hands(aenum.AutoNumberEnum):
 
 hands = {
     Hands.empty: Hand(name=Hands.empty.name),
-    Hands.bronze_gauntlets: Hand(name=Hands.bronze_gauntlets.name, pdef=1)
+    Hands.bronze_gauntlets: Hand(
+        name=Hands.bronze_gauntlets.name, pdef=1, is_two_handed=True)
 }
 
 
