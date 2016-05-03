@@ -1,6 +1,6 @@
 {% extends "browser_base.html" %}
 
-{% block title %}s{% endblock %}
+{% block title %}{{ picture_type }}{% endblock %}
 
 {% block content %}
     <table>
@@ -16,7 +16,7 @@
                 <td>{{ picture.name|capfirst }}</td>
                 <td><a href="{{ picture.value }}">{{ picture.value }}</a></td>
                 <td>
-                    <img src="{{ picture.value }}" style="width: 40px;height: 40px; overflow: hidden">
+                    <img src="{{ picture.value }}" style="width: 40px;height: 40px">
                 </td>
             </tr>
         {% endfor %}

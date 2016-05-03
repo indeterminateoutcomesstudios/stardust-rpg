@@ -48,7 +48,8 @@ def equipment(request: HttpRequest, wearables: Tuple[equipment.Wearable, ...]) -
 def pictures(request: HttpRequest, picture_enum: Tuple[enum.Enum, ...]) -> HttpResponse:
     return render(request, 'pictures.html',
                   context={'pictures': sorted([picture for picture in picture_enum],
-                                              key=lambda picture: picture.name)})
+                                              key=lambda picture: picture.name),
+                           'picture_type': list(picture_enum)[0].__class__.__name__})
 
 
 @login_required
