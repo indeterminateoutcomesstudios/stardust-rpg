@@ -93,7 +93,7 @@ weapons = {
         shape=Shape.melee_point,
         pdam=DiceFormula.from_str('d4'), damage_type=DamageType.bludgeoning),
     Weapons.bronze_shuriken: Weapon(
-        name=Weapons.bronze_shuriken.name, picture=WeaponPicture.grey_shuriken,
+        name=Weapons.bronze_shuriken.name, price=40, picture=WeaponPicture.grey_shuriken,
         style=Style.ranged, is_two_handed=True,
         min_range=1, max_range=6, shape=Shape.range_point,
         attacks=2, pac=0, pdam=DiceFormula.from_str('d4'), damage_type=DamageType.piercing,

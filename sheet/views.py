@@ -16,6 +16,7 @@ from .models.abilities import inverse_abilities
 from .models import classes, combos, equipment, items
 
 # TODO: Handle exceptions in a user-friendly way.
+# TODO: Color equipment based on rarity.
 
 
 def check_is_admin_or_owns_character(user: User, character: Character) -> None:
@@ -39,9 +40,15 @@ def all_combos(request: HttpRequest) -> HttpResponse:
 
 
 @login_required
-def equipment(request: HttpRequest, wearables: Tuple[equipment.Wearable, ...]) -> HttpResponse:
+def all_equipment(request: HttpRequest, wearables: Tuple[equipment.Wearable, ...]) -> HttpResponse:
     return render(request, 'equipment.html',
                   context={'wearables': sorted(wearables, key=lambda wearable: wearable.price)})
+
+
+@login_required
+def all_weapons(request: HttpRequest, weapons: Tuple[equipment.Weapon, ...]) -> HttpResponse:
+    return render(request, 'weapons.html',
+                  context={'weapons': sorted(weapons, key=lambda weapon: weapon.price)})
 
 
 @login_required
