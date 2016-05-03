@@ -1,4 +1,5 @@
 import re
+from typing import Tuple
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -11,7 +12,7 @@ from .forms import CharacterEquipForm, LevelUpForm, SkillPointsForm
 from .models.character import Character, UnlockedAbility
 from .models.level_up import LevelUp
 from .models.abilities import inverse_abilities
-from .models import classes, combos, items
+from .models import classes, combos, equipment, items
 
 # TODO: Handle exceptions in a user-friendly way.
 
@@ -34,6 +35,12 @@ def all_classes(request: HttpRequest) -> HttpResponse:
 @login_required
 def all_combos(request: HttpRequest) -> HttpResponse:
     return render(request, 'browser_combos.html', context={'combos': combos.combos})
+
+
+@login_required
+def equipment(request: HttpRequest, wearables: Tuple[equipment.Wearable, ...]) -> HttpResponse:
+    return render(request, 'equipment.html',
+                  context={'wearables': sorted(wearables, key=lambda wearable: wearable.price)})
 
 
 @login_required
