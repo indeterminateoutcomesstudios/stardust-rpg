@@ -3,7 +3,6 @@
 import copy
 import enumfields
 from django.contrib.auth.models import User
-from django.core import validators
 from django.db import models
 from typing import Tuple
 
@@ -35,18 +34,12 @@ class Character(models.Model):
     feet_enum = enumfields.EnumIntegerField(items.Feets, default=items.Feets.empty)
     weapon_enum = enumfields.EnumIntegerField(items.Weapons, default=items.Weapons.empty)
 
-    assigned_ath = models.IntegerField(verbose_name='Assigned ATH', default=0,
-                                       validators=[validators.MinValueValidator(0)])
-    assigned_ste = models.IntegerField(verbose_name='Assigned STE', default=0,
-                                       validators=[validators.MinValueValidator(0)])
-    assigned_for = models.IntegerField(verbose_name='Assigned FOR', default=0,
-                                       validators=[validators.MinValueValidator(0)])
-    assigned_apt = models.IntegerField(verbose_name='Assigned APT', default=0,
-                                       validators=[validators.MinValueValidator(0)])
-    assigned_per = models.IntegerField(verbose_name='Assigned PER', default=0,
-                                       validators=[validators.MinValueValidator(0)])
-    assigned_spe = models.IntegerField(verbose_name='Assigned SPE', default=0,
-                                       validators=[validators.MinValueValidator(0)])
+    assigned_ath = models.PositiveIntegerField(verbose_name='Assigned ATH', default=0)
+    assigned_ste = models.PositiveIntegerField(verbose_name='Assigned STE', default=0)
+    assigned_for = models.PositiveIntegerField(verbose_name='Assigned FOR', default=0)
+    assigned_apt = models.PositiveIntegerField(verbose_name='Assigned APT', default=0)
+    assigned_per = models.PositiveIntegerField(verbose_name='Assigned PER', default=0)
+    assigned_spe = models.PositiveIntegerField(verbose_name='Assigned SPE', default=0)
 
     # Class constants
     ap_lvl_mod = 2
