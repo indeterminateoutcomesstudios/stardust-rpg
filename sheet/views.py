@@ -1,3 +1,4 @@
+import enum
 import re
 from typing import Tuple
 
@@ -41,6 +42,13 @@ def all_combos(request: HttpRequest) -> HttpResponse:
 def equipment(request: HttpRequest, wearables: Tuple[equipment.Wearable, ...]) -> HttpResponse:
     return render(request, 'equipment.html',
                   context={'wearables': sorted(wearables, key=lambda wearable: wearable.price)})
+
+
+@login_required
+def pictures(request: HttpRequest, picture_enum: Tuple[enum.Enum, ...]) -> HttpResponse:
+    return render(request, 'pictures.html',
+                  context={'pictures': sorted([picture for picture in picture_enum],
+                                              key=lambda picture: picture.name)})
 
 
 @login_required

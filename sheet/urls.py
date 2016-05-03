@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
 from . import views
-from .models import items
+from .models import ability, equipment, items
 
 urlpatterns = [
     url(r'^characters/$', views.characters, name='sheet-views-characters'),
@@ -21,6 +21,12 @@ urlpatterns = [
         name='sheet-views-feets'),
     url(r'^utilities/$', views.equipment, {'wearables': items.utilities.values()},
         name='sheet-views-utilities'),
+    url(r'^shape_pictures/$', views.pictures, {'picture_enum': equipment.Shape},
+        name='sheet-views-shape-pictures'),
+    url(r'^weapon_pictures/$', views.pictures, {'picture_enum': equipment.WeaponPicture},
+        name='sheet-views-weapon-pictures'),
+    url(r'^ability_pictures/$', views.pictures, {'picture_enum': ability.AbilityPicture},
+        name='sheet-views-ability-pictures'),
     url(r'^(?P<character_id>[0-9]+)/stats/$', views.stats, name='sheet-views-stats'),
     url(r'^(?P<character_id>[0-9]+)/class/$', views.cls, name='sheet-views-class'),
     url(r'^(?P<character_id>[0-9]+)/abilities/$', views.unlock_abilities,
