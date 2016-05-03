@@ -25,7 +25,7 @@ class Heads(aenum.AutoNumberEnum):
 
 heads = {
     Heads.empty: Head(name=Heads.empty.name),
-    Heads.mako_hood: Head(name=Heads.mako_hood.name, mp=2)
+    Heads.mako_hood: Head(name=Heads.mako_hood.name, price=50, mp=2)
 }
 
 
@@ -35,7 +35,7 @@ class Necks(aenum.AutoNumberEnum):
 
 necks = {
     Necks.empty: Neck(name=Necks.empty.name),
-    Necks.mako_amulet: Neck(name=Necks.mako_amulet.name, mp=2)
+    Necks.mako_amulet: Neck(name=Necks.mako_amulet.name, price=100, mp=2)
 }
 
 
@@ -45,7 +45,7 @@ class Chests(aenum.AutoNumberEnum):
 
 chests = {
     Chests.empty: Chest(name=Chests.empty.name),
-    Chests.spurclaw_scale: Chest(name=Chests.spurclaw_scale.name, hp=1)
+    Chests.spurclaw_scale: Chest(name=Chests.spurclaw_scale.name, price=50, hp=1)
 }
 
 
@@ -55,7 +55,7 @@ class Shields(aenum.AutoNumberEnum):
 
 shields = {
     Shields.empty: Shield(name=Shields.empty.name),
-    Shields.bronze_buckler: Shield(name=Shields.bronze_buckler.name, hp=1)
+    Shields.bronze_buckler: Shield(name=Shields.bronze_buckler.name, price=40, hp=1)
 }
 
 
@@ -66,7 +66,7 @@ class Hands(aenum.AutoNumberEnum):
 hands = {
     Hands.empty: Hand(name=Hands.empty.name),
     Hands.bronze_gauntlets: Hand(
-        name=Hands.bronze_gauntlets.name, pdef=1, is_two_handed=True)
+        name=Hands.bronze_gauntlets.name, price=50, pdef=1, is_two_handed=True)
 }
 
 
@@ -76,7 +76,7 @@ class Feets(aenum.AutoNumberEnum):
 
 feets = {
     Feets.empty: Feet(name=Feets.empty.name),
-    Feets.nighthawke_boots: Feet(name=Feets.nighthawke_boots.name, ste=3)
+    Feets.nighthawke_boots: Feet(name=Feets.nighthawke_boots.name, price=100, ste=3)
 }
 
 
