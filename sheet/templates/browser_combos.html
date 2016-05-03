@@ -1,0 +1,62 @@
+{% extends "browser_base.html" %}
+
+{% block title %}Combos{% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr id="title">
+                <th>Name</th>
+                <th>Prereq LVL</th>
+                <th>Classes</th>
+                <th>MP</th>
+                <th>Effect</th>
+                <th>Attacks</th>
+                <th>PDAM</th>
+                <th>MDAM</th>
+                <th>DAM Type</th>
+                <th>MDEF?</th>
+                <th>Time</th>
+                <th>Min Range</th>
+                <th>Max Range</th>
+                <th>Shape</th>
+                <th>Target Area</th>
+                <th>Duration</th>
+                <th>Duration Unit</th>
+            </tr>
+        </thead>
+        {% for combo in combos %}
+            <tr>
+                <td>
+                    <img src="{{ combo.picture.value }}"
+                         style="width: 40px;height: 40px">
+                    {{ combo.name }}
+                </td>
+                <td>{{ combo.prerequisite_lvl }}</td>
+                <td>
+                    {% for class in combo.classes %}
+                        {{ class.name }}
+                        <br>
+                    {% endfor %}
+                </td>
+                <td>{{ combo.mp_cost }}</td>
+                <td>{{ combo.effect }}</td>
+                <td>{{ combo.attacks }}</td>
+                <td>{{ combo.pdam }}</td>
+                <td>{{ combo.mdam }}</td>
+                <td>{{ combo.damage_type.name|capfirst }}</td>
+                <td>{{ combo.targets_mdef }}</td>
+                <td>{{ combo.time.name|capfirst }}</td>
+                <td>{{ combo.min_range }}</td>
+                <td>{{ combo.max_range }}</td>
+                <td>
+                    <img src="{{ combo.shape.value }}">
+                    {{ combo.shape.name|capfirst }}
+                </td>
+                <td>{{ combo.target_area }}</td>
+                <td>{{ combo.duration }}</td>
+                <td>{{ combo.duration_unit.name|capfirst }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

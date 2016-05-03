@@ -11,7 +11,7 @@ from .forms import CharacterEquipForm, LevelUpForm, SkillPointsForm
 from .models.character import Character, UnlockedAbility
 from .models.level_up import LevelUp
 from .models.abilities import inverse_abilities
-from .models import classes, items
+from .models import classes, combos, items
 
 # TODO: Handle exceptions in a user-friendly way.
 
@@ -29,6 +29,11 @@ def characters(request: HttpRequest) -> HttpResponse:
 @login_required
 def all_classes(request: HttpRequest) -> HttpResponse:
     return render(request, 'classes.html', context={'classes': classes.classes.values()})
+
+
+@login_required
+def all_combos(request: HttpRequest) -> HttpResponse:
+    return render(request, 'browser_combos.html', context={'combos': combos.combos})
 
 
 @login_required
@@ -89,7 +94,7 @@ def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
 
 
 @login_required
-def combos(request: HttpRequest, character_id: int) -> HttpResponse:
+def character_combos(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'combos.html', context={'character': character})
 
