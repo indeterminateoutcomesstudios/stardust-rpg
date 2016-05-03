@@ -23,6 +23,8 @@ urlpatterns = [
         name='sheet-views-utilities'),
     url(r'^weapons/$', views.all_weapons, {'weapons': items.weapons.values()},
         name='sheet-views-weapons'),
+    url(r'^items/$', views.all_items, {'item_set': items.items.values()},
+        name='sheet-views-items'),
     url(r'^shape_pictures/$', views.pictures, {'picture_enum': equipment.Shape},
         name='sheet-views-shape-pictures'),
     url(r'^weapon_pictures/$', views.pictures, {'picture_enum': equipment.WeaponPicture},

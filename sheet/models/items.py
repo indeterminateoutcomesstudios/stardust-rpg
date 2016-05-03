@@ -3,8 +3,8 @@
 import aenum
 
 from .dice import DiceFormula
-from .equipment import (Chest, DamageType, Feet, Hand, Head, Neck, Shape, Shield, Style, Utility,
-                        Weapon, WeaponPicture)
+from .equipment import (Chest, DamageType, Feet, Hand, Head, Item, Neck, Shape, Shield, Style,
+                        Utility, Weapon, WeaponPicture)
 
 
 class Utilities(aenum.AutoNumberEnum):
@@ -98,4 +98,15 @@ weapons = {
         min_range=1, max_range=6, shape=Shape.range_point,
         attacks=2, pac=0, pdam=DiceFormula.from_str('d4'), damage_type=DamageType.piercing,
         cran=0, cdam=2)
+}
+
+
+class Items(aenum.AutoNumberEnum):
+    empty = ()
+    disguise_kit = ()
+
+items = {
+    Items.empty: Item(name=Items.empty.name, effect=''),
+    Items.disguise_kit: Item(name=Items.disguise_kit.name, price=5,
+                             effect='Allows Disguise Self check')
 }

@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import abc
 import enum
 
 import aenum
@@ -105,8 +104,9 @@ class DamageType(aenum.AutoNumberEnum):
         return self.name.title()
 
 
-class Equipment(abc.ABC):
-    def __init__(self, slot: Slot, name: str, rarity: Rarity, price: int, effect: str):
+class Item:
+    def __init__(self, name: str, slot: Slot=Slot.item,
+                 rarity: Rarity=Rarity.common, price: int=0, effect: str=''):
         self.slot = slot
         self.name = name
         self.rarity = rarity
@@ -114,7 +114,7 @@ class Equipment(abc.ABC):
         self.effect = effect
 
 
-class Wearable(Equipment):
+class Wearable(Item):
     def __init__(self, slot: Slot, name: str, min_attribute: Attribute, min_attribute_value: int=0,
                  rarity: Rarity=Rarity.common, price: int=0,
                  effect: str='', equip_type: Type=Type.light,
