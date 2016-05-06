@@ -8,7 +8,7 @@
     <label>Max SP Per Skill: {{ character.max_sp_per_skill }}</label>
     <form method="post">
         {% csrf_token %}
-        {{ skill_points_form }}
+        {{ skill_points_form.as_p }}
         <input type="submit" value="Assign SP" />
     </form>
 {% endblock %}
