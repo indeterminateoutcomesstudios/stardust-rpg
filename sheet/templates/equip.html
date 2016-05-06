@@ -5,7 +5,7 @@
 {% block content %}
     <form method="post">
         {% csrf_token %}
-        {{ equip_form }}
+        {{ equip_form.as_p }}
         <input type="submit" value="Equip" />
     </form>
 {% endblock %}
