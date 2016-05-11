@@ -17,6 +17,8 @@ from .models import classes, combos, equipment, items
 
 # TODO: Handle exceptions in a user-friendly way.
 # TODO: Color equipment based on rarity.
+# TODO: Show price/sell price.
+# TODO: Show only equipable items?
 
 
 def check_is_admin_or_owns_character(user: User, character: Character) -> None:
@@ -204,7 +206,7 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
             match = re.match(r'^delete\s(?P<levelup_id>[0-9]+)$', value)
             if match is not None:
                 LevelUp.objects.get(pk=match.group('levelup_id')).delete()
-                return redirect(reverse(level_up, args=[character_id]))
+                level_up_form = LevelUpForm()
 
         # Otherwise, user is creating a new LevelUp.
         if level_up_form.is_valid():
@@ -226,8 +228,6 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
             new_level_up = level_up_form.save(commit=False)
             new_level_up.character = character
             new_level_up.save()
-
-            return redirect(reverse(level_up, args=[character_id]))
     else:
         level_up_form = LevelUpForm()
 
