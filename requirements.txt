@@ -1,3 +1,5 @@
 aenum
+beautifulsoup4
 django
 django-enumfields
+requests
