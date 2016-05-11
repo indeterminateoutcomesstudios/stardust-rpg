@@ -6,3 +6,6 @@ Stardust RPG
 
 Stardust RPG is a tactical d20 role-playing game designed to provide a variety of progression
 options for players and encourage teamwork.
+
+Special thanks to `@theandrewdavis <https://github.com/theandrewdavis>`_ for his analysis of the
+roll20.net API.
