@@ -87,17 +87,19 @@ class Shape(enum.Enum):
     cone_3 = 'http://i.imgur.com/5qYh6je.png'
 
 
-class DamageType(aenum.AutoNumberEnum):
-    slashing = ()
-    piercing = ()
-    bludgeoning = ()
-    fire = ()
-    cold = ()
-    lightning = ()
-    acid = ()
-    poison = ()
-    force = ()
-    psychic = ()
+class DamageType(enum.Enum):
+    # TODO: Change back to AutoEnum if issue fixed:
+    # https://bitbucket.org/stoneleaf/aenum/issues/3/autonumberenum-no-longer-supports
+    slashing = 1
+    piercing = 2
+    bludgeoning = 3
+    fire = 4
+    cold = 5
+    lightning = 6
+    acid = 7
+    poison = 8
+    force = 9
+    psychic = 10
 
     @property
     def cap_name(self) -> str:
