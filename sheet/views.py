@@ -279,8 +279,6 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
                 character.assigned_per = assigned_per
                 character.assigned_spe = assigned_spe
                 character.save()
-
-            return redirect(reverse(skill_points, args=[character_id]))
     else:
         skill_points_form = SkillPointsForm(
             initial={'assigned_ath': character.assigned_ath,
