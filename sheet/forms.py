@@ -21,3 +21,7 @@ class SkillPointsForm(forms.ModelForm):
         model = character.Character
         fields = ['assigned_ath', 'assigned_ste', 'assigned_for', 'assigned_apt',
                   'assigned_per', 'assigned_spe']
+
+
+class Roll20Form(forms.Form):
+    password = forms.CharField(label='Roll20 Password', widget=forms.PasswordInput())

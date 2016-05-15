@@ -1,0 +1,21 @@
+{% extends "character_base.html" %}
+
+{% block title %}Roll20{% endblock %}
+
+{% block content %}
+    <label>Roll20 Email: {{ user.email }}</label>
+    <form method="post">
+        {% csrf_token %}
+        {{ roll20_form.as_p }}
+        <input type="submit" value="Sync to Roll20" />
+    </form>
+    <p>
+        <label>Roll20 Character Name: {{ character.name }}</label>
+    </p>
+    <p>
+        <label>Roll20 Campaign ID: {{ character.roll20_campaign_id }}</label>
+    </p>
+    {% if campaign_name != '' %}
+        <label>Campaign Name: {{ campaign_name }}</label>
+    {% endif %}
+{% endblock %}

@@ -22,6 +22,7 @@
             Assign Skill Points{% if character.available_sp > 0 %}
                 ({{ character.available_sp }}){% endif %}</a>
         <a href="{% url 'sheet-views-class' character.id %}">Class</a>
+        <a href="{% url 'sheet-views-roll20' character.id %}">Roll20</a>
         <a href= {% url 'app-accounts-logout' %}>Logout</a>
         {% endblock %}
     </div>

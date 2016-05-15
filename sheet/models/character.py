@@ -22,6 +22,8 @@ class Character(models.Model):
 
     # Fields
     user = models.ForeignKey(User, unique=False)
+    name = models.CharField(max_length=25)
+    roll20_campaign_id = models.PositiveIntegerField(default=0)
 
     class_enum = enumfields.EnumIntegerField(classes.Classes, default=classes.Classes.empty)
     utility_enum = enumfields.EnumIntegerField(items.Utilities, default=items.Utilities.empty)
@@ -61,7 +63,7 @@ class Character(models.Model):
     heavy_weapon_str_damage_mod = 1.5
 
     def __str__(self):
-        return '{}: Level {} {}'.format(self.id, self.lvl, self.cls.name)
+        return '{}: {} LVL {} {}'.format(self.id, self.name, self.lvl, self.cls.name)
 
     @property
     def cls(self) -> class_type.Class:
@@ -185,7 +187,8 @@ class Character(models.Model):
 
     @property
     def abilities(self) -> Tuple[ability.Ability]:
-        return [unlocked_ability.ability for unlocked_ability in self.unlockedability_set.all()]
+        return tuple([unlocked_ability.ability
+                      for unlocked_ability in self.unlockedability_set.all()])
 
     @property
     def combos(self) -> Tuple[combos.Combo]:

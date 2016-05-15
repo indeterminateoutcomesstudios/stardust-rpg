@@ -9,16 +9,19 @@ from django.forms import ValidationError
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import CharacterEquipForm, LevelUpForm, SkillPointsForm
+from .forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
 from .models.character import Character, UnlockedAbility
 from .models.level_up import LevelUp
 from .models.abilities import inverse_abilities
 from .models import classes, combos, equipment, items
+from .roll20 import api, login
 
 # TODO: Handle exceptions in a user-friendly way.
 # TODO: Color equipment based on rarity.
 # TODO: Show price/sell price.
 # TODO: Show only equipable items?
+# TODO: Break views into multiple modules.
+# TODO: Switch to logging module.
 
 
 def check_is_admin_or_owns_character(user: User, character: Character) -> None:
@@ -228,6 +231,7 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
             new_level_up = level_up_form.save(commit=False)
             new_level_up.character = character
             new_level_up.save()
+            level_up_form = LevelUpForm()
     else:
         level_up_form = LevelUpForm()
 
@@ -292,3 +296,79 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
     return render(request, 'skill_points.html',
                   context={'skill_points_form': skill_points_form,
                            'character': character})
+
+
+@login_required
+def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
+    character = get_object_or_404(Character, pk=character_id)
+
+    campaign_name = ''
+    if request.method == 'POST':
+        check_is_admin_or_owns_character(request.user, character)
+        roll20_form = Roll20Form(request.POST)
+        if roll20_form.is_valid():
+            password = roll20_form.cleaned_data['password']
+
+            roll20_login = login.login(email=request.user.email, password=password,
+                                       campaign_id=character.roll20_campaign_id)
+            campaign_name = roll20_login.campaign_name
+
+            character_id = api.get_character_id(login=roll20_login, character_name=character.name)
+            attributes_to_set = {
+                'LVL': character.lvl,
+                'HP': character.hp,
+                'MP': character.mp,
+                'SPEED': character.speed,
+                'PDEF': character.pdef,
+                'MDEF': character.mdef,
+                'PRED': character.pred,
+                'MRED': character.mred,
+                'REG': character.reg,
+                'RD': character.rd,
+                'VIS': character.vis,
+                'BPAC': character.bpac,
+                'BMAC': character.bmac,
+                'ATH': character.ath,
+                'STE': character.ste,
+                'FOR': character.fort,
+                'APT': character.apt,
+                'PER': character.per,
+                'SPE': character.spe,
+                'STR': character.stren,
+                'DEX': character.dex,
+                'CON': character.con,
+                'INT': character.intel,
+                'WIS': character.wis,
+                'CHA': character.cha,
+                'HD': 'd' + str(character.cls.hd),
+                'MD': 'd' + str(character.cls.md),
+                'SD': 'd' + str(character.cls.sd),
+            }
+            for attribute_name, attribute_value in attributes_to_set.items():
+                api.set_attribute(login=roll20_login, character_id=character_id,
+                                  attribute_name=attribute_name, attribute_value=attribute_value,
+                                  attribute_position=api.AttributePosition.current)
+                api.set_attribute(login=roll20_login, character_id=character_id,
+                                  attribute_name=attribute_name, attribute_value=attribute_value,
+                                  attribute_position=api.AttributePosition.max)
+
+            abilities_to_set = character.abilities + (character.weapon,)
+            for ability in abilities_to_set:
+                if not api.ability_exists(login=roll20_login, character_id=character_id,
+                                          ability_name=ability.name):
+                    api.create_ability(login=roll20_login, character_id=character_id,
+                                       ability_name=ability.name,
+                                       ability_action=ability.macro)
+                else:
+                    api.update_ability(login=roll20_login, character_id=character_id,
+                                       ability_name=ability.name,
+                                       ability_action=ability.macro)
+
+    else:
+        roll20_form = Roll20Form()
+
+    return render(request, 'roll20.html',
+                  context={'roll20_form': roll20_form,
+                           'character': character,
+                           'user': request.user,
+                           'campaign_name': campaign_name})
