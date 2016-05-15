@@ -75,7 +75,8 @@ def pictures(request: HttpRequest, picture_enum: Tuple[enum.Enum, ...]) -> HttpR
 @login_required
 def stats(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
-    return render(request, 'stats.html', context={'character': character})
+    return render(request, 'stats.html', context={'character': character,
+                                                  'Rarity': equipment.Rarity})
 
 
 @login_required

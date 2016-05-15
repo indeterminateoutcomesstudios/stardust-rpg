@@ -174,12 +174,19 @@
                 <th>CRAN</th>
                 <th>CDAM</th>
                 <th>Effect</th>
-                <th>Macro</th>
             </tr>
         </thead>
         <tr>
-            <td>
-                {{ character.weapon.name|capfirst }}
+            <td
+                {% if character.weapon.rarity == Rarity.rare %}
+                    class="type_rare"
+                {% elif character.weapon.rarity == Rarity.unique %}
+                    class="type_unique"
+                {% elif character.weapon.rarity == Rarity.set %}
+                    class="type_set"
+                {% endif %}
+            >
+                <b>{{ character.weapon.name|capfirst }}</b>
                 <img src="{{ character.weapon.picture.value }}"
                      style="width: 40px;height: 40px">
             </td>
@@ -201,9 +208,6 @@
             <td>{{ character.cran|add:character.weapon.cran }} (+{{ character.weapon.cran }})</td>
             <td>{{ character.weapon.cdam }}</td>
             <td>{{ character.weapon.effect}}</td>
-            <td>
-                <pre>{{ character.weapon.macro }}</pre>
-            </td>
         </tr>
     </table>
     <table>
@@ -246,8 +250,16 @@
         {% for wearable in character.wearables %}
             <tr>
                 <td>{{ wearable.slot.name|capfirst }}</td>
-                <td>
-                    {{ wearable.name|capfirst }}
+                <td
+                    {% if wearable.rarity == Rarity.rare %}
+                        class="type_rare"
+                    {% elif wearable.rarity == Rarity.unique %}
+                        class="type_unique"
+                    {% elif wearable.rarity == Rarity.set %}
+                        class="type_set"
+                    {% endif %}
+                >
+                    <b>{{ wearable.name|capfirst }}</b>
                     {% if wearable.is_two_handed %}
                         <br>(2-Hand)
                     {% endif %}
