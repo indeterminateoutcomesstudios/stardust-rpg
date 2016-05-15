@@ -52,7 +52,7 @@ class Heads(aenum.AutoNumberEnum):
 heads = {
     Heads.empty: Head(name=Heads.empty.name),
     Heads.cursed_helm: Head(name=Heads.cursed_helm.name, price=0, min_int=0, reg=2,
-                            rarity=Rarity.set, effect='+2PDAM per ATT. Resist corruption 2RND'),
+                            rarity=Rarity.set, effect='+2PDAM per ATTACK. Resist corruption 2RND'),
     Heads.mako_hood: Head(name=Heads.mako_hood.name, price=50, mp=2),
     Heads.adept_hood: Head(name=Heads.adept_hood.name, price=125, reg=1),
     Heads.adamantine_circlet: Head(name=Heads.adamantine_circlet.name, price=125, mdef=1),
@@ -110,10 +110,84 @@ heads = {
 class Necks(aenum.AutoNumberEnum):
     empty = ()
     mako_amulet = ()
+    spinal_support = ()
+    crystal_amulet = ()
+    starlet_necklace = ()
+    heavy_quiver = ()
+    equalizer = ()
+    ammo_sash = ()
+    foregrip = ()
+    adamantine_amulet = ()
+    range_finder = ()
+    suppressor = ()
+    duraform_pendant = ()
+    lunavein_necklace = ()
+    long_barrel = ()
+    lunahollow_necklace = ()
+    overcharge_amulet = ()
+    emerald_amulet = ()
+    mithril_riviere = ()
+    lunaburn_amulet = ()
+    sapphire_amulet = ()
+    obsidian_necklace = ()
+    augmenter = ()
+    mithril_amulet = ()
+    omni_amulet = ()
 
 necks = {
     Necks.empty: Neck(name=Necks.empty.name),
-    Necks.mako_amulet: Neck(name=Necks.mako_amulet.name, price=100, mp=2)
+    Necks.mako_amulet: Neck(name=Necks.mako_amulet.name, price=100, mp=2),
+    Necks.spinal_support: Neck(name=Necks.spinal_support.name, price=200, min_wis=1,
+                               equip_type=Type.medium, effect='-1 Min STR on chest'),
+    Necks.crystal_amulet: Neck(name=Necks.crystal_amulet.name, price=350, min_wis=1, reg=2),
+    Necks.starlet_necklace: Neck(name=Necks.starlet_necklace.name, price=350, min_wis=1,
+                                 effect='When ability crits, it consumes no MP and grants +4MP'),
+    Necks.heavy_quiver: Neck(name=Necks.heavy_quiver.name, price=400, min_wis=1,
+                             effect='Allows use of heavy range weapons'),
+    Necks.equalizer: Neck(name=Necks.equalizer.name, price=400, min_wis=1, reg=-18,
+                          rarity=Rarity.rare, effect='RD is d1'),
+    Necks.ammo_sash: Neck(name=Necks.ammo_sash.name, price=650, min_wis=2,
+                          effect='+1ATTACK on Reaper, Marksman only'),
+    Necks.foregrip: Neck(name=Necks.foregrip.name, price=675, min_wis=1, bpac=2,
+                         effect='Can only be used on firearms. Marksman only.'),
+    Necks.adamantine_amulet: Neck(name=Necks.adamantine_amulet.name, price=750, min_wis=2, ap=1),
+    Necks.range_finder: Neck(name=Necks.range_finder.name, price=750, min_wis=2,
+                             effect='+4Range on rifles, Marksman only'),
+    Necks.suppressor: Neck(name=Necks.suppressor.name, price=850, min_wis=2,
+                           effect='Muffles ignition of firearm, can only be heard within 3DIS, '
+                                  'Marksman only'),
+    Necks.duraform_pendant: Neck(name=Necks.duraform_pendant.name, price=950, min_wis=2,
+                                 effect='+6REG is no movement taken that RND'),
+    Necks.lunavein_necklace: Neck(name=Necks.lunavein_necklace.name, price=1250, min_wis=2,
+                                  effect='On hit, ignore 2PDAM by consuming 2MP'),
+    Necks.long_barrel: Neck(name=Necks.long_barrel.name, price=975, min_wis=2,
+                            effect='+1Range on shotgun, Marksman only'),
+    Necks.lunahollow_necklace: Neck(name=Necks.lunahollow_necklace.name, price=1250, min_wis=0,
+                                    rarity=Rarity.rare,
+                                    effect='Slots a ring and applies its effect to the slot,'
+                                           'Min WIS = 2x Min CHA on ring'),
+    Necks.overcharge_amulet: Neck(name=Necks.overcharge_amulet.name, price=1300, min_wis=2,
+                                  rarity=Rarity.rare,
+                                  effect='Cast ability at +1 Ability LVL for +50% MP cost'),
+    Necks.emerald_amulet: Neck(name=Necks.emerald_amulet.name, price=1300, min_wis=2,
+                               effect='On successful REG, recover HP instead of MP'),
+    Necks.mithril_riviere: Neck(name=Necks.mithril_riviere.name, price=1450, min_wis=2,
+                                effect='When casting an ability that misses, ignore MP cost and '
+                                       'recover +2MP'),
+    Necks.lunaburn_amulet: Neck(name=Necks.lunaburn_amulet.name, price=1700, min_wis=2, bmac=-4,
+                                effect='Abilities always crit, 2x MP Cost on abilities'),
+    Necks.sapphire_amulet: Neck(name=Necks.sapphire_amulet.name, price=1850, min_wis=2,
+                                rarity=Rarity.rare,
+                                effect='Use MRED instead of PRED to reduce physical attack '
+                                       'damage'),
+    Necks.obsidian_necklace: Neck(name=Necks.obsidian_necklace.name, price=1850, min_wis=2,
+                                  rarity=Rarity.set, reg=-10, mred=3),
+    Necks.augmenter: Neck(name=Necks.augmenter.name, price=3250, min_wis=3, rarity=Rarity.unique,
+                          effect='On successful physical ATTACK, can spend 2MP to do 4MDAM'),
+    Necks.mithril_amulet: Neck(name=Necks.mithril_amulet.name, price=10000, min_wis=4,
+                               rarity=Rarity.rare, effect='-1 MP Cost to all abilities'),
+    Necks.omni_amulet: Neck(name=Necks.omni_amulet.name, price=20000, min_wis=5,
+                            rarity=Rarity.rare, effect='+1 Ability LVL to all abilities')
 }
 
 
