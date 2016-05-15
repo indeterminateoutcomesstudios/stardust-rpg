@@ -186,7 +186,7 @@ class Character(models.Model):
         return self.ap - self.unlockedability_set.count()
 
     @property
-    def abilities(self) -> Tuple[ability.Ability]:
+    def unlocked_abilities(self) -> Tuple[ability.Ability]:
         return tuple([unlocked_ability.ability
                       for unlocked_ability in self.unlockedability_set.all()])
 

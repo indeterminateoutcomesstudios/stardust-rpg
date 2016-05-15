@@ -101,7 +101,7 @@ def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
                         if unlocked_ability.ability is ability:
                             # Do not allow the player to re-lock an ability if it is a
                             # prerequisite for another ability they have already unlocked.
-                            for owned_ability in character.abilities:
+                            for owned_ability in character.unlocked_abilities:
                                 if ability in owned_ability.prerequisites:
                                     raise ValidationError(
                                         'Cannot lock ability {} because it is a prerequisite '
@@ -109,7 +109,7 @@ def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
                             unlocked_ability.delete()
                 elif action_type == 'unlock':
                     for prerequisite in ability.prerequisites:
-                        if prerequisite not in character.abilities:
+                        if prerequisite not in character.unlocked_abilities:
                             raise ValidationError('Prerequisite {} not met for ability {}.'.format(
                                 prerequisite.name, ability.name))
 
@@ -352,7 +352,7 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
                                   attribute_name=attribute_name, attribute_value=attribute_value,
                                   attribute_position=api.AttributePosition.max)
 
-            abilities_to_set = character.abilities + (character.weapon,)
+            abilities_to_set = character.unlocked_abilities + (character.weapon,)
             for ability in abilities_to_set:
                 if not api.ability_exists(login=roll20_login, character_id=character_id,
                                           ability_name=ability.name):
