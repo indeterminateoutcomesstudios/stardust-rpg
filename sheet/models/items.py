@@ -183,6 +183,7 @@ necks = {
     Necks.obsidian_necklace: Neck(name=Necks.obsidian_necklace.name, price=1850, min_wis=2,
                                   rarity=Rarity.set, reg=-10, mred=3),
     Necks.augmenter: Neck(name=Necks.augmenter.name, price=3250, min_wis=3, rarity=Rarity.unique,
+                          equip_type=Type.medium,
                           effect='On successful physical ATTACK, can spend 2MP to do 4MDAM'),
     Necks.mithril_amulet: Neck(name=Necks.mithril_amulet.name, price=10000, min_wis=4,
                                rarity=Rarity.rare, effect='-1 MP Cost to all abilities'),
