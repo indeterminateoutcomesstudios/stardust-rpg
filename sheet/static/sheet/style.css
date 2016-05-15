@@ -17,3 +17,12 @@ tr:nth-child(even) {
 #title th {
     font-weight: 900;
 }
+.type_rare {
+    color: goldenrod;
+}
+.type_unique {
+    color: purple;
+}
+.type_set {
+    color: darkgreen;
+}

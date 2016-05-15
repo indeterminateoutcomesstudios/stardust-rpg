@@ -42,8 +42,16 @@
         </thead>
         {% for wearable in wearables %}
             <tr>
-                <td>
-                    {{ wearable.name|capfirst }}
+                <td
+                    {% if wearable.rarity == Rarity.rare %}
+                        class="type_rare"
+                    {% elif wearable.rarity == Rarity.unique %}
+                        class="type_unique"
+                    {% elif wearable.rarity == Rarity.set %}
+                        class="type_set"
+                    {% endif %}
+                >
+                    <b>{{ wearable.name|capfirst }}</b>
                     {% if wearable.is_two_handed %}
                         <br>(2-Hand)
                     {% endif %}

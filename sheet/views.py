@@ -48,7 +48,8 @@ def all_combos(request: HttpRequest) -> HttpResponse:
 @login_required
 def all_equipment(request: HttpRequest, wearables: Tuple[equipment.Wearable, ...]) -> HttpResponse:
     return render(request, 'equipment.html',
-                  context={'wearables': sorted(wearables, key=lambda wearable: wearable.price)})
+                  context={'wearables': sorted(wearables, key=lambda wearable: wearable.price),
+                           'Rarity': equipment.Rarity})
 
 
 @login_required

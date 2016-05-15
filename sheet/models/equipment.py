@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
 
 import enum
+from typing import Any
 
 import aenum
 
 from . import dice
 from . import macro
+
+
+def for_django_template(cls: Any) -> Any:
+    """See http://stackoverflow.com/a/35953630/1398841."""
+    cls.do_not_call_in_templates = True
+    return cls
 
 
 @enum.unique
@@ -37,6 +44,7 @@ class Slot(aenum.AutoNumberEnum):
     feet = ()
 
 
+@for_django_template
 class Rarity(aenum.AutoNumberEnum):
     common = ()
     rare = ()
