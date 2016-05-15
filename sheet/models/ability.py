@@ -502,13 +502,18 @@ class Ability:
                            '{{{{subheader=Ability}}}}'
                            '{{{{subheaderright={time}}}}}'
                            '{{{{subheader2={mp_cost}MP}}}}'
-                           '{{{{emote=@{{Name}} casts at @{{target|Name}}}}}}'
+                           '{{{{emote=@{{Name}} casts{target_name}}}}}'
                            '{{{{Range=[[{min_range}]]-[[{max_range}]]}}}}'
                            '{{{{Shape=[p]({shape_picture}) ({shape})}}}}'
                            '{{{{Area={area}}}}}'
                            '{{{{Duration={duration}}}}}'
                            '{{{{Effect=*{effect}*}}}}'
                            '{template_terminator}')
+
+        if self.targets_mdef:
+            target_name = ' at @{target|Name}'
+        else:
+            target_name = ''
 
         if (self.duration_unit is DurationUnit.instant or
            self.duration_unit is DurationUnit.forever):
@@ -527,6 +532,7 @@ class Ability:
                                            picture=self.picture.value,
                                            time=self.time.name,
                                            mp_cost=self.mp_cost,
+                                           target_name=target_name,
                                            min_range=self.min_range,
                                            max_range=self.max_range,
                                            template_terminator=macro.template_terminator,
