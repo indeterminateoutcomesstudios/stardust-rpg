@@ -352,7 +352,8 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
                                   attribute_name=attribute_name, attribute_value=attribute_value,
                                   attribute_position=api.AttributePosition.max)
 
-            abilities_to_set = character.unlocked_abilities + (character.weapon,)
+            abilities_to_set = (character.unlocked_abilities + character.unlocked_combos +
+                                (character.weapon,))
             for ability in abilities_to_set:
                 if not api.ability_exists(login=roll20_login, character_id=character_id,
                                           ability_name=ability.name):
