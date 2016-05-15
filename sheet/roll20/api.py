@@ -72,7 +72,7 @@ def get_attribute_id(login: Roll20Login, character_id: str, attribute_name: str)
 def set_attribute(login: Roll20Login, character_id: str, attribute_name: str,
                   attribute_value: Union[str, int], attribute_position:
                   AttributePosition=AttributePosition.current) -> None:
-    # Cast to str
+    # Cast int values to str
     attribute_value = str(attribute_value)
 
     attribute_id = get_attribute_id(login=login, character_id=character_id,
