@@ -22,6 +22,7 @@ from .roll20 import api, login
 # TODO: Show only equipable items?
 # TODO: Break views into multiple modules.
 # TODO: Switch to logging module.
+# TODO: Utility macros.
 
 
 def check_is_admin_or_owns_character(user: User, character: Character) -> None:
