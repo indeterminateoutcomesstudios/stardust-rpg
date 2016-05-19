@@ -77,32 +77,32 @@
                 <td>{{ weapon.cran }}</td>
                 <td>{{ weapon.cdam }}</td>
                 <td>{{ weapon.effect }}</td>
-                <td>{{ weapon.str }}</td>
-                <td>{{ weapon.dex }}</td>
-                <td>{{ weapon.con }}</td>
-                <td>{{ weapon.int }}</td>
-                <td>{{ weapon.wis }}</td>
-                <td>{{ weapon.cha }}</td>
-                <td>{{ weapon.ath }}</td>
-                <td>{{ weapon.ste }}</td>
-                <td>{{ weapon.fort }}</td>
-                <td>{{ weapon.apt }}</td>
-                <td>{{ weapon.per }}</td>
-                <td>{{ weapon.spe }}</td>
-                <td>{{ weapon.ap }}</td>
-                <td>{{ weapon.hp }}</td>
-                <td>{{ weapon.mp }}</td>
-                <td>{{ weapon.sp }}</td>
-                <td>{{ weapon.pdef }}</td>
-                <td>{{ weapon.mdef }}</td>
-                <td>{{ weapon.pred }}</td>
-                <td>{{ weapon.mred }}</td>
-                <td>{{ weapon.reg }}</td>
-                <td>{{ weapon.rd }}</td>
-                <td>{{ weapon.speed }}</td>
-                <td>{{ weapon.vis }}</td>
-                <td>{{ weapon.bpac }}</td>
-                <td>{{ weapon.bmac }}</td>
+                <td>{{ weapon.str|default:"" }}</td>
+                <td>{{ weapon.dex|default:"" }}</td>
+                <td>{{ weapon.con|default:"" }}</td>
+                <td>{{ weapon.int|default:"" }}</td>
+                <td>{{ weapon.wis|default:"" }}</td>
+                <td>{{ weapon.cha|default:"" }}</td>
+                <td>{{ weapon.ath|default:"" }}</td>
+                <td>{{ weapon.ste|default:"" }}</td>
+                <td>{{ weapon.fort|default:"" }}</td>
+                <td>{{ weapon.apt|default:"" }}</td>
+                <td>{{ weapon.per|default:"" }}</td>
+                <td>{{ weapon.spe|default:"" }}</td>
+                <td>{{ weapon.ap|default:"" }}</td>
+                <td>{{ weapon.hp|default:"" }}</td>
+                <td>{{ weapon.mp|default:"" }}</td>
+                <td>{{ weapon.sp|default:"" }}</td>
+                <td>{{ weapon.pdef|default:"" }}</td>
+                <td>{{ weapon.mdef|default:"" }}</td>
+                <td>{{ weapon.pred|default:"" }}</td>
+                <td>{{ weapon.mred|default:"" }}</td>
+                <td>{{ weapon.reg|default:"" }}</td>
+                <td>{{ weapon.rd|default:"" }}</td>
+                <td>{{ weapon.speed|default:"" }}</td>
+                <td>{{ weapon.vis|default:"" }}</td>
+                <td>{{ weapon.bpac|default:"" }}</td>
+                <td>{{ weapon.bmac|default:"" }}</td>
             </tr>
         {% endfor %}
     </table>
