@@ -194,11 +194,141 @@ necks = {
 
 class Chests(aenum.AutoNumberEnum):
     empty = ()
+    hopper_scale = ()
     spurclaw_scale = ()
+    griffon_hide = ()
+    hardened_griffon_hide = ()
+    bulletsteel = ()
+    ursa_hide = ()
+    hardened_ursa_hide = ()
+    lunaweave_cloth = ()
+    fitted_lunaweave_cloth = ()
+    lunasteel_robe = ()
+    omni_robe = ()
+
+    bronze_chain = ()
+    hardened_bronze_chain = ()
+    iron_chain = ()
+    hardened_iron_chain = ()
+    steel_chain = ()
+    hardened_steel_chain = ()
+    lunaweave_chain = ()
+    hardened_lunaweave_chain = ()
+    lunasteel_chain = ()
+    hardened_lunasteel_chain = ()
+    omni_chain = ()
+
+    bronze_plate = ()
+    hardened_bronze_plate = ()
+    iron_plate = ()
+    hardened_iron_plate = ()
+    steel_plate = ()
+    hardened_steel_plate = ()
+    lunaweave_plate = ()
+    hardened_lunaweave_plate = ()
+    lunasteel_plate = ()
+    hardened_lunasteel_plate = ()
+    omni_plate = ()
+
+    cursed_plate = ()
+    coral_slate = ()
+    volcanic_slate = ()
+    lunatech_chest = ()
+    lunafiber_robe = ()
 
 chests = {
+    # Light.
     Chests.empty: Chest(name=Chests.empty.name),
-    Chests.spurclaw_scale: Chest(name=Chests.spurclaw_scale.name, price=50, hp=1)
+    Chests.hopper_scale: Chest(name=Chests.hopper_scale.name, price=35, min_str=1, pdef=1,
+                               effect='+1PRED vs. Earth, +3ATH when swimming'),
+    Chests.spurclaw_scale: Chest(name=Chests.spurclaw_scale.name, price=50, hp=1),
+    Chests.griffon_hide: Chest(name=Chests.griffon_hide.name, price=200, min_str=1, pdef=1),
+    Chests.hardened_griffon_hide: Chest(name=Chests.hardened_griffon_hide.name, price=200,
+                                        min_str=1, hp=2),
+    Chests.bulletsteel: Chest(name=Chests.bulletsteel.name, price=500, min_str=2,
+                              rarity=Rarity.rare, pdef=1, pred=1, speed=-1),
+    Chests.ursa_hide: Chest(name=Chests.ursa_hide.name, price=1000, min_str=2, pdef=2),
+    Chests.hardened_ursa_hide: Chest(name=Chests.hardened_ursa_hide.name, price=1000, min_str=2,
+                                     pdef=1, hp=2),
+    Chests.lunaweave_cloth: Chest(name=Chests.lunaweave_cloth.name, price=3500, min_str=3, pdef=3,
+                                  mdef=1),
+    Chests.fitted_lunaweave_cloth: Chest(name=Chests.fitted_lunaweave_cloth.name, price=3500,
+                                         min_str=3, pdef=2, speed=0.5, mdef=1),
+    Chests.lunasteel_robe: Chest(name=Chests.lunasteel_robe.name, price=10000, min_str=4, pdef=4,
+                                 speed=1, mdef=2),
+    Chests.omni_robe: Chest(name=Chests.omni_robe.name, price=30000, min_str=5, rarity=Rarity.rare,
+                            pdef=5, speed=1, stren=1, dex=1, con=1, intel=1, wis=1, cha=1),
+
+    # Medium.
+    Chests.bronze_chain: Chest(name=Chests.bronze_chain.name, price=60, equip_type=Type.medium,
+                               pdef=1),
+    Chests.hardened_bronze_chain: Chest(name=Chests.hardened_bronze_chain.name, price=60,
+                                        equip_type=Type.medium, hp=2),
+    Chests.iron_chain: Chest(name=Chests.iron_chain.name, price=250, equip_type=Type.medium,
+                             min_str=1, pdef=2, hp=1),
+    Chests.hardened_iron_chain: Chest(name=Chests.hardened_iron_chain.name, price=250,
+                                      equip_type=Type.medium, min_str=1, pdef=1, hp=2),
+    Chests.steel_chain: Chest(name=Chests.steel_chain.name, price=1250, equip_type=Type.medium,
+                              min_str=2, pdef=3, hp=2),
+    Chests.hardened_steel_chain: Chest(name=Chests.hardened_steel_chain.name, price=1250,
+                                       equip_type=Type.medium, min_str=2, pdef=2, hp=4),
+    Chests.lunaweave_chain: Chest(name=Chests.lunaweave_chain.name, price=4000,
+                                  equip_type=Type.medium, min_str=3, pdef=4, pred=0.5, hp=3,
+                                  speed=3),
+    Chests.hardened_lunaweave_chain: Chest(name=Chests.hardened_lunaweave_chain.name, price=4000,
+                                           equip_type=Type.medium, min_str=3, pdef=3, pred=0.5,
+                                           hp=6, speed=0.5),
+    Chests.lunasteel_chain: Chest(name=Chests.lunasteel_chain.name, price=4000,
+                                  equip_type=Type.medium, min_str=4, pdef=5, pred=0.5, hp=4,
+                                  speed=0.5, mred=0.5),
+    Chests.hardened_lunasteel_chain: Chest(name=Chests.hardened_lunasteel_chain.name, price=12500,
+                                           equip_type=Type.medium, min_str=4, pdef=4, pred=0.5,
+                                           hp=8, speed=0.5, mred=0.5),
+    Chests.omni_chain: Chest(name=Chests.omni_chain.name, price=40000, equip_type=Type.medium,
+                             min_str=5, pdef=6, pred=0.5, hp=5, effect='+1 All ability modifiers'),
+
+    # Heavy.
+    Chests.bronze_plate: Chest(name=Chests.bronze_plate.name, price=75, equip_type=Type.heavy,
+                               pdef=2, hp=1, speed=-0.5),
+    Chests.hardened_bronze_plate: Chest(name=Chests.hardened_bronze_plate.name, price=75,
+                                        equip_type=Type.heavy, pdef=1, hp=2, speed=-0.5),
+    Chests.iron_plate: Chest(name=Chests.iron_plate.name, price=300, equip_type=Type.heavy,
+                             min_str=1, pdef=3, pred=0.5, hp=3, speed=-0.5),
+    Chests.hardened_iron_plate: Chest(name=Chests.hardened_iron_plate.name, price=300,
+                                      equip_type=Type.heavy, min_str=1, pdef=2, pred=0.5, hp=6,
+                                      speed=-0.5),
+    Chests.steel_plate: Chest(name=Chests.steel_plate.name, price=1500, equip_type=Type.heavy,
+                              min_str=2, pdef=3, pred=1, hp=12, speed=-0.5),
+    Chests.lunaweave_plate: Chest(name=Chests.lunaweave_plate.name, price=4750,
+                                  equip_type=Type.heavy, min_str=3, pdef=5, pred=1, hp=9,
+                                  speed=-0.5),
+    Chests.hardened_lunaweave_plate: Chest(name=Chests.hardened_lunaweave_plate.name, price=4750,
+                                           equip_type=Type.heavy, min_str=3, pdef=4, pred=1,
+                                           hp=18, speed=-0.5),
+    Chests.lunasteel_plate: Chest(name=Chests.lunasteel_plate.name, price=15000,
+                                  equip_type=Type.heavy, min_str=4, pdef=6, pred=1.5, hp=12),
+    Chests.hardened_lunasteel_plate: Chest(name=Chests.hardened_lunasteel_plate.name, price=15000,
+                                           min_str=4, pdef=5, pred=1.5, hp=24),
+    Chests.omni_plate: Chest(name=Chests.omni_plate.name, price=50000, equip_type=Type.heavy,
+                             min_str=5, pdef=7, pred=1.5, hp=15, stren=1, dex=1, con=1, intel=1,
+                             wis=1, cha=1),
+
+    # Set.
+    Chests.cursed_plate: Chest(name=Chests.cursed_plate.name, price=0, min_str=0,
+                               rarity=Rarity.set, pdef=-2, bpac=5,
+                               effect='Resist corruption 2RND'),
+    Chests.coral_slate: Chest(name=Chests.coral_slate.name, price=250, min_str=0,
+                              rarity=Rarity.set, pdef=2, hp=1, effect='+1PRED vs. Sanctum'),
+    Chests.volcanic_slate: Chest(name=Chests.volcanic_slate.name, price=950, min_str=2,
+                                 rarity=Rarity.set, pdef=3, hp=1,
+                                 effect='[Counter] Enemies who successfully melee attack take '
+                                        '1d4 Fire MDAM'),
+    Chests.lunatech_chest: Chest(name=Chests.lunatech_chest.name, price=2750, min_str=4,
+                                 rarity=Rarity.set, equip_type=Type.medium, pdef=3, speed=-1,
+                                 effect='Amethyste: Take 2StdA per RND.'),
+    Chests.lunafiber_robe: Chest(name=Chests.lunafiber_robe.name, price=3850, min_str=3,
+                                 rarity=Rarity.set, pdef=1,
+                                 effect='-1MP Cost on abilities, +1MP on REG')
 }
 
 
