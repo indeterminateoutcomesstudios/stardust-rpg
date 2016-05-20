@@ -1,5 +1,3 @@
-"""Views."""
-
 import enum
 import re
 from typing import Tuple
