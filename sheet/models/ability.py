@@ -5,8 +5,8 @@ import enum
 import aenum
 from typing import Tuple
 
-from .equipment import DamageType, Shape
 from . import macro
+from .equipment import DamageType, Shape
 
 
 @enum.unique

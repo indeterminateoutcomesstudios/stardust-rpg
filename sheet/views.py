@@ -1,3 +1,5 @@
+"""Views."""
+
 import enum
 import re
 from typing import Tuple
@@ -6,14 +8,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.forms import ValidationError
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
+from .models import classes, combos, equipment, items
+from .models.abilities import inverse_abilities
 from .models.character import Character, UnlockedAbility
 from .models.level_up import LevelUp
-from .models.abilities import inverse_abilities
-from .models import classes, combos, equipment, items
 from .roll20 import api, login
 
 # TODO: Handle exceptions in a user-friendly way.

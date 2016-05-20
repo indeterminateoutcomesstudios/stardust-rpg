@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
 import copy
-import enumfields
+from typing import Tuple
+
 from django.contrib.auth.models import User
 from django.db import models
-from typing import Tuple
+import enumfields
 
 from . import abilities
 from . import ability

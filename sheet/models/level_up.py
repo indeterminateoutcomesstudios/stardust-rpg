@@ -1,6 +1,6 @@
-import enumfields
 from django.core import validators
 from django.db import models
+import enumfields
 
 from .character import Attribute, Character
 
