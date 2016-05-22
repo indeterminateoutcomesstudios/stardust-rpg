@@ -335,10 +335,181 @@ chests = {
 class Shields(aenum.AutoNumberEnum):
     empty = ()
     bronze_buckler = ()
+    iron_buckler = ()
+    plated_iron_buckler = ()
+    steel_buckler = ()
+    plated_steel_buckler = ()
+    arachnid_shield = ()
+    mithril_shield = ()
+    lunaweave_buckler = ()
+    plated_lunaweave_buckler = ()
+    lunasteel_buckler = ()
+    plated_lunasteel_buckler = ()
+    omni_buckler = ()
+
+    bronze_kite_shield = ()
+    plated_bronze_kite_shield = ()
+    bouncer = ()
+    iron_kite_shield = ()
+    plated_iron_kite_shield = ()
+    interlocking_kite_shield = ()
+    steel_kite_shield = ()
+    plated_steel_kite_shield = ()
+    spine_shield = ()
+    lunaweave_kite_shield = ()
+    plated_lunaweave_kite_shield = ()
+    lunasteel_kite_shield = ()
+    plated_lunasteel_kite_shield = ()
+    omni_kite_shield = ()
+
+    bronze_tower_shield = ()
+    plated_bronze_tower_shield = ()
+    double_handled_shield = ()
+    iron_tower_shield = ()
+    plated_iron_tower_shield = ()
+    extendable_brace_shield = ()
+    the_two_towers = ()
+    steel_tower_shield = ()
+    plated_steel_tower_shield = ()
+    adamantine_shield = ()
+    lunaweave_tower_shield = ()
+    plated_lunaweave_tower_shield = ()
+    lunasteel_tower_shield = ()
+    plated_lunasteel_tower_shield = ()
+    omni_tower_shield = ()
+
+    cursed_shield = ()
+    coral_shield = ()
+    volcanic_shield = ()
+
 
 shields = {
+    # Light.
     Shields.empty: Shield(name=Shields.empty.name),
-    Shields.bronze_buckler: Shield(name=Shields.bronze_buckler.name, price=40, hp=1)
+    Shields.bronze_buckler: Shield(name=Shields.bronze_buckler.name, price=40, hp=1),
+    Shields.iron_buckler: Shield(name=Shields.iron_buckler.name, price=175, min_str=1, pdef=1,
+                                 hp=2),
+    Shields.plated_iron_buckler: Shield(name=Shields.plated_iron_buckler.name, price=175,
+                                        min_str=1, hp=4),
+    Shields.steel_buckler: Shield(name=Shields.steel_buckler.name, price=875, min_str=2, pdef=2,
+                                  hp=3),
+    Shields.plated_steel_buckler: Shield(name=Shields.plated_steel_buckler.name, price=875,
+                                         min_str=2, pdef=1, hp=6),
+    Shields.arachnid_shield: Shield(name=Shields.arachnid_shield.name, price=1250, min_str=2,
+                                    rarity=Rarity.unique, pdef=2,
+                                    effect='After hit with melee attack, attacker is immobilized'),
+    Shields.mithril_shield: Shield(name=Shields.mithril_shield.name, price=2650, min_str=3,
+                                   rarity=Rarity.rare, hp=1, mdef=3),
+    Shields.lunaweave_buckler: Shield(name=Shields.lunaweave_buckler.name, price=3250, min_str=3,
+                                      pdef=3, hp=4, effect='Reflect 1PDAM per ATTACK'),
+    Shields.plated_lunaweave_buckler: Shield(name=Shields.plated_lunaweave_buckler.name,
+                                             price=3250, min_str=3, pdef=2, hp=8,
+                                             effect='Reflect 1PDAM per ATTACK'),
+    Shields.lunasteel_buckler: Shield(name=Shields.lunasteel_buckler.name, price=8750, min_str=4,
+                                      pdef=4, hp=5, effect='Reflect 1 melee ATTACK per RND'),
+    Shields.plated_lunasteel_buckler: Shield(name=Shields.plated_lunasteel_buckler.name,
+                                             price=8750, min_str=4, pdef=3, hp=10,
+                                             effect='Reflect 1 melee ATTACK per RND'),
+    Shields.omni_buckler: Shield(name=Shields.omni_buckler.name, price=12500, min_str=5,
+                                 rarity=Rarity.rare, pdef=5, hp=6),
+
+    # Medium.
+    Shields.bronze_kite_shield: Shield(name=Shields.bronze_kite_shield.name, price=50, min_str=0,
+                                       equip_type=Type.medium, pdef=1, hp=1),
+    Shields.plated_bronze_kite_shield: Shield(name=Shields.plated_bronze_kite_shield.name,
+                                              price=50, min_str=0, equip_type=Type.medium, hp=2),
+    Shields.bouncer: Shield(name=Shields.bouncer.name, price=85, min_str=0,
+                            equip_type=Type.medium, rarity=Rarity.rare, hp=2,
+                            effect='When enemy fumbles a physical attack against you, damage is '
+                                   'applied to enemy'),
+    Shields.iron_kite_shield: Shield(name=Shields.iron_kite_shield.name, price=200, min_str=1,
+                                     equip_type=Type.medium, pdef=2, hp=2),
+    Shields.plated_iron_kite_shield: Shield(name=Shields.plated_iron_kite_shield.name, price=200,
+                                            equip_type=Type.medium, pdef=1, hp=4),
+    Shields.interlocking_kite_shield: Shield(name=Shields.interlocking_kite_shield.name,
+                                             price=450, min_str=1, equip_type=Type.medium,
+                                             rarity=Rarity.rare, pdef=2, hp=2,
+                                             effect='If adjacent ally is equipping Interlocking '
+                                                    'Kite Shield, +1PRED'),
+    Shields.steel_kite_shield: Shield(name=Shields.steel_kite_shield.name, price=1000, min_str=2,
+                                      pdef=3, hp=3),
+    Shields.plated_steel_kite_shield: Shield(name=Shields.plated_steel_kite_shield.name,
+                                             price=1000, min_str=2, pdef=2, hp=6),
+    Shields.spine_shield: Shield(name=Shields.spine_shield.name, price=1250, min_str=2, pdef=2,
+                                 effect='[Counter] After enemy hits melee attack, enemy takes 1d4 '
+                                        'PDAM'),
+    Shields.lunaweave_kite_shield: Shield(name=Shields.lunaweave_kite_shield.name, price=3500,
+                                          min_str=3, equip_type=Type.medium, rarity=Rarity.rare,
+                                          pdef=4, hp=4, effect='Reflect 1PDAM per attack'),
+    Shields.plated_lunaweave_kite_shield: Shield(name=Shields.plated_lunaweave_kite_shield.name,
+                                                 price=3500, min_str=3, pdef=3, hp=8,
+                                                 effect='Reflect 1PDAM per attack'),
+    Shields.lunasteel_kite_shield: Shield(name=Shields.lunasteel_kite_shield.name, price=10000,
+                                          min_str=4, equip_type=Type.medium, pdef=5, hp=5,
+                                          effect='Reflect 1 melee attack per RND'),
+    Shields.plated_lunasteel_kite_shield: Shield(name=Shields.plated_lunasteel_kite_shield.name,
+                                                 price=10000, min_str=4, equip_type=Type.medium,
+                                                 pdef=4, hp=10,
+                                                 effect='Reflect 1 melee attack per RND'),
+    Shields.omni_kite_shield: Shield(name=Shields.omni_kite_shield.name, price=18000, min_str=5,
+                                     equip_type=Type.medium, pdef=6, hp=6),
+
+    # Heavy.
+    Shields.bronze_tower_shield: Shield(name=Shields.bronze_tower_shield.name, price=75,
+                                        equip_type=Type.heavy, pdef=1, hp=3),
+    Shields.plated_bronze_tower_shield: Shield(name=Shields.plated_bronze_tower_shield.name,
+                                               price=100, equip_type=Type.heavy, hp=6),
+    Shields.double_handled_shield: Shield(name=Shields.plated_bronze_tower_shield.name, price=150,
+                                          equip_type=Type.heavy, rarity=Rarity.rare, hp=6,
+                                          effect='Can spend StdA to grant +1PRED for 1RND'),
+    Shields.iron_tower_shield: Shield(name=Shields.iron_tower_shield.name, price=250, min_str=1,
+                                      equip_type=Type.heavy, pdef=2, hp=6),
+    Shields.plated_iron_tower_shield: Shield(name=Shields.plated_iron_tower_shield.name, price=300,
+                                             min_str=1, equip_type=Type.heavy, pdef=1, hp=12),
+    Shields.extendable_brace_shield: Shield(name=Shields.extendable_brace_shield.name, price=500,
+                                            min_str=1, equip_type=Type.heavy, rarity=Rarity.rare,
+                                            pdef=2, hp=6,
+                                            effect='Shield can extend 1DIS to left and right, '
+                                                   'making it impassable to enemies'),
+    Shields.the_two_towers: Shield(name=Shields.the_two_towers.name, price=850, min_str=1,
+                                   equip_type=Type.heavy, rarity=Rarity.rare, pdef=1, hp=12,
+                                   mdef=2),
+    Shields.steel_tower_shield: Shield(name=Shields.steel_tower_shield.name, price=1250,
+                                       min_str=2, equip_type=Type.heavy, pdef=3, hp=9),
+    Shields.plated_steel_tower_shield: Shield(name=Shields.plated_steel_tower_shield.name,
+                                              price=1500, min_str=2, equip_type=Type.heavy,
+                                              pdef=2, hp=18),
+    Shields.adamantine_shield: Shield(name=Shields.adamantine_shield.name, price=1350,
+                                      min_str=2, equip_type=Type.heavy, rarity=Rarity.rare,
+                                      pdef=2, hp=6,
+                                      effect='Absorb 1MDAM into MP per magic attack'),
+    Shields.lunaweave_tower_shield: Shield(name=Shields.lunaweave_tower_shield.name, price=4000,
+                                           min_str=3, equip_type=Type.heavy, pdef=4, hp=12,
+                                           effect='Reflect 1PDAM per attack'),
+    Shields.plated_lunaweave_tower_shield: Shield(name=Shields.plated_lunaweave_tower_shield.name,
+                                                  price=4750, min_str=3, equip_type=Type.heavy,
+                                                  pdef=3, hp=24,
+                                                  effect='Reflect 1PDAM per attack'),
+    Shields.lunasteel_tower_shield: Shield(name=Shields.lunasteel_tower_shield.name, price=12500,
+                                           min_str=4, pdef=5, hp=15,
+                                           effect='Reflect 1 ATTACK per RND'),
+    Shields.plated_lunasteel_tower_shield: Shield(name=Shields.plated_lunasteel_tower_shield.name,
+                                                  price=12500, min_str=4, equip_type=Type.heavy,
+                                                  pdef=4, hp=28,
+                                                  effect='Reflect 1 ATTACK per RND'),
+    Shields.omni_tower_shield: Shield(name=Shields.omni_tower_shield.name, price=30000, min_str=5,
+                                      equip_type=Type.heavy, rarity=Rarity.rare, pdef=6, hp=18),
+
+    # Set.
+    Shields.cursed_shield: Shield(name=Shields.cursed_shield.name, price=0, min_str=0,
+                                  rarity=Rarity.set,
+                                  effect='[Counter] 2MDAM to attacker on hit, Resist corruption '
+                                         '2RND'),
+    Shields.coral_shield: Shield(name=Shields.coral_shield.name, price=225, min_str=1, hp=2,
+                                 rarity=Rarity.set, effect='Reflect 1PDAM vs. Water'),
+    Shields.volcanic_shield: Shield(name=Shields.volcanic_shield.name, price=1375, min_str=2,
+                                    rarity=Rarity.set, pdef=1, hp=3, mdef=2,
+                                    effect='Absorb 2MDAM as MP when hit with Fire Magic attack'),
 }
 
 
