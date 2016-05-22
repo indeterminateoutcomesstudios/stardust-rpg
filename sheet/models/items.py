@@ -624,10 +624,128 @@ hands = {
 class Feets(aenum.AutoNumberEnum):
     empty = ()
     nighthawke_boots = ()
+    spiked_soles = ()
+    iron_brackets = ()
+    fencing_boots = ()
+    tender_soles = ()
+    fortified_greaves = ()
+    flippers = ()
+    claw_shoes = ()
+    reflex_soles = ()
+    juggernaut_greaves = ()
+    racers = ()
+    sprinting_shoes = ()
+    trailblazers = ()
+    dodgers = ()
+    inertial_helix = ()
+    three_heroes = ()
+    lunabeam_walkers = ()
+    ocean_striders = ()
+    cloud_walkers = ()
+    gyro_heels = ()
+    earth_clamps = ()
+    whirlwind_greaves = ()
+    rebound_greaves = ()
+    skywalker_boots = ()
+    wind_boots = ()
+    topaz_slippers = ()
+    wind_striders = ()
+    flashers = ()
+    ocean_born = ()
+    mithril_boots = ()
+    grooved_soles = ()
+    cursed_greaves = ()
+    coral_greaves = ()
+    volcanic_greaves = ()
+    lunatech_boots = ()
+    lunafiber_slippers = ()
 
 feets = {
     Feets.empty: Feet(name=Feets.empty.name),
-    Feets.nighthawke_boots: Feet(name=Feets.nighthawke_boots.name, price=100, ste=3)
+    Feets.nighthawke_boots: Feet(name=Feets.nighthawke_boots.name, price=100, ste=3),
+    Feets.spiked_soles: Feet(name=Feets.spiked_soles.name, price=100, ath=3),
+    Feets.iron_brackets: Feet(name=Feets.iron_brackets.name, price=125,
+                              effect='Immune to knockback'),
+    Feets.fencing_boots: Feet(name=Feets.fencing_boots.name, price=200,
+                              effect='Enemies diagonally adjacent can be targetted as if they '
+                                     'were 1DIS away'),
+    Feets.tender_soles: Feet(name=Feets.tender_soles.name, price=200, min_str=1,
+                             effect='+6STE vs. Detect Trap'),
+    Feets.fortified_greaves: Feet(name=Feets.fortified_greaves.name, price=250, min_str=1,
+                                  equip_type=Type.heavy, effect='Ignore SPEED penalty on Chest '
+                                                                'armor'),
+    Feets.flippers: Feet(name=Feets.flippers.name, price=350, min_str=1,
+                         effect='+5ATH while swimming'),
+    Feets.claw_shoes: Feet(name=Feets.claw_shoes.name, price=350, min_str=1,
+                           effect='+5ATH while climbing'),
+    Feets.reflex_soles: Feet(name=Feets.reflex_soles.name, price=350, min_str=1,
+                             effect='Can spend 3SPEED to jump 3DIS'),
+    Feets.juggernaut_greaves: Feet(name=Feets.juggernaut_greaves.name, price=350, min_str=1,
+                                   equip_type=Type.heavy, rarity=Rarity.rare,
+                                   effect='Spending all SPEED moving in a straight line ending '
+                                          'by hitting an enemy deals 1*SPEED PDAM and knocks back '
+                                          '1DIS'),
+    Feets.racers: Feet(name=Feets.racers.name, price=375, min_str=1,
+                       effect='Spend StdA and AbA to move at +3SPEED for 1RND'),
+    Feets.sprinting_shoes: Feet(name=Feets.sprinting_shoes.name, price=400, min_str=1, speed=0.5),
+    Feets.trailblazers: Feet(name=Feets.trailblazers.name, price=450, min_str=1,
+                             rarity=Rarity.unique,
+                             effect='Activating leaves a trail of fire dealing 3MDAM to creatures '
+                                    'moving across the path for 1RND'),
+    Feets.dodgers: Feet(name=Feets.dodgers.name, price=450, min_str=1,
+                        effect='When hit with an area of effect attack, can move up to 2DIS to '
+                               'avoid the area.  If avoided, immune to effect.'),
+    Feets.inertial_helix: Feet(name=Feets.inertial_helix.name, price=450, min_str=1,
+                               effect='+3SPEED for 1RND if moving in a straight line'),
+    Feets.three_heroes: Feet(name=Feets.three_heroes.name, price=500, min_str=1,
+                             rarity=Rarity.unique,
+                             effect='+1SPEED per adjecent ally wearing Three Heroes'),
+    Feets.lunabeam_walkers: Feet(name=Feets.lunabeam_walkers.name, price=950, min_str=2,
+                                 equip_type=Type.medium, effect='Add Chest HP Bonus also to MP'),
+    Feets.ocean_striders: Feet(name=Feets.ocean_striders.name, price=1000, min_str=2,
+                               rarity=Rarity.rare, effect='Water walk at ½ SPEED'),
+    Feets.cloud_walkers: Feet(name=Feets.cloud_walkers.name, price=1000, min_str=2,
+                              rarity=Rarity.unique,
+                              effect='Feather fall: fall at a maximum SPEED of 4DIS per RND'),
+    Feets.gyro_heels: Feet(name=Feets.gyro_heels.name, price=1200, min_str=2, rarity=Rarity.unique,
+                           effect='Save up to ½ maximum SPEED from a RND to use on the next RND'),
+    Feets.earth_clamps: Feet(name=Feets.earth_clamps.name, price=1250, min_str=2,
+                             equip_type=Type.medium, rarity=Rarity.rare,
+                             effect='Not moving for during a RND grants +1PRED for 1RND'),
+    Feets.whirlwind_greaves: Feet(name=Feets.whirlwind_greaves.name, price=1250, min_str=2,
+                                  rarity=Rarity.rare,
+                                  effect='Moving 180 degrees around an enemy before ATTACKing '
+                                         'grants +2PAC on next ATTACK'),
+    Feets.rebound_greaves: Feet(name=Feets.rebound_greaves.name, price=1250, min_str=2,
+                                effect='On critical hit, +8HP and +4SPEED for 1RND'),
+    Feets.skywalker_boots: Feet(name=Feets.skywalker_boots.name, price=1300, min_str=2,
+                                effect='Walk over gaps at -2SPEED for 1RND'),
+    Feets.wind_boots: Feet(name=Feets.wind_boots.name, price=1450, min_str=2, speed=1),
+    Feets.topaz_slippers: Feet(name=Feets.topaz_slippers.name, price=1450, min_str=2,
+                               effect='+2SPEED for 1RND after consuming 2MP'),
+    Feets.wind_striders: Feet(name=Feets.wind_striders.name, price=1650, min_str=2,
+                              effect='Can spend 2MP to ignore immobilization'),
+    Feets.flashers: Feet(name=Feets.flashers.name, price=1700, min_str=2, rarity=Rarity.rare,
+                         effect='If no StdA taken, +3SPEED for 1RND'),
+    Feets.ocean_born: Feet(name=Feets.ocean_born.name, price=1850, min_str=3, rarity=Rarity.unique,
+                           equip_type=Type.medium, effect='+3HP per RND while in water'),
+    Feets.mithril_boots: Feet(name=Feets.mithril_boots.name, price=3150, min_str=3,
+                              equip_type=Type.medium, rarity=Rarity.rare,
+                              effect='After being hit by magical attack, can ignore 4 MDAM by '
+                                     'consuming 2MP'),
+    Feets.grooved_soles: Feet(name=Feets.grooved_soles.name, price=300, min_str=1,
+                              effect='Marksman only, +2SPEED while Reaper is drawn'),
+    Feets.cursed_greaves: Feet(name=Feets.cursed_greaves.name, mdef=-2, bmac=5, speed=1,
+                               rarity=Rarity.set, effect='Resist corruption 2RND'),
+    Feets.coral_greaves: Feet(name=Feets.coral_greaves.name, price=350, rarity=Rarity.set,
+                              effect='+1PDEF +2SPEED in water'),
+    Feets.volcanic_greaves: Feet(name=Feets.volcanic_greaves.name, price=650, min_str=1,
+                                 rarity=Rarity.set, hp=5, effect='Allows lava walking'),
+    Feets.lunatech_boots: Feet(name=Feets.lunatech_boots.name, price=2000, min_str=3,
+                               equip_type=Type.medium, rarity=Rarity.set, speed=2,
+                               effect='Topaz: FreeA take jump of 8DIS vertical, 5DIS horizontal'),
+    Feets.lunafiber_slippers: Feet(name=Feets.lunafiber_slippers.name, price=2250, min_str=2,
+                                   mdef=4, bmac=5),
 }
 
 
