@@ -21,6 +21,7 @@ Features
 - Show only equipable items.
 - Utility macros.
 - Set bonuses.
+- Vulnerabilities and resistances.
 
 Technical Debt
 --------------
