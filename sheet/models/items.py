@@ -516,11 +516,108 @@ shields = {
 class Hands(aenum.AutoNumberEnum):
     empty = ()
     bronze_gauntlets = ()
+    adamantine_ring = ()
+    mako_ring = ()
+    lunaweave_ring = ()
+    locking_glove = ()
+    gill_ring = ()
+    fencing_glove = ()
+    emerald_ring = ()
+    fire_ring = ()
+    iron_gauntlets = ()
+    universal_donor = ()
+    ruby_ring = ()
+    feather_glove = ()
+    reinforced_bangle = ()
+    ring_of_regen = ()
+    stone_ring = ()
+    diamond_ring = ()
+    diamond_bangles = ()
+    colossus_armlet = ()
+    ring_of_communication = ()
+    shield_bearer = ()
+    stabilizer = ()
+    steel_gauntlets = ()
+    titan_joint = ()
+    dueling_glove = ()
+    slotted_gauntlet = ()
+
+    coral_gauntlets = ()
+    volcanic_gauntlets = ()
+    lunatech_gauntlets = ()
+    obsidian_gauntlets = ()
+    lunafiber_glove = ()
+
 
 hands = {
     Hands.empty: Hand(name=Hands.empty.name),
-    Hands.bronze_gauntlets: Hand(
-        name=Hands.bronze_gauntlets.name, price=50, pdef=1, is_two_handed=True)
+    Hands.bronze_gauntlets: Hand(name=Hands.bronze_gauntlets.name, price=50, pdef=1,
+                                 is_two_handed=True, equip_type=Type.medium),
+    Hands.adamantine_ring: Hand(name=Hands.adamantine_ring.name, price=60, mdef=1),
+    Hands.mako_ring: Hand(name=Hands.mako_ring.name, price=60, mp=2),
+    Hands.lunaweave_ring: Hand(name=Hands.lunaweave_ring.name, price=75, bmac=1),
+    Hands.locking_glove: Hand(name=Hands.locking_glove.name, price=200, min_cha=1,
+                              effect='+3ATH when grappling'),
+    Hands.gill_ring: Hand(name=Hands.gill_ring.name, price=250, min_cha=1, rarity=Rarity.rare,
+                          effect='Water breathing'),
+    Hands.fencing_glove: Hand(name=Hands.fencing_glove.name, price=250, min_cha=1, bpac=1),
+    Hands.emerald_ring: Hand(name=Hands.emerald_ring.name, price=350, min_cha=1, hp=5),
+    Hands.fire_ring: Hand(name=Hands.fire_ring.name, price=375, min_cha=1, effect='FireRES'),
+    Hands.iron_gauntlets: Hand(name=Hands.iron_gauntlets.name, price=450, min_cha=2,
+                               equip_type=Type.medium, is_two_handed=True, pdef=2),
+    Hands.universal_donor: Hand(name=Hands.universal_donor.name, price=750, min_cha=2,
+                                rarity=Rarity.unique, rd=1, mp=2),
+    Hands.ruby_ring: Hand(name=Hands.ruby_ring.name, price=1000, min_cha=2, pdef=-1,
+                          effect='+1PDAM on melee weapon in hand'),
+    Hands.feather_glove: Hand(name=Hands.feather_glove.name, price=1100, min_cha=2,
+                              effect='+3Range on Ranged Weapons'),
+    Hands.reinforced_bangle: Hand(name=Hands.reinforced_bangle.name, price=1150, min_cha=2,
+                                  equip_type=Type.medium, effect='-1 Min DEX on hand'),
+    Hands.ring_of_regen: Hand(name=Hands.ring_of_regen.name, price=1200, min_cha=2,
+                              effect='+1HP per 2RND in combat'),
+    Hands.stone_ring: Hand(name=Hands.stone_ring.name, price=1200, min_cha=2, pred=1, speed=-0.5),
+    Hands.diamond_ring: Hand(name=Hands.diamond_ring.name, price=1200, min_cha=2, bpac=6,
+                             effect='-2PDAM'),
+    Hands.diamond_bangles: Hand(name=Hands.diamond_bangles.name, price=1350, min_cha=2,
+                                equip_type=Type.heavy, is_two_handed=True,
+                                effect='Reflect 1PDAM when hit with melee'),
+    Hands.colossus_armlet: Hand(name=Hands.colossus_armlet.name, price=1400, min_cha=2,
+                                equip_type=Type.heavy, rarity=Rarity.rare, is_two_handed=True,
+                                bpac=2,
+                                effect='Can equip one handed melee weapon as if 2-handed for '
+                                       '+1d4 PDAM'),
+    Hands.ring_of_communication: Hand(name=Hands.ring_of_communication.name, price=1450,
+                                      min_cha=2, rarity=Rarity.rare,
+                                      effect='Ring allow wearers of a pair to communicate at a '
+                                             'distance'),
+    Hands.shield_bearer: Hand(name=Hands.shield_bearer.name, price=1500, equip_type=Type.medium,
+                              is_two_handed=True, effect='Allows use of heavy shields'),
+    Hands.stabilizer: Hand(name=Hands.stabilizer.name, price=1500, min_cha=2,
+                           equip_type=Type.medium, effect='+1CRAN on firearm in hand'),
+    Hands.steel_gauntlets: Hand(name=Hands.steel_gauntlets.name, price=1500, min_cha=2,
+                                equip_type=Type.heavy, is_two_handed=True, pdef=3),
+    Hands.titan_joint: Hand(name=Hands.titan_joint.name, price=1650, min_cha=2,
+                            equip_type=Type.heavy, rarity=Rarity.rare, is_two_handed=True,
+                            effect='Can equip 2-handed weapon and a shield'),
+    Hands.dueling_glove: Hand(name=Hands.dueling_glove.name, price=200, min_cha=1, reg=1,
+                              effect='Marksman only'),
+    Hands.slotted_gauntlet: Hand(name=Hands.slotted_gauntlet.name, price=650, min_cha=2,
+                                 effect='Marksman only, +1ATTACK on one handed firearm'),
+
+    # Set.
+    Hands.coral_gauntlets: Hand(name=Hands.coral_gauntlets.name, price=400, min_cha=1,
+                                rarity=Rarity.set, is_two_handed=True, effect='+1MRED vs. Water'),
+    Hands.volcanic_gauntlets: Hand(name=Hands.volcanic_gauntlets.name, price=725, min_cha=1,
+                                   rarity=Rarity.set, is_two_handed=True,
+                                   effect='Add 1d4 Fire MDAM to melee and ranged attacks'),
+    Hands.lunatech_gauntlets: Hand(name=Hands.lunatech_gauntlets.name, price=1850, min_cha=2,
+                                   equip_type=Type.medium, rarity=Rarity.set, is_two_handed=True,
+                                   mdef=4,
+                                   effect='Sapphire: successful MDEF reflects magic attack'),
+    Hands.obsidian_gauntlets: Hand(name=Hands.obsidian_gauntlets.name, price=1850, min_cha=2,
+                                   rarity=Rarity.set, is_two_handed=True, mdef=5, bmac=-8),
+    Hands.lunafiber_glove: Hand(name=Hands.lunafiber_glove.name, price=2500, min_cha=2,
+                                rarity=Rarity.set, reg=5, mp=10, ap=1),
 }
 
 
