@@ -22,6 +22,8 @@ Features
 - Utility macros.
 - Set bonuses.
 - Vulnerabilities and resistances.
+- Inventory
+- Shops
 
 Technical Debt
 --------------
