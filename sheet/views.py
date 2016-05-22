@@ -16,14 +16,6 @@ from .models.character import Character, UnlockedAbility
 from .models.level_up import LevelUp
 from .roll20 import api, login
 
-# TODO: Handle exceptions in a user-friendly way.
-# TODO: Color equipment based on rarity.
-# TODO: Show price/sell price.
-# TODO: Show only equipable items?
-# TODO: Break views into multiple modules.
-# TODO: Switch to logging module.
-# TODO: Utility macros.
-
 
 def check_is_admin_or_owns_character(user: User, character: Character) -> None:
     if not (user.username == 'admin' or character.user.username == user.username):

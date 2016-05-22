@@ -9,3 +9,21 @@ options for players and encourage teamwork.
 
 Special thanks to `@theandrewdavis <https://github.com/theandrewdavis>`_ for his analysis of the
 roll20.net API.
+
+TODO
+====
+
+Features
+--------
+
+- Handle exceptions in a user-friendly way.
+- Show buy/sell price.
+- Show only equipable items.
+- Utility macros.
+- Set bonuses.
+
+Technical Debt
+--------------
+
+- Break views into multiple modules.
+- Switch to logging module.
