@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from ..ability import Ability, AbilityPicture, DurationUnit, Time
 from ..class_type import Class
 from ..equipment import DamageType, Shape
