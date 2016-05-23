@@ -49,8 +49,8 @@
                 <td>{{ class.speed }}</td>
                 <td>{{ class.pdef }}</td>
                 <td>{{ class.mdef }}</td>
-                <td>{{ class.pred }}</td>
-                <td>{{ class.mred }}</td>
+                <td>{{ class.pred|default:"" }}</td>
+                <td>{{ class.mred|default:"" }}</td>
                 <td>{{ class.reg }}</td>
                 <td>{{ class.vis }}</td>
                 <td>{{ class.pac }}</td>
@@ -62,18 +62,18 @@
                 <td>{{ class.per }}</td>
                 <td>{{ class.spe }}</td>
                 <td>{{ class.starting_ap }}</td>
-                <td>{{ class.use_melee_light }}</td>
-                <td>{{ class.use_melee_medium }}</td>
-                <td>{{ class.use_melee_heavy }}</td>
-                <td>{{ class.use_ranged_light }}</td>
-                <td>{{ class.use_ranged_medium }}</td>
-                <td>{{ class.use_ranged_heavy }}</td>
-                <td>{{ class.use_magic_light }}</td>
-                <td>{{ class.use_magic_medium }}</td>
-                <td>{{ class.use_magic_heavy }}</td>
-                <td>{{ class.use_light_armor }}</td>
-                <td>{{ class.use_medium_armor }}</td>
-                <td>{{ class.use_heavy_armor }}</td>
+                <td>{{ class.use_melee_light|default:"" }}</td>
+                <td>{{ class.use_melee_medium|default:"" }}</td>
+                <td>{{ class.use_melee_heavy|default:"" }}</td>
+                <td>{{ class.use_ranged_light|default:"" }}</td>
+                <td>{{ class.use_ranged_medium|default:"" }}</td>
+                <td>{{ class.use_ranged_heavy|default:"" }}</td>
+                <td>{{ class.use_magic_light|default:"" }}</td>
+                <td>{{ class.use_magic_medium|default:"" }}</td>
+                <td>{{ class.use_magic_heavy|default:"" }}</td>
+                <td>{{ class.use_light_armor|default:"" }}</td>
+                <td>{{ class.use_medium_armor|default:"" }}</td>
+                <td>{{ class.use_heavy_armor|default:"" }}</td>
             </tr>
         {% endfor %}
     </table>

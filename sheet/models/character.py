@@ -22,7 +22,7 @@ class Character(models.Model):
     name = models.CharField(max_length=25)
     roll20_campaign_id = models.PositiveIntegerField(default=0)
 
-    class_enum = enumfields.EnumIntegerField(classes.Classes, default=classes.Classes.empty)
+    class_enum = enumfields.EnumIntegerField(classes.Classes, default=classes.Classes.paladin)
     utility_enum = enumfields.EnumIntegerField(items.Utilities, default=items.Utilities.empty)
     head_enum = enumfields.EnumIntegerField(items.Heads, default=items.Heads.empty)
     neck_enum = enumfields.EnumIntegerField(items.Necks, default=items.Necks.empty)
