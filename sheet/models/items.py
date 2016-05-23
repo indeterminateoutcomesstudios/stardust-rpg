@@ -236,7 +236,7 @@ necks = {
                                  effect='When ability crits, it consumes no MP and grants +4MP'),
     Necks.heavy_quiver: Neck(name=Necks.heavy_quiver.name, price=400, min_wis=1,
                              effect='Allows use of heavy range weapons'),
-    Necks.equalizer: Neck(name=Necks.equalizer.name, price=400, min_wis=1, reg=-18,
+    Necks.equalizer: Neck(name=Necks.equalizer.name, price=400, min_wis=1, reg=18,
                           rarity=Rarity.rare, effect='RD is d1'),
     Necks.ammo_sash: Neck(name=Necks.ammo_sash.name, price=650, min_wis=2,
                           effect='+1ATTACK on Reaper, Marksman only'),
