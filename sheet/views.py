@@ -53,7 +53,8 @@ def all_weapons(request: HttpRequest, weapons: Tuple[equipment.Weapon, ...]) -> 
 @login_required
 def all_items(request: HttpRequest, item_set: Tuple[equipment.Item, ...]) -> HttpResponse:
     return render(request, 'items.html',
-                  context={'items': sorted(item_set, key=lambda item: item.price)})
+                  context={'items': sorted(item_set, key=lambda item: item.price),
+                           'Rarity': equipment.Rarity})
 
 
 @login_required

@@ -10,12 +10,104 @@ from .equipment import (Chest, DamageType, Feet, Hand, Head, Item, Neck, Rarity,
 class Utilities(aenum.AutoNumberEnum):
     empty = ()
     candle = ()
+    rope_kit = ()
+    crowbar = ()
+    hammer = ()
+    pickaxe = ()
+    tinder_box = ()
+    fishing_net = ()
+    harp = ()
+    mandolin = ()
+    bugle = ()
+    snorkle = ()
+    torch = ()
+    medical_kit = ()
+    grappling_hook = ()
+    gliding_suit = ()
+    communication_orb = ()
+    repelling_gear = ()
+    bow_cable = ()
+    magnifying_glass = ()
+    binoculars = ()
+    lantern = ()
+    spider_gloves = ()
+    flare_gun = ()
+    grappling_gun = ()
+    detect_realm = ()
+    dwarven_crystal_lantern = ()
+    mirrored_lunacite_lantern = ()
 
 utilities = {
     Utilities.empty: Utility(name=Utilities.empty.name),
-    Utilities.candle: Utility(
-        name=Utilities.candle.name, price=15, vis=1,
-        effect='8APT to light, burns 5RND when dropped')
+    Utilities.candle: Utility(name=Utilities.candle.name, price=15, vis=1,
+                              effect='8APT to light, burns 5RND when dropped'),
+    Utilities.rope_kit: Utility(name=Utilities.rope_kit.name, price=25,
+                                effect='Kit of various size/length rope'),
+    Utilities.crowbar: Utility(name=Utilities.crowbar.name, price=50,
+                               effect='Used to wedge open tight corners'),
+    Utilities.hammer: Utility(name=Utilities.hammer.name, price=50,
+                              effect='Can drive in small objects'),
+    Utilities.pickaxe: Utility(name=Utilities.pickaxe.name, price=50,
+                               effect='Can dig into the ground for ore or other objects'),
+    Utilities.tinder_box: Utility(name=Utilities.tinder_box.name, price=55,
+                                  effect='Starts a fire'),
+    Utilities.fishing_net: Utility(name=Utilities.fishing_net.name, price=65,
+                                   effect='Catches medium fish'),
+    Utilities.harp: Utility(name=Utilities.harp.name, price=150,
+                            effect='A soothing musical instrument'),
+    Utilities.mandolin: Utility(name=Utilities.mandolin.name, price=150,
+                                effect='A cheerful musical instrument'),
+    Utilities.bugle: Utility(name=Utilities.bugle.name, price=150,
+                             effect='A rousing musical instrument'),
+    Utilities.snorkle: Utility(name=Utilities.snorkle.name, price=160,
+                               effect='Allows breathing while face is submerged'),
+    Utilities.torch: Utility(name=Utilities.torch.name, price=200, min_int=1, vis=2,
+                             effect='10APT to light, Burns 10RND when dropped'),
+    Utilities.medical_kit: Utility(name=Utilities.medical_kit.name, price=250, min_int=1,
+                                   effect="13APT revives adjacent KO'd ally to 1HP"),
+    Utilities.grappling_hook: Utility(name=Utilities.grappling_hook.name, price=350, min_int=1,
+                                      effect='Iron grapple attached to 8DIS of rope.  Can be '
+                                             'thrown to attach to fixtures'),
+    Utilities.gliding_suit: Utility(name=Utilities.gliding_suit.name, price=450, min_int=1,
+                                    equip_type=Type.medium, rarity=Rarity.rare,
+                                    effect='Allows gliding flight'),
+    Utilities.communication_orb: Utility(name=Utilities.communication_orb.name, price=500,
+                                         min_int=1, rarity=Rarity.rare,
+                                         effect='Paried with another communication orb, allows '
+                                                'communication at great distance'),
+    Utilities.repelling_gear: Utility(name=Utilities.repelling_gear.name, price=500, min_int=1,
+                                      effect='Allows repelling down a wall or cliff'),
+    Utilities.bow_cable: Utility(name=Utilities.bow_cable.name, price=500, min_int=1,
+                                 equip_type=Type.medium,
+                                 effect='Crossbow fires a cable up to 12DIS which attaches to '
+                                        'surface.  Cable can be ziplined on.'),
+    Utilities.magnifying_glass: Utility(name=Utilities.magnifying_glass.name, price=600, min_int=1,
+                                        effect='Magnifies vision of small objects'),
+    Utilities.binoculars: Utility(name=Utilities.binoculars.name, price=650, min_int=1,
+                                  effect='Allows PER at long distances'),
+    Utilities.lantern: Utility(name=Utilities.lantern.name, price=1000, min_int=2, vis=3,
+                               effect='12APT to light, Burns 20RND when dropped'),
+    Utilities.spider_gloves: Utility(name=Utilities.spider_gloves.name, price=1000, min_int=2,
+                                     rarity=Rarity.rare,
+                                     effect='Wall Climbing, -4SPEED while wall climbing'),
+    Utilities.flare_gun: Utility(name=Utilities.flare_gun.name, price=1250, min_int=2,
+                                 rarity=Rarity.rare,
+                                 effect='Fires a bright red flare, +3VIS on target at 10 Range '
+                                        'for 2RND'),
+    Utilities.grappling_gun: Utility(name=Utilities.grappling_gun.name, price=2250, min_int=3,
+                                     effect='Attaches to surface at range 12DIS and pulls Med '
+                                            'creature to it'),
+    Utilities.detect_realm: Utility(name=Utilities.detect_realm.name, price=2250, min_int=3,
+                                    rarity=Rarity.rare,
+                                    effect='Configured to detect creatures of a certain realm '
+                                           'within 12DIS'),
+    Utilities.dwarven_crystal_lantern: Utility(name=Utilities.dwarven_crystal_lantern.name,
+                                               price=2250, min_int=3, rarity=Rarity.rare, vis=4,
+                                               effect='14APT to light, Burns 50RND when dropped'),
+    Utilities.mirrored_lunacite_lantern: Utility(name=Utilities.mirrored_lunacite_lantern.name,
+                                                 price=8500, min_int=4, rarity=Rarity.rare, vis=5,
+                                                 effect='16APT to light, Burns forever when '
+                                                        'dropped')
 }
 
 
@@ -773,9 +865,36 @@ weapons = {
 class Items(aenum.AutoNumberEnum):
     empty = ()
     disguise_kit = ()
+    apprentice_disguise_kit = ()
+    master_disguise_kit = ()
+    lock_pick = ()
+    apprentice_lock_pick = ()
+    master_lock_pick = ()
+    bronze_manacles = ()
+    iron_manacles = ()
+    steel_manacles = ()
 
 items = {
     Items.empty: Item(name=Items.empty.name, effect=''),
     Items.disguise_kit: Item(name=Items.disguise_kit.name, price=5,
-                             effect='Allows Disguise Self check')
+                             effect='Allows Disguise Self check'),
+    Items.apprentice_disguise_kit: Item(
+        name=Items.apprentice_disguise_kit.name, price=50,
+        effect='Allows Disguise Self check, +3STE, Magically alters sound of voice (15STE), Can '
+               'disguise gender (18STE)'),
+    Items.master_disguise_kit: Item(
+        name=Items.master_disguise_kit.name, price=500, rarity=Rarity.rare,
+        effect='Allows Disguise Self check, +5STE, Magically alters sound of voice (15STE), Can '
+               'change race (18STE), Appear exactly like a target individual (20STE)'),
+    Items.lock_pick: Item(name=Items.lock_pick.name, price=5, effect='Allows Open Lock'),
+    Items.apprentice_lock_pick: Item(name=Items.apprentice_lock_pick.name, price=50,
+                                     effect='Allows Open Lock, +3STE'),
+    Items.master_lock_pick: Item(name=Items.master_lock_pick.name, price=500, rarity=Rarity.rare,
+                                 effect='Allows Open Lock, Automatic success'),
+    Items.bronze_manacles: Item(name=Items.bronze_manacles.name, price=50,
+                                effect='15STE to escape, 1 attempt per hr'),
+    Items.iron_manacles: Item(name=Items.iron_manacles.name, price=500,
+                              effect='20STE & 20APT to escape, 1 attempt per hr'),
+    Items.steel_manacles: Item(name=Items.steel_manacles.name, price=2000, rarity=Rarity.rare,
+                               effect='20STE, 20APT & 20ATH to escape, 1 attempt per hr'),
 }

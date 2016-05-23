@@ -14,7 +14,15 @@
         </thead>
         {% for item in items %}
             <tr>
-                <td>
+                <td
+                    {% if item.rarity == Rarity.rare %}
+                        class="type_rare"
+                    {% elif item.rarity == Rarity.unique %}
+                        class="type_unique"
+                    {% elif item.rarity == Rarity.set %}
+                        class="type_set"
+                    {% endif %}
+                >
                     {{ item.name|capfirst }}
                     {% if item.is_two_handed %}
                         <br>(2-Hand)
