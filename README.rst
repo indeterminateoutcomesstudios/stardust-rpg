@@ -24,6 +24,7 @@ Features
 - Vulnerabilities and resistances.
 - Inventory
 - Shops
+- Parties
 
 Technical Debt
 --------------
