@@ -25,7 +25,7 @@ reflect_3 = Ability(
 telekinesis_1 = Ability(
     name='Telekinesis I', picture=AbilityPicture.huton,
     mp_cost=1, attacks=1, mdam='1d6',
-    damage_type=DamageType.force, targets_mdef=True, max_range=8,
+    damage_type=DamageType.force, targets_mdef=True, max_range='8',
     target_area='Object < 20lb (Small)',
     effect='Can telekinetically interact/(move 4DIS) object (or self) doing MDAM if thrown '
            'against a surface'
@@ -34,7 +34,7 @@ telekinesis_1 = Ability(
 telekinesis_2 = Ability(
     name='Telekinesis II', picture=AbilityPicture.huton,
     mp_cost=2, attacks=1, mdam='1d8 + WIS',
-    damage_type=DamageType.force, targets_mdef=True, max_range=8,
+    damage_type=DamageType.force, targets_mdef=True, max_range='8',
     target_area='Object < 200lb (Medium)',
     effect='Can telekinetically interact/(move 6DIS) object (or self) doing MDAM if thrown '
            'against a surface',
@@ -44,7 +44,7 @@ telekinesis_2 = Ability(
 telekinesis_3 = Ability(
     name='Telekinesis III', picture=AbilityPicture.huton,
     mp_cost=4, attacks=1, mdam='1d12 + 2*WIS',
-    damage_type=DamageType.force, targets_mdef=True, max_range=8,
+    damage_type=DamageType.force, targets_mdef=True, max_range='8',
     target_area='Object < 800lb (Large)',
     effect='Can telekinetically interact/(move 8DIS) object (or self) doing MDAM if thrown '
            'against a surface',

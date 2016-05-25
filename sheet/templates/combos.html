@@ -56,16 +56,16 @@
                 </td>
                 <td>{{ combo.mp_cost }}</td>
                 <td>{{ combo.effect }}</td>
-                <td>{{ combo.attacks }}</td>
+                <td>{{ combo.attacks|default:"" }}</td>
                 <td>
                         {% if combo.targets_mdef %}
                             {{ character.bmac|add:combo.mac }}
                         {% endif %}
                     </td>
-                <td>{{ combo.pdam }}</td>
-                <td>{{ combo.mdam }}</td>
+                <td>{{ combo.pdam|default:"" }}</td>
+                <td>{{ combo.mdam|default:""  }}</td>
                 <td>{{ combo.damage_type.name|capfirst }}</td>
-                <td>{{ combo.targets_mdef }}</td>
+                <td>{{ combo.targets_mdef|default:""  }}</td>
                 <td>{{ combo.time.name|capfirst }}</td>
                 <td>{{ combo.min_range }}</td>
                 <td>{{ combo.max_range }}</td>
@@ -74,7 +74,7 @@
                     {{ combo.shape.name|capfirst }}
                 </td>
                 <td>{{ combo.target_area }}</td>
-                <td>{{ combo.duration }}</td>
+                <td>{{ combo.duration|default:""  }}</td>
                 <td>{{ combo.duration_unit.name|capfirst }}</td>
             </tr>
         {% endfor %}

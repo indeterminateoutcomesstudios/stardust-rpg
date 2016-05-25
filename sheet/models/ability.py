@@ -468,8 +468,8 @@ class Ability:
                  duration: str=None, duration_unit: DurationUnit=DurationUnit.instant,
                  prerequisites: Tuple['Ability', ...]=(), damage_type: DamageType=None, effect='',
                  attacks: int=0, pdam: str=None, mdam: str=None,
-                 targets_mdef: bool=False, time: Time=Time.ab_a, min_range: int=0,
-                 max_range: int=0, shape: Shape=Shape.point):
+                 targets_mdef: bool=False, time: Time=Time.ab_a, min_range: str='0',
+                 max_range: str='0', shape: Shape=Shape.point):
         self.name = name
         self.picture = picture
         self.damage_type = damage_type
