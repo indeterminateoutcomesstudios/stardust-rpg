@@ -1,7 +1,7 @@
 import enum
+from typing import Tuple
 
 import aenum
-from typing import Tuple
 
 from . import macro
 from .equipment import DamageType, Shape
@@ -500,6 +500,7 @@ class Ability:
                            '{{{{subheader=Ability}}}}'
                            '{{{{subheaderright={time}}}}}'
                            '{{{{subheader2={mp_cost}MP}}}}'
+                           '{attacks}'
                            '{{{{emote=@{{Name}} casts{target_name}}}}}'
                            '{{{{Range=[[{min_range}]]-[[{max_range}]]}}}}'
                            '{{{{Shape=[p]({shape_picture}) ({shape})}}}}'
@@ -507,6 +508,12 @@ class Ability:
                            '{{{{Duration={duration}}}}}'
                            '{{{{Effect=*{effect}*}}}}'
                            '{template_terminator}')
+
+        if self.attacks > 1:
+            attacks = ('{{{{Attacks=[[?{{Attacks (max={attacks})|'
+                       '{attacks}}}]]/{attacks}}}}}').format(attacks=self.attacks)
+        else:
+            attacks = ''
 
         if self.targets_mdef:
             target_name = ' at @{target|Name}'
@@ -529,6 +536,7 @@ class Ability:
                                            ability_name=self.name,
                                            picture=self.picture.value,
                                            time=self.time.name,
+                                           attacks=attacks,
                                            mp_cost=self.mp_cost,
                                            target_name=target_name,
                                            min_range=self.min_range,
