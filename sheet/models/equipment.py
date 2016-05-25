@@ -853,11 +853,18 @@ class Weapon(Wearable):
                            '{{{{title=**{name}** [p]({picture})}}}}'
                            '{{{{subheader={type} {style} Weapon}}}}'
                            '{{{{subheaderright={time}}}}}'
+                           '{attacks}'
                            '{{{{emote=@{{Name}} attacks @{{target|Name}}}}}}'
                            '{{{{Crit=[[{cdam}]]CDAM}}}}'
                            '{{{{Range=[[{min_range}]]-[[{max_range}]]}}}}'
                            '{{{{Shape=[p]({shape_picture}) ({shape})}}}}'
                            '{template_terminator}')
+
+        if self.attacks > 1:
+            attacks = ('{{{{Attacks=[[?{{Attacks (max={attacks})|'
+                       '{attacks}}}]]/{attacks}}}}}').format(attacks=self.attacks)
+        else:
+            attacks = ''
 
         macro_str = common_template.format(template_tag=macro.template_tag,
                                            color=macro.MacroColorTag.green.value,
@@ -866,6 +873,7 @@ class Weapon(Wearable):
                                            type=self.type.name,
                                            style=self.style.name,
                                            time='StdA',
+                                           attacks=attacks,
                                            cdam=self.cdam,
                                            min_range=self.min_range,
                                            max_range=self.max_range,
