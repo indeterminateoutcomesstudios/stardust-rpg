@@ -819,7 +819,7 @@ class Weapon(Wearable):
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
                  is_two_handed: bool=False,
-                 min_range: int=1, max_range: int=1, shape: Shape=Shape.point,
+                 min_range: int=1, max_range: int=1, shape: Shape=Shape.melee_point,
                  attacks: int=1,
                  pac: int=0, damage_type: DamageType=DamageType.slashing,
                  cran: int=0, cdam: int=0,
