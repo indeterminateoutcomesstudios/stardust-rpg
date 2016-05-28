@@ -25,6 +25,7 @@ Features
 - Inventory
 - Shops
 - Parties
+- Weapon / Ability DPS
 
 Technical Debt
 --------------
