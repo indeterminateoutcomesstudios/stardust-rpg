@@ -842,21 +842,888 @@ feets = {
 class Weapons(aenum.AutoNumberEnum):
     empty = ()
     fists = ()
+
+    bronze_wrist_blades = ()
+    iron_wrist_blades = ()
+    volcanic_wrist_blades = ()
+    reflex_claw = ()
+    steel_wrist_blades = ()
+    lunaweave_wrist_blades = ()
+    lunasteel_wrist_blades = ()
+
+    bronze_rapier = ()
+    iron_rapier = ()
+    steel_rapier = ()
+    cursed_rapier = ()
+    lunaweave_rapier = ()
+    lunasteel_rapier = ()
+
+    bronze_knuckle = ()
+    iron_knuckle = ()
+    steel_knuckle = ()
+    lunaweave_knuckle = ()
+    lunasteel_knuckle = ()
+
+    bronze_chain_whip = ()
+    iron_chain_whip = ()
+    steel_chain_whip = ()
+    lunaweave_chain_whip = ()
+    lunasteel_chain_whip = ()
+
+    bronze_claws = ()
+    iron_claws = ()
+    dragon_claws = ()
+    steel_claws = ()
+    lunaweave_claws = ()
+    lunasteel_claws = ()
+
+    bronze_longsword = ()
+    iron_longsword = ()
+    moonbeam = ()
+    steel_longsword = ()
+    lunaweave_longsword = ()
+    lunasteel_longsword = ()
+
+    bronze_broadsword = ()
+    iron_broadsword = ()
+    braveheart = ()
+    steel_broadsword = ()
+    lunaweave_broadsword = ()
+    lunasteel_broadsword = ()
+
+    bronze_double_bladed_spear = ()
+    iron_double_bladed_spear = ()
+    savior = ()
+    steel_double_bladed_spear = ()
+    lunaweave_double_bladed_spear = ()
+    lunasteel_double_bladed_spear = ()
+
+    bronze_lance = ()
+    iron_lance = ()
+    ashers_pride = ()
+    steel_lance = ()
+    lunaweave_lance = ()
+    lunasteel_lance = ()
+
+    bronze_hammer = ()
+    iron_hammer = ()
+    steel_hammer = ()
+    lunaweave_hammer = ()
+    lunasteel_hammer = ()
+
+    bronze_flail = ()
+    iron_flail = ()
+    steel_flail = ()
+    lunaweave_flail = ()
+    lunasteel_flail = ()
+
+    bronze_war_axe = ()
+    iron_war_axe = ()
+    harbinger = ()
+    steel_war_axe = ()
+    lunaweave_war_axe = ()
+    lunasteel_war_axe = ()
+
+    bronze_great_sword = ()
+    iron_great_sword = ()
+    vengeant = ()
+    leave_n_cleave = ()
+    steel_great_sword = ()
+    obsidian_blade = ()
+    lunaweave_great_sword = ()
+    lunasteel_great_sword = ()
+
     bronze_shuriken = ()
+    iron_shuriken = ()
+    volcanic_shuriken = ()
+    nightwind = ()
+    steel_shuriken = ()
+    lunaweave_shuriken = ()
+    lunasteel_shuriken = ()
+
+    bronze_longbow = ()
+    iron_longbow = ()
+    volcanic_longbow = ()
+    steel_longbow = ()
+    lunaweave_longbow = ()
+    lunasteel_longbow = ()
+
+    bronze_ternate_crossbow = ()
+    iron_ternate_crossbow = ()
+    steel_ternate_crossbow = ()
+    lunaweave_ternate_crossbow = ()
+    lunasteel_ternate_crossbow = ()
+
+    bronze_compound_bow = ()
+    iron_compound_bow = ()
+    avenger = ()
+    steel_compound_bow = ()
+    lunaweave_compound_bow = ()
+    lunasteel_compound_bow = ()
+
+    bronze_wand = ()
+    iron_wand = ()
+    steel_wand = ()
+    pandoras_kiss = ()
+    lunaweave_wand = ()
+    lunasteel_wand = ()
+
+    bronze_staff = ()
+    iron_staff = ()
+    volcanic_staff = ()
+    thunder_staff = ()
+    coral_staff = ()
+    steel_staff = ()
+    lunaweave_staff = ()
+    lunasteel_staff = ()
+
+    pistol = ()
+    pistol_mark_2 = ()
+    pistol_mark_3 = ()
+    lunaweave_pistol = ()
+
+    rifle = ()
+    rifle_mark_2 = ()
+    rifle_mark_2_scoped = ()
+    rifle_mark_3 = ()
+    rifle_mark_3_scoped = ()
+    lunaweave_rifle = ()
+
+    shotgun = ()
+    shotgun_mark_2 = ()
+    shotgun_mark_3 = ()
+    lunaweave_shotgun = ()
+
 
 weapons = {
     Weapons.empty: Weapon(name=Weapons.empty.name, picture=WeaponPicture.hands, style=Style.melee),
     Weapons.fists: Weapon(
         name=Weapons.fists.name, picture=WeaponPicture.hands,
         style=Style.melee, is_two_handed=True,
-        shape=Shape.melee_point,
         pdam=DiceFormula.from_str('d4'), damage_type=DamageType.bludgeoning),
+
+    Weapons.bronze_wrist_blades: Weapon(
+        name=Weapons.bronze_wrist_blades.name, price=40, picture=WeaponPicture.pink_wristblades,
+        style=Style.melee, is_two_handed=True,
+        attacks=2, pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.slashing,
+        cdam=3),
+    Weapons.iron_wrist_blades: Weapon(
+        name=Weapons.iron_wrist_blades.name, price=175, picture=WeaponPicture.pink_wristblades,
+        style=Style.melee, is_two_handed=True, min_dex=1,
+        attacks=2, pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.slashing,
+        cdam=4),
+    Weapons.volcanic_wrist_blades: Weapon(
+        name=Weapons.volcanic_wrist_blades.name, price=450, picture=WeaponPicture.grey_wristblades,
+        style=Style.melee, is_two_handed=True, min_dex=1, rarity=Rarity.set,
+        attacks=2, pdam=DiceFormula.from_str('1d8'), mdam=DiceFormula.from_str('1d2'),
+        damage_type=DamageType.slashing, cdam=4,
+        effect='1 Fire MDAM per RND for 4RND'),
+    Weapons.reflex_claw: Weapon(
+        name=Weapons.iron_wrist_blades.name, price=550, picture=WeaponPicture.grey_wristblades,
+        style=Style.melee, is_two_handed=True, min_dex=2, rarity=Rarity.unique,
+        attacks=1, pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.slashing,
+        cdam=3,
+        effect='Take 1 attack on each enemy in range during MovA. On hit, +1SPEED for current '
+               'RND'),
+    Weapons.steel_wrist_blades: Weapon(
+        name=Weapons.steel_wrist_blades.name, price=875, picture=WeaponPicture.grey_wristblades,
+        style=Style.melee, is_two_handed=True, min_dex=2,
+        attacks=3, pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.slashing,
+        cdam=3),
+    Weapons.lunaweave_wrist_blades: Weapon(
+        name=Weapons.lunaweave_wrist_blades.name, price=3250,
+        picture=WeaponPicture.grey_wristblades,
+        style=Style.melee, is_two_handed=True, min_dex=3,
+        attacks=3, pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.slashing,
+        cdam=4),
+    Weapons.lunasteel_wrist_blades: Weapon(
+        name=Weapons.lunasteel_wrist_blades.name, price=8750,
+        picture=WeaponPicture.grey_wristblades,
+        style=Style.melee, is_two_handed=True, min_dex=3,
+        attacks=3, pdam=DiceFormula.from_str('1d10'), damage_type=DamageType.slashing,
+        cdam=5),
+
+    Weapons.bronze_rapier: Weapon(
+        name=Weapons.bronze_rapier.name, price=40, picture=WeaponPicture.gold_rapier,
+        style=Style.melee, shape=Shape.line_2, max_range=2,
+        attacks=2, pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.piercing,
+        cdam=3),
+    Weapons.iron_rapier: Weapon(
+        name=Weapons.iron_rapier.name, price=175, picture=WeaponPicture.grey_rapier,
+        style=Style.melee, shape=Shape.line_2, min_dex=1, max_range=2,
+        attacks=2, pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.piercing,
+        cdam=4),
+    Weapons.steel_rapier: Weapon(
+        name=Weapons.steel_rapier.name, price=875, picture=WeaponPicture.grey_rapier,
+        style=Style.melee, shape=Shape.line_2, min_dex=2, max_range=2,
+        attacks=2, pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.piercing,
+        cdam=6),
+    Weapons.cursed_rapier: Weapon(
+        name=Weapons.cursed_rapier.name, price=0, picture=WeaponPicture.black_sword,
+        style=Style.melee, shape=Shape.line_2, min_dex=0, max_range=2, rarity=Rarity.unique,
+        attacks=2, pdam=DiceFormula.from_str('1d12 + 1d4'), damage_type=DamageType.piercing,
+        cdam=8, effect='+1MP on hit, -1HP per hit, 20FOR to unequip'),
+    Weapons.lunaweave_rapier: Weapon(
+        name=Weapons.lunaweave_rapier.name, price=3250, picture=WeaponPicture.dark_blue_sword,
+        style=Style.melee, shape=Shape.line_2, min_dex=3, max_range=2,
+        attacks=2, pdam=DiceFormula.from_str('1d12 + 1d4'), damage_type=DamageType.piercing,
+        cdam=8),
+    Weapons.lunasteel_rapier: Weapon(
+        name=Weapons.lunasteel_rapier.name, price=8750, picture=WeaponPicture.crystal_sword,
+        style=Style.melee, shape=Shape.line_2, min_dex=4, max_range=2,
+        attacks=2, pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.piercing,
+        cdam=10),
+
+    Weapons.bronze_knuckle: Weapon(
+        name=Weapons.bronze_knuckle.name, price=40, picture=WeaponPicture.orange_gauntlets,
+        style=Style.melee,
+        pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.bludgeoning,
+        pac=2, pdef=1, effect='On crit: Stun 1RND'),
+    Weapons.iron_knuckle: Weapon(
+        name=Weapons.iron_knuckle.name, price=175, picture=WeaponPicture.grey_gauntlets,
+        style=Style.melee, min_dex=1,
+        pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.bludgeoning,
+        pac=2, pdef=1, effect='On crit: Stun 1RND'),
+    Weapons.steel_knuckle: Weapon(
+        name=Weapons.steel_knuckle.name, price=875, picture=WeaponPicture.blue_gauntlets,
+        style=Style.melee, min_dex=2,
+        pdam=DiceFormula.from_str('2d12'), damage_type=DamageType.bludgeoning,
+        pac=2, pdef=2, effect='On crit: Stun 1RND'),
+    Weapons.lunaweave_knuckle: Weapon(
+        name=Weapons.lunaweave_knuckle.name, price=3250, picture=WeaponPicture.yellow_gauntlets,
+        style=Style.melee, min_dex=3,
+        pdam=DiceFormula.from_str('2d12 + 1d6'), damage_type=DamageType.bludgeoning,
+        pac=2, bmac=2, pdef=2, effect='On crit: Stun 2RND'),
+    Weapons.lunasteel_knuckle: Weapon(
+        name=Weapons.lunasteel_knuckle.name, price=8750, picture=WeaponPicture.green_gauntlets,
+        style=Style.melee, min_dex=4,
+        pdam=DiceFormula.from_str('3d12'), damage_type=DamageType.bludgeoning,
+        pac=2, bmac=2, pdef=3, mdef=2, effect='On crit: Stun 2RND'),
+
+    Weapons.bronze_chain_whip: Weapon(
+        name=Weapons.bronze_chain_whip.name, price=50, picture=WeaponPicture.brown_whip,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.halo,
+        pdam=DiceFormula.from_str('1d10'), damage_type=DamageType.slashing, cdam=10),
+    Weapons.iron_chain_whip: Weapon(
+        name=Weapons.iron_chain_whip.name, price=200, picture=WeaponPicture.grey_whip,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.halo, min_dex=1,
+        attacks=2, pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.slashing, cdam=8),
+    Weapons.steel_chain_whip: Weapon(
+        name=Weapons.steel_chain_whip.name, price=1000, picture=WeaponPicture.grey_whip,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.halo, min_dex=2,
+        attacks=3, pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.slashing, cdam=8),
+    Weapons.lunaweave_chain_whip: Weapon(
+        name=Weapons.lunaweave_chain_whip.name, price=3500, picture=WeaponPicture.yellow_whip,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.halo, min_dex=3,
+        attacks=3, pdam=DiceFormula.from_str('1d10'), damage_type=DamageType.slashing, cdam=10),
+    Weapons.lunasteel_chain_whip: Weapon(
+        name=Weapons.lunasteel_chain_whip.name, price=10000, picture=WeaponPicture.green_whip,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.halo, min_dex=4,
+        attacks=3, pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.slashing, cdam=10),
+
+    Weapons.bronze_claws: Weapon(
+        name=Weapons.bronze_claws.name, price=50, picture=WeaponPicture.brown_claws,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_multi_point,
+        is_two_handed=True, attacks=2, pdef=1,
+        pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.slashing, cdam=6),
+    Weapons.iron_claws: Weapon(
+        name=Weapons.iron_claws.name, price=200, picture=WeaponPicture.grey_claws,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_multi_point, min_dex=1,
+        is_two_handed=True, attacks=2, pdef=1,
+        pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.slashing, cdam=8),
+    Weapons.dragon_claws: Weapon(
+        name=Weapons.dragon_claws.name, price=650, picture=WeaponPicture.red_claws,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_multi_point, min_dex=1,
+        rarity=Rarity.unique,
+        is_two_handed=True, attacks=2, pdef=1,
+        pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.slashing, cdam=8,
+        effect='+1HP per hit'),
+    Weapons.steel_claws: Weapon(
+        name=Weapons.steel_claws.name, price=1000, picture=WeaponPicture.blue_claws,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_multi_point, min_dex=2,
+        is_two_handed=True, attacks=2, pdef=2,
+        pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.slashing, cdam=12),
+    Weapons.lunaweave_claws: Weapon(
+        name=Weapons.lunaweave_claws.name, price=3500, picture=WeaponPicture.silver_claws,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_multi_point, min_dex=3,
+        is_two_handed=True, attacks=2, pdef=2,
+        pdam=DiceFormula.from_str('1d12 + 1d4'), damage_type=DamageType.slashing, cdam=16),
+    Weapons.lunasteel_claws: Weapon(
+        name=Weapons.lunasteel_claws.name, price=10000, picture=WeaponPicture.silver_claws_3,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_multi_point, min_dex=4,
+        is_two_handed=True, attacks=2, pdef=3,
+        pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.slashing, cdam=20),
+
+    Weapons.bronze_longsword: Weapon(
+        name=Weapons.bronze_longsword.name, price=50, picture=WeaponPicture.gold_longsword,
+        style=Style.melee, equip_type=Type.medium, pac=2,
+        pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.slashing, cdam=12),
+    Weapons.iron_longsword: Weapon(
+        name=Weapons.iron_longsword.name, price=200, picture=WeaponPicture.grey_longsword,
+        style=Style.melee, equip_type=Type.medium, min_dex=1, pac=2,
+        pdam=DiceFormula.from_str('1d12 + 1d6'), damage_type=DamageType.slashing, cdam=18),
+    Weapons.moonbeam: Weapon(
+        name=Weapons.moonbeam.name, price=550, picture=WeaponPicture.glow_sword,
+        style=Style.melee, equip_type=Type.medium, min_dex=1, pac=2,
+        rarity=Rarity.unique,
+        pdam=DiceFormula.from_str('1d12 + 1d6'), damage_type=DamageType.slashing, cdam=18,
+        effect='On kill, +4MP'),
+    Weapons.steel_longsword: Weapon(
+        name=Weapons.steel_longsword.name, price=1000, picture=WeaponPicture.grey_longsword,
+        style=Style.melee, equip_type=Type.medium, min_dex=2, pac=2,
+        pdam=DiceFormula.from_str('2d12'), damage_type=DamageType.slashing, cdam=24),
+    Weapons.lunaweave_longsword: Weapon(
+        name=Weapons.lunaweave_longsword.name, price=3500, picture=WeaponPicture.blue_longsword,
+        style=Style.melee, equip_type=Type.medium, min_dex=2, pac=2,
+        pdam=DiceFormula.from_str('3d12'), damage_type=DamageType.slashing, cdam=36),
+    Weapons.lunasteel_longsword: Weapon(
+        name=Weapons.lunasteel_longsword.name, price=10000,
+        picture=WeaponPicture.crystal_longsword,
+        style=Style.melee, equip_type=Type.medium, min_dex=2, pac=2,
+        pdam=DiceFormula.from_str('4d12'), damage_type=DamageType.slashing, cdam=48),
+
+    Weapons.bronze_broadsword: Weapon(
+        name=Weapons.bronze_broadsword.name, price=50, picture=WeaponPicture.orange_broadsword,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_line_2,
+        pdam=DiceFormula.from_str('1d10'), damage_type=DamageType.slashing, cdam=10),
+    Weapons.iron_broadsword: Weapon(
+        name=Weapons.iron_broadsword.name, price=200, picture=WeaponPicture.grey_broadsword,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_line_2, min_dex=1,
+        pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.slashing, cdam=14),
+    Weapons.braveheart: Weapon(
+        name=Weapons.braveheart.name, price=450, picture=WeaponPicture.pink_broadsword,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_line_2, min_dex=1,
+        rarity=Rarity.unique,
+        pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.slashing, cdam=14,
+        effect='If wielder below 50% maximum HP, +3PDAM'),
+    Weapons.steel_broadsword: Weapon(
+        name=Weapons.steel_broadsword.name, price=1000, picture=WeaponPicture.black_broadsword,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_line_2, min_dex=2,
+        pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.slashing, cdam=20),
+    Weapons.lunaweave_broadsword: Weapon(
+        name=Weapons.lunaweave_broadsword.name, price=2500,
+        picture=WeaponPicture.yellow_broadsword,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_line_2, min_dex=3,
+        pdam=DiceFormula.from_str('3d10'), damage_type=DamageType.slashing, cdam=30),
+    Weapons.lunasteel_broadsword: Weapon(
+        name=Weapons.lunasteel_broadsword.name, price=10000,
+        picture=WeaponPicture.green_broadsword, is_two_handed=True,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x, min_dex=4,
+        pdam=DiceFormula.from_str('4d10'), damage_type=DamageType.slashing, cdam=40),
+
+    Weapons.bronze_double_bladed_spear: Weapon(
+        name=Weapons.bronze_double_bladed_spear.name, price=50,
+        picture=WeaponPicture.white_two_handed_spear,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
+        min_range=0, max_range=0, is_two_handed=True,
+        pdam=DiceFormula.from_str('1d10'), damage_type=DamageType.slashing, cdam=10,
+        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK'),
+    Weapons.iron_double_bladed_spear: Weapon(
+        name=Weapons.iron_double_bladed_spear.name, price=200,
+        picture=WeaponPicture.white_two_handed_spear, min_dex=1,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
+        min_range=0, max_range=0, is_two_handed=True,
+        pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.slashing, cdam=14,
+        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK'),
+    Weapons.savior: Weapon(
+        name=Weapons.savior.name, price=450,
+        picture=WeaponPicture.white_two_handed_spear, min_dex=1,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
+        min_range=0, max_range=0, is_two_handed=True, rarity=Rarity.unique,
+        pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.slashing, cdam=14,
+        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK, '
+               'Adjecent allies gains +1PRED'),
+    Weapons.steel_double_bladed_spear: Weapon(
+        name=Weapons.steel_double_bladed_spear.name, price=1000,
+        picture=WeaponPicture.white_two_handed_spear, min_dex=2,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
+        min_range=0, max_range=0, is_two_handed=True,
+        pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.slashing, cdam=20,
+        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK'),
+    Weapons.lunaweave_double_bladed_spear: Weapon(
+        name=Weapons.lunaweave_double_bladed_spear.name, price=3500,
+        picture=WeaponPicture.white_two_handed_spear, min_dex=3,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
+        min_range=0, max_range=0, is_two_handed=True,
+        pdam=DiceFormula.from_str('3d10'), damage_type=DamageType.slashing, cdam=30,
+        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK'),
+    Weapons.lunasteel_double_bladed_spear: Weapon(
+        name=Weapons.lunasteel_double_bladed_spear.name, price=10000,
+        picture=WeaponPicture.white_two_handed_spear, min_dex=4,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
+        min_range=0, max_range=0, is_two_handed=True,
+        pdam=DiceFormula.from_str('4d10'), damage_type=DamageType.slashing, cdam=40,
+        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK'),
+
+    Weapons.bronze_lance: Weapon(
+        name=Weapons.bronze_lance.name, price=50, picture=WeaponPicture.gold_spear,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.line_3,
+        min_range=1, max_range=3, is_two_handed=True,
+        pdam=DiceFormula.from_str('1d10'), damage_type=DamageType.piercing, cdam=10),
+    Weapons.iron_lance: Weapon(
+        name=Weapons.iron_lance.name, price=200, picture=WeaponPicture.grey_spear,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.line_3,
+        min_range=1, max_range=3, is_two_handed=True, min_dex=1,
+        pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.piercing, cdam=14),
+    Weapons.ashers_pride: Weapon(
+        name=Weapons.ashers_pride.name, price=200, picture=WeaponPicture.dark_purple_spear,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.line_3, rarity=Rarity.unique,
+        min_range=1, max_range=3, is_two_handed=True, min_dex=1,
+        pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.piercing, cdam=14,
+        effect='Extended max range.'),
+    Weapons.steel_lance: Weapon(
+        name=Weapons.iron_lance.name, price=1000, picture=WeaponPicture.grey_spear,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.line_3,
+        min_range=1, max_range=3, is_two_handed=True, min_dex=2,
+        pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.piercing, cdam=20),
+    Weapons.lunaweave_lance: Weapon(
+        name=Weapons.lunaweave_lance.name, price=3500, picture=WeaponPicture.blue_spear,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.line_3,
+        min_range=1, max_range=3, is_two_handed=True, min_dex=3,
+        pdam=DiceFormula.from_str('3d10'), damage_type=DamageType.piercing, cdam=30),
+    Weapons.lunasteel_lance: Weapon(
+        name=Weapons.lunasteel_lance.name, price=10000, picture=WeaponPicture.rainbow_spear,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.line_3,
+        min_range=1, max_range=3, is_two_handed=True, min_dex=4,
+        pdam=DiceFormula.from_str('4d10'), damage_type=DamageType.piercing, cdam=40),
+
+    Weapons.bronze_hammer: Weapon(
+        name=Weapons.bronze_hammer.name, price=75, picture=WeaponPicture.orange_hammer,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.t,
+        min_range=1, max_range=2, is_two_handed=True,
+        pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.bludgeoning, cdam=14),
+    Weapons.iron_hammer: Weapon(
+        name=Weapons.iron_hammer.name, price=250, picture=WeaponPicture.red_hammer,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.t,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=1,
+        pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.bludgeoning, cdam=20),
+    Weapons.steel_hammer: Weapon(
+        name=Weapons.steel_hammer.name, price=1250, picture=WeaponPicture.black_war_hammer,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.t,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=2,
+        pdam=DiceFormula.from_str('2d10 + 2d4'), damage_type=DamageType.bludgeoning, cdam=28),
+    Weapons.lunaweave_hammer: Weapon(
+        name=Weapons.lunaweave_hammer.name, price=4000, picture=WeaponPicture.blue_hammer,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.t,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=3,
+        pdam=DiceFormula.from_str('4d10'), damage_type=DamageType.bludgeoning, cdam=40),
+    Weapons.lunasteel_hammer: Weapon(
+        name=Weapons.lunasteel_hammer.name, price=12500, picture=WeaponPicture.dark_blue_hammer,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.t,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=4,
+        pdam=DiceFormula.from_str('3d20'), damage_type=DamageType.bludgeoning, cdam=60),
+
+    Weapons.bronze_flail: Weapon(
+        name=Weapons.bronze_flail.name, price=75, picture=WeaponPicture.red_flail,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.y,
+        min_range=1, max_range=2, is_two_handed=True,
+        pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.bludgeoning, cdam=14),
+    Weapons.iron_flail: Weapon(
+        name=Weapons.iron_flail.name, price=250, picture=WeaponPicture.brown_flail,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.y,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=1,
+        pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.bludgeoning, cdam=20),
+    Weapons.steel_flail: Weapon(
+        name=Weapons.steel_flail.name, price=1250, picture=WeaponPicture.grey_flail,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.y,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=2,
+        pdam=DiceFormula.from_str('2d10 + 2d4'), damage_type=DamageType.bludgeoning, cdam=28),
+    Weapons.lunaweave_flail: Weapon(
+        name=Weapons.lunaweave_flail.name, price=4000, picture=WeaponPicture.blue_flail,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.y,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=3,
+        pdam=DiceFormula.from_str('4d10'), damage_type=DamageType.bludgeoning, cdam=40),
+    Weapons.lunasteel_flail: Weapon(
+        name=Weapons.lunasteel_flail.name, price=12500, picture=WeaponPicture.yellow_flail,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.y,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=4,
+        pdam=DiceFormula.from_str('3d20'), damage_type=DamageType.bludgeoning, cdam=60),
+
+    Weapons.bronze_war_axe: Weapon(
+        name=Weapons.bronze_war_axe.name, price=75, picture=WeaponPicture.orange_great_axe,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.side_line_3,
+        min_range=1, max_range=2, is_two_handed=True,
+        pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.bludgeoning, cdam=14),
+    Weapons.iron_war_axe: Weapon(
+        name=Weapons.iron_war_axe.name, price=250, picture=WeaponPicture.black_great_axe,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.side_line_3,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=1,
+        pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.bludgeoning, cdam=20),
+    Weapons.harbinger: Weapon(
+        name=Weapons.harbinger.name, price=1250, picture=WeaponPicture.purple_great_axe,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.side_line_3,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=1, rarity=Rarity.unique,
+        pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.bludgeoning, cdam=20,
+        effect='If attack KOs enemy, may perform another physical attack'),
+    Weapons.steel_war_axe: Weapon(
+        name=Weapons.steel_war_axe.name, price=1250, picture=WeaponPicture.dark_purple_great_axe,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.side_line_3,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=2,
+        pdam=DiceFormula.from_str('2d10 + 2d4'), damage_type=DamageType.bludgeoning, cdam=28),
+    Weapons.lunaweave_war_axe: Weapon(
+        name=Weapons.lunaweave_war_axe.name, price=4000, picture=WeaponPicture.dark_blue_great_axe,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.side_line_3,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=3,
+        pdam=DiceFormula.from_str('4d10'), damage_type=DamageType.bludgeoning, cdam=40),
+    Weapons.lunasteel_war_axe: Weapon(
+        name=Weapons.lunasteel_war_axe.name, price=12500, picture=WeaponPicture.blue_great_axe,
+        style=Style.melee, equip_type=Type.heavy, shape=Shape.side_line_3,
+        min_range=1, max_range=2, is_two_handed=True, min_dex=4,
+        pdam=DiceFormula.from_str('3d20'), damage_type=DamageType.bludgeoning, cdam=60),
+
+    Weapons.bronze_great_sword: Weapon(
+        name=Weapons.bronze_great_sword.name, price=75, picture=WeaponPicture.orange_royal_sword,
+        style=Style.melee, equip_type=Type.heavy, pac=2,
+        pdam=DiceFormula.from_str('1d12 + 1d8'), damage_type=DamageType.slashing, cdam=20),
+    Weapons.iron_great_sword: Weapon(
+        name=Weapons.iron_great_sword.name, price=250, picture=WeaponPicture.grey_royal_sword,
+        style=Style.melee, equip_type=Type.heavy, min_dex=1, pac=2,
+        pdam=DiceFormula.from_str('2d12 + 1d4'), damage_type=DamageType.bludgeoning, cdam=28),
+    Weapons.vengeant: Weapon(
+        name=Weapons.vengeant.name, price=1000, picture=WeaponPicture.flame_royal_sword,
+        style=Style.melee, equip_type=Type.heavy, min_dex=1, pac=3, rarity=Rarity.unique,
+        pdam=DiceFormula.from_str('2d12 + 1d4'), damage_type=DamageType.slashing, cdam=28,
+        effect='Add ½ PDAM taken during the previous RND to weapon ATTACK'),
+    Weapons.leave_n_cleave: Weapon(
+        name=Weapons.leave_n_cleave.name, price=1000, picture=WeaponPicture.red_tooth_royal_sword,
+        style=Style.melee, equip_type=Type.heavy, min_dex=1, pac=3, rarity=Rarity.unique,
+        shape=Shape.side_line_2,
+        pdam=DiceFormula.from_str('2d12 + 1d4'), damage_type=DamageType.slashing, cdam=28,
+        effect='Extended AOE'),
+    Weapons.steel_great_sword: Weapon(
+        name=Weapons.steel_great_sword.name, price=1250, picture=WeaponPicture.black_royal_sword,
+        style=Style.melee, equip_type=Type.heavy, min_dex=2, pac=2,
+        pdam=DiceFormula.from_str('2d20'), damage_type=DamageType.slashing, cdam=40),
+    Weapons.obsidian_blade: Weapon(
+        name=Weapons.obsidian_blade.name, price=1550, picture=WeaponPicture.dark_tooth_royal_sword,
+        style=Style.melee, equip_type=Type.heavy, min_dex=2, pac=2, mp=-10,
+        pdam=DiceFormula.from_str('2d20'), damage_type=DamageType.slashing, cdam=40,
+        effect='On hit enemy is silenced'),
+    Weapons.lunaweave_great_sword: Weapon(
+        name=Weapons.lunaweave_great_sword.name, price=4000,
+        picture=WeaponPicture.blue_royal_sword,
+        style=Style.melee, equip_type=Type.heavy, min_dex=3, pac=2,
+        pdam=DiceFormula.from_str('2d20 + 1d12'), damage_type=DamageType.slashing, cdam=52),
+    Weapons.lunasteel_great_sword: Weapon(
+        name=Weapons.lunasteel_great_sword.name, price=12500,
+        picture=WeaponPicture.rainbow_royal_sword,
+        style=Style.melee, equip_type=Type.heavy, min_dex=4, pac=2,
+        pdam=DiceFormula.from_str('3d20 + 1d8'), damage_type=DamageType.slashing, cdam=68),
+
     Weapons.bronze_shuriken: Weapon(
         name=Weapons.bronze_shuriken.name, price=40, picture=WeaponPicture.grey_shuriken,
         style=Style.ranged, is_two_handed=True,
         min_range=1, max_range=6, shape=Shape.range_point,
-        attacks=2, pac=0, pdam=DiceFormula.from_str('d4'), damage_type=DamageType.piercing,
-        cran=0, cdam=2)
+        attacks=2, pdam=DiceFormula.from_str('d4'), damage_type=DamageType.piercing,
+        cdam=2),
+    Weapons.iron_shuriken: Weapon(
+        name=Weapons.iron_shuriken.name, price=175, picture=WeaponPicture.grey_shuriken,
+        style=Style.ranged, is_two_handed=True, min_dex=1,
+        min_range=1, max_range=7, shape=Shape.range_point,
+        attacks=3, pdam=DiceFormula.from_str('d4'), damage_type=DamageType.piercing,
+        cdam=2),
+    Weapons.volcanic_shuriken: Weapon(
+        name=Weapons.volcanic_shuriken.name, price=450, picture=WeaponPicture.red_shuriken,
+        style=Style.ranged, is_two_handed=True, min_dex=2, rarity=Rarity.set,
+        min_range=1, max_range=7, shape=Shape.range_point,
+        attacks=3, pdam=DiceFormula.from_str('d4'), damage_type=DamageType.fire,
+        cdam=2, effect='1 Fire MDAM per RND for 4RND'),
+    Weapons.nightwind: Weapon(
+        name=Weapons.nightwind.name, price=650, picture=WeaponPicture.orange_boomerang,
+        style=Style.ranged, is_two_handed=True, min_dex=2, rarity=Rarity.unique,
+        min_range=1, max_range=7, shape=Shape.range_point,
+        attacks=3, pdam=DiceFormula.from_str('1'), damage_type=DamageType.piercing,
+        cdam=0, effect='Causes sleep for 1RND'),
+    Weapons.steel_shuriken: Weapon(
+        name=Weapons.steel_shuriken.name, price=875, picture=WeaponPicture.grey_shuriken,
+        style=Style.ranged, is_two_handed=True, min_dex=2,
+        min_range=1, max_range=8, shape=Shape.range_point,
+        attacks=3, pdam=DiceFormula.from_str('d6'), damage_type=DamageType.piercing,
+        cdam=3),
+    Weapons.lunaweave_shuriken: Weapon(
+        name=Weapons.lunaweave_shuriken.name, price=3250, picture=WeaponPicture.grey_shuriken,
+        style=Style.ranged, is_two_handed=True, min_dex=3,
+        min_range=1, max_range=9, shape=Shape.range_point,
+        attacks=3, pdam=DiceFormula.from_str('d8'), damage_type=DamageType.piercing,
+        cdam=4),
+    Weapons.lunasteel_shuriken: Weapon(
+        name=Weapons.lunasteel_shuriken.name, price=10000, picture=WeaponPicture.grey_shuriken,
+        style=Style.ranged, is_two_handed=True, min_dex=4,
+        min_range=1, max_range=10, shape=Shape.range_point,
+        attacks=3, pdam=DiceFormula.from_str('d12'), damage_type=DamageType.piercing,
+        cdam=6),
+
+    Weapons.bronze_longbow: Weapon(
+        name=Weapons.bronze_longbow.name, price=50, picture=WeaponPicture.brown_bow,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True,
+        min_range=2, max_range=12, shape=Shape.range_point,
+        attacks=1, pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.piercing,
+        cdam=8),
+    Weapons.iron_longbow: Weapon(
+        name=Weapons.iron_longbow.name, price=200, picture=WeaponPicture.white_bow,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True,
+        min_range=2, max_range=13, shape=Shape.range_point, min_dex=1,
+        attacks=1, pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.piercing,
+        cdam=12),
+    Weapons.volcanic_longbow: Weapon(
+        name=Weapons.volcanic_longbow.name, price=850, picture=WeaponPicture.red_feather_bow,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True,
+        min_range=2, max_range=13, shape=Shape.range_point, min_dex=2, rarity=Rarity.unique,
+        attacks=2, pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.fire,
+        cdam=12, effect='[[1d4]] Fire MDAM on 1RAD'),
+    Weapons.steel_longbow: Weapon(
+        name=Weapons.steel_longbow.name, price=1000, picture=WeaponPicture.white_bow,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True,
+        min_range=2, max_range=14, shape=Shape.range_point, min_dex=2,
+        attacks=2, pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.piercing,
+        cdam=12),
+    Weapons.lunaweave_longbow: Weapon(
+        name=Weapons.lunaweave_longbow.name, price=3500, picture=WeaponPicture.blue_bow,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True,
+        min_range=2, max_range=15, shape=Shape.range_point, min_dex=3,
+        attacks=2, pdam=DiceFormula.from_str('1d12 + 1d4'), damage_type=DamageType.piercing,
+        cdam=16),
+    Weapons.lunasteel_longbow: Weapon(
+        name=Weapons.lunasteel_longbow.name, price=10000, picture=WeaponPicture.orange_bow,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True,
+        min_range=2, max_range=16, shape=Shape.range_point, min_dex=4,
+        attacks=3, pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.piercing,
+        cdam=14),
+
+    Weapons.bronze_ternate_crossbow: Weapon(
+        name=Weapons.bronze_ternate_crossbow.name, price=75, picture=WeaponPicture.bronze_crossbow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True,
+        min_range=3, max_range=10, shape=Shape.range_multi_point, pac=1,
+        attacks=1, pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.piercing,
+        cdam=8),
+    Weapons.iron_ternate_crossbow: Weapon(
+        name=Weapons.iron_ternate_crossbow.name, price=250, picture=WeaponPicture.grey_crossbow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True, min_dex=1,
+        min_range=3, max_range=11, shape=Shape.range_multi_point, pac=1,
+        attacks=1, pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.piercing,
+        cdam=12),
+    Weapons.steel_ternate_crossbow: Weapon(
+        name=Weapons.steel_ternate_crossbow.name, price=1250, picture=WeaponPicture.grey_crossbow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True, min_dex=2,
+        min_range=3, max_range=12, shape=Shape.range_multi_point, pac=1,
+        attacks=2, pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.piercing,
+        cdam=12),
+    Weapons.lunaweave_ternate_crossbow: Weapon(
+        name=Weapons.lunaweave_ternate_crossbow.name, price=4000,
+        picture=WeaponPicture.diamond_crossbow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True, min_dex=3,
+        min_range=3, max_range=13, shape=Shape.range_multi_point, pac=1,
+        attacks=2, pdam=DiceFormula.from_str('1d12 + 1d4'), damage_type=DamageType.piercing,
+        cdam=16),
+    Weapons.lunasteel_ternate_crossbow: Weapon(
+        name=Weapons.lunasteel_ternate_crossbow.name, price=12500,
+        picture=WeaponPicture.gem_crossbow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True, min_dex=4,
+        min_range=3, max_range=14, shape=Shape.range_multi_point, pac=1,
+        attacks=3, pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.piercing,
+        cdam=14),
+
+    Weapons.bronze_compound_bow: Weapon(
+        name=Weapons.bronze_compound_bow.name, price=75, picture=WeaponPicture.brown_bow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True,
+        min_range=3, max_range=13, shape=Shape.range_point, pac=1,
+        attacks=1, pdam=DiceFormula.from_str('1d10'), damage_type=DamageType.piercing,
+        cdam=10),
+    Weapons.iron_compound_bow: Weapon(
+        name=Weapons.iron_compound_bow.name, price=250, picture=WeaponPicture.white_bow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True,
+        min_range=3, max_range=14, shape=Shape.range_point, pac=1, min_dex=1,
+        attacks=1, pdam=DiceFormula.from_str('1d12 + 1d4'), damage_type=DamageType.piercing,
+        cdam=10),
+    Weapons.avenger: Weapon(
+        name=Weapons.avenger.name, price=550, picture=WeaponPicture.pink_bow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True, rarity=Rarity.unique,
+        min_range=3, max_range=14, shape=Shape.range_point, pac=2, min_dex=1,
+        attacks=1, pdam=DiceFormula.from_str('1d12 + 1d4'), damage_type=DamageType.piercing,
+        cdam=10, effect='+3PDAM against enemies who physically or magically hit ally last RND'),
+    Weapons.steel_compound_bow: Weapon(
+        name=Weapons.steel_compound_bow.name, price=1250, picture=WeaponPicture.white_bow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True,
+        min_range=3, max_range=15, shape=Shape.range_point, pac=1, min_dex=2,
+        attacks=2, pdam=DiceFormula.from_str('1d12 + 1d4'), damage_type=DamageType.piercing,
+        cdam=14),
+    Weapons.lunaweave_compound_bow: Weapon(
+        name=Weapons.lunaweave_compound_bow.name, price=4000, picture=WeaponPicture.blue_bow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True,
+        min_range=3, max_range=16, shape=Shape.range_point, pac=1, min_dex=3,
+        attacks=2, pdam=DiceFormula.from_str('1d12 + 1d10'), damage_type=DamageType.piercing,
+        cdam=20),
+    Weapons.lunasteel_compound_bow: Weapon(
+        name=Weapons.lunasteel_compound_bow.name, price=12500, picture=WeaponPicture.orange_bow,
+        style=Style.ranged, equip_type=Type.heavy, is_two_handed=True,
+        min_range=3, max_range=17, shape=Shape.range_point, pac=1, min_dex=4,
+        attacks=3, pdam=DiceFormula.from_str('1d20'), damage_type=DamageType.piercing,
+        cdam=20),
+
+    Weapons.bronze_wand: Weapon(
+        name=Weapons.bronze_wand.name, price=40, picture=WeaponPicture.orange_rod,
+        style=Style.magic, min_range=1, max_range=6, shape=Shape.range_point, mdef=1, vis=1,
+        attacks=2, pdam=DiceFormula.from_str('1d4'), damage_type=DamageType.force,
+        cdam=2),
+    Weapons.iron_wand: Weapon(
+        name=Weapons.iron_wand.name, price=175, picture=WeaponPicture.red_rod, min_dex=1,
+        style=Style.magic, min_range=1, max_range=6, shape=Shape.range_point, mdef=1, bmac=1,
+        vis=1,
+        attacks=2, pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.force,
+        cdam=3),
+    Weapons.steel_wand: Weapon(
+        name=Weapons.steel_wand.name, price=875, picture=WeaponPicture.blue_rod, min_dex=2,
+        style=Style.magic, min_range=1, max_range=7, shape=Shape.range_point, mdef=2, bmac=2,
+        vis=1,
+        attacks=2, pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.force,
+        cdam=4),
+    # Pandoras Kiss.
+    Weapons.lunaweave_wand: Weapon(
+        name=Weapons.lunaweave_wand.name, price=3250, picture=WeaponPicture.purple_rod, min_dex=3,
+        style=Style.magic, min_range=1, max_range=7, shape=Shape.range_point, mdef=2, bmac=2,
+        reg=2, vis=1,
+        attacks=2, pdam=DiceFormula.from_str('1d10'), damage_type=DamageType.force,
+        cdam=5),
+    Weapons.lunasteel_wand: Weapon(
+        name=Weapons.lunasteel_wand.name, price=8750, picture=WeaponPicture.teal_rod, min_dex=4,
+        style=Style.magic, min_range=1, max_range=8, shape=Shape.range_point, mdef=3, bmac=3,
+        reg=3, vis=1,
+        attacks=2, pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.force,
+        cdam=5),
+
+    Weapons.bronze_staff: Weapon(
+        name=Weapons.bronze_staff.name, price=50, picture=WeaponPicture.wooden_staff,
+        style=Style.magic, equip_type=Type.medium, is_two_handed=True,
+        min_range=2, max_range=9, shape=Shape.range_circle, vis=1,
+        pdam=DiceFormula.from_str('1d4'), damage_type=DamageType.force,
+        cdam=4, effect='+1MP on hit'),
+    Weapons.iron_staff: Weapon(
+        name=Weapons.iron_staff.name, price=200, picture=WeaponPicture.grey_staff,
+        style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=1,
+        min_range=2, max_range=9, shape=Shape.range_circle, bmac=1, vis=1,
+        pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.force,
+        cdam=6, effect='+1MP on hit'),
+    Weapons.volcanic_staff: Weapon(
+        name=Weapons.volcanic_staff.name, price=450, picture=WeaponPicture.flame_staff,
+        style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=2,
+        rarity=Rarity.set,
+        min_range=2, max_range=10, shape=Shape.range_circle, bmac=1, vis=1,
+        pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.fire,
+        cdam=6, effect='+1MP on hit, +2 MDAM on Fire abilities'),
+    Weapons.thunder_staff: Weapon(
+        name=Weapons.thunder_staff.name, price=450, picture=WeaponPicture.yellow_blue_staff,
+        style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=2,
+        rarity=Rarity.rare,
+        min_range=2, max_range=10, shape=Shape.range_circle, bmac=1, vis=1,
+        pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.lightning,
+        cdam=6, effect='+1MP on hit, Lightning abilities Stun 1RND'),
+    Weapons.coral_staff: Weapon(
+        name=Weapons.coral_staff.name, price=450, picture=WeaponPicture.yellow_blue_staff,
+        style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=2,
+        rarity=Rarity.set,
+        min_range=2, max_range=10, shape=Shape.range_circle, bmac=1, vis=1,
+        pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.cold,
+        cdam=6, effect='+1MP on hit, Ice abilities cost -1MP'),
+    Weapons.steel_staff: Weapon(
+        name=Weapons.steel_staff.name, price=1000, picture=WeaponPicture.purple_cross_staff,
+        style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=2,
+        min_range=2, max_range=10, shape=Shape.range_circle, bmac=2, vis=1,
+        pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.force,
+        cdam=8, effect='+1MP on hit'),
+    Weapons.lunaweave_staff: Weapon(
+        name=Weapons.lunaweave_staff.name, price=3500, picture=WeaponPicture.purple_staff,
+        style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=3,
+        min_range=2, max_range=11, shape=Shape.range_circle, bmac=2, reg=2, vis=1,
+        pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.force,
+        cdam=12, effect='+2MP on hit'),
+    Weapons.lunasteel_staff: Weapon(
+        name=Weapons.lunasteel_staff.name, price=10000, picture=WeaponPicture.yellow_red_staff,
+        style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=4,
+        min_range=2, max_range=12, shape=Shape.range_circle, bmac=3, reg=3, vis=1,
+        pdam=DiceFormula.from_str('1d20'), damage_type=DamageType.force,
+        cdam=20, effect='+3MP on hit'),
+
+    Weapons.pistol: Weapon(
+        name=Weapons.pistol.name, price=40, picture=WeaponPicture.normal_pistol,
+        style=Style.ranged,
+        min_range=1, max_range=6, shape=Shape.range_point,
+        attacks=1, pdam=DiceFormula.from_str('d4'), damage_type=DamageType.piercing),
+    Weapons.pistol_mark_2: Weapon(
+        name=Weapons.pistol_mark_2.name, price=175, picture=WeaponPicture.brown_pistol,
+        style=Style.ranged, min_dex=1, min_range=1, max_range=7, shape=Shape.range_point,
+        attacks=2, pdam=DiceFormula.from_str('d4'), damage_type=DamageType.piercing),
+    Weapons.pistol_mark_3: Weapon(
+        name=Weapons.pistol_mark_3.name, price=850, picture=WeaponPicture.white_pistol,
+        style=Style.ranged, min_dex=2, min_range=1, max_range=8, shape=Shape.range_point,
+        attacks=2, pdam=DiceFormula.from_str('d6'), damage_type=DamageType.piercing),
+    Weapons.lunaweave_pistol: Weapon(
+        name=Weapons.lunaweave_pistol.name, price=2800, picture=WeaponPicture.blue_pistol,
+        style=Style.ranged, min_dex=3, min_range=1, max_range=9, shape=Shape.range_point,
+        attacks=3, pdam=DiceFormula.from_str('d6'), damage_type=DamageType.piercing,
+        effect='On crit, +1MP'),
+
+    Weapons.rifle: Weapon(
+        name=Weapons.rifle.name, price=50, picture=WeaponPicture.normal_rifle,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True,
+        min_range=2, max_range=15, shape=Shape.range_point, pac=1,
+        attacks=1, pdam=DiceFormula.from_str('d12'), damage_type=DamageType.piercing,
+        cdam=12),
+    Weapons.rifle_mark_2: Weapon(
+        name=Weapons.rifle_mark_2.name, price=250, picture=WeaponPicture.orange_rifle,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True, min_dex=1,
+        min_range=2, max_range=16, shape=Shape.range_point, pac=1,
+        attacks=1, pdam=DiceFormula.from_str('d20'), damage_type=DamageType.piercing,
+        cdam=20),
+    Weapons.rifle_mark_2_scoped: Weapon(
+        name=Weapons.rifle_mark_2_scoped.name, price=550, picture=WeaponPicture.orange_rifle,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True, min_dex=1,
+        min_range=2, max_range=17, shape=Shape.range_point, pac=3,
+        attacks=1, pdam=DiceFormula.from_str('d20'), damage_type=DamageType.piercing,
+        cdam=20),
+    Weapons.rifle_mark_3: Weapon(
+        name=Weapons.rifle_mark_3.name, price=1100, picture=WeaponPicture.purple_rifle,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True, min_dex=2,
+        min_range=2, max_range=17, shape=Shape.range_point, pac=1,
+        attacks=1, pdam=DiceFormula.from_str('d20 + d6'), damage_type=DamageType.piercing,
+        cdam=26),
+    Weapons.rifle_mark_3_scoped: Weapon(
+        name=Weapons.rifle_mark_3_scoped.name, price=1550, picture=WeaponPicture.purple_rifle,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True, min_dex=2,
+        min_range=2, max_range=18, shape=Shape.range_point, pac=3,
+        attacks=1, pdam=DiceFormula.from_str('d20 + d6'), damage_type=DamageType.piercing,
+        cdam=26),
+    Weapons.lunaweave_rifle: Weapon(
+        name=Weapons.lunaweave_rifle.name, price=3500, picture=WeaponPicture.flame_rifle,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True, min_dex=2,
+        min_range=2, max_range=18, shape=Shape.range_point, pac=1,
+        attacks=1, pdam=DiceFormula.from_str('2d20'), damage_type=DamageType.piercing,
+        mdam=DiceFormula.from_str('1d10'),
+        cdam=40),
+
+    Weapons.shotgun: Weapon(
+        name=Weapons.shotgun.name, price=75, picture=WeaponPicture.normal_shotgun,
+        style=Style.ranged, equip_type=Type.medium,
+        min_range=1, max_range=3, shape=Shape.cone_3,
+        attacks=1, pdam=DiceFormula.from_str('d6'), damage_type=DamageType.bludgeoning,
+        cdam=6),
+    Weapons.shotgun_mark_2: Weapon(
+        name=Weapons.shotgun_mark_2.name, price=450, picture=WeaponPicture.brown_shotgun,
+        style=Style.ranged, equip_type=Type.medium, min_dex=1,
+        min_range=1, max_range=3, shape=Shape.cone_3,
+        attacks=1, pdam=DiceFormula.from_str('d10'), damage_type=DamageType.bludgeoning,
+        cdam=10),
+    Weapons.shotgun_mark_3: Weapon(
+        name=Weapons.shotgun_mark_3.name, price=1200, picture=WeaponPicture.white_shotgun,
+        style=Style.ranged, equip_type=Type.medium, min_dex=2,
+        min_range=1, max_range=3, shape=Shape.cone_3,
+        attacks=2, pdam=DiceFormula.from_str('d8'), damage_type=DamageType.bludgeoning,
+        cdam=8, effect='If attack KOs enemy, may perform another physical ATTACK'),
+    Weapons.lunaweave_shotgun: Weapon(
+        name=Weapons.lunaweave_shotgun.name, price=3600, picture=WeaponPicture.blue_shotgun,
+        style=Style.ranged, equip_type=Type.medium, min_dex=3,
+        min_range=1, max_range=3, shape=Shape.cone_3,
+        attacks=2, pdam=DiceFormula.from_str('1d12 + 1d4'), damage_type=DamageType.bludgeoning,
+        cdam=12, effect='On Crit, Stun 1RND'),
 }
 
 
