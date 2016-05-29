@@ -1491,7 +1491,7 @@ weapons = {
         cdam=14),
 
     Weapons.bronze_ternate_crossbow: Weapon(
-        name=Weapons.bronze_ternate_crossbow.name, price=75, picture=WeaponPicture.bronze_crossbow,
+        name=Weapons.bronze_ternate_crossbow.name, price=75, picture=WeaponPicture.brown_crossbow,
         style=Style.ranged, equip_type=Type.heavy, is_two_handed=True,
         min_range=3, max_range=10, shape=Shape.range_multi_point, pac=1,
         attacks=1, pdam=DiceFormula.from_str('1d8'), damage_type=DamageType.piercing,
