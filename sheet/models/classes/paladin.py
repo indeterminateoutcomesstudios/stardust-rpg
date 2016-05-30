@@ -91,7 +91,8 @@ earth_breaker_2 = Ability(
     damage_type=DamageType.force, targets_mdef=True, max_range='1',
     shape=Shape.line, target_area='[[5+WIS]]DIS long, 1DIS wide, 4DIS deep',
     effect='Wave rips crevasses into the earth. 15ATH (Jump) check required to cross. '
-           '20ATH (Climb) to escape.'
+           '20ATH (Climb) to escape.',
+    prerequisites=(earth_breaker_1,)
 )
 
 earth_breaker_3 = Ability(
@@ -100,7 +101,8 @@ earth_breaker_3 = Ability(
     damage_type=DamageType.force, targets_mdef=True, max_range='1',
     shape=Shape.line, target_area='[[5+2*WIS]]DIS long, 1DIS wide, 4DIS deep',
     effect='Wave rips crevasses into the earth. 15ATH (Jump) check required to cross. '
-           '20ATH (Climb) to escape.'
+           '20ATH (Climb) to escape.',
+    prerequisites=(earth_breaker_2,)
 )
 
 barrier_1 = Ability(
@@ -114,14 +116,16 @@ barrier_2 = Ability(
     name='Barrier II', picture=AbilityPicture.protect,
     mp_cost=4, time=Time.free_a, max_range='2', target_area='One ally',
     duration='4+WIS', duration_unit=DurationUnit.rnd,
-    effect='+[[2+WIS]]PDEF, can only cast once per RND.'
+    effect='+[[2+WIS]]PDEF, can only cast once per RND.',
+    prerequisites=(barrier_1,)
 )
 
 barrier_3 = Ability(
     name='Barrier III', picture=AbilityPicture.protect,
     mp_cost=6, time=Time.free_a, max_range='2+WIS', target_area='One ally',
     duration='6+WIS', duration_unit=DurationUnit.rnd,
-    effect='+[[3+WIS]]PDEF, can only cast once per RND.'
+    effect='+[[3+WIS]]PDEF, can only cast once per RND.',
+    prerequisites=(barrier_2,)
 )
 
 # Tier 2.
