@@ -1,6 +1,6 @@
 import aenum
 
-from .classes import paladin
+from .classes import magus, paladin
 
 
 class Abilities(aenum.AutoNumberEnum):
@@ -48,6 +48,53 @@ class Abilities(aenum.AutoNumberEnum):
     master_telekinetic_2 = ()
     master_telekinetic_3 = ()
 
+    # Magus.
+    fireball_1 = ()
+    fireball_2 = ()
+    fireball_3 = ()
+    lightning_shield_1 = ()
+    lightning_shield_2 = ()
+    lightning_shield_3 = ()
+    ice_wall_1 = ()
+    ice_wall_2 = ()
+    ice_wall_3 = ()
+    ice_slick_1 = ()
+    ice_slick_2 = ()
+    ice_slick_3 = ()
+    imbue_weapon_1 = ()
+    imbue_weapon_2 = ()
+    imbue_weapon_3 = ()
+    inferno_1 = ()
+    inferno_2 = ()
+    inferno_3 = ()
+    sunray_1 = ()
+    sunray_2 = ()
+    sunray_3 = ()
+    lightning_strike_1 = ()
+    lightning_strike_2 = ()
+    lightning_strike_3 = ()
+    deep_freeze_1 = ()
+    deep_freeze_2 = ()
+    deep_freeze_3 = ()
+    infuse_1 = ()
+    infuse_2 = ()
+    infuse_3 = ()
+    fire_storm_1 = ()
+    fire_storm_2 = ()
+    fire_storm_3 = ()
+    thunder_cloud_1 = ()
+    thunder_cloud_2 = ()
+    thunder_cloud_3 = ()
+    ice_wind_1 = ()
+    ice_wind_2 = ()
+    ice_wind_3 = ()
+    arcane_master_1 = ()
+    arcane_master_2 = ()
+    arcane_master_3 = ()
+    fury_1 = ()
+    fury_2 = ()
+    fury_3 = ()
+
 
 abilities = {
     # Paladin.
@@ -92,7 +139,49 @@ abilities = {
     Abilities.mass_telekinesis_3: paladin.mass_telekinesis_3,
     Abilities.master_telekinetic_1: paladin.master_telekinetic_1,
     Abilities.master_telekinetic_2: paladin.master_telekinetic_2,
-    Abilities.master_telekinetic_3: paladin.master_telekinetic_3
+    Abilities.master_telekinetic_3: paladin.master_telekinetic_3,
+
+    # Magus.
+    Abilities.fireball_1: magus.fireball_1,
+    Abilities.fireball_2: magus.fireball_2,
+    Abilities.fireball_3: magus.fireball_3,
+    Abilities.lightning_shield_1: magus.lightning_shield_1,
+    Abilities.lightning_shield_2: magus.lightning_shield_2,
+    Abilities.lightning_shield_3: magus.lightning_shield_3,
+    Abilities.ice_wall_1: magus.ice_wall_1,
+    Abilities.ice_wall_2: magus.ice_wall_2,
+    Abilities.ice_wall_3: magus.ice_wall_3,
+    Abilities.ice_slick_1: magus.ice_slick_1,
+    Abilities.ice_slick_2: magus.ice_slick_2,
+    Abilities.ice_slick_3: magus.ice_slick_3,
+    Abilities.imbue_weapon_1: magus.imbue_weapon_1,
+    Abilities.imbue_weapon_2: magus.imbue_weapon_2,
+    Abilities.imbue_weapon_3: magus.imbue_weapon_3,
+    Abilities.inferno_1: magus.inferno_1,
+    Abilities.inferno_2: magus.inferno_2,
+    Abilities.inferno_3: magus.inferno_3,
+    Abilities.sunray_1: magus.sunray_1,
+    Abilities.sunray_2: magus.sunray_2,
+    Abilities.sunray_3: magus.sunray_3,
+    Abilities.lightning_strike_1: magus.lightning_strike_1,
+    Abilities.lightning_strike_2: magus.lightning_strike_2,
+    Abilities.lightning_strike_3: magus.lightning_strike_3,
+    Abilities.deep_freeze_1: magus.deep_freeze_1,
+    Abilities.deep_freeze_2: magus.deep_freeze_2,
+    Abilities.deep_freeze_3: magus.deep_freeze_3,
+    Abilities.infuse_1: magus.infuse_1,
+    Abilities.infuse_2: magus.infuse_2,
+    Abilities.infuse_3: magus.infuse_3,
+    Abilities.fire_storm_1: magus.fire_storm_1,
+    Abilities.fire_storm_2: magus.fire_storm_2,
+    Abilities.fire_storm_3: magus.fire_storm_3,
+    Abilities.thunder_cloud_1: magus.thunder_cloud_1,
+    Abilities.thunder_cloud_2: magus.thunder_cloud_2,
+    Abilities.thunder_cloud_3: magus.thunder_cloud_3,
+    Abilities.ice_wind_1: magus.ice_wind_1,
+    Abilities.ice_wind_2: magus.ice_wind_2,
+    Abilities.ice_wind_3: magus.ice_wind_3,
+    Abilities.arcane_master_1: magus.arcane_master_1,
 }
 
 
