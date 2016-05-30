@@ -1,6 +1,6 @@
 import aenum
 
-from .classes import magus, paladin
+from .classes import magus, paladin, templar
 
 
 class Abilities(aenum.AutoNumberEnum):
@@ -95,6 +95,52 @@ class Abilities(aenum.AutoNumberEnum):
     fury_2 = ()
     fury_3 = ()
 
+    # Templar.
+    time_warp_1 = ()
+    time_warp_2 = ()
+    time_warp_3 = ()
+    slow_1 = ()
+    slow_2 = ()
+    slow_3 = ()
+    rebound_1 = ()
+    rebound_2 = ()
+    rebound_3 = ()
+    rapid_regen_1 = ()
+    rapid_regen_2 = ()
+    rapid_regen_3 = ()
+    cure_1 = ()
+    cure_2 = ()
+    cure_3 = ()
+    mass_time_warp_1 = ()
+    mass_time_warp_2 = ()
+    mass_time_warp_3 = ()
+    stop_1 = ()
+    stop_2 = ()
+    stop_3 = ()
+    phase_out_1 = ()
+    phase_out_2 = ()
+    phase_out_3 = ()
+    healing_wind_1 = ()
+    healing_wind_2 = ()
+    healing_wind_3 = ()
+    esuna_1 = ()
+    esuna_2 = ()
+    esuna_3 = ()
+    reset_1 = ()
+    reset_2 = ()
+    reset_3 = ()
+    decay_1 = ()
+    decay_2 = ()
+    decay_3 = ()
+    time_cloud_1 = ()
+    time_cloud_2 = ()
+    time_cloud_3 = ()
+    curaga_1 = ()
+    curaga_2 = ()
+    curaga_3 = ()
+    time_lord_1 = ()
+    time_lord_2 = ()
+    time_lord_3 = ()
 
 abilities = {
     # Paladin.
@@ -182,6 +228,53 @@ abilities = {
     Abilities.ice_wind_2: magus.ice_wind_2,
     Abilities.ice_wind_3: magus.ice_wind_3,
     Abilities.arcane_master_1: magus.arcane_master_1,
+
+    # Templar.
+    Abilities.time_warp_1: templar.time_warp_1,
+    Abilities.time_warp_2: templar.time_warp_2,
+    Abilities.time_warp_3: templar.time_warp_3,
+    Abilities.slow_1: templar.slow_1,
+    Abilities.slow_2: templar.slow_2,
+    Abilities.slow_3: templar.slow_3,
+    Abilities.rebound_1: templar.rebound_1,
+    Abilities.rebound_2: templar.rebound_2,
+    Abilities.rebound_3: templar.rebound_3,
+    Abilities.rapid_regen_1: templar.rapid_regen_1,
+    Abilities.rapid_regen_2: templar.rapid_regen_2,
+    Abilities.rapid_regen_3: templar.rapid_regen_3,
+    Abilities.cure_1: templar.cure_1,
+    Abilities.cure_2: templar.cure_2,
+    Abilities.cure_3: templar.cure_3,
+    Abilities.mass_time_warp_1: templar.mass_time_warp_1,
+    Abilities.mass_time_warp_2: templar.mass_time_warp_2,
+    Abilities.mass_time_warp_3: templar.mass_time_warp_3,
+    Abilities.stop_1: templar.stop_1,
+    Abilities.stop_2: templar.stop_2,
+    Abilities.stop_3: templar.stop_3,
+    Abilities.phase_out_1: templar.phase_out_1,
+    Abilities.phase_out_2: templar.phase_out_2,
+    Abilities.phase_out_3: templar.phase_out_3,
+    Abilities.healing_wind_1: templar.healing_wind_1,
+    Abilities.healing_wind_2: templar.healing_wind_2,
+    Abilities.healing_wind_3: templar.healing_wind_3,
+    Abilities.esuna_1: templar.esuna_1,
+    Abilities.esuna_2: templar.esuna_2,
+    Abilities.esuna_3: templar.esuna_3,
+    Abilities.reset_1: templar.reset_1,
+    Abilities.reset_2: templar.reset_2,
+    Abilities.reset_3: templar.reset_3,
+    Abilities.decay_1: templar.decay_1,
+    Abilities.decay_2: templar.decay_2,
+    Abilities.decay_3: templar.decay_3,
+    Abilities.time_cloud_1: templar.time_cloud_1,
+    Abilities.time_cloud_2: templar.time_cloud_2,
+    Abilities.time_cloud_3: templar.time_cloud_3,
+    Abilities.curaga_1: templar.curaga_1,
+    Abilities.curaga_2: templar.curaga_2,
+    Abilities.curaga_3: templar.curaga_3,
+    Abilities.time_lord_1: templar.time_lord_1,
+    Abilities.time_lord_2: templar.time_lord_2,
+    Abilities.time_lord_3: templar.time_lord_3,
 }
 
 
