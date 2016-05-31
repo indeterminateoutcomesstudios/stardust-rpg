@@ -141,9 +141,11 @@ Features
 - Shops
 - Parties
 - Weapon / Ability DPS
+- Add equation help for how stats are calculated
 
 Technical Debt
 --------------
 
 - Break views into multiple modules.
 - Switch to logging module.
+- Add unit tests
