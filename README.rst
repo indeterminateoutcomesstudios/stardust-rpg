@@ -6,10 +6,19 @@ Stardust RPG
 
 Stardust RPG is a tactical d20 role-playing game designed to provide a variety of progression
 options for players and encourage teamwork.  Baseline content is based off the Stardust book
-series by John Hagen, but is adaptable to a variety of settings.
+series by John Hagen, but is adaptable to a variety of fantasy settings.
 
-Special thanks to `@theandrewdavis <https://github.com/theandrewdavis>`_ for his analysis of the
-roll20.net API.
+Features
+--------
+
+- Cross platform.  Run the server on any platform that supports Python.  Clients can
+  connect and manage their characters using a standard web browser with no install required.
+- Roll20 integration. Players can to automatically sync their character stats and
+  automatically generated weapon and ability macros right into a Roll20 campaign. Special thanks
+  to `@theandrewdavis <https://github.com/theandrewdavis>`_ for his analysis of the roll20.net API.
+- Extensible. Easily add new content, such as classes, weapons, or abilities.
+- Persistent. Store characters in a persistent database for easy reuse.
+
 
 Rules
 =====
