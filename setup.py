@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name='stardust-rpg',
-    version='0.0.1',
+    version='1.0.0',
 
     description='',
     long_description=open('README.rst').read(),
@@ -29,7 +29,7 @@ setuptools.setup(
     },
 
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: End Users/Desktop',
         'License :: OSI Approved :: MIT License',
