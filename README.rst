@@ -19,6 +19,28 @@ Features
 - Extensible. Easily add new content, such as classes, weapons, or abilities.
 - Persistent. Store characters in a persistent database for easy reuse.
 
+Usage
+=====
+
+Installation
+------------
+
+You can install, upgrade, and uninstall ``stardust-rpg`` with these commands:
+
+.. code:: shell-session
+
+    $ pip3 install stardust-rpg
+    $ pip3 install --upgrade stardust-rpg
+    $ pip3 uninstall stardust-rpg
+
+Running
+-------
+
+To run the server:
+
+.. code:: shell-session
+
+    $ stardust-rpg runserver localhost:8000
 
 Rules
 =====
