@@ -71,10 +71,31 @@ Start the server:
 
 .. code:: shell-session
 
-    $ stardust-rpg runserver 0.0.0.0:8000
+    $ stardust-rpg runserver 0.0.0.0:80
 
-Log into the admin interface by browsing to http://localhost:8000/admin
+Game Setup
+----------
 
+Log into the admin interface by browsing to http://localhost/admin
+
+Add ``Users`` for each player.  Configure the following fields:
+
+======================= ==============================================
+Field                   Value
+======================= ==============================================
+``Email Address``       Player's Roll20 email address.
+======================= ==============================================
+
+Add ``Characters`` for each character in the game.  Configure the following fields:
+
+======================= ==============================================
+Field                   Value
+======================= ==============================================
+``User``                Player who has modification rights to the character.
+``Name``                Name of the character.  Must match name of character in Roll20.
+``Roll20 campaign id``  The 6 digit ID assigned to the campaign (e.g. https://app.roll20.net/campaigns/details/ID/CAMPAIGN_NAME)
+``Class``               The class assigned to this ``Character``.
+======================= ==============================================
 
 Rules
 =====
@@ -180,6 +201,14 @@ Aptitude (``APT``)      Heal, Operate Device, Pick Lock, Forgery, Scan, Utility
 Perception (``PER``)    Spot, Listen, Search, Touch, Smell, Taste
 Speech (``SPE``)        Diplomacy, Intimidate, Bluff, Persuasion
 ======================= ============================================================
+
+Releases
+========
+
+1.0.0
+-----
+
+- Initial Release
 
 TODO
 ====
