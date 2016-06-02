@@ -17,8 +17,8 @@ from .models.level_up import LevelUp
 from .roll20 import api, login
 
 
-def check_is_admin_or_owns_character(user: User, character: Character) -> None:
-    if not (user.username == 'admin' or character.user.username == user.username):
+def check_is_superuser_or_owns_character(user: User, character: Character) -> None:
+    if not (user.is_superuser or character.user.username == user.username):
         raise ValidationError('User not authorized to edit this character.')
 
 
@@ -83,7 +83,7 @@ def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST':
-        check_is_admin_or_owns_character(request.user, character)
+        check_is_superuser_or_owns_character(request.user, character)
 
         for parameter, value in request.POST.items():
             match = re.match(r'^(?P<action_type>lock|unlock)\s(?P<ability_index>[0-9]+)$', value)
@@ -134,7 +134,7 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST':
-        check_is_admin_or_owns_character(request.user, character)
+        check_is_superuser_or_owns_character(request.user, character)
 
         equip_form = CharacterEquipForm(request.POST)
         if equip_form.is_valid():
@@ -196,7 +196,7 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST':
-        check_is_admin_or_owns_character(request.user, character)
+        check_is_superuser_or_owns_character(request.user, character)
 
         level_up_form = LevelUpForm(request.POST)
 
@@ -241,7 +241,7 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST':
-        check_is_admin_or_owns_character(request.user, character)
+        check_is_superuser_or_owns_character(request.user, character)
         skill_points_form = SkillPointsForm(request.POST)
         if skill_points_form.is_valid():
             assigned_ath = skill_points_form.cleaned_data['assigned_ath']
@@ -300,7 +300,7 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
 
     campaign_name = ''
     if request.method == 'POST':
-        check_is_admin_or_owns_character(request.user, character)
+        check_is_superuser_or_owns_character(request.user, character)
         roll20_form = Roll20Form(request.POST)
         if roll20_form.is_valid():
             password = roll20_form.cleaned_data['password']
