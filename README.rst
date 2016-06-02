@@ -51,14 +51,30 @@ You can install, upgrade, and uninstall ``stardust-rpg`` with these commands:
     $ pip3 install --upgrade stardust-rpg
     $ pip3 uninstall stardust-rpg
 
-Running
--------
+Configuration
+-------------
 
-To run the server:
+Initialize the database:
 
 .. code:: shell-session
 
-    $ stardust-rpg runserver localhost:8000
+    $ stardust-rpg makemigrations
+    $ stardust-rpg migrate
+
+Create an admin account:
+
+.. code:: shell-session
+
+    $ python manage.py createsuperuser
+
+Start the server:
+
+.. code:: shell-session
+
+    $ stardust-rpg runserver 0.0.0.0:8000
+
+Log into the admin interface by browsing to http://localhost:8000/admin
+
 
 Rules
 =====
