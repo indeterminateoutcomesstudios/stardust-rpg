@@ -1,9 +1,9 @@
 import copy
 from typing import Tuple
 
-import enumfields
 from django.contrib.auth.models import User
 from django.db import models
+import enumfields
 
 from . import abilities
 from . import ability
