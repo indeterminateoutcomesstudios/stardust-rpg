@@ -217,7 +217,6 @@ Features
 --------
 
 - Handle exceptions in a user-friendly way.
-- Show buy/sell price.
 - Show only equipable items.
 - Utility macros.
 - Set bonuses.

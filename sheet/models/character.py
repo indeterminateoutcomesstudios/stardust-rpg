@@ -1,9 +1,9 @@
 import copy
 from typing import Tuple
 
+import enumfields
 from django.contrib.auth.models import User
 from django.db import models
-import enumfields
 
 from . import abilities
 from . import ability
@@ -58,6 +58,12 @@ class Character(models.Model):
     light_weapon_str_damage_mod = 0.5
     medium_weapon_str_damage_mod = 1.0
     heavy_weapon_str_damage_mod = 1.5
+    cha_buy_mod = 7
+    """Percent."""
+
+    base_sel = 50
+    int_sel_mod = 10
+    """Percent."""
 
     def __str__(self):
         return '{}: {} LVL {} {}'.format(self.id, self.name, self.lvl, self.cls.name)
@@ -327,6 +333,14 @@ class Character(models.Model):
     def spe(self) -> int:
         return ((self.cha * self.cls.spe) + self.assigned_spe +
                 sum([wearable.spe for wearable in self.wearables]))
+
+    @property
+    def buy(self) -> int:
+        return min(self.cha_buy_mod * self.cha, 100)
+
+    @property
+    def sel(self) -> int:
+        return min(self.base_sel + self.int_sel_mod * self.intel, 100)
 
     @property
     def can_use_weapon(self) -> bool:
