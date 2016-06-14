@@ -224,12 +224,25 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
                 raise ValidationError('SD roll higher than SD: {}>{}'.format(
                     sd_roll, character.cls.sd))
 
+            if character.lvl == 0:
+                if (hd_roll != character.cls.hd or
+                   md_roll != character.cls.md or
+                   sd_roll != character.cls.sd):
+                    raise ValidationError(
+                        'For LVL 1, HD, MD, and SD are assigned maximum roll values.')
+
             new_level_up = level_up_form.save(commit=False)
             new_level_up.character = character
             new_level_up.save()
             level_up_form = LevelUpForm()
     else:
-        level_up_form = LevelUpForm()
+        if character.lvl == 0:
+            level_up_form = LevelUpForm(
+                initial={'hd_roll': character.cls.hd,
+                         'md_roll': character.cls.md,
+                         'sd_roll': character.cls.sd})
+        else:
+            level_up_form = LevelUpForm()
 
     return render(request, 'level_up.html',
                   context={'level_up_form': level_up_form,
