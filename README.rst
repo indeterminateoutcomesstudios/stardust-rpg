@@ -165,7 +165,7 @@ Status Effects
 Status      Effect
 =========== ==========================================================================
 Immobilize  Cannot take ``MovA``.
-Silence     Cannot take ``AbA`` (i.e. any action that targets with MAC or consumes MP).
+Silence     Cannot take ``AbA`` (i.e. any action that targets with ``MAC`` or consumes ``MP``).
 Stagger     Cannot perform physical attacks.
 Disable     Cannot take ``StdA``.
 Stun        Cannot take ``MovA`` or ``StdA``.
