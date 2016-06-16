@@ -221,7 +221,7 @@ class Character(models.Model):
 
     @property
     def hp_formula(self) -> str:
-        return ('{lvl}[LVL] * {mod} * {con}[CON] + {wearables}[Wearables] + '
+        return ('({lvl}[LVL] * {mod} * {con}[CON]) + {wearables}[Wearables] + '
                 '{hd_rolls}[HD rolls]').format(
             lvl=self.lvl,
             mod=self.hp_lvl_con_mod,
@@ -237,7 +237,7 @@ class Character(models.Model):
 
     @property
     def mp_formula(self) -> str:
-        return ('{lvl}[LVL] * {mod} * {intel}[INT] + {wearables}[Wearables] + '
+        return ('({lvl}[LVL] * {mod} * {intel}[INT]) + {wearables}[Wearables] + '
                 '{md_rolls}[MD rolls]').format(
             lvl=self.lvl,
             mod=self.mp_lvl_int_mod,
@@ -253,7 +253,7 @@ class Character(models.Model):
 
     @property
     def sp_formula(self) -> str:
-        return ('{lvl}[LVL] * {mod} * {intel}[INT] + {wearables}[Wearables] + '
+        return ('({lvl}[LVL] * {mod} * {intel}[INT]) + {wearables}[Wearables] + '
                 '{sd_rolls}[SD rolls]').format(
             lvl=self.lvl,
             mod=self.mp_lvl_int_mod,
@@ -309,7 +309,7 @@ class Character(models.Model):
 
     @property
     def pred_formula(self) -> str:
-        return '{class_pred}[Class PRED] + {mod} * {con}[CON] + {wearables}[Wearables]'.format(
+        return '{class_pred}[Class PRED] + ({mod} * {con}[CON]) + {wearables}[Wearables]'.format(
             class_pred=self.cls.pred,
             mod=self.pred_con_mod,
             con=self.con,
@@ -322,7 +322,7 @@ class Character(models.Model):
 
     @property
     def mred_formula(self) -> str:
-        return '{class_mred}[Class MRED] + {mod} * {intel}[INT] + {wearables}[Wearables]'.format(
+        return '{class_mred}[Class MRED] + ({mod} * {intel}[INT]) + {wearables}[Wearables]'.format(
             class_mred=self.cls.mred,
             mod=self.mred_int_mod,
             intel=self.intel,
