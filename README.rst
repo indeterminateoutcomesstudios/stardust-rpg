@@ -225,7 +225,7 @@ Features
 - Shops
 - Parties
 - Weapon / Ability DPS
-- Add equation help for how stats are calculated
+- Fix REG formula
 
 Technical Debt
 --------------

@@ -52,8 +52,6 @@ class Character(models.Model):
     rd_char_mod = 0.25
     speed_dex_mod = 0.5
     vis_con_mod = 0.5
-    bpac_lvl_str_mod = 1
-    bmac_lvl_cha_mod = 1
     extra_max_sp_per_skill = 3
     light_weapon_str_damage_mod = 0.5
     medium_weapon_str_damage_mod = 1.0
@@ -180,6 +178,17 @@ class Character(models.Model):
             sum([wearable.cha for wearable in self.wearables]))
 
     @property
+    def ap_formula(self) -> str:
+        return ('{starting_ap}[Starting AP] + ({mod} * {lvl}[LVL]) + {wis}[WIS] + {cha}[CHA] + '
+                '{wearables}[Wearables]').format(
+            starting_ap=self.cls.starting_ap,
+            mod=self.ap_lvl_mod,
+            lvl=self.lvl,
+            wis=self.wis,
+            cha=self.cha,
+            wearables=sum([wearable.ap for wearable in self.wearables]))
+
+    @property
     def ap(self) -> int:
         return (self.cls.starting_ap + (self.ap_lvl_mod * self.lvl) + self.wis + self.cha +
                 sum([wearable.ap for wearable in self.wearables]))
@@ -211,16 +220,46 @@ class Character(models.Model):
         return tuple(unlocked_combos)
 
     @property
+    def hp_formula(self) -> str:
+        return ('{lvl}[LVL] * {mod} * {con}[CON] + {wearables}[Wearables] + '
+                '{hd_rolls}[HD rolls]').format(
+            lvl=self.lvl,
+            mod=self.hp_lvl_con_mod,
+            con=self.con,
+            wearables=sum([wearable.hp for wearable in self.wearables]),
+            hd_rolls=sum(level_up.hd_roll for level_up in self.levelup_set.all()))
+
+    @property
     def hp(self) -> int:
         return round(self.lvl * self.hp_lvl_con_mod * self.con +
                      sum([wearable.hp for wearable in self.wearables]) +
                      sum(level_up.hd_roll for level_up in self.levelup_set.all()))
 
     @property
+    def mp_formula(self) -> str:
+        return ('{lvl}[LVL] * {mod} * {intel}[INT] + {wearables}[Wearables] + '
+                '{md_rolls}[MD rolls]').format(
+            lvl=self.lvl,
+            mod=self.mp_lvl_int_mod,
+            intel=self.intel,
+            wearables=sum([wearable.mp for wearable in self.wearables]),
+            md_rolls=sum(level_up.md_roll for level_up in self.levelup_set.all()))
+
+    @property
     def mp(self) -> int:
         return ((self.lvl * self.mp_lvl_int_mod * self.intel) +
                 sum([wearable.mp for wearable in self.wearables]) +
                 sum(level_up.md_roll for level_up in self.levelup_set.all()))
+
+    @property
+    def sp_formula(self) -> str:
+        return ('{lvl}[LVL] * {mod} * {intel}[INT] + {wearables}[Wearables] + '
+                '{sd_rolls}[SD rolls]').format(
+            lvl=self.lvl,
+            mod=self.mp_lvl_int_mod,
+            intel=self.intel,
+            wearables=sum([wearable.sp for wearable in self.wearables]),
+            sd_rolls=sum(level_up.sd_roll for level_up in self.levelup_set.all()))
 
     @property
     def sp(self) -> int:
@@ -234,12 +273,34 @@ class Character(models.Model):
                 self.assigned_for - self.assigned_per - self.assigned_spe)
 
     @property
+    def max_sp_per_skill_formula(self) -> str:
+        return '{lvl}[LVL] + {mod}'.format(lvl=self.lvl, mod=self.extra_max_sp_per_skill)
+
+    @property
     def max_sp_per_skill(self) -> int:
         return self.lvl + self.extra_max_sp_per_skill
 
     @property
+    def pdef_formula(self) -> str:
+        return '{class_pdef}[Class PDEF] + {dex}[DEX] + {wearables}[Wearables]'.format(
+            class_pdef=self.cls.pdef,
+            dex=self.dex,
+            wearables=sum([wearable.pdef for wearable in self.wearables]))
+
+    @property
     def pdef(self) -> int:
         return self.cls.pdef + self.dex + sum([wearable.pdef for wearable in self.wearables])
+
+    @property
+    def mdef_formula(self) -> str:
+        return ('{starting_mdef}[Starting MDEF] + '
+                '({class_mdef}[Class MDEF] * {lvl}[LVL]) + {wis}[WIS] + '
+                '{wearables}[Wearables]').format(
+            starting_mdef=self.starting_mdef,
+            class_mdef=self.cls.mdef,
+            lvl=self.lvl,
+            wis=self.wis,
+            wearables=sum([wearable.mdef for wearable in self.wearables]))
 
     @property
     def mdef(self) -> int:
@@ -247,9 +308,25 @@ class Character(models.Model):
                      sum([wearable.mdef for wearable in self.wearables]))
 
     @property
+    def pred_formula(self) -> str:
+        return '{class_pred}[Class PRED] + {mod} * {con}[CON] + {wearables}[Wearables]'.format(
+            class_pred=self.cls.pred,
+            mod=self.pred_con_mod,
+            con=self.con,
+            wearables=sum([wearable.pred for wearable in self.wearables]))
+
+    @property
     def pred(self) -> int:
         return round(self.cls.pred + (self.pred_con_mod * self.con) +
                      sum([wearable.pred for wearable in self.wearables]))
+
+    @property
+    def mred_formula(self) -> str:
+        return '{class_mred}[Class MRED] + {mod} * {intel}[INT] + {wearables}[Wearables]'.format(
+            class_mred=self.cls.mred,
+            mod=self.mred_int_mod,
+            intel=self.intel,
+            wearables=sum([wearable.mred for wearable in self.wearables]))
 
     @property
     def mred(self) -> int:
@@ -257,9 +334,27 @@ class Character(models.Model):
                      sum([wearable.mred for wearable in self.wearables]))
 
     @property
+    def reg_formula(self) -> str:
+        return ('{starting_reg}[Starting REG] - ({class_reg}[Class REG] * {lvl}[LVL]) - '
+                '{cha}[CHA] - {wearables}[Wearables]').format(
+            starting_reg=self.starting_reg,
+            class_reg=self.cls.reg,
+            lvl=self.lvl,
+            cha=self.cha,
+            wearables=sum([wearable.reg for wearable in self.wearables]))
+
+    @property
     def reg(self) -> int:
         return round(self.starting_reg - (self.cls.reg * self.lvl) - self.cha -
                      sum([wearable.reg for wearable in self.wearables]))
+
+    @property
+    def rd_formula(self) -> str:
+        return ('LVL 1-3=d2, LVL 4-6=d4, LVL 7-9=d6, LVL 10-12=d8, LVL 13-15=d10, LVL 16+=d12\n'
+                '({mod} * {cha}[CHA]) + {wearables}[Wearables]').format(
+            mod=self.rd_char_mod,
+            cha=self.cha,
+            wearables=sum([wearable.rd for wearable in self.wearables]))
 
     @property
     def rd(self) -> dice.DiceFormula:
@@ -281,9 +376,25 @@ class Character(models.Model):
         return dice.DiceFormula(dice_pool=(reg_dice,), modifier=rd_modifier)
 
     @property
+    def speed_formula(self) -> str:
+        return '{class_speed}[Class SPEED] + ({mod} * {dex}[DEX]) + {wearables}[Wearables]'.format(
+            class_speed=self.cls.speed,
+            mod=self.speed_dex_mod,
+            dex=self.dex,
+            wearables=sum([wearable.speed for wearable in self.wearables]))
+
+    @property
     def speed(self) -> int:
         return round(self.cls.speed + (self.speed_dex_mod * self.dex) +
                      sum([wearable.speed for wearable in self.wearables]))
+
+    @property
+    def vis_formula(self) -> str:
+        return '{class_vis}[Class VIS] + ({mod} * {con}[CON]) + {wearables}[Wearables]'.format(
+            class_vis=self.cls.vis,
+            mod=self.vis_con_mod,
+            con=self.con,
+            wearables=sum([wearable.vis for wearable in self.wearables]))
 
     @property
     def vis(self) -> int:
@@ -291,13 +402,31 @@ class Character(models.Model):
                      sum([wearable.vis for wearable in self.wearables]))
 
     @property
+    def bpac_formula(self) -> str:
+        return ('({class_pac}[Class PAC] * {lvl}[LVL]) + {stren}[STR] + '
+                '{wearables}[Wearables]').format(
+            class_pac=self.cls.pac,
+            lvl=self.lvl,
+            stren=self.stren,
+            wearables=sum([wearable.bpac for wearable in self.wearables]))
+
+    @property
     def bpac(self) -> int:
-        return round(self.cls.pac + (self.bpac_lvl_str_mod * self.stren) +
+        return round((self.cls.pac * self.lvl) + self.stren +
                      sum([wearable.bpac for wearable in self.wearables]))
 
     @property
+    def bmac_formula(self) -> str:
+        return ('({class_mac}[Class MAC] * {lvl}[LVL]) + {cha}[CHA] + '
+                '{wearables}[Wearables]').format(
+            class_mac=self.cls.mac,
+            lvl=self.lvl,
+            cha=self.cha,
+            wearables=sum([wearable.bmac for wearable in self.wearables]))
+
+    @property
     def bmac(self) -> int:
-        return round(self.cls.mac + (self.bmac_lvl_cha_mod * self.cha) +
+        return round((self.cls.mac * self.lvl) + self.cha +
                      sum([wearable.bmac for wearable in self.wearables]))
 
     @property
@@ -305,38 +434,105 @@ class Character(models.Model):
         return sum([wearable.cran for wearable in self.wearables])
 
     @property
+    def ath_formula(self) -> str:
+        return ('({class_ath}[Class ATH] * {stren}[STR]) + {assigned_ath}[Assigned ATH] + '
+                '{wearables}[Wearables]').format(
+            class_ath=self.cls.ath,
+            stren=self.stren,
+            assigned_ath=self.assigned_ath,
+            wearables=sum([wearable.ath for wearable in self.wearables]))
+
+    @property
     def ath(self) -> int:
-        return ((self.stren * self.cls.ath) + self.assigned_ath +
+        return ((self.cls.ath * self.stren) + self.assigned_ath +
                 sum([wearable.ath for wearable in self.wearables]))
 
     @property
+    def ste_formula(self) -> str:
+        return ('({class_ste}[Class STE] * {dex}[DEX]) + {assigned_ste}[Assigned STE] + '
+                '{wearables}[Wearables]').format(
+            class_ste=self.cls.ste,
+            dex=self.dex,
+            assigned_ste=self.assigned_ste,
+            wearables=sum([wearable.ste for wearable in self.wearables]))
+
+    @property
     def ste(self) -> int:
-        return ((self.dex * self.cls.ste) + self.assigned_ste +
+        return ((self.cls.ste * self.dex) + self.assigned_ste +
                 sum([wearable.ste for wearable in self.wearables]))
 
     @property
+    def for_formula(self) -> str:
+        return ('({class_for}[Class FOR] * {con}[CON]) + {assigned_for}[Assigned FOR] + '
+                '{wearables}[Wearables]').format(
+            class_for=self.cls.fort,
+            con=self.con,
+            assigned_for=self.assigned_for,
+            wearables=sum([wearable.fort for wearable in self.wearables]))
+
+    @property
     def fort(self) -> int:
-        return ((self.con * self.cls.fort) + self.assigned_for +
+        return ((self.cls.fort * self.con) + self.assigned_for +
                 sum([wearable.fort for wearable in self.wearables]))
 
     @property
+    def apt_formula(self) -> str:
+        return ('({class_apt}[Class APT] * {intel}[INT]) + {assigned_apt}[Assigned APT] + '
+                '{wearables}[Wearables]').format(
+            class_apt=self.cls.apt,
+            intel=self.intel,
+            assigned_apt=self.assigned_apt,
+            wearables=sum([wearable.apt for wearable in self.wearables]))
+
+    @property
     def apt(self) -> int:
-        return ((self.intel * self.cls.apt) + self.assigned_apt +
+        return ((self.cls.apt * self.intel) + self.assigned_apt +
                 sum([wearable.apt for wearable in self.wearables]))
 
     @property
+    def per_formula(self) -> str:
+        return ('({class_per}[Class PER] * {wis}[WIS]) + {assigned_per}[Assigned PER] + '
+                '{wearables}[Wearables]').format(
+            class_per=self.cls.per,
+            wis=self.wis,
+            assigned_per=self.assigned_per,
+            wearables=sum([wearable.per for wearable in self.wearables]))
+
+    @property
     def per(self) -> int:
-        return ((self.wis * self.cls.per) + self.assigned_per +
+        return ((self.cls.per * self.wis) + self.assigned_per +
                 sum([wearable.per for wearable in self.wearables]))
 
     @property
+    def spe_formula(self) -> str:
+        return ('({class_spe}[Class SPE] * {cha}[CHA]) + {assigned_spe}[Assigned SPE] + '
+                '{wearables}[Wearables]').format(
+            class_spe=self.cls.spe,
+            cha=self.cha,
+            assigned_spe=self.assigned_spe,
+            wearables=sum([wearable.spe for wearable in self.wearables]))
+
+    @property
     def spe(self) -> int:
-        return ((self.cha * self.cls.spe) + self.assigned_spe +
+        return ((self.cls.spe * self.cha) + self.assigned_spe +
                 sum([wearable.spe for wearable in self.wearables]))
+
+    @property
+    def buy_formula(self) -> str:
+        return '{mod} * {cha}[CHA]'.format(
+            mod=self.cha_buy_mod,
+            cha=self.cha)
 
     @property
     def buy(self) -> int:
         return min(self.cha_buy_mod * self.cha, 100)
+
+    @property
+    def sel_formula(self) -> str:
+        return '{base_sel} + ({mod} * {intel}[INT])'.format(
+            base_sel=self.base_sel,
+            mod=self.int_sel_mod,
+            intel=self.intel)
 
     @property
     def sel(self) -> int:
