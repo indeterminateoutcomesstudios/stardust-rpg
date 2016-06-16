@@ -192,7 +192,7 @@ Skills
 ------
 
 ======================= ============================================================
-Skill                   Effect
+Skill                   Example Actions
 ======================= ============================================================
 Athletics (``ATH``)     Climb, Jump, Swim, Grapple, Reflex, Balance, Fall
 Stealth (``STE``)       Sneak, Hide, Sleight of Hand, Disguise, Escape, Detect Trap
