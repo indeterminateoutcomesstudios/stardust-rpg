@@ -185,8 +185,8 @@ phase_out_1 = Ability(
 phase_out_2 = Ability(
     name='Phase Out II', picture=AbilityPicture.cleric_stance,
     mp_cost=4, target_area='Self', time=Time.free_a,
-    duration='1', duration_unit=DurationUnit.rnd,
-    effect='Cast FreeA on any creature\'s turn',
+    effect='Revert time, returning to the original location that caster was at the beginning of '
+           'the turn.',
     prerequisites=(phase_out_1,)
 )
 
