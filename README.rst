@@ -262,4 +262,3 @@ Technical Debt
 - Break views into multiple modules.
 - Switch to logging module.
 - Add unit tests
-- Remove Enum from_str
