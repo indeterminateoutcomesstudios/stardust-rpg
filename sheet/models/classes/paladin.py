@@ -64,7 +64,7 @@ protect_2 = Ability(
     name='Protect II', picture=AbilityPicture.cover,
     mp_cost=3, max_range='1', target_area='One ally',
     duration='1+WIS', duration_unit=DurationUnit.rnd,
-    effect='+2PDEF, Take 3/4 DAM for protected target. Can stop at any time.  Can end early.',
+    effect='+2PDEF, Take 3/4 DAM for protected target. Can end early.',
     prerequisites=(protect_1,),
 )
 
