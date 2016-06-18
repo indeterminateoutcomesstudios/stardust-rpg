@@ -3,6 +3,11 @@ import aenum
 from .classes import magus, paladin, templar
 
 
+def round_up(num: float) -> int:
+    """Add a small epsilon in order to force .5 values to round up."""
+    round(num + 1e-8)
+
+
 class Abilities(aenum.AutoNumberEnum):
     # Paladin.
     reflect_1 = ()

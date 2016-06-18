@@ -13,6 +13,7 @@ from . import combos
 from . import dice
 from . import equipment
 from . import items
+from .abilities import round_up
 from .equipment import Attribute
 
 
@@ -231,9 +232,9 @@ class Character(models.Model):
 
     @property
     def hp(self) -> int:
-        return round(self.lvl * self.hp_lvl_con_mod * self.con +
-                     sum([wearable.hp for wearable in self.wearables]) +
-                     sum(level_up.hd_roll for level_up in self.levelup_set.all()))
+        return round_up(self.lvl * self.hp_lvl_con_mod * self.con +
+                        sum([wearable.hp for wearable in self.wearables]) +
+                        sum(level_up.hd_roll for level_up in self.levelup_set.all()))
 
     @property
     def mp_formula(self) -> str:
@@ -304,8 +305,8 @@ class Character(models.Model):
 
     @property
     def mdef(self) -> int:
-        return round(self.starting_mdef + (self.cls.mdef * self.lvl) + self.wis +
-                     sum([wearable.mdef for wearable in self.wearables]))
+        return round_up(self.starting_mdef + (self.cls.mdef * self.lvl) + self.wis +
+                        sum([wearable.mdef for wearable in self.wearables]))
 
     @property
     def pred_formula(self) -> str:
@@ -317,8 +318,8 @@ class Character(models.Model):
 
     @property
     def pred(self) -> int:
-        return round(self.cls.pred + (self.pred_con_mod * self.con) +
-                     sum([wearable.pred for wearable in self.wearables]))
+        return round_up(self.cls.pred + (self.pred_con_mod * self.con) +
+                        sum([wearable.pred for wearable in self.wearables]))
 
     @property
     def mred_formula(self) -> str:
@@ -330,8 +331,8 @@ class Character(models.Model):
 
     @property
     def mred(self) -> int:
-        return round(self.cls.mred + (self.mred_int_mod * self.intel) +
-                     sum([wearable.mred for wearable in self.wearables]))
+        return round_up(self.cls.mred + (self.mred_int_mod * self.intel) +
+                        sum([wearable.mred for wearable in self.wearables]))
 
     @property
     def reg_formula(self) -> str:
@@ -345,8 +346,8 @@ class Character(models.Model):
 
     @property
     def reg(self) -> int:
-        return round(self.starting_reg - (self.cls.reg * self.lvl) - self.cha -
-                     sum([wearable.reg for wearable in self.wearables]))
+        return round_up(self.starting_reg - (self.cls.reg * self.lvl) - self.cha -
+                        sum([wearable.reg for wearable in self.wearables]))
 
     @property
     def rd_formula(self) -> str:
@@ -358,8 +359,8 @@ class Character(models.Model):
 
     @property
     def rd(self) -> dice.DiceFormula:
-        rd_modifier = round((self.rd_char_mod * self.cha) +
-                            sum([wearable.rd for wearable in self.wearables]))
+        rd_modifier = round_up((self.rd_char_mod * self.cha) +
+                               sum([wearable.rd for wearable in self.wearables]))
         if self.lvl <= 3:
             reg_dice = dice.Dice.from_str('d2')
         elif 4 <= self.lvl <= 6:
@@ -385,8 +386,8 @@ class Character(models.Model):
 
     @property
     def speed(self) -> int:
-        return round(self.cls.speed + (self.speed_dex_mod * self.dex) +
-                     sum([wearable.speed for wearable in self.wearables]))
+        return round_up(self.cls.speed + (self.speed_dex_mod * self.dex) +
+                        sum([wearable.speed for wearable in self.wearables]))
 
     @property
     def vis_formula(self) -> str:
@@ -398,8 +399,8 @@ class Character(models.Model):
 
     @property
     def vis(self) -> int:
-        return round(self.cls.vis + (self.vis_con_mod * self.con) +
-                     sum([wearable.vis for wearable in self.wearables]))
+        return round_up(self.cls.vis + (self.vis_con_mod * self.con) +
+                        sum([wearable.vis for wearable in self.wearables]))
 
     @property
     def bpac_formula(self) -> str:
@@ -412,8 +413,8 @@ class Character(models.Model):
 
     @property
     def bpac(self) -> int:
-        return round((self.cls.pac * self.lvl) + self.stren +
-                     sum([wearable.bpac for wearable in self.wearables]))
+        return round_up((self.cls.pac * self.lvl) + self.stren +
+                        sum([wearable.bpac for wearable in self.wearables]))
 
     @property
     def bmac_formula(self) -> str:
@@ -426,8 +427,8 @@ class Character(models.Model):
 
     @property
     def bmac(self) -> int:
-        return round((self.cls.mac * self.lvl) + self.cha +
-                     sum([wearable.bmac for wearable in self.wearables]))
+        return round_up((self.cls.mac * self.lvl) + self.cha +
+                        sum([wearable.bmac for wearable in self.wearables]))
 
     @property
     def cran(self) -> int:
@@ -566,11 +567,11 @@ class Character(models.Model):
     def _str_damage(self) -> int:
         str_damage = 0
         if self.weapon.type is equipment.Type.light:
-            str_damage = round(self.light_weapon_str_damage_mod * self.stren)
+            str_damage = round_up(self.light_weapon_str_damage_mod * self.stren)
         elif self.weapon.type is equipment.Type.medium:
-            str_damage = round(self.medium_weapon_str_damage_mod * self.stren)
+            str_damage = round_up(self.medium_weapon_str_damage_mod * self.stren)
         elif self.weapon.type is equipment.Type.heavy:
-            str_damage = round(self.heavy_weapon_str_damage_mod * self.stren)
+            str_damage = round_up(self.heavy_weapon_str_damage_mod * self.stren)
         return str_damage
 
     @property
