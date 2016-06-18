@@ -6,7 +6,7 @@
     <label>Available SP: {{ character.available_sp }}</label>
     <br>
     <label title="{{ character.max_sp_per_skill_formula}}">
-        Max SP Per Skill: {{ character.max_sp_per_skill }}
+        <i>Note: Max Assigned SP Per Skill: {{ character.max_sp_per_skill }}</i>
     </label>
     <form method="post">
         {% csrf_token %}
