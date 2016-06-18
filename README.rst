@@ -191,16 +191,16 @@ Immunity (``IMU``)      Take no damage from a particular damage type.
 Skills
 ------
 
-======================= ============================================================
+======================= ===================================================================
 Skill                   Example Actions
-======================= ============================================================
+======================= ===================================================================
 Athletics (``ATH``)     Climb, Jump, Swim, Grapple, Reflex, Balance, Fall
 Stealth (``STE``)       Sneak, Hide, Sleight of Hand, Disguise, Escape, Detect Trap
 Fortitude (``FOR``)     Endurance, Resist Status Effect, Death Save, Survival
-Aptitude (``APT``)      Heal, Operate Device, Pick Lock, Forgery, Scan, Utility
+Aptitude (``APT``)      Knowledge, Heal, Operate Device, Pick Lock, Forgery, Scan, Utility
 Perception (``PER``)    Spot, Listen, Search, Touch, Smell, Taste
 Speech (``SPE``)        Diplomacy, Intimidate, Bluff, Persuasion
-======================= ============================================================
+======================= ===================================================================
 
 Attribute Effects
 -----------------
