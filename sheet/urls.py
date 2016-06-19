@@ -4,8 +4,8 @@ from . import views
 from .models import ability, equipment, items
 
 urlpatterns = [
-    url(r'^classes/$', views.browser.all_classes, name='sheet-views-classes'),
     url(r'^parties/$', views.browser.parties, name='sheet-views-parties'),
+    url(r'^classes/$', views.browser.all_classes, name='sheet-views-classes'),
     url(r'^combos/$', views.browser.all_combos, name='sheet-views-all-combos'),
     url(r'^heads/$', views.browser.all_equipment, {'wearables': items.heads.values()},
         name='sheet-views-heads'),
