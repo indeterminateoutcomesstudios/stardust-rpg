@@ -1,6 +1,4 @@
-import enum
 import re
-from typing import Tuple
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -9,61 +7,17 @@ from django.forms import ValidationError
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
-from .models import classes, combos, equipment, items
-from .models.abilities import inverse_abilities
-from .models.character import Character, UnlockedAbility
-from .models.level_up import LevelUp
-from .models.party import Party
-from .roll20 import api, login
+from ..forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
+from ..models import equipment, items
+from ..models.abilities import inverse_abilities
+from ..models.character import Character, UnlockedAbility
+from ..models.level_up import LevelUp
+from ..roll20 import api, login
 
 
 def check_is_superuser_or_owns_character(user: User, character: Character) -> None:
     if not (user.is_superuser or character.user.username == user.username):
         raise ValidationError('User not authorized to edit this character.')
-
-
-@login_required
-def all_parties(request: HttpRequest) -> HttpResponse:
-    return render(request, 'parties.html', context={'parties': Party.objects.all()})
-
-
-@login_required
-def all_classes(request: HttpRequest) -> HttpResponse:
-    return render(request, 'classes.html', context={'classes': classes.classes.values()})
-
-
-@login_required
-def all_combos(request: HttpRequest) -> HttpResponse:
-    return render(request, 'browser_combos.html', context={'combos': combos.combos})
-
-
-@login_required
-def all_equipment(request: HttpRequest, wearables: Tuple[equipment.Wearable, ...]) -> HttpResponse:
-    return render(request, 'equipment.html',
-                  context={'wearables': sorted(wearables, key=lambda wearable: wearable.price),
-                           'Rarity': equipment.Rarity})
-
-
-@login_required
-def all_weapons(request: HttpRequest, weapons: Tuple[equipment.Weapon, ...]) -> HttpResponse:
-    return render(request, 'weapons.html',
-                  context={'weapons': sorted(weapons, key=lambda weapon: weapon.price)})
-
-
-@login_required
-def all_items(request: HttpRequest, item_set: Tuple[equipment.Item, ...]) -> HttpResponse:
-    return render(request, 'items.html',
-                  context={'items': sorted(item_set, key=lambda item: item.price),
-                           'Rarity': equipment.Rarity})
-
-
-@login_required
-def pictures(request: HttpRequest, picture_enum: Tuple[enum.Enum, ...]) -> HttpResponse:
-    return render(request, 'pictures.html',
-                  context={'pictures': sorted([picture for picture in picture_enum],
-                                              key=lambda picture: picture.name),
-                           'picture_type': list(picture_enum)[0].__class__.__name__})
 
 
 @login_required
@@ -131,7 +85,7 @@ def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
 
 
 @login_required
-def character_combos(request: HttpRequest, character_id: int) -> HttpResponse:
+def combos(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'combos.html', context={'character': character})
 
