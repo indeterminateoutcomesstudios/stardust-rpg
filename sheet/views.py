@@ -14,6 +14,7 @@ from .models import classes, combos, equipment, items
 from .models.abilities import inverse_abilities
 from .models.character import Character, UnlockedAbility
 from .models.level_up import LevelUp
+from .models.party import Party
 from .roll20 import api, login
 
 
@@ -23,8 +24,8 @@ def check_is_superuser_or_owns_character(user: User, character: Character) -> No
 
 
 @login_required
-def characters(request: HttpRequest) -> HttpResponse:
-    return render(request, 'characters.html', context={'characters': Character.objects.all()})
+def all_parties(request: HttpRequest) -> HttpResponse:
+    return render(request, 'parties.html', context={'parties': Party.objects.all()})
 
 
 @login_required
@@ -76,6 +77,12 @@ def stats(request: HttpRequest, character_id: int) -> HttpResponse:
 def cls(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'class.html', context={'character': character})
+
+
+@login_required
+def party(request: HttpRequest, character_id: int) -> HttpResponse:
+    character = get_object_or_404(Character, pk=character_id)
+    return render(request, 'party.html', context={'character': character})
 
 
 @login_required
@@ -319,7 +326,7 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
             password = roll20_form.cleaned_data['password']
 
             roll20_login = login.login(email=request.user.email, password=password,
-                                       campaign_id=character.roll20_campaign_id)
+                                       campaign_id=character.party.roll20_campaign_id)
             campaign_name = roll20_login.campaign_name
 
             character_id = api.get_character_id(login=roll20_login, character_name=character.name)

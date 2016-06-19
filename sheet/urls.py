@@ -4,8 +4,8 @@ from . import views
 from .models import ability, equipment, items
 
 urlpatterns = [
-    url(r'^characters/$', views.characters, name='sheet-views-characters'),
     url(r'^classes/$', views.all_classes, name='sheet-views-classes'),
+    url(r'^parties/$', views.all_parties, name='sheet-views-parties'),
     url(r'^combos/$', views.all_combos, name='sheet-views-all-combos'),
     url(r'^heads/$', views.all_equipment, {'wearables': items.heads.values()},
         name='sheet-views-heads'),
@@ -40,6 +40,8 @@ urlpatterns = [
     url(r'^(?P<character_id>[0-9]+)/level_up/$', views.level_up, name='sheet-views-level-up'),
     url(r'^(?P<character_id>[0-9]+)/skill_points/$', views.skill_points,
         name='sheet-views-skill-points'),
+    url(r'^(?P<character_id>[0-9]+)/party/$', views.party,
+        name='sheet-views-party'),
     url(r'^(?P<character_id>[0-9]+)/roll20/$', views.roll20,
         name='sheet-views-roll20'),
 ]

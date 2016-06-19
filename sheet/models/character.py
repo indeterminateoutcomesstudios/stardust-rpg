@@ -13,6 +13,7 @@ from . import combos
 from . import dice
 from . import equipment
 from . import items
+from . import party
 from .abilities import round_up
 from .equipment import Attribute
 
@@ -21,7 +22,7 @@ class Character(models.Model):
     # Fields
     user = models.ForeignKey(User, unique=False)
     name = models.CharField(max_length=25)
-    roll20_campaign_id = models.PositiveIntegerField(default=0)
+    party = models.ForeignKey(party.Party, unique=False)
 
     class_enum = enumfields.EnumIntegerField(classes.Classes, default=classes.Classes.paladin)
     utility_enum = enumfields.EnumIntegerField(items.Utilities, default=items.Utilities.empty)
@@ -199,12 +200,12 @@ class Character(models.Model):
         return self.ap - self.unlockedability_set.count()
 
     @property
-    def unlocked_abilities(self) -> Tuple[ability.Ability]:
+    def unlocked_abilities(self) -> Tuple[ability.Ability, ...]:
         return tuple([unlocked_ability.ability
                       for unlocked_ability in self.unlockedability_set.all()])
 
     @property
-    def class_combos(self) -> Tuple[combos.Combo]:
+    def class_combos(self) -> Tuple[combos.Combo, ...]:
         # TODO: Make this part of cls?  Import issues.
         character_combos = []
         for combo in combos.combos:
@@ -213,9 +214,31 @@ class Character(models.Model):
         return tuple(character_combos)
 
     @property
-    def unlocked_combos(self) -> Tuple[combos.Combo]:
-        unlocked_combos = []
+    def party_members(self) -> Tuple['Character', ...]:
+        """Other Characters other than this one in the Party."""
+        party_members = []
+        for party_member in self.party.character_set.all():
+            if party_member != self:
+                party_members.append(party_member)
+        return tuple(party_members)
+
+    @property
+    def party_combos(self) -> Tuple[combos.Combo, ...]:
+        character_party_combos = []
         for combo in self.class_combos:
+            for party_member in self.party_members:
+                if ((self.cls.__class__ is combo.classes[0] and
+                        party_member.cls.__class__ is combo.classes[1]) or
+                    (self.cls.__class__ is combo.classes[1] and
+                        party_member.cls.__class__ is combo.classes[0])):
+                    character_party_combos.append(combo)
+                    continue
+        return tuple(character_party_combos)
+
+    @property
+    def unlocked_combos(self) -> Tuple[combos.Combo, ...]:
+        unlocked_combos = []
+        for combo in self.party_combos:
             if self.lvl >= combo.prerequisite_lvl:
                 unlocked_combos.append(combo)
         return tuple(unlocked_combos)
@@ -600,3 +623,6 @@ class UnlockedAbility(models.Model):
     @property
     def ability(self) -> ability.Ability:
         return abilities.abilities[self.ability_enum]
+
+    def __str__(self) -> str:
+        return '{} {}'.format(self.character, self.ability.name)

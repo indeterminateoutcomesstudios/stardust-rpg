@@ -1,0 +1,26 @@
+{% extends "browser_base.html" %}
+
+{% block title %}Parties{% endblock %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr id="title">
+                <th>Party</th>
+                <th>Characters</th>
+            </tr>
+        </thead>
+        {% for party in parties %}
+           <tr>
+                <td>{{ party }}</td>
+                {% for character in party.character_set.all %}
+                    <td>
+                        {{ character.user }}
+                        <br/>
+                        <a href="{% url 'sheet-views-stats' character.id %}">{{ character }}</a>
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

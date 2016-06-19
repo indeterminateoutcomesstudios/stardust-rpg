@@ -1,0 +1,26 @@
+{% extends "character_base.html" %}
+
+{% block title %}Party - {{ character.name }}{% endblock %}
+
+{% block content %}
+    <table style="display: inline-block">
+        <label>Party: {{ character.party }}</label>
+    <br/>
+        <thead>
+            <tr id="title">
+                <th>Player</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        {% for party_character in character.party.character_set.all %}
+            <tr>
+                <td>{{ party_character.user }}</td>
+                <td>
+                    <a href="{% url 'sheet-views-stats' party_character.id %}">
+                        {{ party_character }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

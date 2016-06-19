@@ -10,7 +10,8 @@
     <div id="linkbar">
         {% block linkbar %}
         <Label>Player: {{ request.user }}</Label>
-        <a href="{% url 'sheet-views-characters' %}">All Characters</a>
+        <a href="{% url 'sheet-views-parties' %}">Parties</a>
+        <a href="{% url 'sheet-views-party' character.id %}">Party</a>
         <a href="{% url 'sheet-views-stats' character.id %}">Stats</a>
         <a href="{% url 'sheet-views-abilities' character.id %}">
             Abilities{% if character.available_ap > 0 %}

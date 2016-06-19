@@ -83,7 +83,18 @@ Add ``Users`` for each player.  Configure the following fields:
 ======================= ==============================================
 Field                   Value
 ======================= ==============================================
+``Username``            Stardust RPG server username.
+``Password``            Initial user password
 ``Email Address``       Player's Roll20 email address.
+======================= ==============================================
+
+Add a ``Party`` for the group.  Configure the following fields:
+
+======================= ==============================================
+Field                   Value
+======================= ==============================================
+``Name``                Name of the character.  Must match name of character in Roll20.
+``Roll20 campaign id``  The 6 digit ID assigned to the campaign (e.g. https://app.roll20.net/campaigns/details/ID/CAMPAIGN_NAME)
 ======================= ==============================================
 
 Add ``Characters`` for each character in the game.  Configure the following fields:
@@ -93,7 +104,7 @@ Field                   Value
 ======================= ==============================================
 ``User``                Player who has modification rights to the character.
 ``Name``                Name of the character.  Must match name of character in Roll20.
-``Roll20 campaign id``  The 6 digit ID assigned to the campaign (e.g. https://app.roll20.net/campaigns/details/ID/CAMPAIGN_NAME)
+``Party``               The ``Party`` this character is a part of.
 ``Class``               The class assigned to this ``Character``.
 ======================= ==============================================
 
@@ -161,9 +172,9 @@ Incapacitation (``KO``)
 Status Effects
 ~~~~~~~~~~~~~~
 
-=========== ==========================================================================
+=========== ===================================================================================
 Status      Effect
-=========== ==========================================================================
+=========== ===================================================================================
 Immobilize  Cannot take ``MovA``.
 Silence     Cannot take ``AbA`` (i.e. any action that targets with ``MAC`` or consumes ``MP``).
 Stagger     Cannot perform physical attacks.
@@ -175,7 +186,7 @@ Allure      Must expend ``MovA`` to move towards the source of the allure.
 Blind       Maximum range of physical and magic attacks reduced to 1.
 Unconscious Cannot take anymore actions until revived.
 Death       Creature is dead.
-=========== ==========================================================================
+=========== ===================================================================================
 
 Vulnerabilities and Resistances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -242,6 +253,12 @@ Releases
 TODO
 ====
 
+Known Bugs
+----------
+
+- Roll20 attributes must already be created.
+- At least one ability must exist in order for abilities to sync.
+
 Features
 --------
 
@@ -252,7 +269,6 @@ Features
 - Vulnerabilities and resistances.
 - Inventory
 - Shops
-- Parties
 - Weapon / Ability DPS
 - Fix REG formula
 
