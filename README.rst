@@ -262,15 +262,15 @@ Known Bugs
 Features
 --------
 
-- Handle exceptions in a user-friendly way.
-- Show only equipable items.
-- Utility macros.
-- Set bonuses.
+- Fix REG formula
 - Vulnerabilities and resistances.
+- Utility macros.
+- Handle exceptions in a user-friendly way.
+- Weapon / Ability DPS
+- Show only equipable items.
+- Set bonuses.
 - Inventory
 - Shops
-- Weapon / Ability DPS
-- Fix REG formula
 
 Technical Debt
 --------------
