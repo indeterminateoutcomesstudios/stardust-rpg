@@ -275,5 +275,4 @@ Features
 Technical Debt
 --------------
 
-- Switch to logging module.
 - Add unit tests

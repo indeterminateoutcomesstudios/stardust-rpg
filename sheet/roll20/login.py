@@ -1,7 +1,10 @@
+import logging
 import re
 
 import bs4
 import requests
+
+logger = logging.getLogger(__name__)
 
 
 class Roll20Login:
@@ -37,7 +40,7 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
     found_campaign = None
     for campaign in campaigns:
         current_campaign_id = int(re.search(r'setcampaign/(\d+)', campaign['link']).group(1))
-        print('Found campaign #{} {}'.format(current_campaign_id, campaign['name']))
+        logger.debug('Found campaign #{} {}'.format(current_campaign_id, campaign['name']))
         if current_campaign_id == campaign_id:
             found_campaign = campaign
 
@@ -60,9 +63,9 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
     campaign_path = re.search(r'window\.campaign_storage_path\s+=\s+"(.*)"',
                               js_response.text).group(1)
 
-    print('FIREBASE_ROOT: {}'.format(fb_root))
-    print('GNTKN: {}'.format(auth_token))
-    print('campaign_storage_path: {}'.format(campaign_path))
+    logger.debug('FIREBASE_ROOT: {}'.format(fb_root))
+    logger.debug('GNTKN: {}'.format(auth_token))
+    logger.debug('campaign_storage_path: {}'.format(campaign_path))
 
     return Roll20Login(firebase_root=fb_root, auth_token=auth_token, campaign_path=campaign_path,
                        campaign_name=found_campaign['name'])
