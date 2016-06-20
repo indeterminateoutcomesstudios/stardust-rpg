@@ -112,7 +112,7 @@ imbue_weapon_1 = Ability(
 
 imbue_weapon_2 = Ability(
     name='Imbue Weapon II', picture=AbilityPicture.awareness,
-    mp_cost=3, max_range='5', target_area='1 ally',
+    mp_cost=3, max_range='5', target_area='1 ally', time=Time.free_a,
     duration='6', duration_unit=DurationUnit.rnd,
     effect='Imbues ally\'s weapon with lightning. Successful or unsuccessful physical attacks '
            'apply [[1+WIS]]MDAM',
