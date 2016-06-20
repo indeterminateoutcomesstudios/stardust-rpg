@@ -30,7 +30,7 @@ setuptools.setup(
 
     classifiers=[
         'Development Status :: 4 - Beta',
-        'Environment :: Console',
+        'Environment :: Web Environment',
         'Intended Audience :: End Users/Desktop',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
@@ -38,6 +38,8 @@ setuptools.setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3 :: Only',
         'Programming Language :: Python :: 3.5',
+        'Framework :: Django',
+        'Framework :: Django :: 1.9',
         'Topic :: Games/Entertainment :: Role-Playing',
     ],
 )
