@@ -158,7 +158,7 @@ Combat Round (``RND``)
 
 #. At the conclusion of your turn, roll a d20 and Regeneration Dice (``RD``)
 
-    #. If d20 ≥ Magic Regeneration (``REG``), restore ``RD`` MP.
+    #. If d20 + Magic Regeneration (``REG``) ≥ 18, restore ``RD`` MP.
 
         #. If d20 = 20, restore 2x ``RD`` MP.
         #. If d20 = 1, automatic failure.
@@ -263,7 +263,6 @@ Known Bugs
 Features
 --------
 
-- Fix REG formula
 - Vulnerabilities and resistances.
 - Utility macros.
 - Handle exceptions in a user-friendly way.

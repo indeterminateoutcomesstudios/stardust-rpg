@@ -50,7 +50,6 @@ class Character(models.Model):
     starting_mdef = 5
     pred_con_mod = 0.5
     mred_int_mod = 0.5
-    starting_reg = 18
     rd_char_mod = 0.25
     speed_dex_mod = 0.5
     vis_con_mod = 0.5
@@ -359,9 +358,8 @@ class Character(models.Model):
 
     @property
     def reg_formula(self) -> str:
-        return ('{starting_reg}[Starting REG] - ({class_reg}[Class REG] * {lvl}[LVL]) - '
-                '{cha}[CHA] - {wearables}[Wearables]').format(
-            starting_reg=self.starting_reg,
+        return ('({class_reg}[Class REG] * {lvl}[LVL]) + '
+                '{cha}[CHA] + {wearables}[Wearables]').format(
             class_reg=self.cls.reg,
             lvl=self.lvl,
             cha=self.cha,
@@ -369,7 +367,7 @@ class Character(models.Model):
 
     @property
     def reg(self) -> int:
-        return round_up(self.starting_reg - (self.cls.reg * self.lvl) - self.cha -
+        return round_up((self.cls.reg * self.lvl) + self.cha +
                         sum([wearable.reg for wearable in self.wearables]))
 
     @property
