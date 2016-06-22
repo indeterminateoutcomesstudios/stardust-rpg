@@ -357,7 +357,7 @@ time_lord_3 = Ability(
 
 
 class Templar(Class):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(
             name=self.__class__.__name__, hd=10, md=6, sd=4, speed=5, pdef=5, mdef=1,
             pred=0, mred=0, reg=1, vis=2, pac=0.5, mac=0.75, ath=2, ste=4, fort=2, apt=2,

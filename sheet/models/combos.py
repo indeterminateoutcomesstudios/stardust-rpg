@@ -21,7 +21,7 @@ class Combo(Ability):
                  effect='',
                  attacks: int = 0, pdam: str = None, mdam: str = None,
                  targets_mdef: bool = False, time: Time = Time.ab_a, min_range: str = '0',
-                 max_range: str = '0', shape: Shape = Shape.point):
+                 max_range: str = '0', shape: Shape = Shape.point) -> None:
         self.classes = classes
         self.prerequisite_lvl = prerequisite_lvl
         super().__init__(name=name, picture=picture, mp_cost=mp_cost, target_area=target_area,

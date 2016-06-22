@@ -4,7 +4,7 @@ from typing import Tuple
 
 
 class Dice:
-    def __init__(self, sides: int, num_dice: int = 1):
+    def __init__(self, sides: int, num_dice: int = 1) -> None:
         self.sides = sides
         self.num_dice = num_dice
 
@@ -30,7 +30,7 @@ class Dice:
 
 
 class DiceFormula:
-    def __init__(self, dice_pool: Tuple[Dice, ...], modifier: int = 0):
+    def __init__(self, dice_pool: Tuple[Dice, ...], modifier: int = 0) -> None:
         self.dice_pool = dice_pool
         self.modifier = modifier
 

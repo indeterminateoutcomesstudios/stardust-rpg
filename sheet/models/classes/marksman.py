@@ -2,7 +2,7 @@ from ..class_type import Class
 
 
 class Marksman(Class):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(
             name=self.__class__.__name__, hd=8, md=4, sd=4, speed=4, pdef=4, mdef=0.25,
             pred=0, mred=0, reg=1, vis=3, pac=1, mac=0.75, ath=4, ste=2, fort=1, apt=4,

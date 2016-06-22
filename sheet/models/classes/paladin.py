@@ -368,7 +368,7 @@ master_telekinetic_3 = Ability(
 
 
 class Paladin(Class):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(
             name=self.__class__.__name__, hd=12, md=4, sd=2, speed=4, pdef=6, mdef=0.75,
             pred=1, mred=0, reg=0.75, vis=2, pac=1, mac=0.5, ath=4, ste=1, fort=4, apt=1,

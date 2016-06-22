@@ -2,7 +2,7 @@ from ..class_type import Class
 
 
 class Geomancer(Class):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(
             name=self.__class__.__name__, hd=20, md=4, sd=2, speed=3, pdef=3, mdef=0.5,
             pred=0.5, mred=0.5, reg=0.75, vis=4, pac=1, mac=0.5, ath=4, ste=1, fort=5, apt=1,
