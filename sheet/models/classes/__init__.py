@@ -1,6 +1,5 @@
 import aenum
 
-
 from . import geomancer, magus, marksman, paladin, spectre, telepath, templar, valkyrie
 
 
@@ -13,6 +12,7 @@ class Classes(aenum.AutoNumberEnum):
     telepath = ()
     marksman = ()
     geomancer = ()
+
 
 classes = {
     Classes.paladin: paladin.Paladin(),

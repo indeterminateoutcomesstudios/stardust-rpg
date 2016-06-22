@@ -5,12 +5,12 @@
 {% block content %}
     <table style="display: inline-block">
         <label>Party: {{ character.party }}</label>
-    <br/>
+        <br/>
         <thead>
-            <tr id="title">
-                <th>Player</th>
-                <th>Name</th>
-            </tr>
+        <tr id="title">
+            <th>Player</th>
+            <th>Name</th>
+        </tr>
         </thead>
         {% for party_character in character.party.character_set.all %}
             <tr>

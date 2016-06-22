@@ -1,28 +1,36 @@
 body {
     font-family: sans-serif;
 }
+
 td, th {
     color: black;
 }
+
 td {
     padding: 5px;
     border: 1px solid #cccccc;
 }
+
 table {
     border-collapse: collapse;
 }
+
 tr:nth-child(even) {
     background-color: gainsboro;
 }
+
 #title th {
     font-weight: 900;
 }
+
 .type_rare {
     color: goldenrod;
 }
+
 .type_unique {
     color: purple;
 }
+
 .type_set {
     color: darkgreen;
 }

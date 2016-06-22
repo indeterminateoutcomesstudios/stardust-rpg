@@ -35,6 +35,7 @@ class Utilities(aenum.AutoNumberEnum):
     dwarven_crystal_lantern = ()
     mirrored_lunacite_lantern = ()
 
+
 utilities = {
     Utilities.empty: Utility(name=Utilities.empty.name),
     Utilities.candle: Utility(name=Utilities.candle.name, price=15, vis=1,
@@ -139,6 +140,7 @@ class Heads(aenum.AutoNumberEnum):
     mithril_tiara = ()
     mithril_coronet = ()
 
+
 heads = {
     Heads.empty: Head(name=Heads.empty.name),
     Heads.cursed_helm: Head(name=Heads.cursed_helm.name, price=0, min_int=0, reg=2,
@@ -223,6 +225,7 @@ class Necks(aenum.AutoNumberEnum):
     augmenter = ()
     mithril_amulet = ()
     omni_amulet = ()
+
 
 necks = {
     Necks.empty: Neck(name=Necks.empty.name),
@@ -325,6 +328,7 @@ class Chests(aenum.AutoNumberEnum):
     volcanic_slate = ()
     lunatech_chest = ()
     lunafiber_robe = ()
+
 
 chests = {
     # Light.
@@ -749,6 +753,7 @@ class Feets(aenum.AutoNumberEnum):
     volcanic_greaves = ()
     lunatech_boots = ()
     lunafiber_slippers = ()
+
 
 feets = {
     Feets.empty: Feet(name=Feets.empty.name),
@@ -1738,6 +1743,7 @@ class Items(aenum.AutoNumberEnum):
     bronze_manacles = ()
     iron_manacles = ()
     steel_manacles = ()
+
 
 items = {
     Items.empty: Item(name=Items.empty.name, effect=''),

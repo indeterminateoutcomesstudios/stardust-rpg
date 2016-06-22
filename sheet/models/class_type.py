@@ -4,17 +4,19 @@ from .ability import Ability
 
 
 class Class:
-    def __init__(self, name: str='Empty Class', hd: int=1, md: int=1, sd: int=1, speed: int=0,
-                 pdef: int=0, mdef: float=0.0, pred: float=0.0, mred: float=0.0,
-                 reg: float=0.0, vis: int=0, pac: float=0.0, mac: float=0.0,
-                 ath: int=0, ste: int=0, fort: int=0, apt: int=0, per: int=0, spe: int=0,
-                 starting_ap: int=0, abilities: Tuple[Ability, ...]=(),
-                 use_melee_light: bool=False, use_melee_medium: bool=False,
-                 use_melee_heavy: bool=False, use_ranged_light: bool=False,
-                 use_ranged_medium: bool=False, use_ranged_heavy: bool=False,
-                 use_magic_light: bool=False, use_magic_medium: bool=False,
-                 use_magic_heavy: bool=False, use_light_armor: bool=False,
-                 use_medium_armor: bool=False, use_heavy_armor: bool=False):
+    def __init__(self, name: str = 'Empty Class', hd: int = 1, md: int = 1, sd: int = 1,
+                 speed: int = 0,
+                 pdef: int = 0, mdef: float = 0.0, pred: float = 0.0, mred: float = 0.0,
+                 reg: float = 0.0, vis: int = 0, pac: float = 0.0, mac: float = 0.0,
+                 ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
+                 spe: int = 0,
+                 starting_ap: int = 0, abilities: Tuple[Ability, ...] = (),
+                 use_melee_light: bool = False, use_melee_medium: bool = False,
+                 use_melee_heavy: bool = False, use_ranged_light: bool = False,
+                 use_ranged_medium: bool = False, use_ranged_heavy: bool = False,
+                 use_magic_light: bool = False, use_magic_medium: bool = False,
+                 use_magic_heavy: bool = False, use_light_armor: bool = False,
+                 use_medium_armor: bool = False, use_heavy_armor: bool = False):
         self.name = name
         self.hd = hd
         self.md = md

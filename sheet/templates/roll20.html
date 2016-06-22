@@ -7,7 +7,7 @@
     <form method="post">
         {% csrf_token %}
         {{ roll20_form.as_p }}
-        <input type="submit" value="Sync to Roll20" />
+        <input type="submit" value="Sync to Roll20"/>
     </form>
     <p>
         <label>Roll20 Character Name: {{ character.name }}</label>

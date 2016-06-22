@@ -247,9 +247,9 @@ class Character(models.Model):
         for combo in self.class_combos:
             for party_member in self.party_members:
                 if ((self.cls.__class__ is combo.classes[0] and
-                        party_member.cls.__class__ is combo.classes[1]) or
+                     party_member.cls.__class__ is combo.classes[1]) or
                     (self.cls.__class__ is combo.classes[1] and
-                        party_member.cls.__class__ is combo.classes[0])):
+                     party_member.cls.__class__ is combo.classes[0])):
                     character_party_combos.append(combo)
                     continue
         return tuple(character_party_combos)

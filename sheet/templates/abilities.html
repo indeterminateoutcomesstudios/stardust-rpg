@@ -8,41 +8,41 @@
         {% csrf_token %}
         <table>
             <thead>
-                <tr id="title">
-                    <th>Unlock</th>
-                    <th>Name</th>
-                    <th>Prereqs</th>
-                    <th>MP</th>
-                    <th>Effect</th>
-                    <th>Attacks</th>
-                    <th>MAC</th>
-                    <th>PDAM</th>
-                    <th>MDAM</th>
-                    <th>DAM Type</th>
-                    <th>MDEF?</th>
-                    <th>Time</th>
-                    <th>Min Range</th>
-                    <th>Max Range</th>
-                    <th>Shape</th>
-                    <th>Target Area</th>
-                    <th>Duration</th>
-                    <th>Duration Unit</th>
-                </tr>
+            <tr id="title">
+                <th>Unlock</th>
+                <th>Name</th>
+                <th>Prereqs</th>
+                <th>MP</th>
+                <th>Effect</th>
+                <th>Attacks</th>
+                <th>MAC</th>
+                <th>PDAM</th>
+                <th>MDAM</th>
+                <th>DAM Type</th>
+                <th>MDEF?</th>
+                <th>Time</th>
+                <th>Min Range</th>
+                <th>Max Range</th>
+                <th>Shape</th>
+                <th>Target Area</th>
+                <th>Duration</th>
+                <th>Duration Unit</th>
+            </tr>
             </thead>
             {% for ability in character.cls.abilities %}
                 <tr>
                     <td>
                         <button type="submit" name="lock"
-                            {% if ability in character.unlocked_abilities %}
+                                {% if ability in character.unlocked_abilities %}
                                 value="lock {{ forloop.counter0 }}"
                                 style="background: #00ff00;">
-                                    Unlocked
-                            {% else %}
-                                value="unlock {{ forloop.counter0  }}"
-                                style="background: #00ffff;">
-                                    Locked
-                        </button>
-                            {% endif %}
+                                        Unlocked
+                                        {% else %}
+                                        value="unlock {{ forloop.counter0 }}"
+                                        style="background: #00ffff;">
+                                        Locked
+                                    </button>
+                                {% endif %}
                     </td>
                     <td>
                         <img src="{{ ability.picture.value }}"

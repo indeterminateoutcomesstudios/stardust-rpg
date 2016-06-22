@@ -5,10 +5,10 @@
 {% block content %}
     <table style="display: inline-block">
         <thead>
-            <tr id="title">
-                <th>Stat</th>
-                <th>Value</th>
-            </tr>
+        <tr id="title">
+            <th>Stat</th>
+            <th>Value</th>
+        </tr>
         </thead>
         <tr>
             <td>Player</td>
@@ -37,10 +37,10 @@
     </table>
     <table style="display: inline-block">
         <thead>
-            <tr id="title">
-                <th>Attribute</th>
-                <th>Value</th>
-            </tr>
+        <tr id="title">
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
         </thead>
         <tr>
             <td>STR</td>
@@ -69,10 +69,10 @@
     </table>
     <table style="display: inline-block">
         <thead>
-            <tr id="title">
-                <th>Skill</th>
-                <th>Value</th>
-            </tr>
+        <tr id="title">
+            <th>Skill</th>
+            <th>Value</th>
+        </tr>
         </thead>
         <tr>
             <td title="{{ character.ath_formula }}">ATH</td>
@@ -101,10 +101,10 @@
     </table>
     <table style="display: inline-block">
         <thead>
-            <tr id="title">
-                <th>Stat</th>
-                <th>Value</th>
-            </tr>
+        <tr id="title">
+            <th>Stat</th>
+            <th>Value</th>
+        </tr>
         </thead>
         <tr>
             <td title="{{ character.ap_formula }}">AP</td>
@@ -174,34 +174,34 @@
     <label><i>For formulas on how skills or stats are calculated, hover over the name.</i></label>
     <table>
         <thead>
-            <tr id="title">
-                <th>Weapon</th>
-                <th>Rarity</th>
-                <th>Style</th>
-                <th>Type</th>
-                <th>Min {{ character.weapon.min_attribute.name }}</th>
-                <th>2-Hand</th>
-                <th>Range</th>
-                <th>Shape</th>
-                <th>Attacks</th>
-                <th>PAC</th>
-                <th>PDAM</th>
-                <th>MDAM</th>
-                <th>Damage Type</th>
-                <th>CRAN</th>
-                <th>CDAM</th>
-                <th>Effect</th>
-            </tr>
+        <tr id="title">
+            <th>Weapon</th>
+            <th>Rarity</th>
+            <th>Style</th>
+            <th>Type</th>
+            <th>Min {{ character.weapon.min_attribute.name }}</th>
+            <th>2-Hand</th>
+            <th>Range</th>
+            <th>Shape</th>
+            <th>Attacks</th>
+            <th>PAC</th>
+            <th>PDAM</th>
+            <th>MDAM</th>
+            <th>Damage Type</th>
+            <th>CRAN</th>
+            <th>CDAM</th>
+            <th>Effect</th>
+        </tr>
         </thead>
         <tr>
             <td
-                {% if character.weapon.rarity == Rarity.rare %}
-                    class="type_rare"
-                {% elif character.weapon.rarity == Rarity.unique %}
-                    class="type_unique"
-                {% elif character.weapon.rarity == Rarity.set %}
-                    class="type_set"
-                {% endif %}
+                    {% if character.weapon.rarity == Rarity.rare %}
+                        class="type_rare"
+                    {% elif character.weapon.rarity == Rarity.unique %}
+                        class="type_unique"
+                    {% elif character.weapon.rarity == Rarity.set %}
+                        class="type_set"
+                    {% endif %}
             >
                 <b>{{ character.weapon.name|capfirst }}</b>
                 <img src="{{ character.weapon.picture.value }}"
@@ -211,70 +211,70 @@
             <td>{{ character.weapon.style.name|capfirst }}</td>
             <td>{{ character.weapon.type.name|capfirst }}</td>
             <td>{{ character.weapon.min_attribute_value }}</td>
-            <td>{{ character.weapon.is_two_handed}}</td>
-            <td>{{ character.weapon.min_range}} - {{ character.weapon.max_range }}</td>
+            <td>{{ character.weapon.is_two_handed }}</td>
+            <td>{{ character.weapon.min_range }} - {{ character.weapon.max_range }}</td>
             <td>
                 {{ character.weapon.shape.name|capfirst }}
                 <img src="{{ character.weapon.shape.value }}">
             </td>
-            <td>{{ character.weapon.attacks}}</td>
-            <td>{{ character.bpac|add:character.weapon.pac }} (+{{ character.weapon.pac}})</td>
-            <td>{{ character.weapon_pdam }} ({{ character.weapon.pdam}})</td>
-            <td>{{ character.weapon_mdam }} ({{ character.weapon.mdam}})</td>
+            <td>{{ character.weapon.attacks }}</td>
+            <td>{{ character.bpac|add:character.weapon.pac }} (+{{ character.weapon.pac }})</td>
+            <td>{{ character.weapon_pdam }} ({{ character.weapon.pdam }})</td>
+            <td>{{ character.weapon_mdam }} ({{ character.weapon.mdam }})</td>
             <td>{{ character.weapon.damage_type.name|capfirst }}</td>
             <td>{{ character.cran|add:character.weapon.cran }} (+{{ character.weapon.cran }})</td>
             <td>{{ character.weapon.cdam }}</td>
-            <td>{{ character.weapon.effect}}</td>
+            <td>{{ character.weapon.effect }}</td>
         </tr>
     </table>
     <table>
         <thead>
-            <tr id="title">
-                <th>Slot</th>
-                <th>Equipment</th>
-                <th>Rarity</th>
-                <th>Type</th>
-                <th>Min ATT</th>
-                <th>STR</th>
-                <th>DEX</th>
-                <th>CON</th>
-                <th>INT</th>
-                <th>WIS</th>
-                <th>CHA</th>
-                <th>ATH</th>
-                <th>STE</th>
-                <th>FOR</th>
-                <th>APT</th>
-                <th>PER</th>
-                <th>SPE</th>
-                <th>AP</th>
-                <th>HP</th>
-                <th>MP</th>
-                <th>SP</th>
-                <th>PDEF</th>
-                <th>MDEF</th>
-                <th>PRED</th>
-                <th>MRED</th>
-                <th>REG</th>
-                <th>RD</th>
-                <th>SPEED</th>
-                <th>VIS</th>
-                <th>BPAC</th>
-                <th>BMAC</th>
-                <th>Effect</th>
-            </tr>
+        <tr id="title">
+            <th>Slot</th>
+            <th>Equipment</th>
+            <th>Rarity</th>
+            <th>Type</th>
+            <th>Min ATT</th>
+            <th>STR</th>
+            <th>DEX</th>
+            <th>CON</th>
+            <th>INT</th>
+            <th>WIS</th>
+            <th>CHA</th>
+            <th>ATH</th>
+            <th>STE</th>
+            <th>FOR</th>
+            <th>APT</th>
+            <th>PER</th>
+            <th>SPE</th>
+            <th>AP</th>
+            <th>HP</th>
+            <th>MP</th>
+            <th>SP</th>
+            <th>PDEF</th>
+            <th>MDEF</th>
+            <th>PRED</th>
+            <th>MRED</th>
+            <th>REG</th>
+            <th>RD</th>
+            <th>SPEED</th>
+            <th>VIS</th>
+            <th>BPAC</th>
+            <th>BMAC</th>
+            <th>Effect</th>
+        </tr>
         </thead>
         {% for wearable in character.wearables %}
             <tr>
                 <td>{{ wearable.slot.name|capfirst }}</td>
                 <td
-                    {% if wearable.rarity == Rarity.rare %}
-                        class="type_rare"
-                    {% elif wearable.rarity == Rarity.unique %}
-                        class="type_unique"
-                    {% elif wearable.rarity == Rarity.set %}
-                        class="type_set"
-                    {% endif %}
+                        {% if wearable.rarity == Rarity.rare %}
+                            class="type_rare"
+                        {% elif wearable.rarity == Rarity.unique %}
+                            class="type_unique"
+                        {% elif wearable.rarity == Rarity.set %}
+                            class="type_set"
+                        {% endif %}
                 >
                     <b>{{ wearable.name|capfirst }}</b>
                     {% if wearable.is_two_handed %}

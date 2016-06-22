@@ -2,7 +2,6 @@ from ..ability import Ability, AbilityPicture, DurationUnit, Time
 from ..class_type import Class
 from ..equipment import DamageType, Shape
 
-
 reflect_1 = Ability(
     name='Reflect [Counter] I', picture=AbilityPicture.shield_oath,
     mp_cost=2, target_area='Self', time=Time.free_a,

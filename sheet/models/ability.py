@@ -465,11 +465,12 @@ class Ability:
     mp_mac_modifier = 0.25
 
     def __init__(self, name: str, picture: AbilityPicture, mp_cost: int, target_area: str,
-                 duration: str=None, duration_unit: DurationUnit=DurationUnit.instant,
-                 prerequisites: Tuple['Ability', ...]=(), damage_type: DamageType=None, effect='',
-                 attacks: int=0, pdam: str=None, mdam: str=None,
-                 targets_mdef: bool=False, time: Time=Time.ab_a, min_range: str='0',
-                 max_range: str='0', shape: Shape=Shape.point):
+                 duration: str = None, duration_unit: DurationUnit = DurationUnit.instant,
+                 prerequisites: Tuple['Ability', ...]=(), damage_type: DamageType = None,
+                 effect='',
+                 attacks: int = 0, pdam: str = None, mdam: str = None,
+                 targets_mdef: bool = False, time: Time = Time.ab_a, min_range: str = '0',
+                 max_range: str = '0', shape: Shape = Shape.point) -> None:
         self.name = name
         self.picture = picture
         self.damage_type = damage_type
@@ -521,7 +522,7 @@ class Ability:
             target_name = ''
 
         if (self.duration_unit is DurationUnit.instant or
-           self.duration_unit is DurationUnit.forever):
+                self.duration_unit is DurationUnit.forever):
             duration_str = self.duration_unit.name
         else:
             duration_str = '[[{duration_value}]]{duration_unit}'.format(

@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 class Roll20Login:
     def __init__(self, firebase_root: str, auth_token: str, campaign_path: str,
-                 campaign_name: str)-> None:
+                 campaign_name: str) -> None:
         self.firebase_root = firebase_root
         self.auth_token = auth_token
         self.campaign_path = campaign_path

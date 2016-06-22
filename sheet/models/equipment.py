@@ -104,8 +104,8 @@ class DamageType(aenum.AutoNumberEnum):
 
 
 class Item:
-    def __init__(self, name: str, slot: Slot=Slot.item,
-                 rarity: Rarity=Rarity.common, price: int=0, effect: str=''):
+    def __init__(self, name: str, slot: Slot = Slot.item,
+                 rarity: Rarity = Rarity.common, price: int = 0, effect: str = ''):
         self.slot = slot
         self.name = name
         self.rarity = rarity
@@ -114,9 +114,10 @@ class Item:
 
 
 class Wearable(Item):
-    def __init__(self, slot: Slot, name: str, min_attribute: Attribute, min_attribute_value: int=0,
-                 rarity: Rarity=Rarity.common, price: int=0,
-                 effect: str='', equip_type: Type=Type.light,
+    def __init__(self, slot: Slot, name: str, min_attribute: Attribute,
+                 min_attribute_value: int = 0,
+                 rarity: Rarity = Rarity.common, price: int = 0,
+                 effect: str = '', equip_type: Type = Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
                  ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
@@ -158,8 +159,8 @@ class Wearable(Item):
 
 
 class Utility(Wearable):
-    def __init__(self, name: str, min_int: int=0, rarity: Rarity=Rarity.common,
-                 price: int = 0, effect: str = '', equip_type: Type=Type.light,
+    def __init__(self, name: str, min_int: int = 0, rarity: Rarity = Rarity.common,
+                 price: int = 0, effect: str = '', equip_type: Type = Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
                  ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
@@ -167,7 +168,7 @@ class Utility(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 is_two_handed: bool=False):
+                 is_two_handed: bool = False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.utility, name=name, min_attribute=Attribute.intel,
                          min_attribute_value=min_int, rarity=rarity, price=price,
@@ -180,8 +181,8 @@ class Utility(Wearable):
 
 
 class Head(Wearable):
-    def __init__(self, name: str, min_int: int=0, rarity: Rarity=Rarity.common,
-                 price: int=0, effect: str='', equip_type: Type=Type.light,
+    def __init__(self, name: str, min_int: int = 0, rarity: Rarity = Rarity.common,
+                 price: int = 0, effect: str = '', equip_type: Type = Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
                  ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
@@ -189,7 +190,7 @@ class Head(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 is_two_handed: bool=False):
+                 is_two_handed: bool = False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.head, name=name, min_attribute=Attribute.intel,
                          min_attribute_value=min_int, rarity=rarity, price=price,
@@ -202,8 +203,8 @@ class Head(Wearable):
 
 
 class Neck(Wearable):
-    def __init__(self, name: str, min_wis: int=0, rarity: Rarity=Rarity.common,
-                 price: int=0, effect: str='', equip_type: Type=Type.light,
+    def __init__(self, name: str, min_wis: int = 0, rarity: Rarity = Rarity.common,
+                 price: int = 0, effect: str = '', equip_type: Type = Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
                  ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
@@ -211,7 +212,7 @@ class Neck(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 is_two_handed: bool=False):
+                 is_two_handed: bool = False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.neck, name=name, min_attribute=Attribute.wis,
                          min_attribute_value=min_wis, rarity=rarity, price=price,
@@ -224,8 +225,8 @@ class Neck(Wearable):
 
 
 class Chest(Wearable):
-    def __init__(self, name: str, min_str: int=0, rarity: Rarity=Rarity.common,
-                 price: int=0, effect: str='', equip_type: Type=Type.light,
+    def __init__(self, name: str, min_str: int = 0, rarity: Rarity = Rarity.common,
+                 price: int = 0, effect: str = '', equip_type: Type = Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
                  ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
@@ -233,7 +234,7 @@ class Chest(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 is_two_handed: bool=False):
+                 is_two_handed: bool = False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.chest, name=name, min_attribute=Attribute.stren,
                          min_attribute_value=min_str, rarity=rarity, price=price,
@@ -246,8 +247,8 @@ class Chest(Wearable):
 
 
 class Shield(Wearable):
-    def __init__(self, name: str, min_str: int=0, rarity: Rarity=Rarity.common,
-                 price: int=0, effect: str='', equip_type: Type=Type.light,
+    def __init__(self, name: str, min_str: int = 0, rarity: Rarity = Rarity.common,
+                 price: int = 0, effect: str = '', equip_type: Type = Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
                  ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
@@ -255,7 +256,7 @@ class Shield(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 is_two_handed: bool=False):
+                 is_two_handed: bool = False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.shield, name=name, min_attribute=Attribute.stren,
                          min_attribute_value=min_str, rarity=rarity, price=price,
@@ -268,8 +269,8 @@ class Shield(Wearable):
 
 
 class Feet(Wearable):
-    def __init__(self, name: str, min_str: int=0, rarity: Rarity=Rarity.common,
-                 price: int=0, effect: str='', equip_type: Type=Type.light,
+    def __init__(self, name: str, min_str: int = 0, rarity: Rarity = Rarity.common,
+                 price: int = 0, effect: str = '', equip_type: Type = Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
                  ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
@@ -277,7 +278,7 @@ class Feet(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 is_two_handed: bool=False):
+                 is_two_handed: bool = False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.feet, name=name, min_attribute=Attribute.stren,
                          min_attribute_value=min_str, rarity=rarity, price=price,
@@ -290,8 +291,8 @@ class Feet(Wearable):
 
 
 class Hand(Wearable):
-    def __init__(self, name: str, min_cha: int=0, rarity: Rarity=Rarity.common,
-                 price: int=0, effect: str='', equip_type: Type=Type.light,
+    def __init__(self, name: str, min_cha: int = 0, rarity: Rarity = Rarity.common,
+                 price: int = 0, effect: str = '', equip_type: Type = Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
                  ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
@@ -299,7 +300,7 @@ class Hand(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 is_two_handed: bool=False):
+                 is_two_handed: bool = False):
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.hand, name=name, min_attribute=Attribute.cha,
                          min_attribute_value=min_cha, rarity=rarity, price=price,
@@ -801,9 +802,9 @@ class WeaponPicture(enum.Enum):
 
 
 class Weapon(Wearable):
-    def __init__(self, name: str, picture: WeaponPicture, style: Style, min_dex: int=0,
-                 rarity: Rarity=Rarity.common,
-                 price: int=0, effect: str='', equip_type: Type=Type.light,
+    def __init__(self, name: str, picture: WeaponPicture, style: Style, min_dex: int = 0,
+                 rarity: Rarity = Rarity.common,
+                 price: int = 0, effect: str = '', equip_type: Type = Type.light,
                  stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
                  cha: int = 0,
                  ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
@@ -811,12 +812,12 @@ class Weapon(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 is_two_handed: bool=False,
-                 min_range: int=1, max_range: int=1, shape: Shape=Shape.melee_point,
-                 attacks: int=1,
-                 pac: int=0, damage_type: DamageType=DamageType.slashing,
-                 cran: int=0, cdam: int=0,
-                 pdam: dice.DiceFormula=None, mdam: dice.DiceFormula=None):
+                 is_two_handed: bool = False,
+                 min_range: int = 1, max_range: int = 1, shape: Shape = Shape.melee_point,
+                 attacks: int = 1,
+                 pac: int = 0, damage_type: DamageType = DamageType.slashing,
+                 cran: int = 0, cdam: int = 0,
+                 pdam: dice.DiceFormula = None, mdam: dice.DiceFormula = None):
         self.picture = picture
         self.style = style
         self.is_two_handed = is_two_handed

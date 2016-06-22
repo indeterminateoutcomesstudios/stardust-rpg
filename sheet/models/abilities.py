@@ -149,6 +149,7 @@ class Abilities(aenum.AutoNumberEnum):
     time_lord_2 = ()
     time_lord_3 = ()
 
+
 abilities = {
     # Paladin.
     Abilities.reflect_1: paladin.reflect_1,
@@ -283,7 +284,6 @@ abilities = {
     Abilities.time_lord_2: templar.time_lord_2,
     Abilities.time_lord_3: templar.time_lord_3,
 }
-
 
 inverse_abilities = {ability: enum for enum, ability in abilities.items()}
 """Maps abilities to their corresponding enums."""

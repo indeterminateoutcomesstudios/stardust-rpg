@@ -5,23 +5,23 @@
 {% block content %}
     <table>
         <thead>
-            <tr id="title">
-                <th>Equipment</th>
-                <th>Price</th>
-                <th>Rarity</th>
-                <th>Effect</th>
-            </tr>
+        <tr id="title">
+            <th>Equipment</th>
+            <th>Price</th>
+            <th>Rarity</th>
+            <th>Effect</th>
+        </tr>
         </thead>
         {% for item in items %}
             <tr>
                 <td
-                    {% if item.rarity == Rarity.rare %}
-                        class="type_rare"
-                    {% elif item.rarity == Rarity.unique %}
-                        class="type_unique"
-                    {% elif item.rarity == Rarity.set %}
-                        class="type_set"
-                    {% endif %}
+                        {% if item.rarity == Rarity.rare %}
+                            class="type_rare"
+                        {% elif item.rarity == Rarity.unique %}
+                            class="type_unique"
+                        {% elif item.rarity == Rarity.set %}
+                            class="type_set"
+                        {% endif %}
                 >
                     {{ item.name|capfirst }}
                     {% if item.is_two_handed %}

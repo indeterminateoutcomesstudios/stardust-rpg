@@ -5,42 +5,42 @@
 {% block content %}
     <table>
         <thead>
-            <tr id="title">
-                <th>Unlock</th>
-                <th>Name</th>
-                <th>Prereq LVL</th>
-                <th>Classes</th>
-                <th>MP</th>
-                <th>Effect</th>
-                <th>Attacks</th>
-                <th>MAC</th>
-                <th>PDAM</th>
-                <th>MDAM</th>
-                <th>DAM Type</th>
-                <th>MDEF?</th>
-                <th>Time</th>
-                <th>Min Range</th>
-                <th>Max Range</th>
-                <th>Shape</th>
-                <th>Target Area</th>
-                <th>Duration</th>
-                <th>Duration Unit</th>
-            </tr>
+        <tr id="title">
+            <th>Unlock</th>
+            <th>Name</th>
+            <th>Prereq LVL</th>
+            <th>Classes</th>
+            <th>MP</th>
+            <th>Effect</th>
+            <th>Attacks</th>
+            <th>MAC</th>
+            <th>PDAM</th>
+            <th>MDAM</th>
+            <th>DAM Type</th>
+            <th>MDEF?</th>
+            <th>Time</th>
+            <th>Min Range</th>
+            <th>Max Range</th>
+            <th>Shape</th>
+            <th>Target Area</th>
+            <th>Duration</th>
+            <th>Duration Unit</th>
+        </tr>
         </thead>
         {% for combo in character.party_combos %}
             <tr>
                 <td>
-                        <button type="submit" name="lock" disabled
+                    <button type="submit" name="lock" disabled
                             {% if combo in character.unlocked_combos %}
-                                value="lock {{ forloop.counter0 }}"
-                                style="background: #00ff00;">
+                            value="lock {{ forloop.counter0 }}"
+                            style="background: #00ff00;">
                                     Unlocked
-                            {% else %}
-                                value="unlock {{ forloop.counter0  }}"
-                                style="background: #1F1F1F;">
+                                    {% else %}
+                                    value="unlock {{ forloop.counter0 }}"
+                                    style="background: #1F1F1F;">
                                     Locked
-                        </button>
-                    {% endif %}
+                                </button>
+                            {% endif %}
                 </td>
                 <td>
                     <img src="{{ combo.picture.value }}"
@@ -58,14 +58,14 @@
                 <td>{{ combo.effect }}</td>
                 <td>{{ combo.attacks|default:"" }}</td>
                 <td>
-                        {% if combo.targets_mdef %}
-                            {{ character.bmac|add:combo.mac }}
-                        {% endif %}
-                    </td>
+                    {% if combo.targets_mdef %}
+                        {{ character.bmac|add:combo.mac }}
+                    {% endif %}
+                </td>
                 <td>{{ combo.pdam|default:"" }}</td>
-                <td>{{ combo.mdam|default:""  }}</td>
+                <td>{{ combo.mdam|default:"" }}</td>
                 <td>{{ combo.damage_type.name|capfirst }}</td>
-                <td>{{ combo.targets_mdef|default:""  }}</td>
+                <td>{{ combo.targets_mdef|default:"" }}</td>
                 <td>{{ combo.time.name|capfirst }}</td>
                 <td>{{ combo.min_range }}</td>
                 <td>{{ combo.max_range }}</td>
@@ -74,7 +74,7 @@
                     {{ combo.shape.name|capfirst }}
                 </td>
                 <td>{{ combo.target_area }}</td>
-                <td>{{ combo.duration|default:""  }}</td>
+                <td>{{ combo.duration|default:"" }}</td>
                 <td>{{ combo.duration_unit.name|capfirst }}</td>
             </tr>
         {% endfor %}

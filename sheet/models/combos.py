@@ -1,6 +1,5 @@
 from typing import Tuple
 
-
 from .ability import Ability, AbilityPicture, DurationUnit, Time
 from .class_type import Class
 from .classes.geomancer import Geomancer
@@ -20,9 +19,9 @@ class Combo(Ability):
                  duration: str = None, duration_unit: DurationUnit = DurationUnit.instant,
                  damage_type: DamageType = None,
                  effect='',
-                 attacks: int=0, pdam: str = None, mdam: str = None,
-                 targets_mdef: bool = False, time: Time = Time.ab_a, min_range: str='0',
-                 max_range: str='0', shape: Shape = Shape.point):
+                 attacks: int = 0, pdam: str = None, mdam: str = None,
+                 targets_mdef: bool = False, time: Time = Time.ab_a, min_range: str = '0',
+                 max_range: str = '0', shape: Shape = Shape.point):
         self.classes = classes
         self.prerequisite_lvl = prerequisite_lvl
         super().__init__(name=name, picture=picture, mp_cost=mp_cost, target_area=target_area,

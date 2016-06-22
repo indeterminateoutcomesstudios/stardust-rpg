@@ -2,35 +2,35 @@
 <html lang="en">
 {% load staticfiles %}
 <head>
-    <link rel="stylesheet" href="{% static 'sheet/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'sheet/style.css' %}"/>
     <title>{% block title %}Character Base{% endblock %}</title>
-    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 </head>
 
 <body>
-    <div id="linkbar">
-        {% block linkbar %}
+<div id="linkbar">
+    {% block linkbar %}
         <Label>Player: {{ request.user }}</Label>
         <a href="{% url 'sheet-views-parties' %}">Parties</a>
         <a href="{% url 'sheet-views-party' character.id %}">Party</a>
         <a href="{% url 'sheet-views-stats' character.id %}">Stats</a>
         <a href="{% url 'sheet-views-abilities' character.id %}">
             Abilities{% if character.available_ap > 0 %}
-                ({{ character.available_ap }}){% endif %}</a>
+            ({{ character.available_ap }}){% endif %}</a>
         <a href="{% url 'sheet-views-combos' character.id %}">Combos</a>
         <a href="{% url 'sheet-views-equip' character.id %}">Equip</a>
         <a href="{% url 'sheet-views-level-up' character.id %}">Level Up</a>
         <a href="{% url 'sheet-views-skill-points' character.id %}">
             Assign Skill Points{% if character.available_sp > 0 %}
-                ({{ character.available_sp }}){% endif %}</a>
+            ({{ character.available_sp }}){% endif %}</a>
         <a href="{% url 'sheet-views-class' character.id %}">Class</a>
         <a href="{% url 'sheet-views-roll20' character.id %}">Roll20</a>
         <a href= {% url 'app-accounts-logout' %}>Logout</a>
-        {% endblock %}
-    </div>
+    {% endblock %}
+</div>
 
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+<div id="content">
+    {% block content %}{% endblock %}
+</div>
 </body>
 </html>

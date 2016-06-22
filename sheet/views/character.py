@@ -116,13 +116,13 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
                         wearable.name, wearable.min_attribute_value, wearable.min_attribute.name))
 
             if (character.weapon.is_two_handed and
-               character.shield_enum is not items.Shields.empty):
+                    character.shield_enum is not items.Shields.empty):
                 raise ValidationError('Cannot equip a shield and a two-handed weapon.')
 
             if ((character.right_hand.is_two_handed and
-                character.left_hand_enum is not items.Hands.empty) or
-                (character.left_hand.is_two_handed and
-                 character.right_hand_enum is not items.Hands.empty)):
+                    character.left_hand_enum is not items.Hands.empty) or
+                    (character.left_hand.is_two_handed and
+                     character.right_hand_enum is not items.Hands.empty)):
                 raise ValidationError('Cannot equip two-handed Hand item and an item in other '
                                       'hand.')
 
@@ -187,8 +187,8 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
 
             if character.lvl == 0:
                 if (hd_roll != character.cls.hd or
-                   md_roll != character.cls.md or
-                   sd_roll != character.cls.sd):
+                        md_roll != character.cls.md or
+                        sd_roll != character.cls.sd):
                     raise ValidationError(
                         'For LVL 1, HD, MD, and SD are assigned maximum roll values.')
 
@@ -225,7 +225,7 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
             assigned_per = skill_points_form.cleaned_data['assigned_per']
             assigned_spe = skill_points_form.cleaned_data['assigned_spe']
             if (assigned_ath + assigned_ste + assigned_for + assigned_apt + assigned_per +
-               assigned_spe > character.sp):
+                    assigned_spe > character.sp):
                 raise ValidationError('Too many SP assigned. Max: {}'.format(character.sp))
             elif assigned_ath > character.max_sp_per_skill:
                 raise ValidationError('Assigned ATH too high. Max: {}'.format(

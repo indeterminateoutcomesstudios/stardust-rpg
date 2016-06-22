@@ -146,7 +146,7 @@ def update_ability(login: Roll20Login, character_id: str, ability_name: str,
 
 
 def create_ability(login: Roll20Login, character_id: str, ability_name: str, ability_action: str,
-                   is_token_action: bool=True) -> None:
+                   is_token_action: bool = True) -> None:
     new_ability = {'action': ability_action,
                    'name': ability_name,
                    'istokenaction': is_token_action}

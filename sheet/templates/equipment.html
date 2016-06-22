@@ -5,51 +5,51 @@
 {% block content %}
     <table>
         <thead>
-            <tr id="title">
-                <th>Equipment</th>
-                <th>Price</th>
-                <th>Rarity</th>
-                <th>Type</th>
-                <th>Min {{ wearables.0.min_attribute.name|upper }}</th>
-                <th>STR</th>
-                <th>DEX</th>
-                <th>CON</th>
-                <th>INT</th>
-                <th>WIS</th>
-                <th>CHA</th>
-                <th>ATH</th>
-                <th>STE</th>
-                <th>FOR</th>
-                <th>APT</th>
-                <th>PER</th>
-                <th>SPE</th>
-                <th>AP</th>
-                <th>HP</th>
-                <th>MP</th>
-                <th>SP</th>
-                <th>PDEF</th>
-                <th>MDEF</th>
-                <th>PRED</th>
-                <th>MRED</th>
-                <th>REG</th>
-                <th>RD</th>
-                <th>SPEED</th>
-                <th>VIS</th>
-                <th>BPAC</th>
-                <th>BMAC</th>
-                <th>Effect</th>
-            </tr>
+        <tr id="title">
+            <th>Equipment</th>
+            <th>Price</th>
+            <th>Rarity</th>
+            <th>Type</th>
+            <th>Min {{ wearables.0.min_attribute.name|upper }}</th>
+            <th>STR</th>
+            <th>DEX</th>
+            <th>CON</th>
+            <th>INT</th>
+            <th>WIS</th>
+            <th>CHA</th>
+            <th>ATH</th>
+            <th>STE</th>
+            <th>FOR</th>
+            <th>APT</th>
+            <th>PER</th>
+            <th>SPE</th>
+            <th>AP</th>
+            <th>HP</th>
+            <th>MP</th>
+            <th>SP</th>
+            <th>PDEF</th>
+            <th>MDEF</th>
+            <th>PRED</th>
+            <th>MRED</th>
+            <th>REG</th>
+            <th>RD</th>
+            <th>SPEED</th>
+            <th>VIS</th>
+            <th>BPAC</th>
+            <th>BMAC</th>
+            <th>Effect</th>
+        </tr>
         </thead>
         {% for wearable in wearables %}
             <tr>
                 <td
-                    {% if wearable.rarity == Rarity.rare %}
-                        class="type_rare"
-                    {% elif wearable.rarity == Rarity.unique %}
-                        class="type_unique"
-                    {% elif wearable.rarity == Rarity.set %}
-                        class="type_set"
-                    {% endif %}
+                        {% if wearable.rarity == Rarity.rare %}
+                            class="type_rare"
+                        {% elif wearable.rarity == Rarity.unique %}
+                            class="type_unique"
+                        {% elif wearable.rarity == Rarity.set %}
+                            class="type_set"
+                        {% endif %}
                 >
                     <b>{{ wearable.name|capfirst }}</b>
                     {% if wearable.is_two_handed %}

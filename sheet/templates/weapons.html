@@ -5,51 +5,51 @@
 {% block content %}
     <table>
         <thead>
-            <tr id="title">
-                <th>Equipment</th>
-                <th>Price</th>
-                <th>Rarity</th>
-                <th>Style</th>
-                <th>Type</th>
-                <th>Min {{ weapons.0.min_attribute.name|upper }}</th>
-                <th>2-Hand?</th>
-                <th>Range</th>
-                <th>Shape</th>
-                <th>Attacks</th>
-                <th>PAC</th>
-                <th>PDAM</th>
-                <th>MDAM</th>
-                <th>Damage Type</th>
-                <th>CRAN</th>
-                <th>CDAM</th>
-                <th>Effect</th>
-                <th>STR</th>
-                <th>DEX</th>
-                <th>CON</th>
-                <th>INT</th>
-                <th>WIS</th>
-                <th>CHA</th>
-                <th>ATH</th>
-                <th>STE</th>
-                <th>FOR</th>
-                <th>APT</th>
-                <th>PER</th>
-                <th>SPE</th>
-                <th>AP</th>
-                <th>HP</th>
-                <th>MP</th>
-                <th>SP</th>
-                <th>PDEF</th>
-                <th>MDEF</th>
-                <th>PRED</th>
-                <th>MRED</th>
-                <th>REG</th>
-                <th>RD</th>
-                <th>SPEED</th>
-                <th>VIS</th>
-                <th>BPAC</th>
-                <th>BMAC</th>
-            </tr>
+        <tr id="title">
+            <th>Equipment</th>
+            <th>Price</th>
+            <th>Rarity</th>
+            <th>Style</th>
+            <th>Type</th>
+            <th>Min {{ weapons.0.min_attribute.name|upper }}</th>
+            <th>2-Hand?</th>
+            <th>Range</th>
+            <th>Shape</th>
+            <th>Attacks</th>
+            <th>PAC</th>
+            <th>PDAM</th>
+            <th>MDAM</th>
+            <th>Damage Type</th>
+            <th>CRAN</th>
+            <th>CDAM</th>
+            <th>Effect</th>
+            <th>STR</th>
+            <th>DEX</th>
+            <th>CON</th>
+            <th>INT</th>
+            <th>WIS</th>
+            <th>CHA</th>
+            <th>ATH</th>
+            <th>STE</th>
+            <th>FOR</th>
+            <th>APT</th>
+            <th>PER</th>
+            <th>SPE</th>
+            <th>AP</th>
+            <th>HP</th>
+            <th>MP</th>
+            <th>SP</th>
+            <th>PDEF</th>
+            <th>MDEF</th>
+            <th>PRED</th>
+            <th>MRED</th>
+            <th>REG</th>
+            <th>RD</th>
+            <th>SPEED</th>
+            <th>VIS</th>
+            <th>BPAC</th>
+            <th>BMAC</th>
+        </tr>
         </thead>
         {% for weapon in weapons %}
             <tr>
@@ -63,16 +63,16 @@
                 <td>{{ weapon.style.name|capfirst }}</td>
                 <td>{{ weapon.type.name|capfirst }}</td>
                 <td>{{ weapon.min_attribute_value }}</td>
-                <td>{{ weapon.is_two_handed}}</td>
-                <td>{{ weapon.min_range}} - {{ weapon.max_range }}</td>
+                <td>{{ weapon.is_two_handed }}</td>
+                <td>{{ weapon.min_range }} - {{ weapon.max_range }}</td>
                 <td>
                     {{ weapon.shape.name|capfirst }}
                     <img src="{{ weapon.shape.value }}">
                 </td>
-                <td>{{ weapon.attacks}}</td>
-                <td>{{ weapon.pac}}</td>
-                <td>{{ weapon.pdam}}</td>
-                <td>{{ weapon.mdam}}</td>
+                <td>{{ weapon.attacks }}</td>
+                <td>{{ weapon.pac }}</td>
+                <td>{{ weapon.pdam }}</td>
+                <td>{{ weapon.mdam }}</td>
                 <td>{{ weapon.damage_type.name|capfirst }}</td>
                 <td>{{ weapon.cran }}</td>
                 <td>{{ weapon.cdam }}</td>
