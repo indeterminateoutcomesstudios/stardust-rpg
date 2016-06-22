@@ -24,16 +24,36 @@ class Character(models.Model):
     name = models.CharField(max_length=25)
     party = models.ForeignKey(party.Party, unique=False)
 
-    class_enum = enumfields.EnumIntegerField(classes.Classes, default=classes.Classes.paladin)
-    utility_enum = enumfields.EnumIntegerField(items.Utilities, default=items.Utilities.empty)
-    head_enum = enumfields.EnumIntegerField(items.Heads, default=items.Heads.empty)
-    neck_enum = enumfields.EnumIntegerField(items.Necks, default=items.Necks.empty)
-    chest_enum = enumfields.EnumIntegerField(items.Chests, default=items.Chests.empty)
-    shield_enum = enumfields.EnumIntegerField(items.Shields, default=items.Shields.empty)
-    right_hand_enum = enumfields.EnumIntegerField(items.Hands, default=items.Hands.empty)
-    left_hand_enum = enumfields.EnumIntegerField(items.Hands, default=items.Hands.empty)
-    feet_enum = enumfields.EnumIntegerField(items.Feets, default=items.Feets.empty)
-    weapon_enum = enumfields.EnumIntegerField(items.Weapons, default=items.Weapons.empty)
+    class_enum = enumfields.EnumIntegerField(classes.Classes,
+                                             verbose_name='Class',
+                                             default=classes.Classes.paladin)
+    utility_enum = enumfields.EnumIntegerField(items.Utilities,
+                                               verbose_name='Utility',
+                                               default=items.Utilities.empty)
+    head_enum = enumfields.EnumIntegerField(items.Heads,
+                                            verbose_name='Head',
+                                            default=items.Heads.empty)
+    neck_enum = enumfields.EnumIntegerField(items.Necks,
+                                            verbose_name='Neck',
+                                            default=items.Necks.empty)
+    chest_enum = enumfields.EnumIntegerField(items.Chests,
+                                             verbose_name='Chest',
+                                             default=items.Chests.empty)
+    shield_enum = enumfields.EnumIntegerField(items.Shields,
+                                              verbose_name='Shield',
+                                              default=items.Shields.empty)
+    right_hand_enum = enumfields.EnumIntegerField(items.Hands,
+                                                  verbose_name='Right Hand',
+                                                  default=items.Hands.empty)
+    left_hand_enum = enumfields.EnumIntegerField(items.Hands,
+                                                 verbose_name='Left Hand',
+                                                 default=items.Hands.empty)
+    feet_enum = enumfields.EnumIntegerField(items.Feets,
+                                            verbose_name='Feet',
+                                            default=items.Feets.empty)
+    weapon_enum = enumfields.EnumIntegerField(items.Weapons,
+                                              verbose_name='Weapon',
+                                              default=items.Weapons.empty)
 
     assigned_ath = models.PositiveIntegerField(verbose_name='Assigned ATH', default=0)
     assigned_ste = models.PositiveIntegerField(verbose_name='Assigned STE', default=0)
