@@ -581,6 +581,15 @@ class Character(models.Model):
         return min(self.base_sel + self.int_sel_mod * self.intel, 100)
 
     @property
+    def vul_set(self) -> equipment.VulnerabilitySet:
+        vul_set = equipment.VulnerabilitySet()
+
+        for wearable in self.wearables:
+            vul_set.merge(wearable.vul_set)
+
+        return vul_set
+
+    @property
     def can_use_weapon(self) -> bool:
         if self.weapon.style is equipment.Style.melee:
             if self.weapon.type is equipment.Type.light:

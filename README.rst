@@ -263,7 +263,6 @@ Known Bugs
 Features
 --------
 
-- Vulnerabilities and resistances.
 - Utility macros.
 - Handle exceptions in a user-friendly way.
 - Weapon / Ability DPS

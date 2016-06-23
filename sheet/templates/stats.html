@@ -171,6 +171,76 @@
             <td>{{ character.sel }}%</td>
         </tr>
     </table>
+    <table style="display: inline-block">
+        <thead>
+        <tr id="title">
+            <th>Damage Type</th>
+            <th>VUL</th>
+            <th>RES</th>
+            <th>IMU</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>Slashing</td>
+            <td>{{ character.vul_set.vul.slashing|default:"" }}</td>
+            <td>{{ character.vul_set.res.slashing|default:"" }}</td>
+            <td>{{ character.vul_set.imu.slashing|default:"" }}</td>
+        </tr>
+        <tr>
+            <td>Piercing</td>
+            <td>{{ character.vul_set.vul.piercing|default:"" }}</td>
+            <td>{{ character.vul_set.res.piercing|default:"" }}</td>
+            <td>{{ character.vul_set.imu.piercing|default:"" }}</td>
+        </tr>
+        <tr>
+            <td>Bludgeoning</td>
+            <td>{{ character.vul_set.vul.bludgeoning|default:"" }}</td>
+            <td>{{ character.vul_set.res.bludgeoning|default:"" }}</td>
+            <td>{{ character.vul_set.imu.bludgeoning|default:"" }}</td>
+        </tr>
+        <tr>
+            <td>Fire</td>
+            <td>{{ character.vul_set.vul.fire|default:"" }}</td>
+            <td>{{ character.vul_set.res.fire|default:"" }}</td>
+            <td>{{ character.vul_set.imu.fire|default:"" }}</td>
+        </tr>
+        <tr>
+            <td>Cold</td>
+            <td>{{ character.vul_set.vul.cold|default:"" }}</td>
+            <td>{{ character.vul_set.res.cold|default:"" }}</td>
+            <td>{{ character.vul_set.imu.cold|default:"" }}</td>
+        </tr>
+        <tr>
+            <td>Lightning</td>
+            <td>{{ character.vul_set.vul.lightning|default:"" }}</td>
+            <td>{{ character.vul_set.res.lightning|default:"" }}</td>
+            <td>{{ character.vul_set.imu.lightning|default:"" }}</td>
+        </tr>
+        <tr>
+            <td>Acid</td>
+            <td>{{ character.vul_set.vul.acid|default:"" }}</td>
+            <td>{{ character.vul_set.res.acid|default:"" }}</td>
+            <td>{{ character.vul_set.imu.acid|default:"" }}</td>
+        </tr>
+        <tr>
+            <td>Poison</td>
+            <td>{{ character.vul_set.vul.poison|default:"" }}</td>
+            <td>{{ character.vul_set.res.poison|default:"" }}</td>
+            <td>{{ character.vul_set.imu.poison|default:"" }}</td>
+        </tr>
+        <tr>
+            <td>Force</td>
+            <td>{{ character.vul_set.vul.force|default:"" }}</td>
+            <td>{{ character.vul_set.res.force|default:"" }}</td>
+            <td>{{ character.vul_set.imu.force|default:"" }}</td>
+        </tr>
+        <tr>
+            <td>Psychic</td>
+            <td>{{ character.vul_set.vul.pyschic|default:"" }}</td>
+            <td>{{ character.vul_set.res.pyschic|default:"" }}</td>
+            <td>{{ character.vul_set.imu.pyschic|default:"" }}</td>
+        </tr>
+    </table>
     <label><i>For formulas on how skills or stats are calculated, hover over the name.</i></label>
     <table>
         <thead>
