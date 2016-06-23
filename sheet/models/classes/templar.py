@@ -77,24 +77,24 @@ rebound_3 = Ability(
 
 rapid_regen_1 = Ability(
     name='Rapid Regen I', picture=AbilityPicture.leeches,
-    mp_cost=1, target_area='Self + allies in [[3+WIS]]RAD', shape=Shape.circle,
-    duration='3', duration_unit=DurationUnit.rnd,
-    effect='+4REG',
+    mp_cost=0, target_area='Self + allies in [[3+WIS]]RAD', time=Time.full_a, shape=Shape.circle,
+    duration='1', duration_unit=DurationUnit.rnd,
+    effect='+5REG, +1MP per Regen',
 )
 
 rapid_regen_2 = Ability(
     name='Rapid Regen II', picture=AbilityPicture.leeches,
-    mp_cost=1, target_area='Self + allies in [[3+WIS]]RAD', shape=Shape.circle,
-    duration='4', duration_unit=DurationUnit.rnd,
-    effect='+[[5+WIS]]REG',
+    mp_cost=0, target_area='Self + allies in [[3+WIS]]RAD', time=Time.full_a, shape=Shape.circle,
+    duration='1', duration_unit=DurationUnit.rnd,
+    effect='+[[5+WIS]]REG, +2MP per Regen',
     prerequisites=(rapid_regen_1,)
 )
 
 rapid_regen_3 = Ability(
     name='Rapid Regen III', picture=AbilityPicture.leeches,
-    mp_cost=2, target_area='Self + allies in [[3+WIS]]RAD', shape=Shape.circle,
-    duration='4', duration_unit=DurationUnit.rnd,
-    effect='+[[7+WIS]]REG, +1MP per Regen',
+    mp_cost=0, target_area='Self + allies in [[3+WIS]]RAD', time=Time.full_a, shape=Shape.circle,
+    duration='1', duration_unit=DurationUnit.rnd,
+    effect='+[[7+WIS]]REG, +3MP per Regen',
     prerequisites=(rapid_regen_2,)
 )
 
