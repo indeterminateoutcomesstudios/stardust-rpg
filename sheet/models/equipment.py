@@ -120,7 +120,7 @@ class DamageTypeSet:
         self.psychic = psychic
 
     def merge(self, other: 'DamageTypeSet') -> None:
-        """Set self's damagetype values to True that at on other."""
+        """Set self's DamageType values to True that at on other."""
         if other.slashing:
             self.slashing = True
         if other.piercing:
@@ -142,10 +142,41 @@ class DamageTypeSet:
         if other.psychic:
             self.psychic = True
 
+    @property
+    def all_as_str(self) -> str:
+        all_str = ''
+        if self.slashing:
+            all_str += ' {}'.format(DamageType.slashing.name).title()
+        if self.piercing:
+            all_str += ' {}'.format(DamageType.piercing.name).title()
+        if self.bludgeoning:
+            all_str += ' {}'.format(DamageType.bludgeoning.name).title()
+        if self.fire:
+            all_str += ' {}'.format(DamageType.fire.name).title()
+        if self.cold:
+            all_str += ' {}'.format(DamageType.cold.name).title()
+        if self.lightning:
+            all_str += ' {}'.format(DamageType.lightning.name).title()
+        if self.acid:
+            all_str += ' {}'.format(DamageType.acid.name).title()
+        if self.poison:
+            all_str += ' {}'.format(DamageType.poison.name).title()
+        if self.force:
+            all_str += ' {}'.format(DamageType.force.name).title()
+        if self.psychic:
+            all_str += ' {}'.format(DamageType.psychic.name).title()
+        return all_str
+
 
 class VulnerabilitySet:
-    def __init__(self, vul: DamageTypeSet = DamageTypeSet(), res: DamageTypeSet = DamageTypeSet(),
-                 imu: DamageTypeSet = DamageTypeSet()) -> None:
+    def __init__(self, vul: DamageTypeSet = None, res: DamageTypeSet = None,
+                 imu: DamageTypeSet = None) -> None:
+        if vul is None:
+            vul = DamageTypeSet()
+        if res is None:
+            res = DamageTypeSet()
+        if imu is None:
+            imu = DamageTypeSet()
         self.vul = vul
         self.res = res
         self.imu = imu
@@ -178,7 +209,9 @@ class Wearable(Item):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0, cran: int = 0,
-                 vul_set: VulnerabilitySet = VulnerabilitySet()) -> None:
+                 vul_set: VulnerabilitySet = None) -> None:
+        if vul_set is None:
+            vul_set = VulnerabilitySet()
         self.min_attribute = min_attribute
         self.min_attribute_value = min_attribute_value
         self.type = equip_type
@@ -223,7 +256,9 @@ class Utility(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 vul_set: VulnerabilitySet = VulnerabilitySet()) -> None:
+                 vul_set: VulnerabilitySet = None) -> None:
+        if vul_set is None:
+            vul_set = VulnerabilitySet()
         super().__init__(slot=Slot.utility, name=name, min_attribute=Attribute.intel,
                          min_attribute_value=min_int, rarity=rarity, price=price,
                          effect=effect,
@@ -244,7 +279,9 @@ class Head(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 vul_set: VulnerabilitySet = VulnerabilitySet()) -> None:
+                 vul_set: VulnerabilitySet = None) -> None:
+        if vul_set is None:
+            vul_set = VulnerabilitySet()
         super().__init__(slot=Slot.head, name=name, min_attribute=Attribute.intel,
                          min_attribute_value=min_int, rarity=rarity, price=price,
                          effect=effect,
@@ -265,7 +302,9 @@ class Neck(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 vul_set: VulnerabilitySet = VulnerabilitySet()) -> None:
+                 vul_set: VulnerabilitySet = None) -> None:
+        if vul_set is None:
+            vul_set = VulnerabilitySet()
         super().__init__(slot=Slot.neck, name=name, min_attribute=Attribute.wis,
                          min_attribute_value=min_wis, rarity=rarity, price=price,
                          effect=effect,
@@ -286,7 +325,9 @@ class Chest(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 vul_set: VulnerabilitySet = VulnerabilitySet()) -> None:
+                 vul_set: VulnerabilitySet = None) -> None:
+        if vul_set is None:
+            vul_set = VulnerabilitySet()
         super().__init__(slot=Slot.chest, name=name, min_attribute=Attribute.stren,
                          min_attribute_value=min_str, rarity=rarity, price=price,
                          effect=effect,
@@ -307,7 +348,9 @@ class Shield(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 vul_set: VulnerabilitySet = VulnerabilitySet()) -> None:
+                 vul_set: VulnerabilitySet = None) -> None:
+        if vul_set is None:
+            vul_set = VulnerabilitySet()
         super().__init__(slot=Slot.shield, name=name, min_attribute=Attribute.stren,
                          min_attribute_value=min_str, rarity=rarity, price=price,
                          effect=effect,
@@ -328,7 +371,9 @@ class Feet(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 vul_set: VulnerabilitySet = VulnerabilitySet()) -> None:
+                 vul_set: VulnerabilitySet = None) -> None:
+        if vul_set is None:
+            vul_set = VulnerabilitySet()
         super().__init__(slot=Slot.feet, name=name, min_attribute=Attribute.stren,
                          min_attribute_value=min_str, rarity=rarity, price=price,
                          effect=effect,
@@ -349,8 +394,10 @@ class Hand(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 vul_set: VulnerabilitySet = VulnerabilitySet(),
+                 vul_set: VulnerabilitySet = None,
                  is_two_handed: bool = False) -> None:
+        if vul_set is None:
+            vul_set = VulnerabilitySet()
         self.is_two_handed = is_two_handed
         super().__init__(slot=Slot.hand, name=name, min_attribute=Attribute.cha,
                          min_attribute_value=min_cha, rarity=rarity, price=price,
@@ -862,12 +909,15 @@ class Weapon(Wearable):
                  ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
                  pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
                  vis: int = 0, bpac: int = 0, bmac: int = 0,
+                 vul_set: VulnerabilitySet = None,
                  is_two_handed: bool = False,
                  min_range: int = 1, max_range: int = 1, shape: Shape = Shape.melee_point,
                  attacks: int = 1,
                  pac: int = 0, damage_type: DamageType = DamageType.slashing,
                  cran: int = 0, cdam: int = 0,
                  pdam: dice.DiceFormula = None, mdam: dice.DiceFormula = None) -> None:
+        if vul_set is None:
+            vul_set = VulnerabilitySet()
         self.picture = picture
         self.style = style
         self.is_two_handed = is_two_handed
@@ -888,7 +938,7 @@ class Weapon(Wearable):
                          ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
                          mp=mp, sp=sp, pdef=pdef, mdef=mdef, pred=pred, mred=mred, reg=reg, rd=rd,
                          speed=speed, vis=vis, bpac=bpac, bmac=bmac,
-                         equip_type=equip_type)
+                         equip_type=equip_type, vul_set=vul_set)
 
     @property
     def macro(self):

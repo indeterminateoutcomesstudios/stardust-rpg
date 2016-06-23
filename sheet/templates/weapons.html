@@ -49,6 +49,9 @@
             <th>VIS</th>
             <th>BPAC</th>
             <th>BMAC</th>
+            <th>VUL</th>
+            <th>RES</th>
+            <th>IMU</th>
         </tr>
         </thead>
         {% for weapon in weapons %}
@@ -103,6 +106,9 @@
                 <td>{{ weapon.vis|default:"" }}</td>
                 <td>{{ weapon.bpac|default:"" }}</td>
                 <td>{{ weapon.bmac|default:"" }}</td>
+                <td>{{ wearable.vul_set.vul.all_as_str|default:"" }}</td>
+                <td>{{ wearable.vul_set.res.all_as_str|default:"" }}</td>
+                <td>{{ wearable.vul_set.imu.all_as_str|default:"" }}</td>
             </tr>
         {% endfor %}
     </table>

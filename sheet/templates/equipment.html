@@ -37,6 +37,9 @@
             <th>VIS</th>
             <th>BPAC</th>
             <th>BMAC</th>
+            <th>VUL</th>
+            <th>RES</th>
+            <th>IMU</th>
             <th>Effect</th>
         </tr>
         </thead>
@@ -86,6 +89,9 @@
                 <td>{{ wearable.vis|default:"" }}</td>
                 <td>{{ wearable.bpac|default:"" }}</td>
                 <td>{{ wearable.bmac|default:"" }}</td>
+                <td>{{ wearable.vul_set.vul.all_as_str|default:"" }}</td>
+                <td>{{ wearable.vul_set.res.all_as_str|default:"" }}</td>
+                <td>{{ wearable.vul_set.imu.all_as_str|default:"" }}</td>
                 <td>{{ wearable.effect }}</td>
             </tr>
         {% endfor %}
