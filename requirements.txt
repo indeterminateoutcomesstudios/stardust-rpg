@@ -1,5 +1,5 @@
 aenum>=1.4.5
 beautifulsoup4>=4.4.1
-django>=1.9.6
+django>=1.9.7
 django-enumfields>=0.8
 requests>=2.10.0
