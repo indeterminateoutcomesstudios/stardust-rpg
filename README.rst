@@ -184,15 +184,31 @@ Sleep       Cannot take ``MovA`` or ``StdA``.  Woken by physical or magical atta
 Fear        Must expend ``MovA`` to move in opposite direction of the source of fear.
 Allure      Must expend ``MovA`` to move towards the source of the allure.
 Blind       Maximum range of physical and magic attacks reduced to 1.
+Inhibit     Max ``MP`` reduced to 0.  ``MRED`` reduced to 0.
+=========== ===================================================================================
+
+=========== ===================================================================================
+Condition   Effect
+=========== ===================================================================================
 Unconscious Cannot take anymore actions until revived.
 Death       Creature is dead.
 =========== ===================================================================================
+
+Advantage / Disadvantage
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+====================== ===========================================================================
+State                  Effect
+====================== ===========================================================================
+Advantage (``ADV``)    Roll twice and use the higher of the two rolls.
+Disadvantage (``DIS``) Roll twice and use the lower of the two rolls.
+====================== ===========================================================================
 
 Vulnerabilities and Resistances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ======================= ==============================================
-Status                  Effect
+Property                Effect
 ======================= ==============================================
 Vulnerability (``VUL``) Take 2x from a particular damage type.
 Resistance (``RES``)    Take ½ from a particular damage type.
