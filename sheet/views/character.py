@@ -1,3 +1,4 @@
+from typing import Tuple
 import re
 
 from django.contrib.auth.decorators import login_required
@@ -10,6 +11,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from ..forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
 from ..models import equipment, items
 from ..models.abilities import inverse_abilities
+from ..models.ability import Ability
 from ..models.character import Character, UnlockedAbility
 from ..models.level_up import LevelUp
 from ..roll20 import api, login
@@ -278,13 +280,17 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
         roll20_form = Roll20Form(request.POST)
         if roll20_form.is_valid():
             password = roll20_form.cleaned_data['password']
+            sync_abilities = roll20_form.cleaned_data['sync_abilities']
+            sync_attributes = roll20_form.cleaned_data['sync_attributes']
+            sync_combos = roll20_form.cleaned_data['sync_combos']
+            sync_weapons = roll20_form.cleaned_data['sync_weapons']
 
             roll20_login = login.login(email=request.user.email, password=password,
                                        campaign_id=character.party.roll20_campaign_id)
             campaign_name = roll20_login.campaign_name
 
             character_id = api.get_character_id(login=roll20_login, character_name=character.name)
-            attributes_to_set = {
+            attributes_to_sync = {
                 'LVL': character.lvl,
                 'HP': character.hp,
                 'MP': character.mp,
@@ -347,17 +353,25 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
                 'ForceIMU': int(character.vul_set.imu.force),
                 'PsychicIMU': int(character.vul_set.imu.psychic),
             }
-            for attribute_name, attribute_value in attributes_to_set.items():
-                api.set_attribute(login=roll20_login, character_id=character_id,
-                                  attribute_name=attribute_name, attribute_value=attribute_value,
-                                  attribute_position=api.AttributePosition.current)
-                api.set_attribute(login=roll20_login, character_id=character_id,
-                                  attribute_name=attribute_name, attribute_value=attribute_value,
-                                  attribute_position=api.AttributePosition.max)
+            if sync_attributes:
+                for attribute_name, attribute_value in attributes_to_sync.items():
+                    api.set_attribute(login=roll20_login, character_id=character_id,
+                                      attribute_name=attribute_name,
+                                      attribute_value=attribute_value,
+                                      attribute_position=api.AttributePosition.current)
+                    api.set_attribute(login=roll20_login, character_id=character_id,
+                                      attribute_name=attribute_name,
+                                      attribute_value=attribute_value,
+                                      attribute_position=api.AttributePosition.max)
 
-            abilities_to_set = (character.unlocked_abilities + character.unlocked_combos +
-                                (character.weapon,))
-            for ability in abilities_to_set:
+            abilities_to_sync = ()  # type: Tuple[Ability, ...]
+            if sync_abilities:
+                abilities_to_sync += character.unlocked_abilities
+            if sync_combos:
+                abilities_to_sync += character.unlocked_combos
+            if sync_weapons:
+                abilities_to_sync += (character.weapon,)
+            for ability in abilities_to_sync:
                 if not api.ability_exists(login=roll20_login, character_id=character_id,
                                           ability_name=ability.name):
                     api.create_ability(login=roll20_login, character_id=character_id,

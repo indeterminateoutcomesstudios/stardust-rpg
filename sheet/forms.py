@@ -24,4 +24,8 @@ class SkillPointsForm(forms.ModelForm):
 
 
 class Roll20Form(forms.Form):
+    sync_attributes = forms.BooleanField(label='Sync Attributes', required=False, initial=True)
+    sync_abilities = forms.BooleanField(label='Sync Abilities', required=False, initial=True)
+    sync_combos = forms.BooleanField(label='Sync Combos', required=False, initial=True)
+    sync_weapons = forms.BooleanField(label='Sync Weapons', required=False, initial=True)
     password = forms.CharField(label='Roll20 Password', widget=forms.PasswordInput())
