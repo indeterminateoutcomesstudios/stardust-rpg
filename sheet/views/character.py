@@ -1,5 +1,5 @@
-from typing import Tuple
 import re
+from typing import Tuple  # noqa
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from ..forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
 from ..models import equipment, items
 from ..models.abilities import inverse_abilities
-from ..models.ability import Ability
+from ..models.ability import Ability  # noqa
 from ..models.character import Character, UnlockedAbility
 from ..models.level_up import LevelUp
 from ..roll20 import api, login
