@@ -94,7 +94,7 @@ rapid_regen_3 = Ability(
     name='Rapid Regen III', picture=AbilityPicture.leeches,
     mp_cost=0, target_area='Self + allies in [[3+WIS]]RAD', time=Time.full_a, shape=Shape.circle,
     duration='1', duration_unit=DurationUnit.rnd,
-    effect='+[[7+WIS]]REG, +3MP per Regen',
+    effect='+[[7+WIS]]REG, +[[2+WIS]]MP per Regen',
     prerequisites=(rapid_regen_2,)
 )
 
