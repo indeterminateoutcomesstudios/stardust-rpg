@@ -156,6 +156,10 @@ Combat Round (``RND``)
 
                 #. If d20 = 1, automatic miss.
 
+            #. If casting a combo, the ally who is casting the combo with must also subtract the
+               MP Cost and spend whatever Time is required to cast.  This time is deducted from
+               their next turn.
+
 #. At the conclusion of your turn, roll a d20 and Regeneration Dice (``RD``)
 
     #. If d20 + Magic Regeneration (``REG``) ≥ 18, restore ``RD`` MP.
