@@ -183,7 +183,7 @@ Stun        Cannot take ``MovA`` or ``StdA``.
 Sleep       Cannot take ``MovA`` or ``StdA``.  Woken by physical or magical attack.
 Fear        Must expend ``MovA`` to move in opposite direction of the source of fear.
 Allure      Must expend ``MovA`` to move towards the source of the allure.
-Blind       Maximum range of physical and magic attacks reduced to 1.
+Blind       Maximum range of physical and magic attacks reduced to 1.  ``VIS`` reduced to 1.
 Inhibit     Max ``MP`` reduced to 0.  ``MRED`` reduced to 0.
 =========== ===================================================================================
 
