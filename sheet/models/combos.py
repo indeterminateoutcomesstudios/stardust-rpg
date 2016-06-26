@@ -361,6 +361,32 @@ combos = (
         effect='Casters teleport between enemies that are within Range of each other, returning '
                'to original location. Stuns 1RND.'
     ),
+    Combo(
+        classes=(Magus, Telepath), prerequisite_lvl=2,
+        name='Shock Therapy', picture=AbilityPicture.enkindle,
+        mp_cost=8,
+        time=Time.full_a, min_range='1', max_range='1', shape=Shape.point,
+        duration='1', duration_unit=DurationUnit.hour, target_area='One creature',
+        effect='Jolt a creature\'s cognitive abilities, granting ADV on APT and SPE checks.'
+    ),
+    Combo(
+        classes=(Magus, Telepath), prerequisite_lvl=5,
+        name='Cryostasis', picture=AbilityPicture.raise_ability,
+        mp_cost=20,
+        time=Time.full_a, min_range='1', max_range='1', shape=Shape.point,
+        duration='1+WIS', duration_unit=DurationUnit.day, target_area='One creature',
+        effect='Shuts down willing or KO\'d creature\'s, mental and physical systems, simulating '
+               'death but preserving the life of the creature.  Casting again can reanimate early.'
+    ),
+    Combo(
+        classes=(Magus, Telepath), prerequisite_lvl=7,
+        name='Heat Wave', picture=AbilityPicture.rock_breaker,
+        mp_cost=12, attacks=1, targets_mdef=True,
+        time=Time.full_a, min_range='1', max_range='10+WIS', shape=Shape.circle,
+        duration='5+WIS', duration_unit=DurationUnit.rnd, target_area='[[5+WIS]]RAD',
+        effect='Causes creatures to feel uncomfortably hot, causing them to generally want to '
+               'leave the immediate area quietly.  Effect severity can be tuned.'
+    ),
     # Magus Geomancer: Meteor, Fire, Ice, Lightning.
     Combo(
         classes=(Spectre, Valkyrie), prerequisite_lvl=2,
