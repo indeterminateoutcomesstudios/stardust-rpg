@@ -1,25 +1,26 @@
 import re
-from typing import Tuple  # noqa
+from typing import Any, Tuple  # noqa
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.forms import ValidationError
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
 from ..forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
 from ..models import equipment, items
 from ..models.abilities import inverse_abilities
-from ..models.ability import Ability  # noqa
 from ..models.character import Character, UnlockedAbility
 from ..models.level_up import LevelUp
 from ..roll20 import api, login
 
 
-def check_is_superuser_or_owns_character(user: User, character: Character) -> None:
-    if not (user.is_superuser or character.user.username == user.username):
-        raise ValidationError('User not authorized to edit this character.')
+def owns_character_or_superuser(request: HttpRequest, character: Character) -> bool:
+    if request.user.is_superuser or character.user.username == request.user.username:
+        return True
+    else:
+        messages.error(request, 'User not authorized to edit this character.')
+        return False
 
 
 @login_required
@@ -43,11 +44,10 @@ def party(request: HttpRequest, character_id: int) -> HttpResponse:
 
 @login_required
 def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
+    # messages.error(request, 'Hello world error.')
     character = get_object_or_404(Character, pk=character_id)
 
-    if request.method == 'POST':
-        check_is_superuser_or_owns_character(request.user, character)
-
+    if request.method == 'POST' and owns_character_or_superuser(request, character):
         for parameter, value in request.POST.items():
             match = re.match(r'^(?P<action_type>lock|unlock)\s(?P<ability_index>[0-9]+)$', value)
             if match is not None:
@@ -60,26 +60,34 @@ def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
                         if unlocked_ability.ability is ability:
                             # Do not allow the player to re-lock an ability if it is a
                             # prerequisite for another ability they have already unlocked.
+                            lock_ability = True
                             for owned_ability in character.unlocked_abilities:
                                 if ability in owned_ability.prerequisites:
-                                    raise ValidationError(
-                                        'Cannot lock ability {} because it is a prerequisite '
-                                        'for {}.'.format(ability.name, owned_ability.name))
-                            unlocked_ability.delete()
+                                    messages.error(request,
+                                                   'Cannot lock ability {} because it is a '
+                                                   'prerequisite for {}.'.format(
+                                                       ability.name,
+                                                       owned_ability.name))
+                                    lock_ability = False
+                            if lock_ability:
+                                unlocked_ability.delete()
                 elif action_type == 'unlock':
-                    for prerequisite in ability.prerequisites:
-                        if prerequisite not in character.unlocked_abilities:
-                            raise ValidationError('Prerequisite {} not met for ability {}.'.format(
-                                prerequisite.name, ability.name))
-
-                    new_unlocked_ability = UnlockedAbility(
-                        character=character,
-                        ability_enum=inverse_abilities[ability])
-
                     if character.available_ap > 0:
-                        new_unlocked_ability.save()
+                        unlock_ability = True
+                        for prerequisite in ability.prerequisites:
+                            if prerequisite not in character.unlocked_abilities:
+                                messages.error(request,
+                                               'Prerequisite {} not met for ability {}.'.format(
+                                                   prerequisite.name, ability.name))
+                                unlock_ability = False
+
+                        if unlock_ability:
+                            new_unlocked_ability = UnlockedAbility(
+                                character=character,
+                                ability_enum=inverse_abilities[ability])
+                            new_unlocked_ability.save()
                     else:
-                        raise ValidationError('Not enough available AP.')
+                        messages.error(request, 'Not enough available AP.')
 
         return redirect(reverse(unlock_abilities, args=[character_id]))
 
@@ -96,9 +104,7 @@ def combos(request: HttpRequest, character_id: int) -> HttpResponse:
 def equip(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
-    if request.method == 'POST':
-        check_is_superuser_or_owns_character(request.user, character)
-
+    if request.method == 'POST' and owns_character_or_superuser(request, character):
         equip_form = CharacterEquipForm(request.POST)
         if equip_form.is_valid():
             character.utility_enum = equip_form.cleaned_data['utility_enum']
@@ -112,29 +118,88 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
             character.weapon_enum = equip_form.cleaned_data['weapon_enum']
 
             # Validate character meets requirements for equipment.
-            for wearable in character.wearables:
-                if character.get_attribute(wearable.min_attribute) < wearable.min_attribute_value:
-                    raise ValidationError('Requirements not met for {}.  Need {} {}.'.format(
-                        wearable.name, wearable.min_attribute_value, wearable.min_attribute.name))
-
-            if (character.weapon.is_two_handed and
+            if (character.get_attribute(character.utility.min_attribute) <
+                    character.utility.min_attribute_value):
+                equip_form.add_error('utility_enum',
+                                     error='Requirements not met for {}.  Need {}{}.'.format(
+                                         character.utility.name,
+                                         character.utility.min_attribute_value,
+                                         character.utility.min_attribute.name.upper()))
+            elif (character.get_attribute(character.head.min_attribute) <
+                  character.head.min_attribute_value):
+                equip_form.add_error('head_enum',
+                                     error='Requirements not met for {}.  Need {}{}.'.format(
+                                         character.head.name,
+                                         character.head.min_attribute_value,
+                                         character.head.min_attribute.name.upper()))
+            elif (character.get_attribute(character.neck.min_attribute) <
+                  character.neck.min_attribute_value):
+                equip_form.add_error('neck_enum',
+                                     error='Requirements not met for {}.  Need {}{}.'.format(
+                                         character.neck.name,
+                                         character.neck.min_attribute_value,
+                                         character.neck.min_attribute.name.upper()))
+            elif (character.get_attribute(character.chest.min_attribute) <
+                  character.chest.min_attribute_value):
+                equip_form.add_error('chest_enum',
+                                     error='Requirements not met for {}.  Need {}{}.'.format(
+                                         character.chest.name,
+                                         character.chest.min_attribute_value,
+                                         character.chest.min_attribute.name.upper()))
+            elif (character.get_attribute(character.shield.min_attribute) <
+                  character.shield.min_attribute_value):
+                equip_form.add_error('shield_enum',
+                                     error='Requirements not met for {}.  Need {}{}.'.format(
+                                         character.shield.name,
+                                         character.shield.min_attribute_value,
+                                         character.shield.min_attribute.name.upper()))
+            elif (character.get_attribute(character.right_hand.min_attribute) <
+                  character.right_hand.min_attribute_value):
+                equip_form.add_error('right_hand_enum',
+                                     error='Requirements not met for {}.  Need {}{}.'.format(
+                                         character.right_hand.name,
+                                         character.right_hand.min_attribute_value,
+                                         character.right_hand.min_attribute.name.upper()))
+            elif (character.get_attribute(character.left_hand.min_attribute) <
+                  character.left_hand.min_attribute_value):
+                equip_form.add_error('left_hand_enum',
+                                     error='Requirements not met for {}.  Need {}{}.'.format(
+                                         character.left_hand.name,
+                                         character.left_hand.min_attribute_value,
+                                         character.left_hand.min_attribute.name.upper()))
+            elif (character.get_attribute(character.feet.min_attribute) <
+                  character.feet.min_attribute_value):
+                equip_form.add_error('feet_enum',
+                                     error='Requirements not met for {}.  Need {}{}.'.format(
+                                         character.feet.name,
+                                         character.feet.min_attribute_value,
+                                         character.feet.min_attribute.name.upper()))
+            elif (character.get_attribute(character.weapon.min_attribute) <
+                  character.weapon.min_attribute_value):
+                equip_form.add_error('weapon_enum',
+                                     error='Requirements not met for {}.  Need {}{}.'.format(
+                                         character.weapon.name,
+                                         character.weapon.min_attribute_value,
+                                         character.weapon.min_attribute.name.upper()))
+            elif (character.weapon.is_two_handed and
                     character.shield_enum is not items.Shields.empty):
-                raise ValidationError('Cannot equip a shield and a two-handed weapon.')
-
-            if ((character.right_hand.is_two_handed and
+                equip_form.add_error('shield_enum',
+                                     error='Cannot equip a shield and a two-handed weapon.')
+            elif ((character.right_hand.is_two_handed and
                     character.left_hand_enum is not items.Hands.empty) or
                     (character.left_hand.is_two_handed and
                      character.right_hand_enum is not items.Hands.empty)):
-                raise ValidationError('Cannot equip two-handed Hand item and an item in other '
-                                      'hand.')
-
-            if not character.can_use_weapon:
-                raise ValidationError('Class {cls} cannot use {style} {type} weapons'.format(
-                    cls=character.cls.name, style=character.weapon.style.name,
-                    type=character.weapon.type.name))
-
-            character.save()
-            return redirect(reverse(stats, args=[character_id]))
+                equip_form.add_error('right_hand_enum',
+                                     error='Cannot equip two-handed Hand item and an item in '
+                                           'other hand.')
+            elif not character.can_use_weapon:
+                equip_form.add_error('weapon_enum',
+                                     error='Class {cls} cannot use {style} {type} weapons'.format(
+                                        cls=character.cls.name, style=character.weapon.style.name,
+                                        type=character.weapon.type.name))
+            else:
+                character.save()
+                return redirect(reverse(stats, args=[character_id]))
     else:
         equip_form = CharacterEquipForm(
             initial={
@@ -158,9 +223,7 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
 def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
-    if request.method == 'POST':
-        check_is_superuser_or_owns_character(request.user, character)
-
+    if request.method == 'POST' and owns_character_or_superuser(request, character):
         level_up_form = LevelUpForm(request.POST)
 
         # Check if a delete input button was pressed to remove an old LevelUp.
@@ -173,31 +236,32 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
         # Otherwise, user is creating a new LevelUp.
         if level_up_form.is_valid():
             hd_roll = level_up_form.cleaned_data['hd_roll']
-            if hd_roll > character.cls.hd:
-                raise ValidationError('HD roll higher than HD: {}>{}'.format(
-                    hd_roll, character.cls.hd))
-
             md_roll = level_up_form.cleaned_data['md_roll']
-            if md_roll > character.cls.md:
-                raise ValidationError('MD roll higher than MD: {}>{}'.format(
-                    md_roll, character.cls.md))
-
             sd_roll = level_up_form.cleaned_data['sd_roll']
-            if sd_roll > character.cls.sd:
-                raise ValidationError('SD roll higher than SD: {}>{}'.format(
-                    sd_roll, character.cls.sd))
-
-            if character.lvl == 0:
-                if (hd_roll != character.cls.hd or
-                        md_roll != character.cls.md or
-                        sd_roll != character.cls.sd):
-                    raise ValidationError(
-                        'For LVL 1, HD, MD, and SD are assigned maximum roll values.')
-
-            new_level_up = level_up_form.save(commit=False)
-            new_level_up.character = character
-            new_level_up.save()
-            level_up_form = LevelUpForm()
+            if hd_roll > character.cls.hd:
+                level_up_form.add_error('hd_roll',
+                                        error='HD roll higher than HD: {hd_roll}>{hd}'.format(
+                                            hd_roll=hd_roll, hd=character.cls.hd))
+            elif md_roll > character.cls.md:
+                level_up_form.add_error('md_roll',
+                                        error='MD roll higher than MD: {md_roll}>{md}'.format(
+                                            md_roll=md_roll, md=character.cls.md))
+            elif sd_roll > character.cls.sd:
+                level_up_form.add_error('sd_roll',
+                                        error='SD roll higher than SD: {sd_roll}>{sd}'.format(
+                                            sd_roll=sd_roll, sd=character.cls.sd))
+            elif (character.lvl == 0 and
+                  (hd_roll != character.cls.hd or
+                   md_roll != character.cls.md or
+                   sd_roll != character.cls.sd)):
+                level_up_form.add_error('hd_roll',
+                                        error='For LVL 1: HD, MD, and SD are assigned maximum '
+                                              'roll values.')
+            else:
+                new_level_up = level_up_form.save(commit=False)
+                new_level_up.character = character
+                new_level_up.save()
+                level_up_form = LevelUpForm()
     else:
         if character.lvl == 0:
             level_up_form = LevelUpForm(
@@ -216,8 +280,7 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
 def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
-    if request.method == 'POST':
-        check_is_superuser_or_owns_character(request.user, character)
+    if request.method == 'POST' and owns_character_or_superuser(request, character):
         skill_points_form = SkillPointsForm(request.POST)
         if skill_points_form.is_valid():
             assigned_ath = skill_points_form.cleaned_data['assigned_ath']
@@ -228,25 +291,33 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
             assigned_spe = skill_points_form.cleaned_data['assigned_spe']
             if (assigned_ath + assigned_ste + assigned_for + assigned_apt + assigned_per +
                     assigned_spe > character.sp):
-                raise ValidationError('Too many SP assigned. Max: {}'.format(character.sp))
+                skill_points_form.add_error('assigned_ath',
+                                            error='Too many SP assigned. Max: {sp}'.format(
+                                                sp=character.sp))
             elif assigned_ath > character.max_sp_per_skill:
-                raise ValidationError('Assigned ATH too high. Max: {}'.format(
-                    character.max_sp_per_skill))
+                skill_points_form.add_error('assigned_ath',
+                                            error='Assigned ATH too high. Max: {max_sp}'.format(
+                                                max_sp=character.max_sp_per_skill))
             elif assigned_ste > character.max_sp_per_skill:
-                raise ValidationError('Assigned STE too high. Max: {}'.format(
-                    character.max_sp_per_skill))
+                skill_points_form.add_error('assigned_ste',
+                                            error='Assigned STE too high. Max: {max_sp}'.format(
+                                                max_sp=character.max_sp_per_skill))
             elif assigned_for > character.max_sp_per_skill:
-                raise ValidationError('Assigned FOR too high. Max: {}'.format(
-                    character.max_sp_per_skill))
+                skill_points_form.add_error('assigned_for',
+                                            error='Assigned FOR too high. Max: {max_sp}'.format(
+                                                max_sp=character.max_sp_per_skill))
             elif assigned_apt > character.max_sp_per_skill:
-                raise ValidationError('Assigned APT too high. Max: {}'.format(
-                    character.max_sp_per_skill))
+                skill_points_form.add_error('assigned_apt',
+                                            error='Assigned APT too high. Max: {max_sp}'.format(
+                                                max_sp=character.max_sp_per_skill))
             elif assigned_per > character.max_sp_per_skill:
-                raise ValidationError('Assigned PER too high. Max: {}'.format(
-                    character.max_sp_per_skill))
+                skill_points_form.add_error('assigned_per',
+                                            error='Assigned PER too high. Max: {max_sp}'.format(
+                                                max_sp=character.max_sp_per_skill))
             elif assigned_spe > character.max_sp_per_skill:
-                raise ValidationError('Assigned SPE too high. Max: {}'.format(
-                    character.max_sp_per_skill))
+                skill_points_form.add_error('assigned_spe',
+                                            error='Assigned SPE too high. Max: {max_sp}'.format(
+                                                max_sp=character.max_sp_per_skill))
             else:
                 character.assigned_ath = assigned_ath
                 character.assigned_ste = assigned_ste
@@ -275,8 +346,7 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     campaign_name = ''
-    if request.method == 'POST':
-        check_is_superuser_or_owns_character(request.user, character)
+    if request.method == 'POST' and owns_character_or_superuser(request, character):
         roll20_form = Roll20Form(request.POST)
         if roll20_form.is_valid():
             password = roll20_form.cleaned_data['password']
@@ -364,7 +434,8 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
                                       attribute_value=attribute_value,
                                       attribute_position=api.AttributePosition.max)
 
-            abilities_to_sync = ()  # type: Tuple[Ability, ...]
+            # TODO: Abilities and Weapons could derive from the same base class Macroable.
+            abilities_to_sync = ()  # type: Tuple[Any, ...]
             if sync_abilities:
                 abilities_to_sync += character.unlocked_abilities
             if sync_combos:

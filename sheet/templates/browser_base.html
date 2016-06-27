@@ -1,37 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load staticfiles %}
-<head>
-    <link rel="stylesheet" href="{% static 'sheet/style.css' %}"/>
-    <title>{% block title %}Browser Base{% endblock %}</title>
-    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
-</head>
+{% extends "base.html" %}
 
-<body>
-<div id="linkbar">
-    {% block linkbar %}
-        <Label>Player: {{ request.user }}</Label>
-        <a href="{% url 'sheet-views-parties' %}">Parties</a>
-        <a href="{% url 'sheet-views-classes' %}">Classes</a>
-        <a href="{% url 'sheet-views-all-combos' %}">Combos</a>
-        <a href="{% url 'sheet-views-heads' %}">Heads</a>
-        <a href="{% url 'sheet-views-necks' %}">Necks</a>
-        <a href="{% url 'sheet-views-chests' %}">Chests</a>
-        <a href="{% url 'sheet-views-shields' %}">Shields</a>
-        <a href="{% url 'sheet-views-hands' %}">Hands</a>
-        <a href="{% url 'sheet-views-feets' %}">Feet</a>
-        <a href="{% url 'sheet-views-utilities' %}">Utilities</a>
-        <a href="{% url 'sheet-views-weapons' %}">Weapons</a>
-        <a href="{% url 'sheet-views-items' %}">Items</a>
-        <a href="{% url 'sheet-views-shape-pictures' %}">Shapes Picts</a>
-        <a href="{% url 'sheet-views-weapon-pictures' %}">Weapon Picts</a>
-        <a href="{% url 'sheet-views-ability-pictures' %}">Ability Picts</a>
-        <a href= {% url 'app-accounts-logout' %}>Logout</a>
-    {% endblock %}
-</div>
+{% block title %}{% endblock %}
 
-<div id="content">
-    {% block content %}{% endblock %}
-</div>
-</body>
-</html>
+{% block linkbar %}
+    <Label>Player: {{ request.user }}</Label>
+    <a href="{% url 'sheet-views-parties' %}">Parties</a>
+    <a href="{% url 'sheet-views-classes' %}">Classes</a>
+    <a href="{% url 'sheet-views-all-combos' %}">Combos</a>
+    <a href="{% url 'sheet-views-heads' %}">Heads</a>
+    <a href="{% url 'sheet-views-necks' %}">Necks</a>
+    <a href="{% url 'sheet-views-chests' %}">Chests</a>
+    <a href="{% url 'sheet-views-shields' %}">Shields</a>
+    <a href="{% url 'sheet-views-hands' %}">Hands</a>
+    <a href="{% url 'sheet-views-feets' %}">Feet</a>
+    <a href="{% url 'sheet-views-utilities' %}">Utilities</a>
+    <a href="{% url 'sheet-views-weapons' %}">Weapons</a>
+    <a href="{% url 'sheet-views-items' %}">Items</a>
+    <a href="{% url 'sheet-views-shape-pictures' %}">Shapes Picts</a>
+    <a href="{% url 'sheet-views-weapon-pictures' %}">Weapon Picts</a>
+    <a href="{% url 'sheet-views-ability-pictures' %}">Ability Picts</a>
+    <a href= {% url 'app-accounts-logout' %}>Logout</a>
+{% endblock %}
+
+
+{% block content %}{% endblock %}

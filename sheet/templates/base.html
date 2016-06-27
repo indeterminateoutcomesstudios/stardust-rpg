@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <link rel="stylesheet" href="{% static 'sheet/style.css' %}"/>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+</head>
+
+<body>
+<div id="linkbar">
+    {% block linkbar %}{% endblock %}
+</div>
+<div id="messages">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+<div id="content">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
