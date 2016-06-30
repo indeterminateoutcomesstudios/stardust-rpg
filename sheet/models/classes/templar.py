@@ -268,30 +268,28 @@ reset_3 = Ability(
 decay_1 = Ability(
     name='Decay I', picture=AbilityPicture.miserys_end,
     mp_cost=5, attacks=1, targets_mdef=True, max_range='4',
-    shape=Shape.circle, target_area='[[WIS]]RAD',
+    shape=Shape.point, target_area='1 creature',
     duration='3', duration_unit=DurationUnit.rnd,
-    effect='Hyper accelerates time around the targets armor, causing -4PDEF, -4MDEF, -2PRED, '
-           '-2MRED',
+    effect='Hyper accelerates time around the targets armor, causing -3PRED, -3MRED',
     prerequisites=(mass_time_warp_2, phase_out_2)
 )
 
 decay_2 = Ability(
     name='Decay II', picture=AbilityPicture.miserys_end,
-    mp_cost=7, attacks=1, targets_mdef=True, max_range='4',
-    shape=Shape.circle, target_area='[[WIS]]RAD',
+    mp_cost=7, attacks=1, targets_mdef=True, max_range='4+WIS',
+    shape=Shape.circle, target_area='1 creature',
     duration='3', duration_unit=DurationUnit.rnd,
-    effect='Hyper accelerates time around the targets armor, causing -6PDEF, -6MDEF; -3PRED, '
-           '-3MRED',
+    effect='Hyper accelerates time around the targets armor, causing -4PRED, -4MRED',
     prerequisites=(decay_1,)
 )
 
 decay_3 = Ability(
     name='Decay III', picture=AbilityPicture.miserys_end,
-    mp_cost=10, attacks=1, targets_mdef=True, max_range='4',
-    shape=Shape.circle, target_area='[[WIS]]RAD',
-    duration='3', duration_unit=DurationUnit.rnd,
-    effect='Hyper accelerates time around the targets armor, causing -[[6+2*WIS]]PDEF,'
-           '-[[6+2*WIS]]MDEF; -[[3+WIS]]PRED, -[[3+WIS]]MRED',
+    mp_cost=12, attacks=1, targets_mdef=True, max_range='4+WIS',
+    shape=Shape.circle, target_area='1 creature',
+    duration='3+WIS', duration_unit=DurationUnit.rnd,
+    effect='Hyper accelerates time around the targets armor, causing -[[4+WIS]]PRED, '
+           '-[[4+WIS]]MRED',
     prerequisites=(decay_2,)
 )
 
