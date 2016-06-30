@@ -244,22 +244,24 @@ esuna_3 = Ability(
 # Tier 3.
 reset_1 = Ability(
     name='Reset I', picture=AbilityPicture.repelling_shot,
-    mp_cost=8, target_area='Self or 1 ally', time=Time.free_a,
-    effect='Redo a Skill Check',
+    mp_cost=8, target_area='Self or 1 ally', time=Time.free_a, max_range='1',
+    effect='Undo a MovA or Skill Check. Can be cast during ally\'s turn, once per instance.',
     prerequisites=(mass_time_warp_1, stop_2)
 )
 
 reset_2 = Ability(
     name='Reset II', picture=AbilityPicture.repelling_shot,
-    mp_cost=10, target_area='Self or 1 ally', time=Time.free_a,
-    effect='Redo StdA',
+    mp_cost=10, target_area='Self or 1 ally', time=Time.free_a, max_range='1',
+    effect='Undo a StdA or AbA. Can be cast during ally\'s turn, once per instance. '
+           'Does not refund MP cost of reset abilities.',
     prerequisites=(reset_1,)
 )
 
 reset_3 = Ability(
     name='Reset III', picture=AbilityPicture.repelling_shot,
-    mp_cost=12, target_area='Self or 1 ally', time=Time.free_a,
-    effect='Redo FullA',
+    mp_cost=12, target_area='Self or 1 ally', time=Time.free_a, max_range='1',
+    effect='Undo FullA. Can be cast during ally\'s turn, once per instance.'
+           'Does not refund MP cost of reset abilities.',
     prerequisites=(reset_2,)
 )
 
