@@ -29,7 +29,7 @@ time_warp_3 = Ability(
 slow_1 = Ability(
     name='Slow I', picture=AbilityPicture.lethargy,
     mp_cost=1, attacks=1, targets_mdef=True,
-    max_range='8', shape=Shape.circle, target_area='1RAD', time=Time.free_a,
+    max_range='8', shape=Shape.circle, target_area='1RAD', time=Time.ab_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Slows time in an area and enemies gets -3SPEED'
 )
@@ -37,7 +37,7 @@ slow_1 = Ability(
 slow_2 = Ability(
     name='Slow II', picture=AbilityPicture.lethargy,
     mp_cost=2, attacks=1, targets_mdef=True,
-    max_range='8', shape=Shape.circle, target_area='1RAD', time=Time.free_a,
+    max_range='8', shape=Shape.circle, target_area='1RAD', time=Time.ab_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Slows time in an area and immobilizes enemies',
     prerequisites=(slow_1,)
@@ -46,7 +46,7 @@ slow_2 = Ability(
 slow_3 = Ability(
     name='Slow III', picture=AbilityPicture.lethargy,
     mp_cost=2, attacks=1, targets_mdef=True,
-    max_range='8', shape=Shape.circle, target_area='1RAD', time=Time.free_a,
+    max_range='8', shape=Shape.circle, target_area='1RAD', time=Time.ab_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Slows time in an area and disables enemies',
     prerequisites=(slow_2,)
