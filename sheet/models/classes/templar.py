@@ -175,27 +175,31 @@ stop_3 = Ability(
     prerequisites=(stop_2,)
 )
 
-phase_out_1 = Ability(
-    name='Phase Out I', picture=AbilityPicture.cleric_stance,
-    mp_cost=4, target_area='Self', time=Time.free_a,
-    effect='Reorder turn order',
+destiny_1 = Ability(
+    name='Destiny I', picture=AbilityPicture.tri_disaster,
+    mp_cost=6, target_area='2RAD', time=Time.std_ab_a,
+    mdam='3d6',
+    effect='Tears fabric of time 1RND in the future causing damage at the beginning of caster\'s'
+           'next turn.',
     prerequisites=(rebound_2,)
 )
 
-phase_out_2 = Ability(
-    name='Phase Out II', picture=AbilityPicture.cleric_stance,
-    mp_cost=4, target_area='Self', time=Time.free_a,
-    effect='Revert time, returning to the original location that caster was at the beginning of '
-           'the turn.',
-    prerequisites=(phase_out_1,)
+destiny_2 = Ability(
+    name='Destiny II', picture=AbilityPicture.tri_disaster,
+    mp_cost=10, target_area='2RAD', time=Time.std_ab_a,
+    mdam='2d10+WIS',
+    effect='Tears fabric of time 1RND in the future causing damage at the beginning of caster\'s'
+           'next turn.',
+    prerequisites=(destiny_1,)
 )
 
-phase_out_3 = Ability(
-    name='Phase Out III', picture=AbilityPicture.cleric_stance,
-    mp_cost=0, target_area='Self', time=Time.full_a,
-    duration='1', duration_unit=DurationUnit.rnd,
-    effect='Skip turn for +20REG, 2*MP per REG',
-    prerequisites=(phase_out_2,)
+destiny_3 = Ability(
+    name='Destiny III', picture=AbilityPicture.tri_disaster,
+    mp_cost=12, target_area='3RAD', time=Time.std_ab_a,
+    mdam='2d10+2*WIS',
+    effect='Tears fabric of time 1RND in the future causing damage at the beginning of caster\'s'
+           'next turn.',
+    prerequisites=(destiny_2,)
 )
 
 healing_wind_1 = Ability(
@@ -271,7 +275,7 @@ decay_1 = Ability(
     shape=Shape.point, target_area='1 creature',
     duration='3', duration_unit=DurationUnit.rnd,
     effect='Hyper accelerates time around the targets armor, causing -3PRED, -3MRED',
-    prerequisites=(mass_time_warp_2, phase_out_2)
+    prerequisites=(mass_time_warp_2, destiny_2)
 )
 
 decay_2 = Ability(
@@ -298,7 +302,7 @@ time_cloud_1 = Ability(
     mp_cost=12, target_area='Self + allies in [[WIS]]RAD', time=Time.std_ab_a, shape=Shape.circle,
     effect='Bends time in a certain area to heal allies +[[1d8+2*WIS]]HP. '
            'Only one Time Cloud can exist at once',
-    prerequisites=(phase_out_1, healing_wind_2, esuna_1)
+    prerequisites=(destiny_1, healing_wind_2, esuna_1)
 )
 
 time_cloud_2 = Ability(
@@ -371,7 +375,7 @@ class Templar(Class):
                        cure_1, cure_2, cure_3,
                        mass_time_warp_1, mass_time_warp_2, mass_time_warp_3,
                        stop_1, stop_2, stop_3,
-                       phase_out_1, phase_out_2, phase_out_3,
+                       destiny_1, destiny_2, destiny_3,
                        healing_wind_1, healing_wind_2, healing_wind_3,
                        esuna_1, esuna_2, esuna_3,
                        reset_1, reset_2, reset_3,
