@@ -147,7 +147,7 @@ inferno_2 = Ability(
 
 inferno_3 = Ability(
     name='Inferno III', picture=AbilityPicture.fire_2,
-    mp_cost=14, attacks=2, mdam='1d10+2*WIS',
+    mp_cost=14, attacks=3, mdam='1d10+2*WIS',
     damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a,
     min_range='1', max_range='3', shape=Shape.cone, target_area='3DIS cone',
     prerequisites=(inferno_2,)
