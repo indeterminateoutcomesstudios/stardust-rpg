@@ -48,7 +48,7 @@ slow_3 = Ability(
     mp_cost=2, attacks=1, targets_mdef=True,
     max_range='8', shape=Shape.circle, target_area='1RAD', time=Time.ab_a,
     duration='1', duration_unit=DurationUnit.rnd,
-    effect='Slows time in an area and disables enemies',
+    effect='Slows time in an area and either staggers or silences enemies',
     prerequisites=(slow_2,)
 )
 
