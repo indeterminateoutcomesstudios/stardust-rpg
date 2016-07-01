@@ -178,8 +178,8 @@ stop_3 = Ability(
 destiny_1 = Ability(
     name='Destiny I', picture=AbilityPicture.tri_disaster,
     mp_cost=6, target_area='2RAD', time=Time.std_ab_a,
-    mdam='3d6',
-    effect='Tears fabric of time 1RND in the future causing damage at the beginning of caster\'s'
+    mdam='3d6', targets_mdef=True,
+    effect='Tears fabric of time 1RND in the future causing damage at the beginning of caster\'s '
            'next turn.',
     prerequisites=(rebound_2,)
 )
@@ -187,8 +187,8 @@ destiny_1 = Ability(
 destiny_2 = Ability(
     name='Destiny II', picture=AbilityPicture.tri_disaster,
     mp_cost=10, target_area='2RAD', time=Time.std_ab_a,
-    mdam='2d10+WIS',
-    effect='Tears fabric of time 1RND in the future causing damage at the beginning of caster\'s'
+    mdam='2d12+WIS', targets_mdef=True,
+    effect='Tears fabric of time 1RND in the future causing damage at the beginning of caster\'s '
            'next turn.',
     prerequisites=(destiny_1,)
 )
@@ -196,8 +196,8 @@ destiny_2 = Ability(
 destiny_3 = Ability(
     name='Destiny III', picture=AbilityPicture.tri_disaster,
     mp_cost=12, target_area='3RAD', time=Time.std_ab_a,
-    mdam='2d10+2*WIS',
-    effect='Tears fabric of time 1RND in the future causing damage at the beginning of caster\'s'
+    mdam='2d12+2*WIS', targets_mdef=True,
+    effect='Tears fabric of time 1RND in the future causing damage at the beginning of caster\'s '
            'next turn.',
     prerequisites=(destiny_2,)
 )
