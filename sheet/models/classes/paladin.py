@@ -4,21 +4,24 @@ from ..equipment import DamageType, Shape
 
 reflect_1 = Ability(
     name='Reflect [Counter] I', picture=AbilityPicture.shield_oath,
-    mp_cost=2, target_area='Self', time=Time.free_a,
-    effect='If hit with melee attack, can reflect 1PDAM'
+    mp_cost=1, target_area='Self', time=Time.free_a,
+    effect='If hit with melee attack, can reflect 1PDAM as TDAM. '
+           'Does not reduce incoming damage.'
 )
 
 reflect_2 = Ability(
     name='Reflect [Counter] II', picture=AbilityPicture.shield_oath,
-    mp_cost=3, target_area='Self', time=Time.free_a,
-    effect='If hit with melee attack, can reflect [[1+WIS]]PDAM',
+    mp_cost=2, target_area='Self', time=Time.free_a,
+    effect='If hit with melee attack, can reflect [[1+WIS]]PDAM as TDAM. '
+           'Does not reduce incoming damage.',
     prerequisites=(reflect_1,),
 )
 
 reflect_3 = Ability(
     name='Reflect [Counter] III', picture=AbilityPicture.shield_oath,
-    mp_cost=3, target_area='Self', time=Time.free_a,
-    effect='If hit with magic attack, can reflect [[1+WIS]]MDAM',
+    mp_cost=2, target_area='Self', time=Time.free_a,
+    effect='If hit with magic attack, can reflect [[1+WIS]]MDAM as TDAM. '
+           'DOes not reduce incoming damage.',
     prerequisites=(reflect_2,),
 )
 
