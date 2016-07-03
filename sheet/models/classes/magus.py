@@ -45,7 +45,7 @@ lightning_shield_2 = Ability(
 
 lightning_shield_3 = Ability(
     name='Lightning Shield III', picture=AbilityPicture.shield_oath,
-    mp_cost=2, attacks=1, mdam='1d8+WIS',
+    mp_cost=3, attacks=1, mdam='1d8+WIS',
     damage_type=DamageType.lightning, targets_mdef=True, max_range='7',
     target_area='1 ally', duration='3+WIS', duration_unit=DurationUnit.rnd,
     effect='Electric force field damages enemies who successfully melee or range attack shielded '
