@@ -157,7 +157,8 @@ sunray_1 = Ability(
     mp_cost=3, attacks=1, mdam='1d8+WIS',
     damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a,
     shape=Shape.halo, target_area='1RAD Halo',
-    effect='Sunray shoots down onto caster and explodes outward knocking back creatures 1DIS',
+    effect='Sunray shoots down onto caster and explodes outward knocking back creatures 2DIS. '
+           'and immobilizes',
     prerequisites=(fireball_2, imbue_weapon_3)
 )
 
@@ -166,7 +167,7 @@ sunray_2 = Ability(
     mp_cost=5, attacks=1, mdam='1d8+2*WIS',
     damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a,
     shape=Shape.halo, target_area='2RAD Halo',
-    effect='Sunray shoots down onto caster and explodes outward knocking back creatures 1DIS and '
+    effect='Sunray shoots down onto caster and explodes outward knocking back creatures 2DIS and '
            'staggering',
     prerequisites=(sunray_1,)
 )
@@ -176,7 +177,7 @@ sunray_3 = Ability(
     mp_cost=8, attacks=1, mdam='2d8+2*WIS',
     damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a,
     shape=Shape.halo, target_area='2RAD Halo',
-    effect='Sunray shoots down onto caster and explodes outward knocking back creatures 1DIS and '
+    effect='Sunray shoots down onto caster and explodes outward knocking back creatures 2DIS and '
            'disabling',
     prerequisites=(sunray_2,)
 )
