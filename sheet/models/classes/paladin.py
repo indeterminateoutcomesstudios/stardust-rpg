@@ -21,7 +21,7 @@ reflect_3 = Ability(
     name='Reflect [Counter] III', picture=AbilityPicture.shield_oath,
     mp_cost=2, target_area='Self', time=Time.free_a,
     effect='If hit with magic attack, can reflect [[1+WIS]]MDAM as TDAM. '
-           'DOes not reduce incoming damage.',
+           'Does not reduce incoming damage.',
     prerequisites=(reflect_2,),
 )
 
