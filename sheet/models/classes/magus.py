@@ -104,14 +104,14 @@ ice_slick_3 = Ability(
 
 imbue_weapon_1 = Ability(
     name='Imbue Weapon I', picture=AbilityPicture.awareness,
-    mp_cost=2, max_range='5', target_area='1 ally', time=Time.free_a,
+    mp_cost=2, max_range='5', target_area='1 ally',
     duration='6', duration_unit=DurationUnit.rnd,
-    effect='Imbues ally\'s weapon with ice.  Successful physical attacks apply [[-WIS]]SPEED'
+    effect='Imbues ally\'s weapon with ice.  Successful physical attacks apply -[[1+WIS]]SPEED'
 )
 
 imbue_weapon_2 = Ability(
     name='Imbue Weapon II', picture=AbilityPicture.awareness,
-    mp_cost=3, max_range='5', target_area='1 ally', time=Time.free_a,
+    mp_cost=3, max_range='5', target_area='1 ally',
     duration='6', duration_unit=DurationUnit.rnd,
     effect='Imbues ally\'s weapon with lightning. Successful or unsuccessful physical attacks '
            'apply [[1+WIS]]MDAM',
@@ -120,7 +120,7 @@ imbue_weapon_2 = Ability(
 
 imbue_weapon_3 = Ability(
     name='Imbue Weapon III', picture=AbilityPicture.awareness,
-    mp_cost=4, max_range='5', target_area='1 ally', time=Time.free_a,
+    mp_cost=4, max_range='5', target_area='1 ally',
     duration='6', duration_unit=DurationUnit.rnd,
     effect='Imbues ally\'s weapon with fire.  Successful physical attacks burn [[1+WIS]]MDAM for '
            '3RND',
