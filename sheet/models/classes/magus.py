@@ -12,7 +12,7 @@ fireball_1 = Ability(
 
 fireball_2 = Ability(
     name='Fireball II', picture=AbilityPicture.fire,
-    mp_cost=2, attacks=2, mdam='1d6+WIS',
+    mp_cost=3, attacks=2, mdam='1d6+WIS',
     damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a, max_range='8',
     shape=Shape.circle, target_area='1RAD',
     prerequisites=(fireball_1,)
@@ -20,10 +20,9 @@ fireball_2 = Ability(
 
 fireball_3 = Ability(
     name='Fireball III', picture=AbilityPicture.fire,
-    mp_cost=3, attacks=2, mdam='1d8+WIS',
+    mp_cost=4, attacks=2, mdam='1d8+WIS',
     damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a, max_range='10',
     shape=Shape.circle, target_area='1RAD',
-    effect='Additional 3* [[d4]]MDAM randomly ([[d8]], [[d8]], [[d8]])DIR 2DIS away from target',
     prerequisites=(fireball_2,)
 )
 
