@@ -180,7 +180,7 @@ vortex_2 = Ability(
     mp_cost=5, attacks=1, mdam='1d6+WIS',
     damage_type=DamageType.force, targets_mdef=True,
     shape=Shape.circle, target_area='[[2+WIS]]RAD',
-    effect='Sucks objects and enemies towards caster and disables. -1PRED',
+    effect='Sucks objects and enemies towards caster and disables.',
     prerequisites=(vortex_1,)
 )
 
@@ -189,7 +189,7 @@ vortex_3 = Ability(
     mp_cost=6, attacks=1, mdam='1d8+2*WIS',
     damage_type=DamageType.force, targets_mdef=True,
     shape=Shape.circle, target_area='[[2+WIS]]RAD',
-    effect='Sucks objects and enemies towards caster and stuns. -1PRED, -1MRED',
+    effect='Sucks objects and enemies towards caster and stuns.',
     prerequisites=(vortex_2,)
 )
 
