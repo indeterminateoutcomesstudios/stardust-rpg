@@ -211,7 +211,7 @@ lightning_strike_3 = Ability(
 
 deep_freeze_1 = Ability(
     name='Deep Freeze I', picture=AbilityPicture.blizzard_2,
-    mp_cost=2, attacks=1, mdam='1d8',
+    mp_cost=2, attacks=1, mdam='1d10',
     damage_type=DamageType.cold, targets_mdef=True, time=Time.std_ab_a,
     shape=Shape.multi_point, max_range='5', target_area='One living creature',
     duration='3', duration_unit=DurationUnit.rnd,
@@ -221,7 +221,7 @@ deep_freeze_1 = Ability(
 
 deep_freeze_2 = Ability(
     name='Deep Freeze II', picture=AbilityPicture.blizzard_2,
-    mp_cost=6, attacks=1, mdam='1d10',
+    mp_cost=6, attacks=1, mdam='1d12+WIS',
     damage_type=DamageType.cold, targets_mdef=True, time=Time.std_ab_a,
     shape=Shape.multi_point, max_range='5', target_area='One living creature',
     duration='5', duration_unit=DurationUnit.rnd,
@@ -231,11 +231,11 @@ deep_freeze_2 = Ability(
 
 deep_freeze_3 = Ability(
     name='Deep Freeze III', picture=AbilityPicture.blizzard_2,
-    mp_cost=9, attacks=1, mdam='1d12',
+    mp_cost=10, attacks=1, mdam='1d12+2*WIS',
     damage_type=DamageType.cold, targets_mdef=True, time=Time.std_ab_a,
     shape=Shape.multi_point, max_range='7', target_area='One living creature',
-    duration='8', duration_unit=DurationUnit.rnd,
-    effect='Immobilizes for 1 RND and slows enemy -[[WIS]]SPEED for Duration',
+    duration='5', duration_unit=DurationUnit.rnd,
+    effect='Stuns for 1 RND and slows enemy -[[WIS]]SPEED for Duration',
     prerequisites=(deep_freeze_2,)
 )
 
