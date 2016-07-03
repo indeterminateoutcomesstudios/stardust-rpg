@@ -56,25 +56,27 @@ telekinesis_3 = Ability(
 
 protect_1 = Ability(
     name='Protect I', picture=AbilityPicture.cover,
-    mp_cost=2, max_range='1', target_area='One ally',
-    duration='1+WIS', duration_unit=DurationUnit.rnd,
-    effect='+1PDEF Caster. Target gets caster PDEF. +1PRED. Take ½ DAM for protected target. '
-           '-2SPEED.  Can end early.'
+    mp_cost=1, max_range='1', target_area='One ally',
+    duration='1', duration_unit=DurationUnit.rnd,
+    effect='Protected target and caster gain +1PRED. Take ½ DAM for protected target. '
+           'Must be adjacent for effect.'
 )
 
 protect_2 = Ability(
     name='Protect II', picture=AbilityPicture.cover,
-    mp_cost=3, max_range='1', target_area='One ally',
-    duration='1+WIS', duration_unit=DurationUnit.rnd,
-    effect='+2PDEF, Take 3/4 DAM for protected target. Can end early.',
+    mp_cost=2, max_range='1', target_area='One ally',
+    duration='1', duration_unit=DurationUnit.rnd,
+    effect='Protected target and caster gain +2PRED. Take full DAM for protected target. '
+           'Must be adjacent for effect.',
     prerequisites=(protect_1,),
 )
 
 protect_3 = Ability(
     name='Protect III', picture=AbilityPicture.cover,
-    mp_cost=4, max_range='1', target_area='One ally',
-    duration='1+WIS', duration_unit=DurationUnit.rnd,
-    effect='+[[3+WIS]]PDEF, Take All DAM for protected target.  Can end early.',
+    mp_cost=3, max_range='1', target_area='One ally',
+    duration='1', duration_unit=DurationUnit.rnd,
+    effect='Protected target and caster gain +[[2+WIS]]PRED. Take full DAM for protected target. '
+           'Must be adjacent for effect.',
     prerequisites=(protect_2,),
 )
 
