@@ -184,7 +184,7 @@ sunray_3 = Ability(
 
 lightning_strike_1 = Ability(
     name='Lightning Strike I', picture=AbilityPicture.thunder_2,
-    mp_cost=6, attacks=1, mdam='1d8',
+    mp_cost=6, attacks=1, mdam='1d12',
     damage_type=DamageType.lightning, targets_mdef=True, time=Time.std_ab_a,
     shape=Shape.multi_point, max_range='10', target_area='One creature per bolt',
     effect='2 lightning bolts strike enemies.  Maximum of 1 bolt per target.',
@@ -193,7 +193,7 @@ lightning_strike_1 = Ability(
 
 lightning_strike_2 = Ability(
     name='Lightning Strike II', picture=AbilityPicture.thunder_2,
-    mp_cost=10, attacks=1, mdam='1d8+WIS',
+    mp_cost=10, attacks=1, mdam='1d12+WIS',
     damage_type=DamageType.lightning, targets_mdef=True, time=Time.std_ab_a,
     shape=Shape.multi_point, max_range='12', target_area='One creature per bolt',
     effect='[[2+WIS]] lightning bolts strike enemies.  Maximum of 1 bolt per target.',
@@ -202,7 +202,7 @@ lightning_strike_2 = Ability(
 
 lightning_strike_3 = Ability(
     name='Lightning Strike III', picture=AbilityPicture.thunder_2,
-    mp_cost=14, attacks=1, mdam='1d10+WIS',
+    mp_cost=14, attacks=1, mdam='1d12+2*WIS',
     damage_type=DamageType.lightning, targets_mdef=True, time=Time.std_ab_a,
     shape=Shape.multi_point, max_range='12', target_area='One creature per bolt',
     effect='[[3+WIS]] lightning bolts strike enemies.  Maximum of 1 bolt per target.',
