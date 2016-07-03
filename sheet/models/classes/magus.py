@@ -241,21 +241,21 @@ deep_freeze_3 = Ability(
 
 infuse_1 = Ability(
     name='Infuse I', picture=AbilityPicture.mana_wall,
-    mp_cost=4, max_range='1', target_area='1 ally',
+    mp_cost=4, max_range='1', target_area='1 ally', time=Time.free_a,
     effect='Adds [[4+WIS]]MP to ally',
     prerequisites=(fireball_2, ice_wall_2, lightning_shield_2)
 )
 
 infuse_2 = Ability(
     name='Infuse II', picture=AbilityPicture.mana_wall,
-    mp_cost=8, max_range='5', target_area='1 ally',
+    mp_cost=8, max_range='5', target_area='1 ally', time=Time.free_a,
     effect='Adds [[9+WIS]]MP to ally',
     prerequisites=(infuse_1,)
 )
 
 infuse_3 = Ability(
     name='Infuse III', picture=AbilityPicture.mana_wall,
-    mp_cost=12, max_range='9', target_area='1 ally',
+    mp_cost=12, max_range='9', target_area='1 ally', time=Time.free_a,
     effect='Adds [[14+2*WIS]]MP to ally',
     prerequisites=(infuse_2,)
 )
