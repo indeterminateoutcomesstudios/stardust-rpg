@@ -107,7 +107,8 @@ imbue_weapon_1 = Ability(
     name='Imbue Weapon I', picture=AbilityPicture.awareness,
     mp_cost=2, max_range='5', target_area='1 ally',
     duration='6', duration_unit=DurationUnit.rnd,
-    effect='Imbues ally\'s weapon with ice.  Successful physical attacks apply -[[1+WIS]]SPEED'
+    effect='Imbues ally\'s weapon with ice.  Successful physical attacks apply -[[1+WIS]]SPEED. '
+           'Can cast once per RND.'
 )
 
 imbue_weapon_2 = Ability(
@@ -115,7 +116,7 @@ imbue_weapon_2 = Ability(
     mp_cost=3, max_range='5', target_area='1 ally',
     duration='6', duration_unit=DurationUnit.rnd,
     effect='Imbues ally\'s weapon with lightning. Successful or unsuccessful physical attacks '
-           'apply [[1+WIS]]MDAM',
+           'apply [[1+WIS]]MDAM. Can cast once per RND.',
     prerequisites=(imbue_weapon_1,)
 )
 
@@ -124,7 +125,7 @@ imbue_weapon_3 = Ability(
     mp_cost=4, max_range='5', target_area='1 ally',
     duration='6', duration_unit=DurationUnit.rnd,
     effect='Imbues ally\'s weapon with fire.  Successful physical attacks burn [[1+WIS]]MDAM for '
-           '3RND',
+           '3RND. Can cast once per RND.',
     prerequisites=(imbue_weapon_2,)
 )
 
