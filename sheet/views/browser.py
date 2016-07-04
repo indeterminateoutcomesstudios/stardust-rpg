@@ -19,6 +19,12 @@ def all_classes(request: HttpRequest) -> HttpResponse:
 
 
 @login_required
+def class_abilities(request: HttpRequest, class_name: str) -> HttpResponse:
+    return render(request, 'browser_abilities.html',
+                  context={'cls': classes.get_class(class_name)})
+
+
+@login_required
 def all_combos(request: HttpRequest) -> HttpResponse:
     return render(request, 'browser_combos.html', context={'combos': combos.combos})
 

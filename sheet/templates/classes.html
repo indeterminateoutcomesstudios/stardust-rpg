@@ -42,7 +42,11 @@
         </thead>
         {% for class in classes %}
             <tr>
-                <td>{{ class.name }}</td>
+                <td>
+                    <a href="{% url 'sheet-views-class-abilities' class.name %}">
+                        {{ class.name }}
+                    </a>
+                </td>
                 <td>{{ class.hd }}</td>
                 <td>{{ class.md }}</td>
                 <td>{{ class.sd }}</td>
