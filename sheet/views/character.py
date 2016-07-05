@@ -44,7 +44,6 @@ def party(request: HttpRequest, character_id: int) -> HttpResponse:
 
 @login_required
 def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
-    # messages.error(request, 'Hello world error.')
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST' and owns_character_or_superuser(request, character):
