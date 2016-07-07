@@ -94,7 +94,7 @@ Add a ``Party`` for the group.  Configure the following fields:
 Field                   Value
 ======================= ==============================================
 ``Name``                Name of the character.  Must match name of character in Roll20.
-``Roll20 campaign id``  The 6 digit ID assigned to the campaign (e.g. https://app.roll20.net/campaigns/details/ID/CAMPAIGN_NAME)
+``Roll20 campaign id``  The 6 digit ID (e.g. https://app.roll20.net/campaigns/details/CAMPAIGN_ID/CAMPAIGN_NAME) assigned to the campaign found at https://app.roll20.net/campaigns/search
 ======================= ==============================================
 
 Add ``Characters`` for each character in the game.  Configure the following fields:
