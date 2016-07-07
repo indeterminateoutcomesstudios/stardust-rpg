@@ -24,7 +24,7 @@ Stardust RPG
 
 Stardust RPG is a tactical d20 role-playing game designed to provide a variety of progression
 options for players and encourage teamwork.  Baseline content is based off the Stardust book
-series by John Hagen, but is adaptable to a variety of fantasy settings.
+series by John Hagen but is adaptable to a variety of fantasy settings.
 
 Features
 --------
