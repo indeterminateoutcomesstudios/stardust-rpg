@@ -65,7 +65,7 @@ Create an admin account:
 
 .. code:: shell-session
 
-    $ python manage.py createsuperuser
+    $ stardust-rpg createsuperuser
 
 Start the server:
 
