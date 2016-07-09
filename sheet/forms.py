@@ -28,4 +28,5 @@ class Roll20Form(forms.Form):
     sync_abilities = forms.BooleanField(label='Sync Abilities', required=False, initial=True)
     sync_combos = forms.BooleanField(label='Sync Combos', required=False, initial=True)
     sync_weapons = forms.BooleanField(label='Sync Weapons', required=False, initial=True)
+    sync_utilities = forms.BooleanField(label='Sync Utilities', required=False, initial=True)
     password = forms.CharField(label='Roll20 Password', widget=forms.PasswordInput())

@@ -353,6 +353,7 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
             sync_attributes = roll20_form.cleaned_data['sync_attributes']
             sync_combos = roll20_form.cleaned_data['sync_combos']
             sync_weapons = roll20_form.cleaned_data['sync_weapons']
+            sync_utilities = roll20_form.cleaned_data['sync_utilities']
 
             roll20_login = login.login(email=request.user.email, password=password,
                                        campaign_id=character.party.roll20_campaign_id)
@@ -433,7 +434,8 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
                                       attribute_value=attribute_value,
                                       attribute_position=api.AttributePosition.max)
 
-            # TODO: Abilities and Weapons could derive from the same base class Macroable.
+            # TODO: Abilities, Weapons, and Utilties could derive from the same base
+            # class Macroable.
             abilities_to_sync = ()  # type: Tuple[Any, ...]
             if sync_abilities:
                 abilities_to_sync += character.unlocked_abilities
@@ -441,6 +443,8 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
                 abilities_to_sync += character.unlocked_combos
             if sync_weapons:
                 abilities_to_sync += (character.weapon,)
+            if sync_utilities:
+                abilities_to_sync += (character.utility,)
             for ability in abilities_to_sync:
                 if not api.ability_exists(login=roll20_login, character_id=character_id,
                                           ability_name=ability.name):

@@ -39,8 +39,8 @@ class Utilities(aenum.AutoNumberEnum):
 
 utilities = {
     Utilities.empty: Utility(name=Utilities.empty.name),
-    Utilities.candle: Utility(name=Utilities.candle.name, price=15, vis=1,
-                              effect='8APT to light, burns 5RND when dropped'),
+    Utilities.candle: Utility(name=Utilities.candle.name, price=15,
+                              effect='8APT to light, lights 1VIS for 5RND when dropped'),
     Utilities.rope_kit: Utility(name=Utilities.rope_kit.name, price=25,
                                 effect='Kit of various size/length rope'),
     Utilities.crowbar: Utility(name=Utilities.crowbar.name, price=50,
@@ -61,8 +61,8 @@ utilities = {
                              effect='A rousing musical instrument'),
     Utilities.snorkle: Utility(name=Utilities.snorkle.name, price=160,
                                effect='Allows breathing while face is submerged'),
-    Utilities.torch: Utility(name=Utilities.torch.name, price=200, min_int=1, vis=2,
-                             effect='10APT to light, Burns 10RND when dropped'),
+    Utilities.torch: Utility(name=Utilities.torch.name, price=200, min_int=1,
+                             effect='10APT to light, lights 2VIS for 10RND when dropped'),
     Utilities.medical_kit: Utility(name=Utilities.medical_kit.name, price=250, min_int=1,
                                    effect="13APT revives adjacent KO'd ally to 1HP"),
     Utilities.grappling_hook: Utility(name=Utilities.grappling_hook.name, price=350, min_int=1,
@@ -85,8 +85,8 @@ utilities = {
                                         effect='Magnifies vision of small objects'),
     Utilities.binoculars: Utility(name=Utilities.binoculars.name, price=650, min_int=1,
                                   effect='Allows PER at long distances'),
-    Utilities.lantern: Utility(name=Utilities.lantern.name, price=1000, min_int=2, vis=3,
-                               effect='12APT to light, Burns 20RND when dropped'),
+    Utilities.lantern: Utility(name=Utilities.lantern.name, price=1000, min_int=2,
+                               effect='12APT to light, lights 3VIS for 20RND when dropped'),
     Utilities.spider_gloves: Utility(name=Utilities.spider_gloves.name, price=1000, min_int=2,
                                      rarity=Rarity.rare,
                                      effect='Wall Climbing, -4SPEED while wall climbing'),
@@ -102,11 +102,12 @@ utilities = {
                                     effect='Configured to detect creatures of a certain realm '
                                            'within 12DIS'),
     Utilities.dwarven_crystal_lantern: Utility(name=Utilities.dwarven_crystal_lantern.name,
-                                               price=2250, min_int=3, rarity=Rarity.rare, vis=4,
-                                               effect='14APT to light, Burns 50RND when dropped'),
+                                               price=2250, min_int=3, rarity=Rarity.rare,
+                                               effect='14APT to light, lights 4VIS 50RND when '
+                                                      'dropped'),
     Utilities.mirrored_lunacite_lantern: Utility(name=Utilities.mirrored_lunacite_lantern.name,
-                                                 price=8500, min_int=4, rarity=Rarity.rare, vis=5,
-                                                 effect='16APT to light, Burns forever when '
+                                                 price=8500, min_int=4, rarity=Rarity.rare,
+                                                 effect='16APT to light, lights tVIS forever when '
                                                         'dropped')
 }
 

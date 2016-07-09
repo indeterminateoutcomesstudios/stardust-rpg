@@ -197,7 +197,42 @@ class Item:
         self.effect = effect
 
 
-class Wearable(Item):
+class MinAttributeTypeItem(Item):
+    def __init__(self, slot: Slot, name: str, min_attribute: Attribute,
+                 min_attribute_value: int = 0,
+                 rarity: Rarity = Rarity.common, price: int = 0,
+                 effect: str = '', equip_type: Type = Type.light) -> None:
+        self.min_attribute = min_attribute
+        self.min_attribute_value = min_attribute_value
+        self.type = equip_type
+        super().__init__(slot=slot, name=name, rarity=rarity, price=price, effect=effect)
+
+
+class Utility(MinAttributeTypeItem):
+    def __init__(self, name: str, min_int: int = 0, rarity: Rarity = Rarity.common,
+                 price: int = 0, effect: str = '', equip_type: Type = Type.light):
+        super().__init__(slot=Slot.utility, name=name, rarity=rarity, price=price, effect=effect,
+                         min_attribute=Attribute.intel, min_attribute_value=min_int,
+                         equip_type=equip_type)
+
+    @property
+    def macro(self) -> str:
+        return ('{template_tag}'
+                '{color}'
+                '{{{{title=**{name}**}}}}'
+                '{{{{subheader=Utility Item}}}}'
+                '{{{{subheaderright=APT}}}}'
+                '{{{{emote=@{{Name}} uses {name}}}}}'
+                '{{{{APT Check=[[d20+@{{APT}}]]}}}}'
+                '{{{{Effect={effect}}}}}'
+                '{template_terminator}'.format(template_tag=macro.template_tag,
+                                               color=macro.MacroColorTag.teal.value,
+                                               name=self.name,
+                                               effect=self.effect,
+                                               template_terminator=macro.template_terminator))
+
+
+class Wearable(MinAttributeTypeItem):
     def __init__(self, slot: Slot, name: str, min_attribute: Attribute,
                  min_attribute_value: int = 0,
                  rarity: Rarity = Rarity.common, price: int = 0,
@@ -212,9 +247,6 @@ class Wearable(Item):
                  vul_set: VulnerabilitySet = None) -> None:
         if vul_set is None:
             vul_set = VulnerabilitySet()
-        self.min_attribute = min_attribute
-        self.min_attribute_value = min_attribute_value
-        self.type = equip_type
         self.str = stren
         self.dex = dex
         self.con = con
@@ -243,30 +275,9 @@ class Wearable(Item):
         self.bmac = bmac
         self.cran = cran
         self.vul_set = vul_set
-        super().__init__(slot=slot, name=name, rarity=rarity, price=price, effect=effect)
-
-
-class Utility(Wearable):
-    def __init__(self, name: str, min_int: int = 0, rarity: Rarity = Rarity.common,
-                 price: int = 0, effect: str = '', equip_type: Type = Type.light,
-                 stren: int = 0, dex: int = 0, con: int = 0, intel: int = 0, wis: int = 0,
-                 cha: int = 0,
-                 ath: int = 0, ste: int = 0, fort: int = 0, apt: int = 0, per: int = 0,
-                 spe: int = 0,
-                 ap: int = 0, hp: int = 0, mp: int = 0, sp: int = 0, pdef: int = 0, mdef: int = 0,
-                 pred: float = 0.0, mred: float = 0.0, reg: int = 0, rd: int = 0, speed: float = 0,
-                 vis: int = 0, bpac: int = 0, bmac: int = 0,
-                 vul_set: VulnerabilitySet = None) -> None:
-        if vul_set is None:
-            vul_set = VulnerabilitySet()
-        super().__init__(slot=Slot.utility, name=name, min_attribute=Attribute.intel,
-                         min_attribute_value=min_int, rarity=rarity, price=price,
-                         effect=effect,
-                         stren=stren, dex=dex, con=con, intel=intel, wis=wis, cha=cha,
-                         ath=ath, ste=ste, fort=fort, apt=apt, per=per, spe=spe, ap=ap, hp=hp,
-                         mp=mp, sp=sp, pdef=pdef, mdef=mdef, pred=pred, mred=mred, reg=reg, rd=rd,
-                         speed=speed, vis=vis, bpac=bpac, bmac=bmac,
-                         equip_type=equip_type, vul_set=vul_set)
+        super().__init__(slot=slot, name=name, rarity=rarity, price=price, effect=effect,
+                         min_attribute=min_attribute, min_attribute_value=min_attribute_value,
+                         equip_type=equip_type)
 
 
 class Head(Wearable):

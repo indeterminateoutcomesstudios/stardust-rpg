@@ -130,7 +130,7 @@ class Character(models.Model):
     @property
     def wearables(self) -> Tuple[equipment.Wearable, ...]:
         return (self.head, self.neck, self.chest, self.shield, self.right_hand, self.left_hand,
-                self.feet, self.utility, self.weapon)
+                self.feet, self.weapon)
 
     @property
     def lvl(self):
