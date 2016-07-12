@@ -1276,7 +1276,7 @@ weapons = {
     Weapons.ashers_pride: Weapon(
         name=Weapons.ashers_pride.name, price=200, picture=WeaponPicture.dark_purple_spear,
         style=Style.melee, equip_type=Type.medium, shape=Shape.line_3, rarity=Rarity.unique,
-        min_range=1, max_range=3, is_two_handed=True, min_dex=1,
+        min_range=1, max_range=6, is_two_handed=True, min_dex=1,
         pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.piercing, cdam=14,
         effect='Extended max range.'),
     Weapons.steel_lance: Weapon(
