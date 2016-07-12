@@ -1216,7 +1216,7 @@ weapons = {
     Weapons.lunasteel_broadsword: Weapon(
         name=Weapons.lunasteel_broadsword.name, price=10000,
         picture=WeaponPicture.green_broadsword, is_two_handed=True,
-        style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x, min_dex=4,
+        style=Style.melee, equip_type=Type.medium, shape=Shape.side_line_2, min_dex=4,
         pdam=DiceFormula.from_str('4d10'), damage_type=DamageType.slashing, cdam=40),
 
     Weapons.bronze_double_bladed_spear: Weapon(
