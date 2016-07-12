@@ -56,8 +56,16 @@
         </thead>
         {% for weapon in weapons %}
             <tr>
-                <td>
-                    {{ weapon.name|capfirst }}
+                <td
+                        {% if weapon.rarity == Rarity.rare %}
+                            class="type_rare"
+                        {% elif weapon.rarity == Rarity.unique %}
+                            class="type_unique"
+                        {% elif weapon.rarity == Rarity.set %}
+                            class="type_set"
+                        {% endif %}
+                >
+                    <b>{{ weapon.name|capfirst }}</b>
                     <img src="{{ weapon.picture.value }}"
                          style="width: 40px;height: 40px">
                 </td>
