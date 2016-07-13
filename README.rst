@@ -181,10 +181,10 @@ Status      Effect
 =========== ===================================================================================
 Immobilize  Cannot take ``MovA``.
 Silence     Cannot take ``AbA`` (i.e. any action that targets with ``MAC`` or consumes ``MP``).
-Stagger     Cannot perform physical attacks.
-Disable     Cannot take ``StdA``.
-Stun        Cannot take ``MovA`` or ``StdA``.
-Sleep       Cannot take ``MovA`` or ``StdA``.  Woken by physical or magical attack.
+Stagger     Cannot take ``StdA``.
+Disable     Cannot take ``StdA`` or ``AbA``.
+Stun        Cannot take ``StdA``, ``AbA``, or ``MovA``.
+Sleep       Cannot take ``StdA``, ``AbA``, or ``MovA``.  Woken by physical or magical attack.
 Fear        Must expend ``MovA`` to move in opposite direction of the source of fear.
 Allure      Must expend ``MovA`` to move towards the source of the allure.
 Blind       Maximum range of physical and magic attacks reduced to 1.  ``VIS`` reduced to 1.
