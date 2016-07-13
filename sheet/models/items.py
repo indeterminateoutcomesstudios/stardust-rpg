@@ -1027,7 +1027,7 @@ weapons = {
         damage_type=DamageType.slashing, cdam=4,
         effect='1 Fire MDAM per RND for 4RND'),
     Weapons.reflex_claw: Weapon(
-        name=Weapons.iron_wrist_blades.name, price=550, picture=WeaponPicture.grey_wristblades,
+        name=Weapons.reflex_claw.name, price=550, picture=WeaponPicture.grey_wristblades,
         style=Style.melee, is_two_handed=True, min_dex=2, rarity=Rarity.unique,
         attacks=1, pdam=DiceFormula.from_str('1d6'), damage_type=DamageType.slashing,
         cdam=3,
