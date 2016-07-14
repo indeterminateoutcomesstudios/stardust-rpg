@@ -73,11 +73,29 @@ Create an admin account:
 
     $ stardust-rpg createsuperuser
 
-Start the server:
+
+Production Execution
+~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+
+    ``--insecure`` is used to serve static files in the absense of a
+    web server running in front of Django.
 
 .. code:: shell-session
 
-    $ stardust-rpg runserver 0.0.0.0:80
+    $ stardust-rpg runserver 0.0.0.0:80 --insecure
+
+Debug Execution
+~~~~~~~~~~~~~~~
+
+.. warning::
+
+    `Debug mode should not be used in production <https://docs.djangoproject.com/en/dev/ref/settings/#debug>`_.
+
+.. code:: shell-session
+
+    $ stardust-rpg runserver 0.0.0.0:80 --settings=app.debug_settings
 
 Game Setup
 ----------
