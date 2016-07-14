@@ -3,6 +3,9 @@
 {% block title %}Roll20 - {{ character.name }}{% endblock %}
 
 {% block content %}
+    <label><i>Note: Due to a bug in Roll20, you must refresh your Roll20 browser page
+        after syncing to remove duplicate Abilities from showing in the page.</i></label>
+    <br/>
     <label>Roll20 Email: {{ user.email }}</label>
     <form method="post">
         {% csrf_token %}
