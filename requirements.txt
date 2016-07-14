@@ -1,4 +1,5 @@
 aenum>=1.4.5
+exitstatus
 beautifulsoup4>=4.4.1
 django>=1.9.7
 django-enumfields>=0.8
