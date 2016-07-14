@@ -51,6 +51,12 @@ You can install, upgrade, and uninstall ``stardust-rpg`` with these commands:
     $ pip3 install --upgrade stardust-rpg
     $ pip3 uninstall stardust-rpg
 
+Server Setup
+------------
+
+Create an environment variable named ``SECRET_KEY`` and populate it with a
+`large random value <https://docs.djangoproject.com/en/dev/howto/deployment/checklist/#secret-key>`_.
+
 Configuration
 -------------
 
