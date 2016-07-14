@@ -80,7 +80,7 @@ Production Execution
 .. warning::
 
     ``--insecure`` is used to serve static files in the absense of a
-    web server running in front of Django.
+    web server (e.g. NGINX) running in front of Django.
 
 .. code:: shell-session
 
