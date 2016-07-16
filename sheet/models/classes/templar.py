@@ -149,7 +149,8 @@ stop_1 = Ability(
     shape=Shape.circle, target_area='Up to [[WIS]]RAD', time=Time.full_a,
     duration='4', duration_unit=DurationUnit.rnd,
     effect='Causes a bubble of time to completely stop for a short amount of time. '
-           'Must continue to cast Stop or effect ends.',
+           'Must continue to cast Stop or effect ends. '
+           'REG is inhibited for all creatures who are not stopped.',
     prerequisites=(time_warp_3, slow_3)
 )
 
@@ -160,7 +161,8 @@ stop_2 = Ability(
     duration='6', duration_unit=DurationUnit.rnd,
     effect='Causes a bubble of time to completely stop for a short amount of time. '
            'Must continue to cast Stop or effect ends. '
-           'Can reverse the polarity of stopped time (inside/out).',
+           'Can reverse the polarity of stopped time (inside/out). '
+           'REG is inhibited for all creatures who are not stopped.',
     prerequisites=(stop_1,)
 )
 
@@ -171,7 +173,8 @@ stop_3 = Ability(
     duration='10', duration_unit=DurationUnit.rnd,
     effect='Causes a bubble of time to completely stop for a short amount of time. '
            'Must continue to cast Stop or effect ends. '
-           'Can reverse the polarity of stopped time (inside/out).',
+           'Can reverse the polarity of stopped time (inside/out). '
+           'REG is inhibited for all creatures who are not stopped.',
     prerequisites=(stop_2,)
 )
 
