@@ -355,106 +355,113 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
             sync_weapons = roll20_form.cleaned_data['sync_weapons']
             sync_utilities = roll20_form.cleaned_data['sync_utilities']
 
-            roll20_login = login.login(email=request.user.email, password=password,
-                                       campaign_id=character.party.roll20_campaign_id)
-            campaign_name = roll20_login.campaign_name
+            try:
+                roll20_login = login.login(email=request.user.email, password=password,
+                                           campaign_id=character.party.roll20_campaign_id)
+                campaign_name = roll20_login.campaign_name
 
-            character_id = api.get_character_id(login=roll20_login, character_name=character.name)
-            attributes_to_sync = {
-                'LVL': character.lvl,
-                'HP': character.hp,
-                'MP': character.mp,
-                'SPEED': character.speed,
-                'PDEF': character.pdef,
-                'MDEF': character.mdef,
-                'PRED': character.pred,
-                'MRED': character.mred,
-                'REG': character.reg,
-                'RD': character.rd,
-                'VIS': character.vis,
-                'BPAC': character.bpac,
-                'BMAC': character.bmac,
-                'ATH': character.ath,
-                'STE': character.ste,
-                'FOR': character.fort,
-                'APT': character.apt,
-                'PER': character.per,
-                'SPE': character.spe,
-                'STR': character.stren,
-                'DEX': character.dex,
-                'CON': character.con,
-                'INT': character.intel,
-                'WIS': character.wis,
-                'CHA': character.cha,
-                'HD': 'd' + str(character.cls.hd),
-                'MD': 'd' + str(character.cls.md),
-                'SD': 'd' + str(character.cls.sd),
+                character_id = api.get_character_id(login=roll20_login,
+                                                    character_name=character.name)
+                attributes_to_sync = {
+                    'LVL': character.lvl,
+                    'HP': character.hp,
+                    'MP': character.mp,
+                    'SPEED': character.speed,
+                    'PDEF': character.pdef,
+                    'MDEF': character.mdef,
+                    'PRED': character.pred,
+                    'MRED': character.mred,
+                    'REG': character.reg,
+                    'RD': character.rd,
+                    'VIS': character.vis,
+                    'BPAC': character.bpac,
+                    'BMAC': character.bmac,
+                    'ATH': character.ath,
+                    'STE': character.ste,
+                    'FOR': character.fort,
+                    'APT': character.apt,
+                    'PER': character.per,
+                    'SPE': character.spe,
+                    'STR': character.stren,
+                    'DEX': character.dex,
+                    'CON': character.con,
+                    'INT': character.intel,
+                    'WIS': character.wis,
+                    'CHA': character.cha,
+                    'HD': 'd' + str(character.cls.hd),
+                    'MD': 'd' + str(character.cls.md),
+                    'SD': 'd' + str(character.cls.sd),
 
-                'SlashingVUL': int(character.vul_set.vul.slashing),
-                'PiercingVUL': int(character.vul_set.vul.piercing),
-                'BludgeoningVUL': int(character.vul_set.vul.bludgeoning),
-                'FireVUL': int(character.vul_set.vul.fire),
-                'ColdVUL': int(character.vul_set.vul.cold),
-                'LightningVUL': int(character.vul_set.vul.lightning),
-                'AcidVUL': int(character.vul_set.vul.acid),
-                'PoisonVUL': int(character.vul_set.vul.poison),
-                'ForceVUL': int(character.vul_set.vul.force),
-                'PsychicVUL': int(character.vul_set.vul.psychic),
+                    'SlashingVUL': int(character.vul_set.vul.slashing),
+                    'PiercingVUL': int(character.vul_set.vul.piercing),
+                    'BludgeoningVUL': int(character.vul_set.vul.bludgeoning),
+                    'FireVUL': int(character.vul_set.vul.fire),
+                    'ColdVUL': int(character.vul_set.vul.cold),
+                    'LightningVUL': int(character.vul_set.vul.lightning),
+                    'AcidVUL': int(character.vul_set.vul.acid),
+                    'PoisonVUL': int(character.vul_set.vul.poison),
+                    'ForceVUL': int(character.vul_set.vul.force),
+                    'PsychicVUL': int(character.vul_set.vul.psychic),
 
-                'SlashingRES': int(character.vul_set.res.slashing),
-                'PiercingRES': int(character.vul_set.res.piercing),
-                'BludgeoningRES': int(character.vul_set.res.bludgeoning),
-                'FireRES': int(character.vul_set.res.fire),
-                'ColdRES': int(character.vul_set.res.cold),
-                'LightningRES': int(character.vul_set.res.lightning),
-                'AcidRES': int(character.vul_set.res.acid),
-                'PoisonRES': int(character.vul_set.res.poison),
-                'ForceRES': int(character.vul_set.res.force),
-                'PsychicRES': int(character.vul_set.res.psychic),
+                    'SlashingRES': int(character.vul_set.res.slashing),
+                    'PiercingRES': int(character.vul_set.res.piercing),
+                    'BludgeoningRES': int(character.vul_set.res.bludgeoning),
+                    'FireRES': int(character.vul_set.res.fire),
+                    'ColdRES': int(character.vul_set.res.cold),
+                    'LightningRES': int(character.vul_set.res.lightning),
+                    'AcidRES': int(character.vul_set.res.acid),
+                    'PoisonRES': int(character.vul_set.res.poison),
+                    'ForceRES': int(character.vul_set.res.force),
+                    'PsychicRES': int(character.vul_set.res.psychic),
 
-                'SlashingIMU': int(character.vul_set.imu.slashing),
-                'PiercingIMU': int(character.vul_set.imu.piercing),
-                'BludgeoningIMU': int(character.vul_set.imu.bludgeoning),
-                'FireIMU': int(character.vul_set.imu.fire),
-                'ColdIMU': int(character.vul_set.imu.cold),
-                'LightningIMU': int(character.vul_set.imu.lightning),
-                'AcidIMU': int(character.vul_set.imu.acid),
-                'PoisonIMU': int(character.vul_set.imu.poison),
-                'ForceIMU': int(character.vul_set.imu.force),
-                'PsychicIMU': int(character.vul_set.imu.psychic),
-            }
-            if sync_attributes:
-                for attribute_name, attribute_value in attributes_to_sync.items():
-                    api.set_attribute(login=roll20_login, character_id=character_id,
-                                      attribute_name=attribute_name,
-                                      attribute_value=attribute_value,
-                                      attribute_position=api.AttributePosition.current)
-                    api.set_attribute(login=roll20_login, character_id=character_id,
-                                      attribute_name=attribute_name,
-                                      attribute_value=attribute_value,
-                                      attribute_position=api.AttributePosition.max)
+                    'SlashingIMU': int(character.vul_set.imu.slashing),
+                    'PiercingIMU': int(character.vul_set.imu.piercing),
+                    'BludgeoningIMU': int(character.vul_set.imu.bludgeoning),
+                    'FireIMU': int(character.vul_set.imu.fire),
+                    'ColdIMU': int(character.vul_set.imu.cold),
+                    'LightningIMU': int(character.vul_set.imu.lightning),
+                    'AcidIMU': int(character.vul_set.imu.acid),
+                    'PoisonIMU': int(character.vul_set.imu.poison),
+                    'ForceIMU': int(character.vul_set.imu.force),
+                    'PsychicIMU': int(character.vul_set.imu.psychic),
+                }
+                if sync_attributes:
+                    for attribute_name, attribute_value in attributes_to_sync.items():
+                        api.set_attribute(login=roll20_login, character_id=character_id,
+                                          attribute_name=attribute_name,
+                                          attribute_value=attribute_value,
+                                          attribute_position=api.AttributePosition.current)
+                        api.set_attribute(login=roll20_login, character_id=character_id,
+                                          attribute_name=attribute_name,
+                                          attribute_value=attribute_value,
+                                          attribute_position=api.AttributePosition.max)
 
-            # TODO: Abilities, Weapons, and Utilties could derive from the same base
-            # class Macroable.
-            abilities_to_sync = ()  # type: Tuple[Any, ...]
-            if sync_abilities:
-                abilities_to_sync += character.unlocked_abilities
-            if sync_combos:
-                abilities_to_sync += character.unlocked_combos
-            if sync_weapons:
-                abilities_to_sync += (character.weapon,)
-            if sync_utilities:
-                abilities_to_sync += (character.utility,)
-            for ability in abilities_to_sync:
-                if not api.ability_exists(login=roll20_login, character_id=character_id,
-                                          ability_name=ability.name):
-                    api.create_ability(login=roll20_login, character_id=character_id,
-                                       ability_name=ability.name,
-                                       ability_action=ability.macro)
-                else:
-                    api.update_ability(login=roll20_login, character_id=character_id,
-                                       ability_name=ability.name,
-                                       ability_action=ability.macro)
+                # TODO: Abilities, Weapons, and Utilities could derive from the same base
+                # class Macroable.
+                abilities_to_sync = ()  # type: Tuple[Any, ...]
+                if sync_abilities:
+                    abilities_to_sync += character.unlocked_abilities
+                if sync_combos:
+                    abilities_to_sync += character.unlocked_combos
+                if sync_weapons:
+                    abilities_to_sync += (character.weapon,)
+                if sync_utilities:
+                    abilities_to_sync += (character.utility,)
+                for ability in abilities_to_sync:
+                    if not api.ability_exists(login=roll20_login, character_id=character_id,
+                                              ability_name=ability.name):
+                        api.create_ability(login=roll20_login, character_id=character_id,
+                                           ability_name=ability.name,
+                                           ability_action=ability.macro)
+                    else:
+                        api.update_ability(login=roll20_login, character_id=character_id,
+                                           ability_name=ability.name,
+                                           ability_action=ability.macro)
+
+            except (login.Roll20AuthenticationError, RuntimeError,
+                    api.Roll20CharacterNotFoundError) as ex:
+                messages.error(request, ex)
+                redirect(reverse(roll20, args=[character_id]))
 
     else:
         roll20_form = Roll20Form()

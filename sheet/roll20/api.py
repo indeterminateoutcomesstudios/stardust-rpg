@@ -30,6 +30,10 @@ from .login import Roll20Login
 logger = logging.getLogger(__name__)
 
 
+class Roll20CharacterNotFoundError(RuntimeError):
+    pass
+
+
 def get_character_id(login: Roll20Login, character_name: str) -> str:
     """
     Notes:
@@ -42,9 +46,13 @@ def get_character_id(login: Roll20Login, character_name: str) -> str:
     characters = json.loads(requests.get(url).text)
     characters_data = {c['name']: c['id'] for c in characters.values()}
     logger.debug('Found characters: {}'.format(characters_data.keys()))
-    character_id = characters_data[character_name]
-    logger.debug('Found character: {} {}'.format(character_name, character_id))
-    return character_id
+    try:
+        character_id = characters_data[character_name]
+        logger.debug('Found character: {} {}'.format(character_name, character_id))
+        return character_id
+    except KeyError as ex:
+        raise Roll20CharacterNotFoundError(
+            'Character {} does not exist in this campaign.'.format(character_name)) from ex
 
 
 @enum.unique

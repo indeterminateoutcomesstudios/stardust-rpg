@@ -7,6 +7,10 @@ import requests
 logger = logging.getLogger(__name__)
 
 
+class Roll20AuthenticationError(RuntimeError):
+    pass
+
+
 class Roll20Login:
     def __init__(self, firebase_root: str, auth_token: str, campaign_path: str,
                  campaign_name: str) -> None:
@@ -26,6 +30,11 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
     campaigns_response = session.get('https://app.roll20.net/campaigns/search')
     campaigns = []
     document = bs4.BeautifulSoup(campaigns_response.text, 'html.parser')
+
+    title = document.find_all('title')[0]
+    if 'Login' in title.string:
+        raise Roll20AuthenticationError('Roll20 password is not correct.')
+
     for div in document.find_all('div'):
         if 'class' in div.attrs and 'gameinfo' in div['class']:
             if 'Join Game' in div.text:
@@ -35,7 +44,7 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
                 })
 
     if len(campaigns) == 0:
-        raise RuntimeError('No campaigns found.')
+        raise RuntimeError('No campaigns found for this player.')
 
     found_campaign = None
     for campaign in campaigns:
