@@ -1,5 +1,6 @@
 import logging
 import re
+from typing import Dict, List  # noqa
 
 import bs4
 import requests
@@ -28,13 +29,13 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
     )
 
     campaigns_response = session.get('https://app.roll20.net/campaigns/search')
-    campaigns = []
     document = bs4.BeautifulSoup(campaigns_response.text, 'html.parser')
 
     title = document.find_all('title')[0]
     if 'Login' in title.string:
         raise Roll20AuthenticationError('Roll20 password is not correct.')
 
+    campaigns = []  # type: List[Dict[str, str]]
     for div in document.find_all('div'):
         if 'class' in div.attrs and 'gameinfo' in div['class']:
             if 'Join Game' in div.text:
