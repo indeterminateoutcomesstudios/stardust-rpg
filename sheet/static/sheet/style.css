@@ -6,6 +6,10 @@ td, th {
     color: black;
 }
 
+th {
+    padding: 0 4px
+}
+
 td {
     padding: 5px;
     border: 1px solid #cccccc;

@@ -290,9 +290,7 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
             assigned_spe = skill_points_form.cleaned_data['assigned_spe']
             if (assigned_ath + assigned_ste + assigned_for + assigned_apt + assigned_per +
                     assigned_spe > character.sp):
-                skill_points_form.add_error('assigned_ath',
-                                            error='Too many SP assigned. Max: {sp}'.format(
-                                                sp=character.sp))
+                messages.error(request, 'Too many SP assigned. Max: {sp}'.format(sp=character.sp))
             elif assigned_ath > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_ath',
                                             error='Assigned ATH too high. Max: {max_sp}'.format(
@@ -344,7 +342,6 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
 def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
-    campaign_name = ''
     if request.method == 'POST' and owns_character_or_superuser(request, character):
         roll20_form = Roll20Form(request.POST)
         if roll20_form.is_valid():
@@ -457,6 +454,8 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
                         api.update_ability(login=roll20_login, character_id=character_id,
                                            ability_name=ability.name,
                                            ability_action=ability.macro)
+                messages.info(request, 'Macros synced successfully to {}.'.format(
+                    roll20_login.campaign_name))
 
             except (login.Roll20AuthenticationError, RuntimeError,
                     api.Roll20CharacterNotFoundError) as ex:
@@ -469,5 +468,4 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
     return render(request, 'roll20.html',
                   context={'roll20_form': roll20_form,
                            'character': character,
-                           'user': request.user,
-                           'campaign_name': campaign_name})
+                           'user': request.user})

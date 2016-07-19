@@ -2,6 +2,8 @@
 <html lang="en">
 {% load staticfiles %}
 <head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="{% static 'sheet/style.css' %}"/>
     <title>{% block title %}{% endblock %}</title>
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
@@ -13,13 +15,11 @@
 </div>
 <div id="messages">
     {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li>
-                    {{ message }}
-                </li>
-            {% endfor %}
-        </ul>
+        {% for message in messages %}
+            <p class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </p>
+        {% endfor %}
     {% endif %}
 </div>
 <div id="content">
