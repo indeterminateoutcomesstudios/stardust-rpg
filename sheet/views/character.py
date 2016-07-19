@@ -323,6 +323,7 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
                 character.assigned_per = assigned_per
                 character.assigned_spe = assigned_spe
                 character.save()
+                messages.info(request, 'Skill points successfully assigned.')
     else:
         skill_points_form = SkillPointsForm(
             initial={'assigned_ath': character.assigned_ath,
