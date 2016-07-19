@@ -355,8 +355,6 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
             try:
                 roll20_login = login.login(email=request.user.email, password=password,
                                            campaign_id=character.party.roll20_campaign_id)
-                campaign_name = roll20_login.campaign_name
-
                 character_id = api.get_character_id(login=roll20_login,
                                                     character_name=character.name)
                 attributes_to_sync = {
