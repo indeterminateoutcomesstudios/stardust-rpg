@@ -963,6 +963,7 @@ class Weapon(Wearable):
                            '{{{{Crit=[[{cdam}]]CDAM}}}}'
                            '{{{{Range=[[{min_range}]]-[[{max_range}]]}}}}'
                            '{{{{Shape=[p]({shape_picture}) ({shape})}}}}'
+                           '{{{{Effect=*{effect}*}}}}'
                            '{template_terminator}')
 
         if self.attacks > 1:
@@ -984,6 +985,7 @@ class Weapon(Wearable):
                                            max_range=self.max_range,
                                            shape_picture=self.shape.value,
                                            shape=self.shape.name,
+                                           effect=self.effect,
                                            template_terminator=macro.template_terminator)
 
         for i in range(self.attacks):
