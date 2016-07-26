@@ -1624,7 +1624,7 @@ weapons = {
         rarity=Rarity.rare,
         min_range=2, max_range=10, shape=Shape.range_circle, bmac=1, vis=1,
         mdam=DiceFormula.from_str('1d6'), damage_type=DamageType.lightning,
-        cdam=6, effect='+1MP on hit, Lightning abilities Stun 1RND'),
+        cdam=6, effect='+1MP on hit, Passively grants wielder Lightning Shield II'),
     Weapons.coral_staff: Weapon(
         name=Weapons.coral_staff.name, price=450, picture=WeaponPicture.teal_staff,
         style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=2,
