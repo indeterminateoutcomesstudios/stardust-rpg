@@ -25,6 +25,7 @@ class SkillPointsForm(forms.ModelForm):
 
 class Roll20Form(forms.Form):
     sync_attributes = forms.BooleanField(label='Sync Attributes', required=False, initial=True)
+    sync_current_hp_mp = forms.BooleanField(label='Sync Current HP/MP', required=False)
     sync_abilities = forms.BooleanField(label='Sync Abilities', required=False, initial=True)
     sync_combos = forms.BooleanField(label='Sync Combos', required=False, initial=True)
     sync_weapons = forms.BooleanField(label='Sync Weapons', required=False, initial=True)
