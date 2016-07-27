@@ -1,7 +1,7 @@
 aenum>=1.4.5
 exitstatus>=1.0.0
 beautifulsoup4>=4.4.1
-django>=1.9.7
+django>=1.9.8
 django-enumfields>=0.8
 django-widget-tweaks>=1.4.1
 requests>=2.10.0
