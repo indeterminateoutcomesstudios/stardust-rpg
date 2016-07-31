@@ -5,6 +5,7 @@ from .models import ability, equipment, items
 from . import forms
 
 urlpatterns = [
+    # Browser
     url(r'^parties/$', views.browser.parties, name='sheet-views-parties'),
     url(r'^classes/$', views.browser.all_classes, name='sheet-views-classes'),
     url(r'^classes/(?P<class_name>[A-Za-z]+)/abilities/$', views.browser.class_abilities,
@@ -34,6 +35,8 @@ urlpatterns = [
         name='sheet-views-weapon-pictures'),
     url(r'^ability_pictures/$', views.browser.pictures, {'picture_enum': ability.AbilityPicture},
         name='sheet-views-ability-pictures'),
+
+    # Character
     url(r'^(?P<character_id>[0-9]+)/stats/$', views.character.stats, name='sheet-views-stats'),
     url(r'^(?P<character_id>[0-9]+)/class/$', views.character.cls, name='sheet-views-class'),
     url(r'^(?P<character_id>[0-9]+)/abilities/$', views.character.unlock_abilities,
