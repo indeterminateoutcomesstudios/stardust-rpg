@@ -32,7 +32,7 @@
             {% for ability in character.cls.abilities %}
                 <tr>
                     <td>
-                        <button type="submit" name="lock"
+                        <button type="submit" name="lock" class="btn btn-primary"
                                 {% if ability in character.unlocked_abilities %}
                                 value="lock {{ forloop.counter0 }}"
                                 style="background: #00ff00;">

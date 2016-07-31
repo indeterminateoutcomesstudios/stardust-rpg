@@ -30,7 +30,7 @@
         {% for combo in character.party_combos %}
             <tr>
                 <td>
-                    <button type="submit" name="lock" disabled
+                    <button type="submit" name="lock" class="btn btn-primary" disabled
                             {% if combo in character.unlocked_combos %}
                             value="lock {{ forloop.counter0 }}"
                             style="background: #00ff00;">
