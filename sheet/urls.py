@@ -1,8 +1,9 @@
 from django.conf.urls import url
 
+from . import forms
 from . import views
 from .models import ability, equipment, items
-from . import forms
+
 
 urlpatterns = [
     # Browser

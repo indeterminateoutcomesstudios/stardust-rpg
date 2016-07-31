@@ -2,7 +2,7 @@ import aenum
 
 from .dice import DiceFormula
 from .equipment import (Chest, DamageType, DamageTypeSet, Feet, Hand, Head, Item, Neck, Rarity,
-                        Slot, Shape, Shield, Style, Type, Utility, VulnerabilitySet, Weapon,
+                        Shape, Shield, Slot, Style, Type, Utility, VulnerabilitySet, Weapon,
                         WeaponPicture)
 
 

@@ -14,8 +14,8 @@ from ..models import equipment, items
 from ..models.abilities import inverse_abilities
 from ..models.character import Character, UnlockedAbility
 from ..models.equipment import Slot
-from ..models.level_up import LevelUp
 from ..models.inventory_slot import InventorySlot
+from ..models.level_up import LevelUp
 from ..roll20 import api, login
 
 
