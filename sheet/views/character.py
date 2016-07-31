@@ -30,20 +30,20 @@ def owns_character_or_superuser(request: HttpRequest, character: Character) -> b
 @login_required
 def stats(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
-    return render(request, 'stats.html', context={'character': character,
-                                                  'Rarity': equipment.Rarity})
+    return render(request, 'character/stats.html', context={'character': character,
+                                                            'Rarity': equipment.Rarity})
 
 
 @login_required
 def cls(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
-    return render(request, 'class.html', context={'character': character})
+    return render(request, 'character/class.html', context={'character': character})
 
 
 @login_required
 def party(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
-    return render(request, 'party.html', context={'character': character})
+    return render(request, 'character/party.html', context={'character': character})
 
 
 @login_required
@@ -94,13 +94,13 @@ def unlock_abilities(request: HttpRequest, character_id: str) -> HttpResponse:
 
         return redirect(reverse(unlock_abilities, args=[character_id]))
 
-    return render(request, 'abilities.html', context={'character': character})
+    return render(request, 'character/abilities.html', context={'character': character})
 
 
 @login_required
 def combos(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
-    return render(request, 'combos.html', context={'character': character})
+    return render(request, 'character/combos.html', context={'character': character})
 
 
 @login_required
@@ -217,7 +217,7 @@ def equip(request: HttpRequest, character_id: str) -> HttpResponse:
                 'weapon_enum': character.weapon_enum
             })
 
-    return render(request, 'equip.html',
+    return render(request, 'character/equip.html',
                   context={'equip_form': equip_form,
                            'character': character})
 
@@ -290,7 +290,7 @@ def inventory(request: HttpRequest, character_id: str) -> HttpResponse:
             if match is not None:
                 InventorySlot.objects.get(pk=match.group('inventory_slot_id')).delete()
 
-    return render(request, 'inventory.html',
+    return render(request, 'character/inventory.html',
                   context={'character': character})
 
 
@@ -345,7 +345,7 @@ def level_up(request: HttpRequest, character_id: str) -> HttpResponse:
         else:
             level_up_form = LevelUpForm()
 
-    return render(request, 'level_up.html',
+    return render(request, 'character/level_up.html',
                   context={'level_up_form': level_up_form,
                            'character': character})
 
@@ -409,7 +409,7 @@ def skill_points(request: HttpRequest, character_id: str) -> HttpResponse:
                      'assigned_spe': character.assigned_spe}
         )
 
-    return render(request, 'skill_points.html',
+    return render(request, 'character/skill_points.html',
                   context={'skill_points_form': skill_points_form,
                            'character': character})
 
@@ -554,7 +554,7 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
     else:
         roll20_form = Roll20Form()
 
-    return render(request, 'roll20.html',
+    return render(request, 'character/roll20.html',
                   context={'roll20_form': roll20_form,
                            'character': character,
                            'user': request.user})
