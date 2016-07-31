@@ -30,11 +30,13 @@
             {% endif %}
         {% endfor %}
 
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">{% trans button_name %}</button>
+        {% if button_name %}
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">{{ button_name }}</button>
+                </div>
             </div>
-        </div>
+        {% endif %}
 
     </form>
 {% endif %}
