@@ -17,9 +17,9 @@
             </thead>
             {% for inventory_slot in character.inventoryslot_set.all %}
                 <tr>
-                    <td>{{ inventory_slot.slot.name }}</td>
+                    <td>{{ inventory_slot.slot.name|capfirst }}</td>
                     <td>{{ inventory_slot.quantity }}</td>
-                    <td>{{ inventory_slot.item.name }}</td>
+                    <td>{{ inventory_slot.item.name|capfirst }}</td>
                     <td>
                         <button type="submit" name="delete"
                                 value="delete {{ inventory_slot.id }}"
