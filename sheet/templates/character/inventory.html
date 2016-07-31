@@ -21,7 +21,7 @@
                     <td>{{ inventory_slot.quantity }}</td>
                     <td>{{ inventory_slot.item.name|capfirst }}</td>
                     <td>
-                        <button type="submit" name="delete"
+                        <button type="submit" name="delete" class="btn btn-primary"
                                 value="delete {{ inventory_slot.id }}"
                                 style="background: #DE2A00;">
                             Delete
@@ -30,6 +30,8 @@
                 </tr>
             {% endfor %}
         </table>
-        <a href="{% url 'sheet-views-inventory-add' character.id %}">[+] Add Item</a>
+        <a class="btn btn-primary" href="{% url 'sheet-views-inventory-add' character.id %}">
+            Add Item
+        </a>
     </form>
 {% endblock %}
