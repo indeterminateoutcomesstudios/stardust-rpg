@@ -13,6 +13,7 @@
                 <th>Slot</th>
                 <th>Quantity</th>
                 <th>Item</th>
+                <th>Value Each</th>
             </tr>
             </thead>
             {% for inventory_slot in character.inventoryslot_set.all %}
@@ -20,6 +21,7 @@
                     <td>{{ inventory_slot.slot.name|capfirst }}</td>
                     <td>{{ inventory_slot.quantity }}</td>
                     <td>{{ inventory_slot.item.name|capfirst }}</td>
+                    <td>{{ inventory_slot.item.price }}</td>
                     <td>
                         <button type="submit" name="delete" class="btn btn-primary"
                                 value="delete {{ inventory_slot.id }}"
