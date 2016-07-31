@@ -1,9 +1,4 @@
 {% extends "base.html" %}
-{% load i18n %}
-
-{% block head %}
-    {{ wizard.form.media }}
-{% endblock %}
 
 {% block content %}
     <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
@@ -13,20 +8,11 @@
             {% if wizard.form.forms %}
                 {{ wizard.form.management_form }}
                 {% for form in wizard.form.forms %}
-                    {{ form }}
+                    {% include "bootstrap_form_snippet.html" with form=form button_name="Submit" %}
                 {% endfor %}
             {% else %}
-                {{ wizard.form }}
+                {% include "bootstrap_form_snippet.html" with form=wizard.form button_name="Submit" %}
             {% endif %}
         </table>
-        {% if wizard.steps.prev %}
-            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">
-                {% trans "First Step" %}
-            </button>
-            <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">
-                {% trans "Previous Step" %}
-            </button>
-        {% endif %}
-        <input type="submit" value="{% trans "Submit" %}"/>
     </form>
 {% endblock %}
