@@ -2,6 +2,7 @@ from django.conf.urls import url
 
 from . import views
 from .models import ability, equipment, items
+from . import forms
 
 urlpatterns = [
     url(r'^parties/$', views.browser.parties, name='sheet-views-parties'),
@@ -39,6 +40,30 @@ urlpatterns = [
         name='sheet-views-abilities'),
     url(r'^(?P<character_id>[0-9]+)/combos/$', views.character.combos, name='sheet-views-combos'),
     url(r'^(?P<character_id>[0-9]+)/equip/$', views.character.equip, name='sheet-views-equip'),
+    url(r'^(?P<character_id>[0-9]+)/inventory/$', views.character.inventory,
+        name='sheet-views-inventory'),
+    url(r'^(?P<character_id>[0-9]+)/inventory/add/$',
+        views.character.InventorySlotWizard.as_view(
+            form_list=[forms.InventorySlotForm,
+                       forms.ItemForm,
+                       forms.UtilityForm,
+                       forms.WeaponForm,
+                       forms.HeadForm,
+                       forms.NeckForm,
+                       forms.ChestForm,
+                       forms.ShieldForm,
+                       forms.HandForm,
+                       forms.FeetForm],
+            condition_dict={'1': views.character.show_item_form_condition,
+                            '2': views.character.show_utility_form_condition,
+                            '3': views.character.show_weapon_form_condition,
+                            '4': views.character.show_head_form_condition,
+                            '5': views.character.show_neck_form_condition,
+                            '6': views.character.show_chest_form_condition,
+                            '7': views.character.show_shield_form_condition,
+                            '8': views.character.show_hand_form_condition,
+                            '9': views.character.show_feet_form_condition}),
+        name='sheet-views-inventory-add'),
     url(r'^(?P<character_id>[0-9]+)/level_up/$', views.character.level_up,
         name='sheet-views-level-up'),
     url(r'^(?P<character_id>[0-9]+)/skill_points/$', views.character.skill_points,

@@ -2,8 +2,40 @@ import aenum
 
 from .dice import DiceFormula
 from .equipment import (Chest, DamageType, DamageTypeSet, Feet, Hand, Head, Item, Neck, Rarity,
-                        Shape, Shield, Style, Type, Utility, VulnerabilitySet, Weapon,
+                        Slot, Shape, Shield, Style, Type, Utility, VulnerabilitySet, Weapon,
                         WeaponPicture)
+
+
+def get_item(slot: Slot, item_index: int) -> Item:
+    if slot is Slot.item:
+        item_dict = items
+        item_enum = Items
+    elif slot is Slot.utility:
+        item_dict = utilities
+        item_enum = Utilities
+    elif slot is Slot.weapon:
+        item_dict = weapons
+        item_enum = Weapons
+    elif slot is Slot.head:
+        item_dict = heads
+        item_enum = Heads
+    elif slot is Slot.neck:
+        item_dict = necks
+        item_enum = Necks
+    elif slot is Slot.chest:
+        item_dict = chests
+        item_enum = Chests
+    elif slot is Slot.shield:
+        item_dict = shields
+        item_enum = Shields
+    elif slot is Slot.hand:
+        item_dict = hands
+        item_enum = Hands
+    elif slot is Slot.feet:
+        item_dict = feets
+        item_enum = Feets
+
+    return item_dict[item_enum(item_index)]
 
 
 class Utilities(aenum.AutoNumberEnum):

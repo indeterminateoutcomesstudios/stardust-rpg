@@ -1,0 +1,35 @@
+{% extends "character_base.html" %}
+
+{% block title %}Inventory - {{ character.name }}{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <label>Inventory</label>
+        <br/>
+        <table>
+            <thead>
+            <tr id="title">
+                <th>Slot</th>
+                <th>Quantity</th>
+                <th>Item</th>
+            </tr>
+            </thead>
+            {% for inventory_slot in character.inventoryslot_set.all %}
+                <tr>
+                    <td>{{ inventory_slot.slot.name }}</td>
+                    <td>{{ inventory_slot.quantity }}</td>
+                    <td>{{ inventory_slot.item.name }}</td>
+                    <td>
+                        <button type="submit" name="delete"
+                                value="delete {{ inventory_slot.id }}"
+                                style="background: #DE2A00;">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="{% url 'sheet-views-inventory-add' character.id %}">[+] Add Item</a>
+    </form>
+{% endblock %}

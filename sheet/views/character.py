@@ -1,17 +1,21 @@
 import re
-from typing import Any, Tuple  # noqa
+from typing import Any, Dict, Tuple, Sequence  # noqa
 
+from django import forms
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from formtools.wizard.views import SessionWizardView
 
 from ..forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
 from ..models import equipment, items
 from ..models.abilities import inverse_abilities
 from ..models.character import Character, UnlockedAbility
+from ..models.equipment import Slot
 from ..models.level_up import LevelUp
+from ..models.inventory_slot import InventorySlot
 from ..roll20 import api, login
 
 
@@ -24,26 +28,26 @@ def owns_character_or_superuser(request: HttpRequest, character: Character) -> b
 
 
 @login_required
-def stats(request: HttpRequest, character_id: int) -> HttpResponse:
+def stats(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'stats.html', context={'character': character,
                                                   'Rarity': equipment.Rarity})
 
 
 @login_required
-def cls(request: HttpRequest, character_id: int) -> HttpResponse:
+def cls(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'class.html', context={'character': character})
 
 
 @login_required
-def party(request: HttpRequest, character_id: int) -> HttpResponse:
+def party(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'party.html', context={'character': character})
 
 
 @login_required
-def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
+def unlock_abilities(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST' and owns_character_or_superuser(request, character):
@@ -94,13 +98,13 @@ def unlock_abilities(request: HttpRequest, character_id: int) -> HttpResponse:
 
 
 @login_required
-def combos(request: HttpRequest, character_id: int) -> HttpResponse:
+def combos(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'combos.html', context={'character': character})
 
 
 @login_required
-def equip(request: HttpRequest, character_id: int) -> HttpResponse:
+def equip(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST' and owns_character_or_superuser(request, character):
@@ -218,8 +222,80 @@ def equip(request: HttpRequest, character_id: int) -> HttpResponse:
                            'character': character})
 
 
+def show_item_form_condition(wizard: SessionWizardView) -> bool:
+    return inventory_wizard_slot_was_chosen(wizard=wizard, slot=Slot.item)
+
+
+def show_utility_form_condition(wizard: SessionWizardView) -> bool:
+    return inventory_wizard_slot_was_chosen(wizard=wizard, slot=Slot.utility)
+
+
+def show_weapon_form_condition(wizard: SessionWizardView) -> bool:
+    return inventory_wizard_slot_was_chosen(wizard=wizard, slot=Slot.weapon)
+
+
+def show_head_form_condition(wizard: SessionWizardView) -> bool:
+    return inventory_wizard_slot_was_chosen(wizard=wizard, slot=Slot.head)
+
+
+def show_neck_form_condition(wizard: SessionWizardView) -> bool:
+    return inventory_wizard_slot_was_chosen(wizard=wizard, slot=Slot.neck)
+
+
+def show_chest_form_condition(wizard: SessionWizardView) -> bool:
+    return inventory_wizard_slot_was_chosen(wizard=wizard, slot=Slot.chest)
+
+
+def show_shield_form_condition(wizard: SessionWizardView) -> bool:
+    return inventory_wizard_slot_was_chosen(wizard=wizard, slot=Slot.shield)
+
+
+def show_hand_form_condition(wizard: SessionWizardView) -> bool:
+    return inventory_wizard_slot_was_chosen(wizard=wizard, slot=Slot.hand)
+
+
+def show_feet_form_condition(wizard: SessionWizardView) -> bool:
+    return inventory_wizard_slot_was_chosen(wizard=wizard, slot=Slot.feet)
+
+
+def inventory_wizard_slot_was_chosen(wizard: SessionWizardView, slot: Slot) -> bool:
+    slot_cleaned_data = wizard.get_cleaned_data_for_step('0') or {}
+    return slot is slot_cleaned_data.get('slot')
+
+
+class InventorySlotWizard(SessionWizardView):
+    def done(self, form_list: Sequence[forms.Form], form_dict: Dict[str, forms.Form],
+             character_id: str, **kwargs) -> HttpResponse:
+        character = get_object_or_404(Character, pk=character_id)
+        inventory_slot_form = form_dict['0']
+        # The last item in the OrderedDict (popitem) will be the specific Item Form,
+        # whose key is its step (will vary depending on which slot was chosen.
+        item_form = form_dict.popitem()[1]
+        new_inventory_slot = InventorySlot(
+            character=character,
+            slot=inventory_slot_form.cleaned_data['slot'],
+            quantity=inventory_slot_form.cleaned_data['quantity'],
+            item_index=item_form.cleaned_data['item_enum'].value)
+        new_inventory_slot.save()
+        return redirect(reverse(inventory, args=[character_id]))
+
+
+def inventory(request: HttpRequest, character_id: str) -> HttpResponse:
+    character = get_object_or_404(Character, pk=character_id)
+
+    if request.method == 'POST' and owns_character_or_superuser(request, character):
+        # Check if a delete input button was pressed to remove an InventorySlot.
+        for parameter, value in request.POST.items():
+            match = re.match(r'^delete\s(?P<inventory_slot_id>[0-9]+)$', value)
+            if match is not None:
+                InventorySlot.objects.get(pk=match.group('inventory_slot_id')).delete()
+
+    return render(request, 'inventory.html',
+                  context={'character': character})
+
+
 @login_required
-def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
+def level_up(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST' and owns_character_or_superuser(request, character):
@@ -230,7 +306,6 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
             match = re.match(r'^delete\s(?P<levelup_id>[0-9]+)$', value)
             if match is not None:
                 LevelUp.objects.get(pk=match.group('levelup_id')).delete()
-                level_up_form = LevelUpForm()
 
         # Otherwise, user is creating a new LevelUp.
         if level_up_form.is_valid():
@@ -276,7 +351,7 @@ def level_up(request: HttpRequest, character_id: int) -> HttpResponse:
 
 
 @login_required
-def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
+def skill_points(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST' and owns_character_or_superuser(request, character):
@@ -340,7 +415,7 @@ def skill_points(request: HttpRequest, character_id: int) -> HttpResponse:
 
 
 @login_required
-def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
+def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
     if request.method == 'POST' and owns_character_or_superuser(request, character):
@@ -474,7 +549,7 @@ def roll20(request: HttpRequest, character_id: int) -> HttpResponse:
                 except (login.Roll20AuthenticationError, RuntimeError,
                         api.Roll20CharacterNotFoundError) as ex:
                     messages.error(request, ex)
-                    redirect(reverse(roll20, args=[character_id]))
+                    return reverse(roll20, args=[character_id])
 
     else:
         roll20_form = Roll20Form()

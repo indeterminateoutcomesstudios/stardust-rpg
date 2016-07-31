@@ -12,6 +12,7 @@
         ({{ character.available_ap }}){% endif %}</a>
     <a href="{% url 'sheet-views-combos' character.id %}">Combos</a>
     <a href="{% url 'sheet-views-equip' character.id %}">Equip</a>
+    <a href="{% url 'sheet-views-inventory' character.id %}">Inventory</a>
     <a href="{% url 'sheet-views-level-up' character.id %}">Level Up</a>
     <a href="{% url 'sheet-views-skill-points' character.id %}">
         Assign Skill Points{% if character.available_sp > 0 %}
