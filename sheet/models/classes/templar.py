@@ -353,13 +353,15 @@ time_lord_1 = Ability(
 time_lord_2 = Ability(
     name='Time Lord II', picture=AbilityPicture.presence_of_mind,
     mp_cost=0, target_area='Self', time=Time.free_a,
-    effect='[Passive] +50% to all healing'
+    effect='[Passive] +50% to all healing',
+    prerequisites=(time_lord_1,)
 )
 
 time_lord_3 = Ability(
     name='Time Lord III', picture=AbilityPicture.presence_of_mind,
     mp_cost=0, target_area='Self', time=Time.free_a,
-    effect='[Passive] Time Warp allows +2AbA'
+    effect='[Passive] Time Warp allows +2AbA',
+    prerequisites=(time_cloud_2,)
 )
 
 
