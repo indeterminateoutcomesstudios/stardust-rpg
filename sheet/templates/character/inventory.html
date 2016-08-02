@@ -10,17 +10,27 @@
         <table>
             <thead>
             <tr id="title">
+                <th>Item</th>
                 <th>Slot</th>
                 <th>Quantity</th>
-                <th>Item</th>
-                <th>SEL Value</th>
+                <th>Effect</th>
+                <th>SEL Value ({{ character.sel }}%)</th>
             </tr>
             </thead>
             {% for inventory_slot in character.inventoryslot_set.all %}
                 <tr>
+                    <td
+                            {% if inventory_slot.item.rarity == Rarity.rare %}
+                                class="type_rare"
+                            {% elif inventory_slot.item.rarity == Rarity.unique %}
+                                class="type_unique"
+                            {% elif inventory_slot.item.rarity == Rarity.set %}
+                                class="type_set"
+                            {% endif %}
+                    ><b>{{ inventory_slot.item.name|capfirst }}</b></td>
                     <td>{{ inventory_slot.slot.name|capfirst }}</td>
                     <td>{{ inventory_slot.quantity }}</td>
-                    <td>{{ inventory_slot.item.name|capfirst }}</td>
+                    <td>{{ inventory_slot.item.effect }}</td>
                     <td>{{ inventory_slot.sel_value }}</td>
                     <td>
                         <button type="submit" name="delete" class="btn btn-primary"
