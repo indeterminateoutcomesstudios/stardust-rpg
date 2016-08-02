@@ -14,3 +14,7 @@ class InventorySlot(models.Model):
     @property
     def item(self) -> equipment.Item:
         return items.get_item(self.slot, self.item_index)
+
+    @property
+    def sel_value(self) -> int:
+        return int(self.quantity * self.item.price * (self.character.sel / 100))
