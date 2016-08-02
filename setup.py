@@ -39,7 +39,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3 :: Only',
         'Programming Language :: Python :: 3.5',
         'Framework :: Django',
-        'Framework :: Django :: 1.9',
+        'Framework :: Django :: 1.10',
         'Topic :: Games/Entertainment :: Role-Playing',
     ],
 )
