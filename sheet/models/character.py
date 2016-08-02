@@ -5,15 +5,7 @@ from django.contrib.auth.models import User
 from django.db import models
 import enumfields
 
-from . import abilities
-from . import ability
-from . import class_type
-from . import classes
-from . import combos
-from . import dice
-from . import equipment
-from . import items
-from . import party
+from . import abilities, ability, class_type, classes, combos, dice, equipment, items, party
 from .abilities import round_up
 from .equipment import Attribute
 
@@ -222,6 +214,19 @@ class Character(models.Model):
     def unlocked_abilities(self) -> Tuple[ability.Ability, ...]:
         return tuple([unlocked_ability.ability
                       for unlocked_ability in self.unlockedability_set.all()])
+
+    @property
+    def available_to_unlock_abilities(self) -> Tuple[ability.Ability, ...]:
+        available_abilities = []
+        unlocked_abilities = self.unlocked_abilities  # Avoid multiple database reads.
+        for class_ability in self.cls.abilities:
+            is_available = True
+            for prerequisite in class_ability.prerequisites:
+                if prerequisite not in unlocked_abilities:
+                    is_available = False
+            if is_available:
+                available_abilities.append(class_ability)
+        return available_abilities
 
     @property
     def class_combos(self) -> Tuple[combos.Combo, ...]:

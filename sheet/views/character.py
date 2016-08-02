@@ -76,19 +76,10 @@ def unlock_abilities(request: HttpRequest, character_id: str) -> HttpResponse:
                                 unlocked_ability.delete()
                 elif action_type == 'unlock':
                     if character.available_ap > 0:
-                        unlock_ability = True
-                        for prerequisite in ability.prerequisites:
-                            if prerequisite not in character.unlocked_abilities:
-                                messages.error(request,
-                                               'Prerequisite {} not met for ability {}.'.format(
-                                                   prerequisite.name, ability.name))
-                                unlock_ability = False
-
-                        if unlock_ability:
-                            new_unlocked_ability = UnlockedAbility(
-                                character=character,
-                                ability_enum=inverse_abilities[ability])
-                            new_unlocked_ability.save()
+                        new_unlocked_ability = UnlockedAbility(
+                            character=character,
+                            ability_enum=inverse_abilities[ability])
+                        new_unlocked_ability.save()
                     else:
                         messages.error(request, 'Not enough available AP.')
 

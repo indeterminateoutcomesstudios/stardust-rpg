@@ -37,9 +37,14 @@
                                 value="lock {{ forloop.counter0 }}"
                                 style="background: #00ff00;">
                                         Unlocked
-                                        {% else %}
+                                        {% elif ability in character.available_to_unlock_abilities %}
                                         value="unlock {{ forloop.counter0 }}"
                                         style="background: #00ffff;">
+                                        Available
+                                        {% else %}
+                                        value="unlock {{ forloop.counter0 }}"
+                                        style="background: #000000;"
+                                        disabled>
                                         Locked
                                     </button>
                                 {% endif %}
