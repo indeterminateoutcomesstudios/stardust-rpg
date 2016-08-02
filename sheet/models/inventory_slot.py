@@ -11,5 +11,6 @@ class InventorySlot(models.Model):
     quantity = models.IntegerField(default=1, validators=[validators.MinValueValidator(1)])
     item_index = models.IntegerField()
 
+    @property
     def item(self) -> equipment.Item:
         return items.get_item(self.slot, self.item_index)
