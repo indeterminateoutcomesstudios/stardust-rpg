@@ -13,6 +13,7 @@
                 <th>Item</th>
                 <th>Slot</th>
                 <th>Quantity</th>
+                <th>Min ATT</th>
                 <th>Effect</th>
                 <th>SEL Value ({{ character.sel }}%)</th>
             </tr>
@@ -30,6 +31,8 @@
                     ><b>{{ inventory_slot.item.name|capfirst }}</b></td>
                     <td>{{ inventory_slot.slot.name|capfirst }}</td>
                     <td>{{ inventory_slot.quantity }}</td>
+                    <td>{{ inventory_slot.item.min_attribute_value }}
+                        {{ inventory_slot.item.min_attribute.name|upper }}</td>
                     <td>{{ inventory_slot.item.effect }}</td>
                     <td>{{ inventory_slot.sel_value }}</td>
                     <td>
