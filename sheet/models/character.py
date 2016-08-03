@@ -19,9 +19,6 @@ class Character(models.Model):
     class_enum = enumfields.EnumIntegerField(classes.Classes,
                                              verbose_name='Class',
                                              default=classes.Classes.paladin)
-    utility_enum = enumfields.EnumIntegerField(items.Utilities,
-                                               verbose_name='Utility',
-                                               default=items.Utilities.empty)
     head_enum = enumfields.EnumIntegerField(items.Heads,
                                             verbose_name='Head',
                                             default=items.Heads.empty)
@@ -84,10 +81,6 @@ class Character(models.Model):
         return classes.classes[self.class_enum]
 
     @property
-    def utility(self) -> equipment.Wearable:
-        return items.utilities[self.utility_enum]
-
-    @property
     def head(self) -> equipment.Wearable:
         return items.heads[self.head_enum]
 
@@ -118,6 +111,15 @@ class Character(models.Model):
     @property
     def weapon(self) -> equipment.Weapon:
         return items.weapons[self.weapon_enum]
+
+    @property
+    def inventory_items(self) -> Tuple[equipment.Item, ...]:
+        return tuple([inventory_slot.item for inventory_slot in self.inventoryslot_set.all()])
+
+    @property
+    def utilities(self) -> Tuple[equipment.Utility, ...]:
+        return tuple([item for item in self.inventory_items
+                      if item.slot is equipment.Slot.utility])
 
     @property
     def wearables(self) -> Tuple[equipment.Wearable, ...]:

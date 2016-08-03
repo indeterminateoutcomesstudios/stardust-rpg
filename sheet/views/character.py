@@ -101,7 +101,6 @@ def equip(request: HttpRequest, character_id: str) -> HttpResponse:
     if request.method == 'POST' and owns_character_or_superuser(request, character):
         equip_form = CharacterEquipForm(request.POST)
         if equip_form.is_valid():
-            character.utility_enum = equip_form.cleaned_data['utility_enum']
             character.head_enum = equip_form.cleaned_data['head_enum']
             character.neck_enum = equip_form.cleaned_data['neck_enum']
             character.chest_enum = equip_form.cleaned_data['chest_enum']
@@ -112,15 +111,8 @@ def equip(request: HttpRequest, character_id: str) -> HttpResponse:
             character.weapon_enum = equip_form.cleaned_data['weapon_enum']
 
             # Validate character meets requirements for equipment.
-            if (character.get_attribute(character.utility.min_attribute) <
-                    character.utility.min_attribute_value):
-                equip_form.add_error('utility_enum',
-                                     error='Requirements not met for {}.  Need {}{}.'.format(
-                                         character.utility.name,
-                                         character.utility.min_attribute_value,
-                                         character.utility.min_attribute.name.upper()))
-            elif (character.get_attribute(character.head.min_attribute) <
-                  character.head.min_attribute_value):
+            if (character.get_attribute(character.head.min_attribute) <
+               character.head.min_attribute_value):
                 equip_form.add_error('head_enum',
                                      error='Requirements not met for {}.  Need {}{}.'.format(
                                          character.head.name,
@@ -197,7 +189,6 @@ def equip(request: HttpRequest, character_id: str) -> HttpResponse:
     else:
         equip_form = CharacterEquipForm(
             initial={
-                'utility_enum': character.utility_enum,
                 'head_enum': character.head_enum,
                 'neck_enum': character.neck_enum,
                 'chest_enum': character.chest_enum,
@@ -282,7 +273,8 @@ def inventory(request: HttpRequest, character_id: str) -> HttpResponse:
                 InventorySlot.objects.get(pk=match.group('inventory_slot_id')).delete()
 
     return render(request, 'character/inventory.html',
-                  context={'character': character})
+                  context={'character': character,
+                           'Rarity': equipment.Rarity})
 
 
 @login_required
@@ -523,7 +515,7 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                     if sync_weapons:
                         abilities_to_sync += (character.weapon,)
                     if sync_utilities:
-                        abilities_to_sync += (character.utility,)
+                        abilities_to_sync += character.utilities
                     for ability in abilities_to_sync:
                         if not api.ability_exists(login=roll20_login, character_id=character_id,
                                                   ability_name=ability.name):

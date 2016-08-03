@@ -8,7 +8,7 @@ from .models import character, inventory_slot, items, level_up
 class CharacterEquipForm(forms.ModelForm):
     class Meta:
         model = character.Character
-        fields = ['utility_enum', 'head_enum', 'neck_enum', 'chest_enum', 'shield_enum',
+        fields = ['head_enum', 'neck_enum', 'chest_enum', 'shield_enum',
                   'right_hand_enum', 'left_hand_enum', 'feet_enum', 'weapon_enum']
 
 
