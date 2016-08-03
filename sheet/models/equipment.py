@@ -207,7 +207,7 @@ class MinAttributeItem(Item):
         super().__init__(slot=slot, name=name, rarity=rarity, price=price, effect=effect)
 
 
-class Utility(MinAttributeItem):
+class Utility(MinAttributeItem, macro.Macroable):
     def __init__(self, name: str, min_int: int = 0, rarity: Rarity = Rarity.common,
                  price: int = 0, effect: str = ''):
         super().__init__(slot=Slot.utility, name=name, rarity=rarity, price=price, effect=effect,
@@ -907,7 +907,7 @@ class WeaponPicture(enum.Enum):
                  'Nail_Bat_ATB.png')
 
 
-class Weapon(Wearable):
+class Weapon(Wearable, macro.Macroable):
     def __init__(self, name: str, picture: WeaponPicture, style: Style, min_dex: int = 0,
                  rarity: Rarity = Rarity.common,
                  price: int = 0, effect: str = '', equip_type: Type = Type.light,

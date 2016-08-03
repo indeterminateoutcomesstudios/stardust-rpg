@@ -461,7 +461,7 @@ class Time(aenum.AutoNumberEnum):
     std_ab_a = ()
 
 
-class Ability:
+class Ability(macro.Macroable):
     mp_mac_modifier = 0.25
 
     def __init__(self, name: str, picture: AbilityPicture, mp_cost: int, target_area: str,

@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from formtools.wizard.views import SessionWizardView
 
 from ..forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
-from ..models import equipment, items
+from ..models import equipment, items, macro
 from ..models.abilities import inverse_abilities
 from ..models.character import Character, UnlockedAbility
 from ..models.equipment import Slot
@@ -505,9 +505,7 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                                               attribute_value=attribute_value,
                                               attribute_position=api.AttributePosition.max)
 
-                    # TODO: Abilities, Weapons, and Utilities could derive from the same base
-                    # class Macroable.
-                    abilities_to_sync = ()  # type: Tuple[Any, ...]
+                    abilities_to_sync = ()  # type: Tuple[macro.Macroable, ...]
                     if sync_abilities:
                         abilities_to_sync += character.unlocked_abilities
                     if sync_combos:

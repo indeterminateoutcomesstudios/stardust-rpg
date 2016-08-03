@@ -1,3 +1,4 @@
+import abc
 import enum
 import re
 
@@ -21,3 +22,13 @@ def escape_attributes(macro_string: str) -> str:
     return re.sub(pattern=r'(?P<attribute>ATH|DEX|CON|INT|WIS|CHA)',
                   repl='@{\g<attribute>}',
                   string=macro_string)
+
+
+class Macroable(abc.ABC):
+    name = ''
+    """Not exactly an approved 'abstract attribute' but makes PyCharm static analysis happy."""
+
+    @property
+    @abc.abstractmethod
+    def macro(self) -> str:
+        pass
