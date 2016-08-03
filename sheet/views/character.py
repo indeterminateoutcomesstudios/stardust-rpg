@@ -1,5 +1,5 @@
 import re
-from typing import Any, Dict, Tuple, Sequence  # noqa
+from typing import Dict, Tuple, Sequence  # noqa: F401
 
 from django import forms
 from django.contrib import messages
@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from formtools.wizard.views import SessionWizardView
 
 from ..forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
-from ..models import equipment, items, macro
+from ..models import equipment, items, macro  # noqa: F401
 from ..models.abilities import inverse_abilities
 from ..models.character import Character, UnlockedAbility
 from ..models.equipment import Slot
