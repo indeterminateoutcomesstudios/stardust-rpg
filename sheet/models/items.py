@@ -101,8 +101,7 @@ utilities = {
                                       effect='Iron grapple attached to 8DIS of rope.  Can be '
                                              'thrown to attach to fixtures'),
     Utilities.gliding_suit: Utility(name=Utilities.gliding_suit.name, price=450, min_int=1,
-                                    equip_type=Type.medium, rarity=Rarity.rare,
-                                    effect='Allows gliding flight'),
+                                    rarity=Rarity.rare, effect='Allows gliding flight'),
     Utilities.communication_orb: Utility(name=Utilities.communication_orb.name, price=500,
                                          min_int=1, rarity=Rarity.rare,
                                          effect='Paried with another communication orb, allows '
@@ -110,7 +109,6 @@ utilities = {
     Utilities.repelling_gear: Utility(name=Utilities.repelling_gear.name, price=500, min_int=1,
                                       effect='Allows repelling down a wall or cliff'),
     Utilities.bow_cable: Utility(name=Utilities.bow_cable.name, price=500, min_int=1,
-                                 equip_type=Type.medium,
                                  effect='Crossbow fires a cable up to 12DIS which attaches to '
                                         'surface.  Cable can be ziplined on.'),
     Utilities.magnifying_glass: Utility(name=Utilities.magnifying_glass.name, price=600, min_int=1,

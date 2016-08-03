@@ -197,23 +197,21 @@ class Item:
         self.effect = effect
 
 
-class MinAttributeTypeItem(Item):
+class MinAttributeItem(Item):
     def __init__(self, slot: Slot, name: str, min_attribute: Attribute,
                  min_attribute_value: int = 0,
                  rarity: Rarity = Rarity.common, price: int = 0,
-                 effect: str = '', equip_type: Type = Type.light) -> None:
+                 effect: str = '') -> None:
         self.min_attribute = min_attribute
         self.min_attribute_value = min_attribute_value
-        self.type = equip_type
         super().__init__(slot=slot, name=name, rarity=rarity, price=price, effect=effect)
 
 
-class Utility(MinAttributeTypeItem):
+class Utility(MinAttributeItem):
     def __init__(self, name: str, min_int: int = 0, rarity: Rarity = Rarity.common,
-                 price: int = 0, effect: str = '', equip_type: Type = Type.light):
+                 price: int = 0, effect: str = ''):
         super().__init__(slot=Slot.utility, name=name, rarity=rarity, price=price, effect=effect,
-                         min_attribute=Attribute.intel, min_attribute_value=min_int,
-                         equip_type=equip_type)
+                         min_attribute=Attribute.intel, min_attribute_value=min_int)
 
     @property
     def macro(self) -> str:
@@ -232,7 +230,7 @@ class Utility(MinAttributeTypeItem):
                                                template_terminator=macro.template_terminator))
 
 
-class Wearable(MinAttributeTypeItem):
+class Wearable(MinAttributeItem):
     def __init__(self, slot: Slot, name: str, min_attribute: Attribute,
                  min_attribute_value: int = 0,
                  rarity: Rarity = Rarity.common, price: int = 0,
@@ -247,6 +245,7 @@ class Wearable(MinAttributeTypeItem):
                  vul_set: VulnerabilitySet = None) -> None:
         if vul_set is None:
             vul_set = VulnerabilitySet()
+        self.type = equip_type
         self.str = stren
         self.dex = dex
         self.con = con
@@ -276,8 +275,7 @@ class Wearable(MinAttributeTypeItem):
         self.cran = cran
         self.vul_set = vul_set
         super().__init__(slot=slot, name=name, rarity=rarity, price=price, effect=effect,
-                         min_attribute=min_attribute, min_attribute_value=min_attribute_value,
-                         equip_type=equip_type)
+                         min_attribute=min_attribute, min_attribute_value=min_attribute_value)
 
 
 class Head(Wearable):
