@@ -9,7 +9,11 @@ template_terminator = '@{classactionmeleeweapon}'
 
 @enum.unique
 class MacroColorTag(enum.Enum):
-    """Correspond to DnD5e character sheet macros"""
+    """Correspond to DnD5e character sheet macros.
+
+    See Also:
+        https://wiki.roll20.net/Roll20:DnD5e_Character_Sheet
+    """
     grey = ''
     green = '{{weapon=1}}'
     purple = '{{spell=1}}'
