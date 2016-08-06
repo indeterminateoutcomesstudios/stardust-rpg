@@ -32,7 +32,14 @@
                     ><b>{{ inventory_slot.item.name|capfirst }}</b></td>
                     <td>{{ inventory_slot.slot.name|capfirst }}</td>
                     <td>{{ inventory_slot.quantity }}</td>
-                    <td>{{ inventory_slot.item.min_attribute_value }}
+                    <td
+                            {% if inventory_slot.can_equip %}
+                                class="item_can_equip"
+                            {% else %}
+                                class="item_cannot_equip"
+                            {% endif %}
+                    >
+                        {{ inventory_slot.item.min_attribute_value }}
                         {{ inventory_slot.item.min_attribute.name|upper }}</td>
                     <td>{{ inventory_slot.item.stat_summary }}</td>
                     <td>{{ inventory_slot.item.effect }}</td>

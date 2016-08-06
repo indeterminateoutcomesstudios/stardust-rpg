@@ -18,3 +18,14 @@ class InventorySlot(models.Model):
     @property
     def sel_value(self) -> int:
         return int(self.quantity * self.item.price * (self.character.sel / 100))
+
+    @property
+    def can_equip(self) -> bool:
+        item = self.item
+        if isinstance(item, equipment.MinAttributeItem):
+            if self.character.get_attribute(item.min_attribute) >= item.min_attribute_value:
+                return True
+            else:
+                return False
+        else:
+            return True

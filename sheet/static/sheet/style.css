@@ -38,3 +38,11 @@ tr:nth-child(even) {
 .type_set {
     color: darkgreen;
 }
+
+.item_can_equip {
+    background-color: rgba(0, 255, 0, 0.51);
+}
+
+.item_cannot_equip {
+    background-color: rgba(255, 0, 0, 0.51);
+}
