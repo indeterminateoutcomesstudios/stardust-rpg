@@ -118,8 +118,12 @@ class Character(models.Model):
 
     @property
     def utilities(self) -> Tuple[equipment.Utility, ...]:
-        return tuple([item for item in self.inventory_items
-                      if item.slot is equipment.Slot.utility])
+        utilities = []
+        for item in self.inventory_items:
+            if isinstance(item, equipment.Utility):
+                if self.get_attribute(item.min_attribute) >= item.min_attribute_value:
+                    utilities.append(item)
+        return tuple(utilities)
 
     @property
     def wearables(self) -> Tuple[equipment.Wearable, ...]:
