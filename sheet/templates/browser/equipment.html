@@ -11,32 +11,7 @@
             <th>Rarity</th>
             <th>Type</th>
             <th>Min {{ wearables.0.min_attribute.name|upper }}</th>
-            <th>STR</th>
-            <th>DEX</th>
-            <th>CON</th>
-            <th>INT</th>
-            <th>WIS</th>
-            <th>CHA</th>
-            <th>ATH</th>
-            <th>STE</th>
-            <th>FOR</th>
-            <th>APT</th>
-            <th>PER</th>
-            <th>SPE</th>
-            <th>AP</th>
-            <th>HP</th>
-            <th>MP</th>
-            <th>SP</th>
-            <th>PDEF</th>
-            <th>MDEF</th>
-            <th>PRED</th>
-            <th>MRED</th>
-            <th>REG</th>
-            <th>RD</th>
-            <th>SPEED</th>
-            <th>VIS</th>
-            <th>BPAC</th>
-            <th>BMAC</th>
+            <th>Stat Summary</th>
             <th>VUL</th>
             <th>RES</th>
             <th>IMU</th>
@@ -63,32 +38,7 @@
                 <td>{{ wearable.rarity.name|capfirst }}</td>
                 <td>{{ wearable.type.name|capfirst }}</td>
                 <td>{{ wearable.min_attribute_value }}</td>
-                <td>{{ wearable.str|default:"" }}</td>
-                <td>{{ wearable.dex|default:"" }}</td>
-                <td>{{ wearable.con|default:"" }}</td>
-                <td>{{ wearable.int|default:"" }}</td>
-                <td>{{ wearable.wis|default:"" }}</td>
-                <td>{{ wearable.cha|default:"" }}</td>
-                <td>{{ wearable.ath|default:"" }}</td>
-                <td>{{ wearable.ste|default:"" }}</td>
-                <td>{{ wearable.fort|default:"" }}</td>
-                <td>{{ wearable.apt|default:"" }}</td>
-                <td>{{ wearable.per|default:"" }}</td>
-                <td>{{ wearable.spe|default:"" }}</td>
-                <td>{{ wearable.ap|default:"" }}</td>
-                <td>{{ wearable.hp|default:"" }}</td>
-                <td>{{ wearable.mp|default:"" }}</td>
-                <td>{{ wearable.sp|default:"" }}</td>
-                <td>{{ wearable.pdef|default:"" }}</td>
-                <td>{{ wearable.mdef|default:"" }}</td>
-                <td>{{ wearable.pred|default:"" }}</td>
-                <td>{{ wearable.mred|default:"" }}</td>
-                <td>{{ wearable.reg|default:"" }}</td>
-                <td>{{ wearable.rd|default:"" }}</td>
-                <td>{{ wearable.speed|default:"" }}</td>
-                <td>{{ wearable.vis|default:"" }}</td>
-                <td>{{ wearable.bpac|default:"" }}</td>
-                <td>{{ wearable.bmac|default:"" }}</td>
+                <td>{{ wearable.stat_summary }}</td>
                 <td>{{ wearable.vul_set.vul.all_as_str|default:"" }}</td>
                 <td>{{ wearable.vul_set.res.all_as_str|default:"" }}</td>
                 <td>{{ wearable.vul_set.imu.all_as_str|default:"" }}</td>

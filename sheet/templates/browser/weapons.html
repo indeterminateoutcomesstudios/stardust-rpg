@@ -23,32 +23,7 @@
             <th>CRAN</th>
             <th>CDAM</th>
             <th>Effect</th>
-            <th>STR</th>
-            <th>DEX</th>
-            <th>CON</th>
-            <th>INT</th>
-            <th>WIS</th>
-            <th>CHA</th>
-            <th>ATH</th>
-            <th>STE</th>
-            <th>FOR</th>
-            <th>APT</th>
-            <th>PER</th>
-            <th>SPE</th>
-            <th>AP</th>
-            <th>HP</th>
-            <th>MP</th>
-            <th>SP</th>
-            <th>PDEF</th>
-            <th>MDEF</th>
-            <th>PRED</th>
-            <th>MRED</th>
-            <th>REG</th>
-            <th>RD</th>
-            <th>SPEED</th>
-            <th>VIS</th>
-            <th>BPAC</th>
-            <th>BMAC</th>
+            <th>Stat Summary</th>
             <th>VUL</th>
             <th>RES</th>
             <th>IMU</th>
@@ -88,32 +63,7 @@
                 <td>{{ weapon.cran }}</td>
                 <td>{{ weapon.cdam }}</td>
                 <td>{{ weapon.effect }}</td>
-                <td>{{ weapon.str|default:"" }}</td>
-                <td>{{ weapon.dex|default:"" }}</td>
-                <td>{{ weapon.con|default:"" }}</td>
-                <td>{{ weapon.int|default:"" }}</td>
-                <td>{{ weapon.wis|default:"" }}</td>
-                <td>{{ weapon.cha|default:"" }}</td>
-                <td>{{ weapon.ath|default:"" }}</td>
-                <td>{{ weapon.ste|default:"" }}</td>
-                <td>{{ weapon.fort|default:"" }}</td>
-                <td>{{ weapon.apt|default:"" }}</td>
-                <td>{{ weapon.per|default:"" }}</td>
-                <td>{{ weapon.spe|default:"" }}</td>
-                <td>{{ weapon.ap|default:"" }}</td>
-                <td>{{ weapon.hp|default:"" }}</td>
-                <td>{{ weapon.mp|default:"" }}</td>
-                <td>{{ weapon.sp|default:"" }}</td>
-                <td>{{ weapon.pdef|default:"" }}</td>
-                <td>{{ weapon.mdef|default:"" }}</td>
-                <td>{{ weapon.pred|default:"" }}</td>
-                <td>{{ weapon.mred|default:"" }}</td>
-                <td>{{ weapon.reg|default:"" }}</td>
-                <td>{{ weapon.rd|default:"" }}</td>
-                <td>{{ weapon.speed|default:"" }}</td>
-                <td>{{ weapon.vis|default:"" }}</td>
-                <td>{{ weapon.bpac|default:"" }}</td>
-                <td>{{ weapon.bmac|default:"" }}</td>
+                <td>{{ weapon.stat_summary }}</tD>
                 <td>{{ wearable.vul_set.vul.all_as_str|default:"" }}</td>
                 <td>{{ wearable.vul_set.res.all_as_str|default:"" }}</td>
                 <td>{{ wearable.vul_set.imu.all_as_str|default:"" }}</td>

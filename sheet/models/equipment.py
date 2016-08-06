@@ -277,6 +277,64 @@ class Wearable(MinAttributeItem):
         super().__init__(slot=slot, name=name, rarity=rarity, price=price, effect=effect,
                          min_attribute=min_attribute, min_attribute_value=min_attribute_value)
 
+    @property
+    def stat_summary(self) -> str:
+        return ('{stren} '
+                '{dex} '
+                '{con} '
+                '{intel} '
+                '{wis} '
+                '{cha} '
+                '{ath} '
+                '{ste} '
+                '{fort} '
+                '{apt} '
+                '{per} '
+                '{spe} '
+                '{ap} '
+                '{hp} '
+                '{mp} '
+                '{sp} '
+                '{pdef} '
+                '{mdef} '
+                '{pred} '
+                '{mred} '
+                '{reg} '
+                '{rd} '
+                '{speed} '
+                '{vis} '
+                '{bpac} '
+                '{bmac} '
+                '{cran} ').format(
+            stren=str(self.str) + 'STR' if self.str else '',
+            dex=str(self.dex) + 'DEX' if self.dex else '',
+            con=str(self.con) + 'CON' if self.con else '',
+            intel=str(self.int) + 'INT' if self.int else '',
+            wis=str(self.wis) + 'WIS' if self.wis else '',
+            cha=str(self.cha) + 'CHA' if self.cha else '',
+            ath=str(self.ath) + 'ATH' if self.ath else '',
+            ste=str(self.ste) + 'STE' if self.ste else '',
+            fort=str(self.fort) + 'FOR' if self.fort else '',
+            apt=str(self.apt) + 'APT' if self.apt else '',
+            per=str(self.per) + 'PER' if self.per else '',
+            spe=str(self.spe) + 'SPE' if self.spe else '',
+            ap=str(self.ap) + 'AP' if self.ap else '',
+            hp=str(self.hp) + 'HP' if self.hp else '',
+            mp=str(self.mp) + 'MP' if self.mp else '',
+            sp=str(self.sp) + 'SP' if self.sp else '',
+            pdef=str(self.pdef) + 'PDEF' if self.pdef else '',
+            mdef=str(self.mdef) + 'MDEF' if self.mdef else '',
+            pred=str(self.pred) + 'PRED' if self.pred else '',
+            mred=str(self.mred) + 'MRED' if self.mred else '',
+            reg=str(self.reg) + 'REG' if self.reg else '',
+            rd=str(self.rd) + 'RD' if self.rd else '',
+            speed=str(self.speed) + 'SPEED' if self.speed else '',
+            vis=str(self.vis) + 'VIS' if self.vis else '',
+            bpac=str(self.bpac) + 'BPAC' if self.bpac else '',
+            bmac=str(self.bmac) + 'BMAC' if self.bmac else '',
+            cran=str(self.cran) + 'CRAN' if self.cran else '',
+        ).strip()
+
 
 class Head(Wearable):
     def __init__(self, name: str, min_int: int = 0, rarity: Rarity = Rarity.common,
