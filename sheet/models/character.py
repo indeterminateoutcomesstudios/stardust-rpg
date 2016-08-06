@@ -582,7 +582,7 @@ class Character(models.Model):
 
     @property
     def sel_formula(self) -> str:
-        return '{base_sel} + ({mod} * {intel}[INT])'.format(
+        return '{base_sel}[Base SEL] + ({mod} * {intel}[INT])'.format(
             base_sel=self.base_sel,
             mod=self.int_sel_mod,
             intel=self.intel)
