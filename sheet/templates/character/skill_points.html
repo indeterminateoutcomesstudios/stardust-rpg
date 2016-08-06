@@ -8,5 +8,5 @@
     <label title="{{ character.max_sp_per_skill_formula }}">
         <i>Note: Max Assigned SP Per Skill: {{ character.max_sp_per_skill }}</i>
     </label>
-    {% include "bootstrap_form_snippet.html" with form=skill_points_form button_name="Assign SP" %}
+    {% include "snippets/bootstrap_form.html" with form=skill_points_form button_name="Assign SP" %}
 {% endblock %}

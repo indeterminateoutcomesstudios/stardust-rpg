@@ -8,10 +8,10 @@
             {% if wizard.form.forms %}
                 {{ wizard.form.management_form }}
                 {% for form in wizard.form.forms %}
-                    {% include "bootstrap_form_snippet.html" with form=form button_name="Submit" %}
+                    {% include "snippets/bootstrap_form.html" with form=form button_name="Submit" %}
                 {% endfor %}
             {% else %}
-                {% include "bootstrap_form_snippet.html" with form=wizard.form button_name="Submit" %}
+                {% include "snippets/bootstrap_form.html" with form=wizard.form button_name="Submit" %}
             {% endif %}
         </table>
     </form>

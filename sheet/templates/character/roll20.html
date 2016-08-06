@@ -15,5 +15,5 @@
     <p>
         <label>Character Name: {{ character.name }}</label>
     </p>
-    {% include "bootstrap_form_snippet.html" with form=roll20_form button_name="Sync to Roll20" %}
+    {% include "snippets/bootstrap_form.html" with form=roll20_form button_name="Sync to Roll20" %}
 {% endblock %}
