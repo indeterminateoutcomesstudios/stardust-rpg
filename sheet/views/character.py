@@ -16,6 +16,7 @@ from ..models.character import Character, UnlockedAbility
 from ..models.equipment import Slot
 from ..models.inventory_slot import InventorySlot
 from ..models.level_up import LevelUp
+from ..models.shop import Shop
 from ..roll20 import api, login
 
 
@@ -44,6 +45,22 @@ def cls(request: HttpRequest, character_id: str) -> HttpResponse:
 def party(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     return render(request, 'character/party.html', context={'character': character})
+
+
+@login_required
+def shops(request: HttpRequest, character_id: str, shop_id: str) -> HttpResponse:
+    character = get_object_or_404(Character, pk=character_id)
+    shop = get_object_or_404(Shop, pk=shop_id)
+    if not shop.visible:
+        messages.error(request, '{} shop is not visible'.format(shop.name))
+        return redirect(reverse(party, args=[character.id]))
+    if shop.party != character.party:
+        messages.error(request, 'Shop is not available for party {}.'.format(shop.party.name))
+        return redirect(reverse(party, args=[character.id]))
+
+    return render(request, 'character/shop.html',
+                  context={'character': character,
+                           'shop': shop})
 
 
 @login_required
@@ -83,7 +100,7 @@ def unlock_abilities(request: HttpRequest, character_id: str) -> HttpResponse:
                     else:
                         messages.error(request, 'Not enough available AP.')
 
-        return redirect(reverse(unlock_abilities, args=[character_id]))
+        return redirect(reverse(unlock_abilities, args=[character.id]))
 
     return render(request, 'character/abilities.html', context={'character': character})
 
@@ -185,7 +202,7 @@ def equip(request: HttpRequest, character_id: str) -> HttpResponse:
                                         type=character.weapon.type.name))
             else:
                 character.save()
-                return redirect(reverse(stats, args=[character_id]))
+                return redirect(reverse(stats, args=[character.id]))
     else:
         equip_form = CharacterEquipForm(
             initial={
@@ -259,7 +276,7 @@ class InventorySlotWizard(SessionWizardView):
             quantity=inventory_slot_form.cleaned_data['quantity'],
             item_index=item_form.cleaned_data['item_enum'].value)
         new_inventory_slot.save()
-        return redirect(reverse(inventory, args=[character_id]))
+        return redirect(reverse(inventory, args=[character.id]))
 
 
 def inventory(request: HttpRequest, character_id: str) -> HttpResponse:
@@ -530,7 +547,7 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                 except (login.Roll20AuthenticationError, RuntimeError,
                         api.Roll20CharacterNotFoundError) as ex:
                     messages.error(request, ex)
-                    return reverse(roll20, args=[character_id])
+                    return reverse(roll20, args=[character.id])
 
     else:
         roll20_form = Roll20Form()

@@ -1,0 +1,27 @@
+{% extends "character/base.html" %}
+
+{% block title %}{{ shop.name }} Shop - {{ character.name }}{% endblock %}
+
+{% block content %}
+    <label>Shop: {{ shop.name }}</label>
+    <br/>
+
+    {% include "snippets/equipment.html" with slot_name="Items" items=shop.items %}
+    <br/>
+    {% include "snippets/equipment.html" with slot_name="Utilities" items=shop.utilities %}
+    <br/>
+    {% include "snippets/equipment.html" with slot_name="Weapons" items=shop.weapons %}
+    <br/>
+    {% include "snippets/equipment.html" with slot_name="Heads" items=shop.heads %}
+    <br/>
+    {% include "snippets/equipment.html" with slot_name="Necks" items=shop.necks %}
+    <br/>
+    {% include "snippets/equipment.html" with slot_name="Chests" items=shop.chests %}
+    <br/>
+    {% include "snippets/equipment.html" with slot_name="Shields" items=shop.shields %}
+    <br/>
+    {% include "snippets/equipment.html" with slot_name="Hands" items=shop.hands %}
+    <br/>
+    {% include "snippets/equipment.html" with slot_name="Feets" items=shop.feets %}
+
+{% endblock %}

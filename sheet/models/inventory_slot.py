@@ -5,8 +5,10 @@ import enumfields
 from . import character, equipment, items
 
 
-class InventorySlot(models.Model):
-    character = models.ForeignKey(character.Character, on_delete=models.CASCADE)
+class ItemQuantity(models.Model):
+    class Meta:
+        abstract = True
+
     slot = enumfields.EnumIntegerField(verbose_name='Slot', enum=equipment.Slot)
     quantity = models.IntegerField(default=1, validators=[validators.MinValueValidator(1)])
     item_index = models.IntegerField()
@@ -14,6 +16,10 @@ class InventorySlot(models.Model):
     @property
     def item(self) -> equipment.Item:
         return items.get_item(self.slot, self.item_index)
+
+
+class InventorySlot(ItemQuantity):
+    character = models.ForeignKey(character.Character, on_delete=models.CASCADE)
 
     @property
     def sel_value(self) -> int:

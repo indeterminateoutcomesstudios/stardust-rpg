@@ -1,0 +1,43 @@
+<table>
+    <thead>
+    <tr id="title">
+        <th>{{ slot_name }}</th>
+        <th>Price</th>
+        <th>Rarity</th>
+        <th>Type</th>
+        <th>Min {{ wearables.0.min_attribute.name|upper }}</th>
+        <th>Stat Summary</th>
+        <th>VUL</th>
+        <th>RES</th>
+        <th>IMU</th>
+        <th>Effect</th>
+    </tr>
+    </thead>
+    {% for item in items %}
+        <tr>
+            <td
+                    {% if item.rarity == Rarity.rare %}
+                        class="type_rare"
+                    {% elif item.rarity == Rarity.unique %}
+                        class="type_unique"
+                    {% elif item.rarity == Rarity.set %}
+                        class="type_set"
+                    {% endif %}
+            >
+                <b>{{ item.name|capfirst }}</b>
+                {% if item.is_two_handed %}
+                    <br>(2-Hand)
+                {% endif %}
+            </td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.rarity.name|capfirst }}</td>
+            <td>{{ item.type.name|capfirst }}</td>
+            <td>{{ item.min_attribute_value }}</td>
+            <td>{{ item.stat_summary }}</td>
+            <td>{{ item.vul_set.vul.all_as_str|default:"" }}</td>
+            <td>{{ item.vul_set.res.all_as_str|default:"" }}</td>
+            <td>{{ item.vul_set.imu.all_as_str|default:"" }}</td>
+            <td>{{ item.effect }}</td>
+        </tr>
+    {% endfor %}
+</table>

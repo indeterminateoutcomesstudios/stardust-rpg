@@ -6,6 +6,7 @@
     <table style="display: inline-block">
         <label>Party: {{ character.party }}</label>
         <br/>
+
         <thead>
         <tr id="title">
             <th>Player</th>
@@ -21,6 +22,23 @@
                     </a>
                 </td>
             </tr>
+        {% endfor %}
+
+        <thead>
+        <tr id="title">
+            <th>Shop</th>
+        </tr>
+        </thead>
+        {% for shop in character.party.shop_set.all %}
+            {% if shop.visible %}
+                <tr>
+                    <td>
+                        <a href="{% url 'sheet-views-shops' character.id shop.id %}">
+                            {{ shop.name }}
+                        </a>
+                    </td>
+                </tr>
+            {% endif %}
         {% endfor %}
     </table>
 {% endblock %}

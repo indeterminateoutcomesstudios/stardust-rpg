@@ -73,5 +73,7 @@ urlpatterns = [
     url(r'^(?P<character_id>[0-9]+)/skill_points/$', views.character.skill_points,
         name='sheet-views-skill-points'),
     url(r'^(?P<character_id>[0-9]+)/party/$', views.character.party, name='sheet-views-party'),
+    url(r'^(?P<character_id>[0-9]+)/party/shops/(?P<shop_id>[0-9]+)$',
+        views.character.shops, name='sheet-views-shops'),
     url(r'^(?P<character_id>[0-9]+)/roll20/$', views.character.roll20, name='sheet-views-roll20'),
 ]
