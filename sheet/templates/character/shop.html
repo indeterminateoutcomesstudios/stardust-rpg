@@ -6,6 +6,12 @@
     <label>Shop: {{ shop.name }}</label>
     <br/>
 
+    {% if user.is_superuser %}
+        <a class="btn btn-primary" href="{% url 'sheet-views-shops-add' character.id shop.id %}">
+            Add Item
+        </a>
+    {% endif %}
+
     {% include "snippets/shop_equipment.html" with shop=shop items=shop.items %}
     <br/>
     {% include "snippets/shop_equipment.html" with shop=shop items=shop.utilities %}
@@ -24,9 +30,4 @@
     <br/>
     {% include "snippets/shop_equipment.html" with shop=shop items=shop.feets %}
     <br/>
-    {% if user.is_superuser %}
-        <a class="btn btn-primary" href="{% url 'sheet-views-shops-add' character.id shop.id %}">
-            Add Item
-        </a>
-    {% endif %}
 {% endblock %}
