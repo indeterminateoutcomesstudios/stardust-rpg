@@ -581,6 +581,12 @@ class Character(models.Model):
         return min(self.cha_buy_mod * self.cha, 100)
 
     @property
+    def buy_fraction(self) -> float:
+        """Returns a value that can be multiplied by a cost to get the cost of an item for
+        this character."""
+        return 1.0 - (self.buy / 100)
+
+    @property
     def sel_formula(self) -> str:
         return '{base_sel}[Base SEL] + ({mod} * {intel}[INT])'.format(
             base_sel=self.base_sel,

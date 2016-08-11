@@ -2,7 +2,9 @@
     <thead>
     <tr id="title">
         <th>{{ slot_name }}</th>
-        <th>Price</th>
+        {% for character in shop.party.character_set.all %}
+            <th>{{ character.name }} Price <br> (-{{ character.buy }}%)</th>
+        {% endfor %}
         <th>Rarity</th>
         <th>Type</th>
         <th>Min {{ wearables.0.min_attribute.name|upper }}</th>
@@ -29,7 +31,10 @@
                     <br>(2-Hand)
                 {% endif %}
             </td>
-            <td>{{ item.price }}</td>
+            {% for character in shop.party.character_set.all %}
+                {# a*b use {% widthratio a 1 b %} #}
+                <td>{% widthratio character.buy_fraction 1 item.price %}</td>
+            {% endfor %}
             <td>{{ item.rarity.name|capfirst }}</td>
             <td>{{ item.type.name|capfirst }}</td>
             <td>{{ item.min_attribute_value }}</td>
