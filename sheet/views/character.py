@@ -62,6 +62,7 @@ def shops(request: HttpRequest, character_id: str, shop_id: str) -> HttpResponse
                   context={'character': character,
                            'shop': shop,
                            'user': request.user,
+                           'Rarity': equipment.Rarity,
                            'Slot': Slot})
 
 

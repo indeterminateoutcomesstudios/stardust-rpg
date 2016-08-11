@@ -14,7 +14,6 @@
         <th>IMU</th>
         <th>Effect</th>
         {% if items.0.slot == Slot.weapon %}
-            <th>2-Hand?</th>
             <th>Range</th>
             <th>Shape</th>
             <th>Attacks</th>
@@ -56,7 +55,6 @@
             <td>{{ item.vul_set.imu.all_as_str|default:"" }}</td>
             <td>{{ item.effect }}</td>
             {% if items.0.slot == Slot.weapon %}
-                <td>{{ item.is_two_handed|default:"" }}</td>
                 <td>{{ item.min_range }} - {{ item.max_range }}</td>
                 <td>
                     {{ item.shape.name|capfirst }}
