@@ -1,7 +1,7 @@
 <table>
     <thead>
     <tr id="title">
-        <th>{{ slot_name }}</th>
+        <th>{{ items.0.slot.name|title }}</th>
         {% for character in shop.party.character_set.all %}
             <th>{{ character.name }} <br> Price (-{{ character.buy }}%)</th>
         {% endfor %}
