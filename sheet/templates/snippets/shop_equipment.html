@@ -1,19 +1,20 @@
 <table>
     <thead>
     <tr id="title">
-        <th>{{ items.0.slot.name|title }}</th>
+        <th>{{ shop_slots.0.item.slot.name|title }}</th>
+        <th>Qnt</th>
         {% for character in shop.party.character_set.all %}
             <th>{{ character.name }} <br> Price (-{{ character.buy }}%)</th>
         {% endfor %}
         <th>Rarity</th>
         <th>Type</th>
-        <th>Min<br>{{ items.0.min_attribute.name|upper }}</th>
+        <th>Min<br>{{ shop_slots.0.item.min_attribute.name|upper }}</th>
         <th>Stat<br>Summary</th>
         <th>VUL</th>
         <th>RES</th>
         <th>IMU</th>
         <th>Effect</th>
-        {% if items.0.slot == Slot.weapon %}
+        {% if shop_slots.0.item.slot == Slot.weapon %}
             <th>Range</th>
             <th>Shape</th>
             <th>Attacks</th>
@@ -26,50 +27,62 @@
         {% endif %}
     </tr>
     </thead>
-    {% for item in items %}
+    {% for shop_slot in shop_slots %}
         <tr>
             <td
-                    {% if item.rarity == Rarity.rare %}
+                    {% if shop_slot.item.rarity == Rarity.rare %}
                         class="type_rare"
-                    {% elif item.rarity == Rarity.unique %}
+                    {% elif shop_slot.item.rarity == Rarity.unique %}
                         class="type_unique"
-                    {% elif item.rarity == Rarity.set %}
+                    {% elif shop_slot.item.rarity == Rarity.set %}
                         class="type_set"
                     {% endif %}
             >
-                <b>{{ item.name|capfirst }}</b>
-                {% if item.is_two_handed %}
+                <b>{{ shop_slot.item.name|capfirst }}</b>
+                {% if shop_slot.item.is_two_handed %}
                     <br>(2-Hand)
                 {% endif %}
-                {% if item.slot == Slot.weapon %}
-                    <img src="{{ item.picture.value }}" style="width: 40px;height: 40px">
+                {% if shop_slot.item.slot == Slot.weapon %}
+                    <img src="{{ shop_slot.item.picture.value }}" style="width: 40px;height: 40px">
                 {% endif %}
             </td>
+            <td>{{ shop_slot.quantity }}</td>
             {% for character in shop.party.character_set.all %}
                 {# a*b use {% widthratio a 1 b %} #}
-                <td>{% widthratio character.buy_fraction 1 item.price %}</td>
+                <td>{% widthratio character.buy_fraction 1 shop_slot.item.price %}</td>
             {% endfor %}
-            <td>{{ item.rarity.name|capfirst }}</td>
-            <td>{{ item.type.name|capfirst }}</td>
-            <td>{{ item.min_attribute_value }}</td>
-            <td>{{ item.stat_summary }}</td>
-            <td>{{ item.vul_set.vul.all_as_str|default:"" }}</td>
-            <td>{{ item.vul_set.res.all_as_str|default:"" }}</td>
-            <td>{{ item.vul_set.imu.all_as_str|default:"" }}</td>
-            <td>{{ item.effect }}</td>
-            {% if item.slot == Slot.weapon %}
-                <td>{{ item.min_range }} - {{ item.max_range }}</td>
+            <td>{{ shop_slot.item.rarity.name|capfirst }}</td>
+            <td>{{ shop_slot.item.type.name|capfirst }}</td>
+            <td>{{ shop_slot.item.min_attribute_value }}</td>
+            <td>{{ shop_slot.item.stat_summary }}</td>
+            <td>{{ shop_slot.item.vul_set.vul.all_as_str|default:"" }}</td>
+            <td>{{ shop_slot.item.vul_set.res.all_as_str|default:"" }}</td>
+            <td>{{ shop_slot.item.vul_set.imu.all_as_str|default:"" }}</td>
+            <td>{{ shop_slot.item.effect }}</td>
+            {% if shop_slot.item.slot == Slot.weapon %}
+                <td>{{ shop_slot.item.min_range }} - {{ shop_slot.item.max_range }}</td>
                 <td>
-                    {{ item.shape.name|capfirst }}
-                    <img src="{{ item.shape.value }}">
+                    {{ shop_slot.item.shape.name|capfirst }}
+                    <img src="{{ shop_slot.item.shape.value }}">
                 </td>
-                <td>{{ item.attacks }}</td>
-                <td>{{ item.pac }}</td>
-                <td>{{ item.pdam }}</td>
-                <td>{{ item.mdam }}</td>
-                <td>{{ item.damage_type.name|capfirst }}</td>
-                <td>{{ item.cran }}</td>
-                <td>{{ item.cdam }}</td>
+                <td>{{ shop_slot.item.attacks }}</td>
+                <td>{{ shop_slot.item.pac }}</td>
+                <td>{{ shop_slot.item.pdam }}</td>
+                <td>{{ shop_slot.item.mdam }}</td>
+                <td>{{ shop_slot.item.damage_type.name|capfirst }}</td>
+                <td>{{ shop_slot.item.cran }}</td>
+                <td>{{ shop_slot.item.cdam }}</td>
+            {% endif %}
+            {% if user.is_superuser %}
+                <td>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="delete" class="btn btn-primary"
+                                value="delete {{ shop_slot.id }}" style="background: #DE2A00;">
+                            Delete
+                        </button>
+                    </form>
+                </td>
             {% endif %}
         </tr>
     {% endfor %}

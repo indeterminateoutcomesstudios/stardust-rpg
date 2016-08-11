@@ -12,22 +12,22 @@
         </a>
     {% endif %}
 
-    {% include "snippets/shop_equipment.html" with shop=shop items=shop.items %}
+    {% include "snippets/shop_equipment.html" with shop=shop shop_slots=shop.item_slots user=user %}
     <br/>
-    {% include "snippets/shop_equipment.html" with shop=shop items=shop.utilities %}
+    {% include "snippets/shop_equipment.html" with shop=shop shop_slots=shop.utility_slots user=user %}
     <br/>
-    {% include "snippets/shop_equipment.html" with shop=shop items=shop.weapons %}
+    {% include "snippets/shop_equipment.html" with shop=shop shop_slots=shop.weapon_slots user=user %}
     <br/>
-    {% include "snippets/shop_equipment.html" with shop=shop items=shop.heads %}
+    {% include "snippets/shop_equipment.html" with shop=shop shop_slots=shop.head_slots user=user %}
     <br/>
-    {% include "snippets/shop_equipment.html" with shop=shop items=shop.necks %}
+    {% include "snippets/shop_equipment.html" with shop=shop shop_slots=shop.neck_slots user=user %}
     <br/>
-    {% include "snippets/shop_equipment.html" with shop=shop items=shop.chests %}
+    {% include "snippets/shop_equipment.html" with shop=shop shop_slots=shop.chest_slots user=user %}
     <br/>
-    {% include "snippets/shop_equipment.html" with shop=shop items=shop.shields %}
+    {% include "snippets/shop_equipment.html" with shop=shop shop_slots=shop.shield_slots user=user %}
     <br/>
-    {% include "snippets/shop_equipment.html" with shop=shop items=shop.hands %}
+    {% include "snippets/shop_equipment.html" with shop=shop shop_slots=shop.hand_slots user=user %}
     <br/>
-    {% include "snippets/shop_equipment.html" with shop=shop items=shop.feets %}
+    {% include "snippets/shop_equipment.html" with shop=shop shop_slots=shop.feet_slots user=user %}
     <br/>
 {% endblock %}

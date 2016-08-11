@@ -57,6 +57,12 @@ def shops(request: HttpRequest, character_id: str, shop_id: str) -> HttpResponse
     if shop.party != character.party:
         messages.error(request, 'Shop is not available for party {}.'.format(shop.party.name))
         return redirect(reverse(party, args=[character.id]))
+    if request.method == 'POST' and request.user.is_superuser:
+        # Check if a delete input button was pressed to remove an ShopSlot.
+        for parameter, value in request.POST.items():
+            match = re.match(r'^delete\s(?P<shop_slot_id>[0-9]+)$', value)
+            if match is not None:
+                ShopSlot.objects.get(pk=match.group('shop_slot_id')).delete()
 
     return render(request, 'character/shop.html',
                   context={'character': character,
