@@ -3,7 +3,7 @@
     <tr id="title">
         <th>{{ slot_name }}</th>
         {% for character in shop.party.character_set.all %}
-            <th>{{ character.name }} Price <br> (-{{ character.buy }}%)</th>
+            <th>{{ character.name }} <br> Price (-{{ character.buy }}%)</th>
         {% endfor %}
         <th>Rarity</th>
         <th>Type</th>
