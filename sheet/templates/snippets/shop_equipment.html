@@ -13,6 +13,18 @@
         <th>RES</th>
         <th>IMU</th>
         <th>Effect</th>
+        {% if items.0.slot == Slot.weapon %}
+            <th>2-Hand?</th>
+            <th>Range</th>
+            <th>Shape</th>
+            <th>Attacks</th>
+            <th>PAC</th>
+            <th>PDAM</th>
+            <th>MDAM</th>
+            <th>Damage Type</th>
+            <th>CRAN</th>
+            <th>CDAM</th>
+        {% endif %}
     </tr>
     </thead>
     {% for item in items %}
@@ -43,6 +55,21 @@
             <td>{{ item.vul_set.res.all_as_str|default:"" }}</td>
             <td>{{ item.vul_set.imu.all_as_str|default:"" }}</td>
             <td>{{ item.effect }}</td>
+            {% if items.0.slot == Slot.weapon %}
+                <td>{{ item.is_two_handed|default:"" }}</td>
+                <td>{{ item.min_range }} - {{ item.max_range }}</td>
+                <td>
+                    {{ item.shape.name|capfirst }}
+                    <img src="{{ item.shape.value }}">
+                </td>
+                <td>{{ item.attacks }}</td>
+                <td>{{ item.pac }}</td>
+                <td>{{ item.pdam }}</td>
+                <td>{{ item.mdam }}</td>
+                <td>{{ item.damage_type.name|capfirst }}</td>
+                <td>{{ item.cran }}</td>
+                <td>{{ item.cdam }}</td>
+            {% endif %}
         </tr>
     {% endfor %}
 </table>

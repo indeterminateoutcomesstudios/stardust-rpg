@@ -23,6 +23,7 @@ class Attribute(enum.Enum):
     cha = 6
 
 
+@for_django_template
 class Slot(aenum.AutoNumberEnum):
     item = ()
     utility = ()

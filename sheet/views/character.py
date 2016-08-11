@@ -61,7 +61,8 @@ def shops(request: HttpRequest, character_id: str, shop_id: str) -> HttpResponse
     return render(request, 'character/shop.html',
                   context={'character': character,
                            'shop': shop,
-                           'user': request.user})
+                           'user': request.user,
+                           'Slot': Slot})
 
 
 @login_required
