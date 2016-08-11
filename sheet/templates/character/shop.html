@@ -23,5 +23,10 @@
     {% include "snippets/equipment.html" with slot_name="Hands" items=shop.hands %}
     <br/>
     {% include "snippets/equipment.html" with slot_name="Feets" items=shop.feets %}
-
+    <br/>
+    {% if user.is_superuser %}
+        <a class="btn btn-primary" href="{% url 'sheet-views-shops-add' character.id shop.id %}">
+            Add Item
+        </a>
+    {% endif %}
 {% endblock %}

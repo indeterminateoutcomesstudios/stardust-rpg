@@ -16,7 +16,7 @@ from ..models.character import Character, UnlockedAbility
 from ..models.equipment import Slot
 from ..models.inventory_slot import InventorySlot
 from ..models.level_up import LevelUp
-from ..models.shop import Shop
+from ..models.shop import Shop, ShopSlot
 from ..roll20 import api, login
 
 
@@ -60,7 +60,8 @@ def shops(request: HttpRequest, character_id: str, shop_id: str) -> HttpResponse
 
     return render(request, 'character/shop.html',
                   context={'character': character,
-                           'shop': shop})
+                           'shop': shop,
+                           'user': request.user})
 
 
 @login_required
@@ -262,14 +263,25 @@ def inventory_wizard_slot_was_chosen(wizard: SessionWizardView, slot: Slot) -> b
     return slot is slot_cleaned_data.get('slot')
 
 
-class InventorySlotWizard(SessionWizardView):
-    def done(self, form_list: Sequence[forms.Form], form_dict: Dict[str, forms.Form],
-             character_id: str, **kwargs) -> HttpResponse:
-        character = get_object_or_404(Character, pk=character_id)
+class ItemSelectionWizard(SessionWizardView):
+    @staticmethod
+    def get_forms(form_dict: Dict[str, forms.Form]) -> Tuple[forms.Form, forms.Form]:
         inventory_slot_form = form_dict['0']
         # The last item in the OrderedDict (popitem) will be the specific Item Form,
         # whose key is its step (will vary depending on which slot was chosen.
         item_form = form_dict.popitem()[1]
+        return inventory_slot_form, item_form
+
+    def done(self, form_list: Sequence[forms.Form], **kwargs) -> HttpResponse:
+        """Call base class done(), effectively making this class abstract."""
+        super().done(form_list, **kwargs)
+
+
+class InventorySlotWizard(ItemSelectionWizard):
+    def done(self, form_list: Sequence[forms.Form], form_dict: Dict[str, forms.Form],
+             character_id: str, **kwargs) -> HttpResponse:
+        character = get_object_or_404(Character, pk=character_id)
+        inventory_slot_form, item_form = self.get_forms(form_dict)
         new_inventory_slot = InventorySlot(
             character=character,
             slot=inventory_slot_form.cleaned_data['slot'],
@@ -277,6 +289,25 @@ class InventorySlotWizard(SessionWizardView):
             item_index=item_form.cleaned_data['item_enum'].value)
         new_inventory_slot.save()
         return redirect(reverse(inventory, args=[character.id]))
+
+
+class ShopSlotWizard(ItemSelectionWizard):
+    def done(self, form_list: Sequence[forms.Form], form_dict: Dict[str, forms.Form],
+             character_id: str, shop_id: str, **kwargs) -> HttpResponse:
+        character = get_object_or_404(Character, pk=character_id)
+        shop = get_object_or_404(Shop, pk=shop_id)
+
+        if self.request.user.is_superuser:
+            inventory_slot_form, item_form = self.get_forms(form_dict)
+            new_shop_slot = ShopSlot(
+                shop=shop,
+                slot=inventory_slot_form.cleaned_data['slot'],
+                quantity=inventory_slot_form.cleaned_data['quantity'],
+                item_index=item_form.cleaned_data['item_enum'].value)
+            new_shop_slot.save()
+        else:
+            messages.error(self.request, 'User not authorized to edit this shop.')
+        return redirect(reverse(shops, args=[character.id, shop.id]))
 
 
 def inventory(request: HttpRequest, character_id: str) -> HttpResponse:
