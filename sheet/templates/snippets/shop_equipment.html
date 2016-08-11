@@ -41,6 +41,9 @@
                 {% if item.is_two_handed %}
                     <br>(2-Hand)
                 {% endif %}
+                {% if item.slot == Slot.weapon %}
+                    <img src="{{ item.picture.value }}" style="width: 40px;height: 40px">
+                {% endif %}
             </td>
             {% for character in shop.party.character_set.all %}
                 {# a*b use {% widthratio a 1 b %} #}
@@ -54,7 +57,7 @@
             <td>{{ item.vul_set.res.all_as_str|default:"" }}</td>
             <td>{{ item.vul_set.imu.all_as_str|default:"" }}</td>
             <td>{{ item.effect }}</td>
-            {% if items.0.slot == Slot.weapon %}
+            {% if item.slot == Slot.weapon %}
                 <td>{{ item.min_range }} - {{ item.max_range }}</td>
                 <td>
                     {{ item.shape.name|capfirst }}
