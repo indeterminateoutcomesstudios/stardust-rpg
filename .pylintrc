@@ -1,0 +1,6 @@
+[MASTER]
+load-plugins=pylint_django
+
+[TYPECHECK]
+# AutoNumberEnum members are tuples
+ignored-classes = tuple
