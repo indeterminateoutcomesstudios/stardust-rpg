@@ -598,6 +598,12 @@ class Character(models.Model):
         return min(self.base_sel + self.int_sel_mod * self.intel, 100)
 
     @property
+    def sel_fraction(self) -> float:
+        """Returns a value that can be multiplied by a cost to get the SEL value of an item for
+        this character."""
+        return self.sel / 100
+
+    @property
     def vul_set(self) -> equipment.VulnerabilitySet:
         vul_set = equipment.VulnerabilitySet()
 

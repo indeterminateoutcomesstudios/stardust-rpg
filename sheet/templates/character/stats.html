@@ -260,6 +260,7 @@
             <th>RES</th>
             <th>IMU</th>
             <th>Effect</th>
+            <th>SEL Value ({{ character.sel }}%)</th>
         </tr>
         </thead>
         {% for wearable in character.wearables %}
@@ -287,6 +288,8 @@
                 <td>{{ wearable.vul_set.res.all_as_str|default:"" }}</td>
                 <td>{{ wearable.vul_set.imu.all_as_str|default:"" }}</td>
                 <td>{{ wearable.effect }}</td>
+                {# a*b use {% widthratio a 1 b %} #}
+                <td>{% widthratio character.sel_fraction 1 wearable.price %}</td>
             </tr>
         {% endfor %}
     </table>
