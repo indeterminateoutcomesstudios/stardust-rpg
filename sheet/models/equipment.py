@@ -37,23 +37,23 @@ class Slot(aenum.AutoNumberEnum):
 
 
 @for_django_template
-class Rarity(aenum.AutoNumberEnum):
-    common = ()
-    rare = ()
-    unique = ()
-    set = ()
+class Rarity(enum.Enum):
+    common = object()
+    rare = object()
+    unique = object()
+    set = object()
 
 
-class Style(aenum.AutoNumberEnum):
-    melee = ()
-    ranged = ()
-    magic = ()
+class Style(enum.Enum):
+    melee = object()
+    ranged = object()
+    magic = object()
 
 
-class Type(aenum.AutoNumberEnum):
-    light = ()
-    medium = ()
-    heavy = ()
+class Type(enum.Enum):
+    light = object()
+    medium = object()
+    heavy = object()
 
 
 @enum.unique
@@ -87,17 +87,17 @@ class Shape(enum.Enum):
     cone_3 = 'http://i.imgur.com/5qYh6je.png'
 
 
-class DamageType(aenum.AutoNumberEnum):
-    slashing = ()
-    piercing = ()
-    bludgeoning = ()
-    fire = ()
-    cold = ()
-    lightning = ()
-    acid = ()
-    poison = ()
-    force = ()
-    psychic = ()
+class DamageType(enum.Enum):
+    slashing = object()
+    piercing = object()
+    bludgeoning = object()
+    fire = object()
+    cold = object()
+    lightning = object()
+    acid = object()
+    poison = object()
+    force = object()
+    psychic = object()
 
     @property
     def cap_name(self) -> str:

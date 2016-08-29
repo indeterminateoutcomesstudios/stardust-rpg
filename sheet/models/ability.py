@@ -1,8 +1,6 @@
 import enum
 from typing import Tuple
 
-import aenum
-
 from . import macro
 from .equipment import DamageType, Shape
 
@@ -444,21 +442,21 @@ class AbilityPicture(enum.Enum):
                  'FFXIV_Windbite_Icon.png')
 
 
-class DurationUnit(aenum.AutoNumberEnum):
-    instant = ()
-    rnd = ()
-    min = ()
-    hour = ()
-    day = ()
-    forever = ()
+class DurationUnit(enum.Enum):
+    instant = object()
+    rnd = object()
+    min = object()
+    hour = object()
+    day = object()
+    forever = object()
 
 
-class Time(aenum.AutoNumberEnum):
-    free_a = ()
-    ab_a = ()
-    std_a = ()
-    full_a = ()
-    std_ab_a = ()
+class Time(enum.Enum):
+    free_a = object()
+    ab_a = object()
+    std_a = object()
+    full_a = object()
+    std_ab_a = object()
 
 
 class Ability(macro.Macroable):
