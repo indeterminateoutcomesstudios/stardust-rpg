@@ -2,7 +2,7 @@ from numbers import Real
 
 import aenum
 
-from .classes import magus, paladin, templar
+from .classes import magus, paladin, templar, spectre
 
 
 def round_up(num: Real) -> int:
@@ -149,6 +149,50 @@ class Abilities(aenum.AutoNumberEnum):
     time_lord_2 = ()
     time_lord_3 = ()
 
+    # Spectre
+    invisibility_1 = ()
+    invisibility_2 = ()
+    invisibility_3 = ()
+    blinding_ray_1 = ()
+    blinding_ray_2 = ()
+    blinding_ray_3 = ()
+    trap_1 = ()
+    trap_2 = ()
+    trap_3 = ()
+    darkness_1 = ()
+    darkness_2 = ()
+    darkness_3 = ()
+    spectre_arts_1 = ()
+    spectre_arts_2 = ()
+    spectre_arts_3 = ()
+    mass_invisibility_1 = ()
+    mass_invisibility_2 = ()
+    mass_invisibility_3 = ()
+    farsight_1 = ()
+    farsight_2 = ()
+    farsight_3 = ()
+    large_trap_1 = ()
+    large_trap_2 = ()
+    large_trap_3 = ()
+    sleep_powder_1 = ()
+    sleep_powder_2 = ()
+    sleep_powder_3 = ()
+    teamwork_1 = ()
+    teamwork_2 = ()
+    teamwork_3 = ()
+    colossal_invisibility_1 = ()
+    colossal_invisibility_2 = ()
+    colossal_invisibility_3 = ()
+    star_fire_1 = ()
+    star_fire_2 = ()
+    star_fire_3 = ()
+    dodge_1 = ()
+    dodge_2 = ()
+    dodge_3 = ()
+    phantom_1 = ()
+    phantom_2 = ()
+    phantom_3 = ()
+
 
 abilities = {
     # Paladin.
@@ -283,6 +327,50 @@ abilities = {
     Abilities.time_lord_1: templar.time_lord_1,
     Abilities.time_lord_2: templar.time_lord_2,
     Abilities.time_lord_3: templar.time_lord_3,
+
+    # Spectre
+    Abilities.invisibility_1: spectre.invisibility_1,
+    Abilities.invisibility_2: spectre.invisibility_2,
+    Abilities.invisibility_3: spectre.invisibility_3,
+    Abilities.blinding_ray_1: spectre.blinding_ray_1,
+    Abilities.blinding_ray_2: spectre.blinding_ray_2,
+    Abilities.blinding_ray_3: spectre.blinding_ray_3,
+    Abilities.trap_1: spectre.trap_1,
+    Abilities.trap_2: spectre.trap_2,
+    Abilities.trap_3: spectre.trap_3,
+    Abilities.darkness_1: spectre.darkness_1,
+    Abilities.darkness_2: spectre.darkness_2,
+    Abilities.darkness_3: spectre.darkness_3,
+    Abilities.spectre_arts_1: spectre.spectre_arts_1,
+    Abilities.spectre_arts_2: spectre.spectre_arts_2,
+    Abilities.spectre_arts_3: spectre.spectre_arts_3,
+    Abilities.mass_invisibility_1: spectre.mass_invisibility_1,
+    Abilities.mass_invisibility_2: spectre.mass_invisibility_2,
+    Abilities.mass_invisibility_3: spectre.mass_invisibility_3,
+    Abilities.farsight_1: spectre.farsight_1,
+    Abilities.farsight_2: spectre.farsight_2,
+    Abilities.farsight_3: spectre.farsight_3,
+    Abilities.large_trap_1: spectre.large_trap_1,
+    Abilities.large_trap_2: spectre.large_trap_2,
+    Abilities.large_trap_3: spectre.large_trap_3,
+    Abilities.sleep_powder_1: spectre.sleep_powder_1,
+    Abilities.sleep_powder_2: spectre.sleep_powder_2,
+    Abilities.sleep_powder_3: spectre.sleep_powder_3,
+    Abilities.teamwork_1: spectre.teamwork_1,
+    Abilities.teamwork_2: spectre.teamwork_2,
+    Abilities.teamwork_3: spectre.teamwork_3,
+    Abilities.colossal_invisibility_1: spectre.colossal_invisibility_1,
+    Abilities.colossal_invisibility_2: spectre.colossal_invisibility_2,
+    Abilities.colossal_invisibility_3: spectre.colossal_invisibility_3,
+    Abilities.star_fire_1: spectre.star_fire_1,
+    Abilities.star_fire_2: spectre.star_fire_2,
+    Abilities.star_fire_3: spectre.star_fire_3,
+    Abilities.dodge_1: spectre.dodge_1,
+    Abilities.dodge_2: spectre.dodge_2,
+    Abilities.dodge_3: spectre.dodge_3,
+    Abilities.phantom_1: spectre.phantom_1,
+    Abilities.phantom_2: spectre.phantom_2,
+    Abilities.phantom_3: spectre.phantom_3,
 }
 
 inverse_abilities = {ability: enum for enum, ability in abilities.items()}
