@@ -2,7 +2,7 @@ from numbers import Real
 
 import aenum
 
-from .classes import magus, paladin, templar, spectre
+from .classes import magus, paladin, spectre, templar
 
 
 def round_up(num: Real) -> int:
