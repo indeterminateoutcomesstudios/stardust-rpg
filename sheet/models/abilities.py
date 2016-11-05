@@ -2,7 +2,7 @@ from numbers import Real
 
 import aenum
 
-from .classes import magus, paladin, spectre, templar
+from .classes import magus, marksman, paladin, spectre, templar
 
 
 def round_up(num: Real) -> int:
@@ -193,6 +193,52 @@ class Abilities(aenum.AutoNumberEnum):
     phantom_2 = ()
     phantom_3 = ()
 
+    # Marksman
+    snipe_1 = ()
+    snipe_2 = ()
+    snipe_3 = ()
+    quick_draw_1 = ()
+    quick_draw_2 = ()
+    quick_draw_3 = ()
+    mortar_1 = ()
+    mortar_2 = ()
+    mortar_3 = ()
+    smoke_bomb_1 = ()
+    smoke_bomb_2 = ()
+    smoke_bomb_3 = ()
+    combat_enhancements_1 = ()
+    combat_enhancements_2 = ()
+    combat_enhancements_3 = ()
+    stealth_snipe_1 = ()
+    stealth_snipe_2 = ()
+    stealth_snipe_3 = ()
+    dual_wield_1 = ()
+    dual_wield_2 = ()
+    dual_wield_3 = ()
+    siege_tech_mark_two_1 = ()
+    siege_tech_mark_two_2 = ()
+    siege_tech_mark_two_3 = ()
+    slime_bomb_1 = ()
+    slime_bomb_2 = ()
+    slime_bomb_3 = ()
+    gatling_1 = ()
+    gatling_2 = ()
+    gatling_3 = ()
+    full_luna_jacket_1 = ()
+    full_luna_jacket_2 = ()
+    full_luna_jacket_3 = ()
+    gds_armor_1 = ()
+    gds_armor_2 = ()
+    gds_armor_3 = ()
+    gds_tech_1 = ()
+    gds_tech_2 = ()
+    gds_tech_3 = ()
+    gds_generator_1 = ()
+    gds_generator_2 = ()
+    gds_generator_3 = ()
+    gatling_mark_two_1 = ()
+    gatling_mark_two_2 = ()
+    gatling_mark_two_3 = ()
 
 abilities = {
     # Paladin.
@@ -328,7 +374,7 @@ abilities = {
     Abilities.time_lord_2: templar.time_lord_2,
     Abilities.time_lord_3: templar.time_lord_3,
 
-    # Spectre
+    # Spectre.
     Abilities.invisibility_1: spectre.invisibility_1,
     Abilities.invisibility_2: spectre.invisibility_2,
     Abilities.invisibility_3: spectre.invisibility_3,
@@ -371,6 +417,53 @@ abilities = {
     Abilities.phantom_1: spectre.phantom_1,
     Abilities.phantom_2: spectre.phantom_2,
     Abilities.phantom_3: spectre.phantom_3,
+
+    # Marksman.
+    Abilities.snipe_1: marksman.snipe_1,
+    Abilities.snipe_2: marksman.snipe_2,
+    Abilities.snipe_3: marksman.snipe_3,
+    Abilities.quick_draw_1: marksman.quick_draw_1,
+    Abilities.quick_draw_2: marksman.quick_draw_2,
+    Abilities.quick_draw_3: marksman.quick_draw_3,
+    Abilities.mortar_1: marksman.mortar_1,
+    Abilities.mortar_2: marksman.mortar_2,
+    Abilities.mortar_3: marksman.mortar_3,
+    Abilities.smoke_bomb_1: marksman.smoke_bomb_1,
+    Abilities.smoke_bomb_2: marksman.smoke_bomb_2,
+    Abilities.smoke_bomb_3: marksman.smoke_bomb_3,
+    Abilities.combat_enhancements_1: marksman.combat_enhancements_1,
+    Abilities.combat_enhancements_2: marksman.combat_enhancements_2,
+    Abilities.combat_enhancements_3: marksman.combat_enhancements_3,
+    Abilities.stealth_snipe_1: marksman.stealth_snipe_1,
+    Abilities.stealth_snipe_2: marksman.stealth_snipe_2,
+    Abilities.stealth_snipe_3: marksman.stealth_snipe_3,
+    Abilities.dual_wield_1: marksman.dual_wield_1,
+    Abilities.dual_wield_2: marksman.dual_wield_2,
+    Abilities.dual_wield_3: marksman.dual_wield_3,
+    Abilities.siege_tech_mark_two_1: marksman.siege_tech_mark_two_1,
+    Abilities.siege_tech_mark_two_2: marksman.siege_tech_mark_two_2,
+    Abilities.siege_tech_mark_two_3: marksman.siege_tech_mark_two_3,
+    Abilities.slime_bomb_1: marksman.slime_bomb_1,
+    Abilities.slime_bomb_2: marksman.slime_bomb_2,
+    Abilities.slime_bomb_3: marksman.slime_bomb_3,
+    Abilities.gatling_1: marksman.gatling_1,
+    Abilities.gatling_2: marksman.gatling_2,
+    Abilities.gatling_3: marksman.gatling_3,
+    Abilities.full_luna_jacket_1: marksman.full_luna_jacket_1,
+    Abilities.full_luna_jacket_2: marksman.full_luna_jacket_2,
+    Abilities.full_luna_jacket_3: marksman.full_luna_jacket_3,
+    Abilities.gds_armor_1: marksman.gds_armor_1,
+    Abilities.gds_armor_2: marksman.gds_armor_2,
+    Abilities.gds_armor_3: marksman.gds_armor_3,
+    Abilities.gds_tech_1: marksman.gds_tech_1,
+    Abilities.gds_tech_2: marksman.gds_tech_2,
+    Abilities.gds_tech_3: marksman.gds_tech_3,
+    Abilities.gds_generator_1: marksman.gds_generator_1,
+    Abilities.gds_generator_2: marksman.gds_generator_2,
+    Abilities.gds_generator_3: marksman.gds_generator_3,
+    Abilities.gatling_mark_two_1: marksman.gatling_mark_two_1,
+    Abilities.gatling_mark_two_2: marksman.gatling_mark_two_2,
+    Abilities.gatling_mark_two_3: marksman.gatling_mark_two_3,
 }
 
 inverse_abilities = {ability: enum for enum, ability in abilities.items()}
