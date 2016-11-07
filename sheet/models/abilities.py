@@ -2,7 +2,7 @@ from numbers import Real
 
 import aenum
 
-from .classes import magus, marksman, paladin, spectre, templar
+from .classes import magus, marksman, paladin, spectre, telepath, templar
 
 
 def round_up(num: Real) -> int:
@@ -240,6 +240,54 @@ class Abilities(aenum.AutoNumberEnum):
     gatling_mark_two_2 = ()
     gatling_mark_two_3 = ()
 
+    # Telepath.
+    jump_1 = ()
+    jump_2 = ()
+    jump_3 = ()
+    telesthesia_1 = ()
+    telesthesia_2 = ()
+    telesthesia_3 = ()
+    confuse_1 = ()
+    confuse_2 = ()
+    confuse_3 = ()
+    parry_1 = ()
+    parry_2 = ()
+    parry_3 = ()
+    synergize_1 = ()
+    synergize_2 = ()
+    synergize_3 = ()
+    hallucinate_1 = ()
+    hallucinate_2 = ()
+    hallucinate_3 = ()
+    telepathy_1 = ()
+    telepathy_2 = ()
+    telepathy_3 = ()
+    flashback_1 = ()
+    flashback_2 = ()
+    flashback_3 = ()
+    synchronize_1 = ()
+    synchronize_2 = ()
+    synchronize_3 = ()
+    shoulder_side_1 = ()
+    shoulder_side_2 = ()
+    shoulder_side_3 = ()
+    numb_1 = ()
+    numb_2 = ()
+    numb_3 = ()
+    dominate_1 = ()
+    dominate_2 = ()
+    dominate_3 = ()
+    mind_cloak_1 = ()
+    mind_cloak_2 = ()
+    mind_cloak_3 = ()
+    psyche_flare_1 = ()
+    psyche_flare_2 = ()
+    psyche_flare_3 = ()
+    mimic_1 = ()
+    mimic_2 = ()
+    mimic_3 = ()
+
+
 abilities = {
     # Paladin.
     Abilities.reflect_1: paladin.reflect_1,
@@ -464,6 +512,53 @@ abilities = {
     Abilities.gatling_mark_two_1: marksman.gatling_mark_two_1,
     Abilities.gatling_mark_two_2: marksman.gatling_mark_two_2,
     Abilities.gatling_mark_two_3: marksman.gatling_mark_two_3,
+
+    # Telepath.
+    Abilities.jump_1: telepath.jump_1,
+    Abilities.jump_2: telepath.jump_2,
+    Abilities.jump_3: telepath.jump_3,
+    Abilities.telesthesia_1: telepath.telesthesia_1,
+    Abilities.telesthesia_2: telepath.telesthesia_2,
+    Abilities.telesthesia_3: telepath.telesthesia_3,
+    Abilities.confuse_1: telepath.confuse_1,
+    Abilities.confuse_2: telepath.confuse_2,
+    Abilities.confuse_3: telepath.confuse_3,
+    Abilities.parry_1: telepath.parry_1,
+    Abilities.parry_2: telepath.parry_2,
+    Abilities.parry_3: telepath.parry_3,
+    Abilities.synergize_1: telepath.synergize_1,
+    Abilities.synergize_2: telepath.synergize_2,
+    Abilities.synergize_3: telepath.synergize_3,
+    Abilities.hallucinate_1: telepath.hallucinate_1,
+    Abilities.hallucinate_2: telepath.hallucinate_2,
+    Abilities.hallucinate_3: telepath.hallucinate_3,
+    Abilities.telepathy_1: telepath.telepathy_1,
+    Abilities.telepathy_2: telepath.telepathy_2,
+    Abilities.telepathy_3: telepath.telepathy_3,
+    Abilities.flashback_1: telepath.flashback_1,
+    Abilities.flashback_2: telepath.flashback_2,
+    Abilities.flashback_3: telepath.flashback_3,
+    Abilities.synchronize_1: telepath.synchronize_1,
+    Abilities.synchronize_2: telepath.synchronize_2,
+    Abilities.synchronize_3: telepath.synchronize_3,
+    Abilities.shoulder_side_1: telepath.shoulder_side_1,
+    Abilities.shoulder_side_2: telepath.shoulder_side_2,
+    Abilities.shoulder_side_3: telepath.shoulder_side_3,
+    Abilities.numb_1: telepath.numb_1,
+    Abilities.numb_2: telepath.numb_2,
+    Abilities.numb_3: telepath.numb_3,
+    Abilities.dominate_1: telepath.dominate_1,
+    Abilities.dominate_2: telepath.dominate_2,
+    Abilities.dominate_3: telepath.dominate_3,
+    Abilities.mind_cloak_1: telepath.mind_cloak_1,
+    Abilities.mind_cloak_2: telepath.mind_cloak_2,
+    Abilities.mind_cloak_3: telepath.mind_cloak_3,
+    Abilities.psyche_flare_1: telepath.psyche_flare_1,
+    Abilities.psyche_flare_2: telepath.psyche_flare_2,
+    Abilities.psyche_flare_3: telepath.psyche_flare_3,
+    Abilities.mimic_1: telepath.mimic_1,
+    Abilities.mimic_2: telepath.mimic_2,
+    Abilities.mimic_3: telepath.mimic_3,
 }
 
 inverse_abilities = {ability: enum for enum, ability in abilities.items()}
