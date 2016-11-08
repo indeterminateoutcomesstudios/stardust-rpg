@@ -269,7 +269,7 @@ teamwork_3 = Ability(
     max_range='3', shape=Shape.point,
     duration_unit=DurationUnit.instant,
     effect='+[[2+WIS]]PDAM on physical attacks, +2PRED',
-    prerequisites=(teamwork_1,),
+    prerequisites=(teamwork_2,),
 )
 
 # Tier 3.
