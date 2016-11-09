@@ -2,7 +2,7 @@ from numbers import Real
 
 import aenum
 
-from .classes import magus, marksman, paladin, spectre, telepath, templar
+from .classes import geomancer, magus, marksman, paladin, spectre, telepath, templar
 
 
 def round_up(num: Real) -> int:
@@ -287,6 +287,52 @@ class Abilities(aenum.AutoNumberEnum):
     mimic_2 = ()
     mimic_3 = ()
 
+    # Geomancer.
+    taunt_1 = ()
+    taunt_2 = ()
+    taunt_3 = ()
+    charge_1 = ()
+    charge_2 = ()
+    charge_3 = ()
+    heave_1 = ()
+    heave_2 = ()
+    heave_3 = ()
+    ensnare_1 = ()
+    ensnare_2 = ()
+    ensnare_3 = ()
+    lunacite_veins_1 = ()
+    lunacite_veins_2 = ()
+    lunacite_veins_3 = ()
+    tremor_stomp_1 = ()
+    tremor_stomp_2 = ()
+    tremor_stomp_3 = ()
+    rock_wall_1 = ()
+    rock_wall_2 = ()
+    rock_wall_3 = ()
+    emerald_armor_1 = ()
+    emerald_armor_2 = ()
+    emerald_armor_3 = ()
+    revivify_1 = ()
+    revivify_2 = ()
+    revivify_3 = ()
+    viridian_glow_1 = ()
+    viridian_glow_2 = ()
+    viridian_glow_3 = ()
+    rend_1 = ()
+    rend_2 = ()
+    rend_3 = ()
+    quake_1 = ()
+    quake_2 = ()
+    quake_3 = ()
+    rage_1 = ()
+    rage_2 = ()
+    rage_3 = ()
+    mass_revivify_1 = ()
+    mass_revivify_2 = ()
+    mass_revivify_3 = ()
+    petrify_1 = ()
+    petrify_2 = ()
+    petrify_3 = ()
 
 abilities = {
     # Paladin.
@@ -559,6 +605,53 @@ abilities = {
     Abilities.mimic_1: telepath.mimic_1,
     Abilities.mimic_2: telepath.mimic_2,
     Abilities.mimic_3: telepath.mimic_3,
+
+    # Geomancer.
+    Abilities.taunt_1: geomancer.taunt_1,
+    Abilities.taunt_2: geomancer.taunt_2,
+    Abilities.taunt_3: geomancer.taunt_3,
+    Abilities.charge_1: geomancer.charge_1,
+    Abilities.charge_2: geomancer.charge_2,
+    Abilities.charge_3: geomancer.charge_3,
+    Abilities.heave_1: geomancer.heave_1,
+    Abilities.heave_2: geomancer.heave_2,
+    Abilities.heave_3: geomancer.heave_3,
+    Abilities.ensnare_1: geomancer.ensnare_1,
+    Abilities.ensnare_2: geomancer.ensnare_2,
+    Abilities.ensnare_3: geomancer.ensnare_3,
+    Abilities.lunacite_veins_1: geomancer.lunacite_veins_1,
+    Abilities.lunacite_veins_2: geomancer.lunacite_veins_2,
+    Abilities.lunacite_veins_3: geomancer.lunacite_veins_3,
+    Abilities.tremor_stomp_1: geomancer.tremor_stomp_1,
+    Abilities.tremor_stomp_2: geomancer.tremor_stomp_2,
+    Abilities.tremor_stomp_3: geomancer.tremor_stomp_3,
+    Abilities.rock_wall_1: geomancer.rock_wall_1,
+    Abilities.rock_wall_2: geomancer.rock_wall_2,
+    Abilities.rock_wall_3: geomancer.rock_wall_3,
+    Abilities.emerald_armor_1: geomancer.emerald_armor_1,
+    Abilities.emerald_armor_2: geomancer.emerald_armor_2,
+    Abilities.emerald_armor_3: geomancer.emerald_armor_3,
+    Abilities.revivify_1: geomancer.revivify_1,
+    Abilities.revivify_2: geomancer.revivify_2,
+    Abilities.revivify_3: geomancer.revivify_3,
+    Abilities.viridian_glow_1: geomancer.viridian_glow_1,
+    Abilities.viridian_glow_2: geomancer.viridian_glow_2,
+    Abilities.viridian_glow_3: geomancer.viridian_glow_3,
+    Abilities.rend_1: geomancer.rend_1,
+    Abilities.rend_2: geomancer.rend_2,
+    Abilities.rend_3: geomancer.rend_3,
+    Abilities.quake_1: geomancer.quake_1,
+    Abilities.quake_2: geomancer.quake_2,
+    Abilities.quake_3: geomancer.quake_3,
+    Abilities.rage_1: geomancer.rage_1,
+    Abilities.rage_2: geomancer.rage_2,
+    Abilities.rage_3: geomancer.rage_3,
+    Abilities.mass_revivify_1: geomancer.mass_revivify_1,
+    Abilities.mass_revivify_2: geomancer.mass_revivify_2,
+    Abilities.mass_revivify_3: geomancer.mass_revivify_3,
+    Abilities.petrify_1: geomancer.petrify_1,
+    Abilities.petrify_2: geomancer.petrify_2,
+    Abilities.petrify_3: geomancer.petrify_3,
 }
 
 inverse_abilities = {ability: enum for enum, ability in abilities.items()}
