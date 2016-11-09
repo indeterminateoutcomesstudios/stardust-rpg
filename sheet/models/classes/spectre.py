@@ -123,7 +123,7 @@ spectre_arts_2 = Ability(
 )
 
 spectre_arts_3 = Ability(
-    name='Spectre Arts II', picture=AbilityPicture.aeolian_edge,
+    name='Spectre Arts III', picture=AbilityPicture.aeolian_edge,
     mp_cost=0, target_area='Self',
     effect='[Passive] Critical hits stagger for 1RND',
     prerequisites=(spectre_arts_2,),
