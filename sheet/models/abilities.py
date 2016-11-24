@@ -334,6 +334,7 @@ class Abilities(aenum.AutoNumberEnum):
     petrify_2 = ()
     petrify_3 = ()
 
+
 abilities = {
     # Paladin.
     Abilities.reflect_1: paladin.reflect_1,
