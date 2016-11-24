@@ -411,6 +411,38 @@ combos = (
     ),
     # Spectre Marksman
     Combo(
+        classes=(Spectre, Telepath), prerequisite_lvl=2,
+        name='Mirror I', picture=AbilityPicture.perfect_dodge,
+        mp_cost=7, time=Time.full_a, min_range='1', max_range='1', shape=Shape.multi_point,
+        duration='1+WIS', duration_unit=DurationUnit.min,
+        target_area='Casters',
+        effect='Casters appear to others as the same shape, size, and voice as two other small '
+               'or medium creatures that have been seen. Casters must remain within '
+               '[[5+WIS]]DIS or the ability ends. Cooldown of 1 minute. Physical or magical '
+               'attacks taken or received end the ability.'
+    ),
+    Combo(
+        classes=(Spectre, Telepath), prerequisite_lvl=5,
+        name='Mirror II', picture=AbilityPicture.perfect_dodge,
+        mp_cost=10, time=Time.full_a, min_range='1', max_range='1', shape=Shape.multi_point,
+        duration='5+WIS', duration_unit=DurationUnit.min,
+        target_area='Casters + 1 ally',
+        effect='Casters appear to others as the same shape, size, and voice as three other small '
+               'or medium creatures that have been seen. Casters must remain within '
+               '[[8+2*WIS]]DIS or the ability ends. Cooldown of 1 minute. Physical or magical '
+               'attacks taken or received end the ability.'
+    ),
+    Combo(
+        classes=(Spectre, Telepath), prerequisite_lvl=8,
+        name='Mirror III', picture=AbilityPicture.perfect_dodge,
+        mp_cost=18, time=Time.full_a, min_range='1', max_range='1', shape=Shape.multi_point,
+        duration='1+WIS', duration_unit=DurationUnit.hour,
+        target_area='Casters + 2 ally',
+        effect='Casters appear to others as the same shape, size, and voice as four other small, '
+               'medium, or large creatures that have been seen. Physical or magical '
+               'attacks taken or received end the ability.'
+    ),
+    Combo(
         classes=(Valkyrie, Telepath), prerequisite_lvl=2,
         name='Recall I', picture=AbilityPicture.aetherial_manipulation,
         mp_cost=14, time=Time.full_a, min_range='1', max_range='1', shape=Shape.multi_point,
