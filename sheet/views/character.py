@@ -478,6 +478,7 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                     character_id = api.get_character_id(login=roll20_login,
                                                         character_name=character.name)
                     attributes_to_sync_both = {
+                        'Name': character.name,
                         'LVL': character.lvl,
                         'SPEED': character.speed,
                         'PDEF': character.pdef,
