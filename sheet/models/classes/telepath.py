@@ -163,7 +163,7 @@ hallucinate_3 = Ability(
     name='Hallucinate III', picture=AbilityPicture.rouse,
     mp_cost=6, attacks=1,
     targets_mdef=True, max_range='4+WIS',
-    shape=Shape.point, target_area='Enemies in [[WIS]]RAD',
+    shape=Shape.circle, target_area='Enemies in [[WIS]]RAD',
     duration='3+WIS', duration_unit=DurationUnit.rnd,
     effect='Causes target to see, hear, and feel object of caster\'s choice. Can cause Fear '
            'status effect',
