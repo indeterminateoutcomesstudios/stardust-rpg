@@ -29,7 +29,7 @@ blinding_ray_1 = Ability(
     name='Blinding Ray I', picture=AbilityPicture.demolish,
     mp_cost=2,
     targets_mdef=True, max_range='1',
-    target_area='4DIS Line',
+    shape=Shape.line, target_area='4DIS Line',
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Stream of light causes temporary blindness, staggering creatures',
 )
@@ -38,7 +38,7 @@ blinding_ray_2 = Ability(
     name='Blinding Ray II', picture=AbilityPicture.demolish,
     mp_cost=2,
     targets_mdef=True, max_range='1',
-    target_area='[[4+WIS]]DIS Line',
+    shape=Shape.line, target_area='[[4+WIS]]DIS Line',
     duration='2', duration_unit=DurationUnit.rnd,
     effect='Stream of light causes temporary blindness, staggering creatures',
     prerequisites=(blinding_ray_1,),
