@@ -79,7 +79,7 @@ trap_3 = Ability(
     targets_mdef=True, max_range='2',
     shape=Shape.square, target_area='[[WIS*WIS]]DIS square, 1 medium creature',
     duration='5+WIS', duration_unit=DurationUnit.rnd,
-    effect='Deploys up to 3 traps: Snare: Stuns one creature. Trap lasts 2+WIS hours',
+    effect='Deploys up to 3 traps: Snare: Stuns one creature. Trap lasts [[2+WIS]] hours',
     prerequisites=(trap_2,),
 )
 
