@@ -28,7 +28,7 @@ invisibility_3 = Ability(
 blinding_ray_1 = Ability(
     name='Blinding Ray I', picture=AbilityPicture.demolish,
     mp_cost=2,
-    targets_mdef=True, max_range='1',
+    attacks=1, targets_mdef=True, max_range='1',
     shape=Shape.line, target_area='4DIS Line',
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Stream of light causes temporary blindness, staggering creatures',
@@ -37,7 +37,7 @@ blinding_ray_1 = Ability(
 blinding_ray_2 = Ability(
     name='Blinding Ray II', picture=AbilityPicture.demolish,
     mp_cost=2,
-    targets_mdef=True, max_range='1',
+    attacks=1, targets_mdef=True, max_range='1',
     shape=Shape.line, target_area='[[4+WIS]]DIS Line',
     duration='2', duration_unit=DurationUnit.rnd,
     effect='Stream of light causes temporary blindness, staggering creatures',
@@ -47,7 +47,7 @@ blinding_ray_2 = Ability(
 blinding_ray_3 = Ability(
     name='Blinding Ray III', picture=AbilityPicture.demolish,
     mp_cost=3,
-    targets_mdef=True, max_range='1',
+    attacks=1, targets_mdef=True, max_range='1',
     shape=Shape.double_line, target_area='2 Wide x [[5+WIS]] Long Line',
     duration='2', duration_unit=DurationUnit.rnd,
     effect='Stream of light causes temporary blindness, staggering creatures',
@@ -220,7 +220,7 @@ large_trap_3 = Ability(
 
 sleep_powder_1 = Ability(
     name='Sleep Powder I', picture=AbilityPicture.sleep,
-    mp_cost=2, targets_mdef=True, max_range='2',
+    mp_cost=2, attacks=1, targets_mdef=True, max_range='2',
     shape=Shape.circle, target_area='1RAD',
     duration='WIS', duration_unit=DurationUnit.rnd,
     effect='Causes enemies to briefly fall into sleep',
@@ -229,7 +229,7 @@ sleep_powder_1 = Ability(
 
 sleep_powder_2 = Ability(
     name='Sleep Powder II', picture=AbilityPicture.sleep,
-    mp_cost=3, targets_mdef=True, max_range='2+WIS',
+    mp_cost=3, attacks=1, targets_mdef=True, max_range='2+WIS',
     shape=Shape.circle, target_area='1RAD',
     duration='3+WIS', duration_unit=DurationUnit.rnd,
     effect='Causes enemies to briefly fall into sleep',
@@ -238,7 +238,7 @@ sleep_powder_2 = Ability(
 
 sleep_powder_3 = Ability(
     name='Sleep Powder III', picture=AbilityPicture.sleep,
-    mp_cost=4, targets_mdef=True, max_range='3+WIS',
+    mp_cost=4, attacks=1, targets_mdef=True, max_range='3+WIS',
     shape=Shape.circle, target_area='1RAD',
     duration='5+WIS', duration_unit=DurationUnit.rnd,
     effect='Causes enemies to briefly fall into sleep',

@@ -193,7 +193,8 @@ vortex_3 = Ability(
 provoke_1 = Ability(
     name='Provoke I', picture=AbilityPicture.provoke,
     mp_cost=2, target_area='2 enemies in [[10+WIS]]DIS',
-    targets_mdef=True, shape=Shape.multi_point, duration='1+WIS', duration_unit=DurationUnit.rnd,
+    attacks=1, targets_mdef=True,
+    shape=Shape.multi_point, duration='1+WIS', duration_unit=DurationUnit.rnd,
     effect='Provokes enemies to attack caster. Can end early.',
     prerequisites=(protect_2, earth_breaker_2)
 )
@@ -201,7 +202,8 @@ provoke_1 = Ability(
 provoke_2 = Ability(
     name='Provoke II', picture=AbilityPicture.provoke,
     mp_cost=3, target_area='3 enemies in [[10+WIS]]DIS',
-    targets_mdef=True, shape=Shape.multi_point, duration='1+WIS', duration_unit=DurationUnit.rnd,
+    attacks=1, targets_mdef=True,
+    shape=Shape.multi_point, duration='1+WIS', duration_unit=DurationUnit.rnd,
     effect='Provokes enemies to attack caster and allures. Can end early.',
     prerequisites=(provoke_1,)
 )
@@ -209,7 +211,8 @@ provoke_2 = Ability(
 provoke_3 = Ability(
     name='Provoke III', picture=AbilityPicture.provoke,
     mp_cost=4, target_area='All enemies in [[10+WIS]]DIS',
-    targets_mdef=True, shape=Shape.multi_point, duration='1+WIS', duration_unit=DurationUnit.rnd,
+    attacks=1, targets_mdef=True,
+    shape=Shape.multi_point, duration='1+WIS', duration_unit=DurationUnit.rnd,
     effect='Provokes enemies to attack caster and allures. Can end early.',
     prerequisites=(provoke_2,)
 )

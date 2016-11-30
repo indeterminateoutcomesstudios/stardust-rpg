@@ -121,7 +121,7 @@ combos = (
     Combo(
         classes=(Paladin, Valkyrie), prerequisite_lvl=2,
         name='Rift I', picture=AbilityPicture.miasma,
-        mp_cost=8, targets_mdef=True, mdam='1d8+WIS', damage_type=DamageType.force,
+        mp_cost=8, attacks=1, targets_mdef=True, mdam='1d8+WIS', damage_type=DamageType.force,
         time=Time.full_a, min_range='1', max_range='8', shape=Shape.circle,
         target_area='[[4+WIS]]RAD', duration='4', duration_unit=DurationUnit.rnd,
         effect='Rips a hole in space.  Pulls creatures within area 3DIS towards it.  Deals '
@@ -131,7 +131,7 @@ combos = (
     Combo(
         classes=(Paladin, Valkyrie), prerequisite_lvl=2,
         name='Rift II', picture=AbilityPicture.miasma,
-        mp_cost=12, targets_mdef=True, mdam='2d10+2*WIS', damage_type=DamageType.force,
+        mp_cost=12, attacks=1, targets_mdef=True, mdam='2d10+2*WIS', damage_type=DamageType.force,
         time=Time.full_a, min_range='1', max_range='10+WIS', shape=Shape.circle,
         target_area='[[4+WIS]]RAD', duration='4+WIS', duration_unit=DurationUnit.rnd,
         effect='Rips a hole in space.  Pulls creatures within area 3DIS towards it.  Deals '
@@ -141,7 +141,7 @@ combos = (
     Combo(
         classes=(Paladin, Valkyrie), prerequisite_lvl=2,
         name='Rift III', picture=AbilityPicture.miasma,
-        mp_cost=16, targets_mdef=True, mdam='4d10+4*WIS', damage_type=DamageType.force,
+        mp_cost=16, attacks=1, targets_mdef=True, mdam='4d10+4*WIS', damage_type=DamageType.force,
         time=Time.ab_a, min_range='1', max_range='10+WIS', shape=Shape.circle,
         target_area='[[12+WIS]]RAD', duration='6+WIS', duration_unit=DurationUnit.rnd,
         effect='Rips a hole in space.  Pulls creatures within area [[3+WIS]]DIS towards it. '

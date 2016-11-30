@@ -459,6 +459,10 @@ class Time(enum.Enum):
     std_ab_a = object()
 
 
+class InvalidAbilityError(ValueError):
+    pass
+
+
 class Ability(macro.Macroable):
     mp_mac_modifier = 0.25
 
@@ -469,6 +473,20 @@ class Ability(macro.Macroable):
                  attacks: int = 0, pdam: str = None, mdam: str = None,
                  targets_mdef: bool = False, time: Time = Time.ab_a, min_range: str = '0',
                  max_range: str = '0', shape: Shape = Shape.point) -> None:
+        """
+        Raises:
+            InvalidAbilityError: If incorrect combination of input parameters are used.
+        """
+
+        if targets_mdef and attacks < 1:
+            raise InvalidAbilityError('If an ability targets MDEF, it must have at least 1 '
+                                      'attack.')
+
+        if ((duration_unit is DurationUnit.instant or duration_unit is DurationUnit.forever) and
+           duration is not None):
+            raise InvalidAbilityError('If an abilities unit is instant or forever, it cannot '
+                                      'have a duration numeric value.')
+
         self.name = name
         self.picture = picture
         self.damage_type = damage_type
