@@ -1,6 +1,6 @@
 aenum>=1.4.5
 beautifulsoup4>=4.5.1
-django>=1.10.3
+django>=1.10.4
 django-enumfields>=0.8
 django-formtools>=1.0.0
 django-widget-tweaks>=1.4.1
