@@ -181,7 +181,7 @@ heads = {
     Heads.adept_hood: Head(name=Heads.adept_hood.name, price=125, reg=1),
     Heads.adamantine_circlet: Head(name=Heads.adamantine_circlet.name, price=125, mdef=1),
     Heads.hero_mask: Head(name=Heads.hero_mask.name, price=350, min_int=1,
-                          effect='+5STE when disguising, +5 SPE with common'),
+                          effect='+5STE when disguising, +5SPE with common'),
     Heads.mako_helm: Head(name=Heads.mako_helm.name, price=450, min_int=1, bmac=1),
     Heads.techno_eyepiece: Head(name=Heads.techno_eyepiece.name, price=450, min_int=1,
                                 effect='See in low light, Dwarf only'),
