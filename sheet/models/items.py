@@ -39,6 +39,7 @@ def get_item(slot: Slot, item_index: int) -> Item:
 
 
 class Utilities(aenum.AutoNumberEnum):
+    # TODO: Remove "empty" as there is no longer a Utility slot.
     empty = ()
     candle = ()
     rope_kit = ()
