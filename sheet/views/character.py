@@ -345,6 +345,8 @@ def level_up(request: HttpRequest, character_id: str) -> HttpResponse:
             match = re.match(r'^delete\s(?P<levelup_id>[0-9]+)$', value)
             if match is not None:
                 LevelUp.objects.get(pk=match.group('levelup_id')).delete()
+                # If a delete button was pushed, clear out the new level form.
+                level_up_form = LevelUpForm()
 
         # Otherwise, user is creating a new LevelUp.
         if level_up_form.is_valid():
