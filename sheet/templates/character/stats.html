@@ -27,7 +27,7 @@
             <td>{{ character.party }}</td>
         </tr>
         <tr>
-            <td>LVL</td>
+            <td title="Level">LVL</td>
             <td>{{ character.lvl }}</td>
         </tr>
         <tr>
@@ -43,27 +43,27 @@
         </tr>
         </thead>
         <tr>
-            <td>STR</td>
+            <td title="Strength">STR</td>
             <td>{{ character.stren }}</td>
         </tr>
         <tr>
-            <td>DEX</td>
+            <td title="Dexterity">DEX</td>
             <td>{{ character.dex }}</td>
         </tr>
         <tr>
-            <td>CON</td>
+            <td title="Constitution">CON</td>
             <td>{{ character.con }}</td>
         </tr>
         <tr>
-            <td>INT</td>
+            <td title="Intelligence">INT</td>
             <td>{{ character.intel }}</td>
         </tr>
         <tr>
-            <td>WIS</td>
+            <td title="Wisdom">WIS</td>
             <td>{{ character.wis }}</td>
         </tr>
         <tr>
-            <td>CHA</td>
+            <td title="Charisma">CHA</td>
             <td>{{ character.cha }}</td>
         </tr>
     </table>
@@ -75,28 +75,28 @@
         </tr>
         </thead>
         <tr>
-            <td title="{{ character.ath_formula }}">ATH</td>
-            <td>{{ character.ath }}</td>
+            <td title="Athletics">ATH</td>
+            <td title="{{ character.ath_formula }}">{{ character.ath }}</td>
         </tr>
         <tr>
-            <td title="{{ character.ste_formula }}">STE</td>
-            <td>{{ character.ste }}</td>
+            <td title="Stealth">STE</td>
+            <td title="{{ character.ste_formula }}">{{ character.ste }}</td>
         </tr>
         <tr>
-            <td title="{{ character.for_formula }}">FOR</td>
-            <td>{{ character.fort }}</td>
+            <td title="Fortitude">FOR</td>
+            <td title="{{ character.for_formula }}">{{ character.fort }}</td>
         </tr>
         <tr>
-            <td title="{{ character.apt_formula }}">APT</td>
-            <td>{{ character.apt }}</td>
+            <td title="Aptitude">APT</td>
+            <td title="{{ character.apt_formula }}">{{ character.apt }}</td>
         </tr>
         <tr>
-            <td title="{{ character.per_formula }}">PER</td>
-            <td>{{ character.per }}</td>
+            <td title="Perception">PER</td>
+            <td title="{{ character.per_formula }}">{{ character.per }}</td>
         </tr>
         <tr>
-            <td title="{{ character.spe_formula }}">SPE</td>
-            <td>{{ character.spe }}</td>
+            <td title="Speech">SPE</td>
+            <td title="{{ character.spe_formula }}">{{ character.spe }}</td>
         </tr>
     </table>
     <table style="display: inline-block">
@@ -107,68 +107,68 @@
         </tr>
         </thead>
         <tr>
-            <td title="{{ character.ap_formula }}">AP</td>
-            <td>{{ character.ap }}</td>
+            <td title="Ability Points">AP</td>
+            <td title="{{ character.ap_formula }}">{{ character.ap }}</td>
         </tr>
         <tr>
-            <td title="{{ character.hp_formula }}">HP</td>
-            <td>{{ character.hp }}</td>
+            <td title="Hit Points">HP</td>
+            <td title="{{ character.hp_formula }}">{{ character.hp }}</td>
         </tr>
         <tr>
-            <td title="{{ character.mp_formula }}">MP</td>
-            <td>{{ character.mp }}</td>
+            <td title="Magic Points">MP</td>
+            <td title="{{ character.mp_formula }}">{{ character.mp }}</td>
         </tr>
         <tr>
-            <td title="{{ character.sp_formula }}">SP</td>
-            <td>{{ character.sp }}</td>
+            <td title="Skill Points">SP</td>
+            <td title="{{ character.sp_formula }}">{{ character.sp }}</td>
         </tr>
         <tr>
-            <td title="{{ character.pdef_formula }}">PDEF</td>
-            <td>{{ character.pdef }}</td>
+            <td title="Physical Defense">PDEF</td>
+            <td title="{{ character.pdef_formula }}">{{ character.pdef }}</td>
         </tr>
         <tr>
-            <td title="{{ character.mdef_formula }}">MDEF</td>
-            <td>{{ character.mdef }}</td>
+            <td title="Magic Defense">MDEF</td>
+            <td title="{{ character.mdef_formula }}">{{ character.mdef }}</td>
         </tr>
         <tr>
-            <td title="{{ character.pred_formula }}">PRED</td>
-            <td>{{ character.pred }}</td>
+            <td title="Physical Reduction">PRED</td>
+            <td title="{{ character.pred_formula }}">{{ character.pred }}</td>
         </tr>
         <tr>
-            <td title="{{ character.mred_formula }}">MRED</td>
-            <td>{{ character.mred }}</td>
+            <td title="Magic Reduction">MRED</td>
+            <td title="{{ character.mred_formula }}">{{ character.mred }}</td>
         </tr>
         <tr>
-            <td title="{{ character.reg_formula }}">REG</td>
-            <td>{{ character.reg }}</td>
+            <td title="Magic Regeneration">REG</td>
+            <td title="{{ character.reg_formula }}">{{ character.reg }}</td>
         </tr>
         <tr>
-            <td title="{{ character.rd_formula }}">RD</td>
-            <td>{{ character.rd }}</td>
+            <td title="Regeneration Dice">RD</td>
+            <td title="{{ character.rd_formula }}">{{ character.rd }}</td>
         </tr>
         <tr>
-            <td title="{{ character.speed_formula }}">SPEED</td>
-            <td>{{ character.speed }}</td>
+            <td title="Maximum Speed">SPEED</td>
+            <td title="{{ character.speed_formula }}">{{ character.speed }}</td>
         </tr>
         <tr>
-            <td title="{{ character.vis_formula }}">VIS</td>
-            <td>{{ character.vis }}</td>
+            <td title="Vision">VIS</td>
+            <td title="{{ character.vis_formula }}">{{ character.vis }}</td>
         </tr>
         <tr>
-            <td title="{{ character.bpac_formula }}">BPAC</td>
-            <td>{{ character.bpac }}</td>
+            <td title="Base Physical Accuracy">BPAC</td>
+            <td title="{{ character.bpac_formula }}">{{ character.bpac }}</td>
         </tr>
         <tr>
-            <td title="{{ character.bmac_formula }}">BMAC</td>
-            <td>{{ character.bmac }}</td>
+            <td title="Base Magical Accuracy">BMAC</td>
+            <td title="{{ character.bmac_formula }}">{{ character.bmac }}</td>
         </tr>
         <tr>
-            <td title="{{ character.buy_formula }}">BUY</td>
-            <td>{{ character.buy }}%</td>
+            <td title="Buying Discount">BUY</td>
+            <td title="{{ character.buy_formula }}">{{ character.buy }}%</td>
         </tr>
         <tr>
-            <td title="{{ character.sel_formula }}">SEL</td>
-            <td>{{ character.sel }}%</td>
+            <td title="Selling Value">SEL</td>
+            <td title="{{ character.sel_formula }}">{{ character.sel }}%</td>
         </tr>
     </table>
     <table style="display: inline-block">
@@ -179,19 +179,23 @@
         </tr>
         </thead>
         <tr>
-            <td>VUL</td>
+            <td title="Vulnerability">VUL</td>
             <td>{{ character.vul_set.vul.all_as_str|default:"" }}</td>
         </tr>
         <tr>
-            <td>RES</td>
+            <td title="Resistance">RES</td>
             <td>{{ character.vul_set.res.all_as_str|default:"" }}</td>
         </tr>
         <tr>
-            <td>IMU</td>
+            <td title="Immunity">IMU</td>
             <td>{{ character.vul_set.imu.all_as_str|default:"" }}</td>
         </tr>
     </table>
-    <label><i>For formulas on how skills or stats are calculated, hover over the name.</i></label>
+    <label>
+        <i>For acronym meaning, hover over the name.
+            For formulas on how skills or stats are calculated, hover over the value.
+        </i>
+    </label>
     <table>
         <thead>
         <tr id="title">
@@ -204,12 +208,12 @@
             <th>Range</th>
             <th>Shape</th>
             <th>Attacks</th>
-            <th>PAC</th>
-            <th>PDAM</th>
-            <th>MDAM</th>
+            <th title="Physical Accuracy">PAC</th>
+            <th title="Physical Damage">PDAM</th>
+            <th title="Magic Damage">MDAM</th>
             <th>Damage Type</th>
-            <th>CRAN</th>
-            <th>CDAM</th>
+            <th title="Critical Range">CRAN</th>
+            <th title="Critical Damage">CDAM</th>
             <th>Effect</th>
         </tr>
         </thead>
