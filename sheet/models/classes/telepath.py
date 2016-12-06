@@ -315,7 +315,7 @@ dominate_1 = Ability(
     shape=Shape.point, target_area='One creature',
     duration_unit=DurationUnit.instant,
     effect='Control enemy\'s next MovA',
-    prerequisites=(hallucinate_3, telepathy_3, telesthesia_1,),
+    prerequisites=(hallucinate_3, telepathy_3,),
 )
 
 dominate_2 = Ability(
