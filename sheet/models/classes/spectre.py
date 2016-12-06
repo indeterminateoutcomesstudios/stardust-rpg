@@ -190,30 +190,30 @@ farsight_3 = Ability(
 large_trap_1 = Ability(
     name='Large Trap I', picture=AbilityPicture.assassinate,
     mp_cost=3, time=Time.std_ab_a, attacks=1, mdam='2d8', damage_type=DamageType.piercing,
-    targets_mdef=True, max_range='2',
+    targets_mdef=True,
     shape=Shape.square, target_area='[[WIS*WIS]]DIS square, 1 large creature',
     duration='5', duration_unit=DurationUnit.rnd,
-    effect='Deploys 1 maximum trap: Alarm: Sounds high pitch wale.  Trap lasts 1 hour.',
+    effect='Alarm: Sounds high pitch wale.',
     prerequisites=(trap_2, darkness_3,),
 )
 
 large_trap_2 = Ability(
     name='Large Trap II', picture=AbilityPicture.assassinate,
-    mp_cost=9, time=Time.std_ab_a, attacks=1, mdam='2d12+WIS', damage_type=DamageType.piercing,
-    targets_mdef=True, max_range='2',
+    mp_cost=6, time=Time.std_ab_a, attacks=1, mdam='2d12+WIS', damage_type=DamageType.piercing,
+    targets_mdef=True,
     shape=Shape.square, target_area='[[WIS*WIS]]DIS square, 1 large creature',
     duration='5', duration_unit=DurationUnit.rnd,
-    effect='Deploys up to 2 traps: Snare: Immobilizes one creature. Trap lasts 2 hours.',
+    effect='Snare: Immobilizes one creature.',
     prerequisites=(large_trap_1,),
 )
 
 large_trap_3 = Ability(
     name='Large Trap III', picture=AbilityPicture.assassinate,
-    mp_cost=15, time=Time.std_ab_a, attacks=1, mdam='2d20+2*WIS', damage_type=DamageType.piercing,
-    targets_mdef=True, max_range='2',
+    mp_cost=9, time=Time.std_ab_a, attacks=1, mdam='2d20+2*WIS', damage_type=DamageType.piercing,
+    targets_mdef=True,
     shape=Shape.square, target_area='[[WIS*WIS]]DIS square, 1 large creature',
     duration='5', duration_unit=DurationUnit.rnd,
-    effect='Deploys up to 3 traps: Snare: Stuns one creature. Trap lasts 2+WIS hours.',
+    effect='Snare: Stuns one creature.',
     prerequisites=(large_trap_2,),
 )
 
