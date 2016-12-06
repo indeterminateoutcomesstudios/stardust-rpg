@@ -163,28 +163,27 @@ mass_invisibility_3 = Ability(
 
 farsight_1 = Ability(
     name='Farsight I', picture=AbilityPicture.invigorate,
-    mp_cost=2, target_area='Material', time=Time.free_a,
-    max_range='1', shape=Shape.line,
-    duration_unit=DurationUnit.instant,
-    effect='Caster can see through material.',
+    mp_cost=2, target_area='Self', time=Time.free_a,
+    duration='1', duration_unit=DurationUnit.rnd,
+    effect='Caster can see through 1DIS of material. +1VIS',
     prerequisites=(invisibility_2, blinding_ray_3,),
 )
 
 farsight_2 = Ability(
     name='Farsight II', picture=AbilityPicture.invigorate,
-    mp_cost=3, target_area='Material', time=Time.free_a,
-    max_range='1+WIS', shape=Shape.line,
-    duration_unit=DurationUnit.instant,
-    effect='Caster can see through material.',
+    mp_cost=3, target_area='Self', time=Time.free_a,
+    max_range='1+WIS',
+    duration='1', duration_unit=DurationUnit.rnd,
+    effect='Caster can see through [[1+WIS]]DIS material. +[[1+WIS]]VIS',
     prerequisites=(farsight_1,),
 )
 
 farsight_3 = Ability(
     name='Farsight III', picture=AbilityPicture.invigorate,
-    mp_cost=3, target_area='Material', time=Time.free_a,
-    max_range='3+WIS', shape=Shape.line,
-    duration_unit=DurationUnit.instant,
-    effect='Caster can see through material.',
+    mp_cost=3, target_area='Self', time=Time.free_a,
+    max_range='3+WIS',
+    duration='1', duration_unit=DurationUnit.rnd,
+    effect='Caster can see through [[3+WIS]]DIS material. +[[3+WIS]]VIS',
     prerequisites=(farsight_2,),
 )
 
