@@ -258,7 +258,7 @@ shoulder_side_1 = Ability(
     mp_cost=0,
     shape=Shape.multi_point, target_area='One ally',
     duration='1', duration_unit=DurationUnit.rnd,
-    effect='Passive: +2PDEF to adjacent ally',
+    effect='Passive: +1PRED to adjacent ally',
     prerequisites=(parry_3, synergize_2,),
 )
 
@@ -267,7 +267,7 @@ shoulder_side_2 = Ability(
     mp_cost=0,
     shape=Shape.multi_point, target_area='Self + One ally',
     duration='1', duration_unit=DurationUnit.rnd,
-    effect='Passive: +2PDEF to self and adjacent ally',
+    effect='Passive: +1PRED to self and adjacent ally',
     prerequisites=(shoulder_side_1,),
 )
 
