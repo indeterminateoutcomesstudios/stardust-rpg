@@ -3,10 +3,44 @@
 {% block title %}Skill Points - {{ character.name }}{% endblock %}
 
 {% block content %}
-    <label>Available SP: {{ character.available_sp }}</label>
-    <br>
-    <label title="{{ character.max_sp_per_skill_formula }}">
-        <i>Note: Max Assigned SP Per Skill: {{ character.max_sp_per_skill }}</i>
-    </label>
+    <div align="center">
+        <table>
+            <thead>
+            <tr id="title">
+                <th>Skill</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tr>
+                <td title="Athletics">ATH</td>
+                <td title="{{ character.ath_formula }}">{{ character.ath }}</td>
+            </tr>
+            <tr>
+                <td title="Stealth">STE</td>
+                <td title="{{ character.ste_formula }}">{{ character.ste }}</td>
+            </tr>
+            <tr>
+                <td title="Fortitude">FOR</td>
+                <td title="{{ character.for_formula }}">{{ character.fort }}</td>
+            </tr>
+            <tr>
+                <td title="Aptitude">APT</td>
+                <td title="{{ character.apt_formula }}">{{ character.apt }}</td>
+            </tr>
+            <tr>
+                <td title="Perception">PER</td>
+                <td title="{{ character.per_formula }}">{{ character.per }}</td>
+            </tr>
+            <tr>
+                <td title="Speech">SPE</td>
+                <td title="{{ character.spe_formula }}">{{ character.spe }}</td>
+            </tr>
+        </table>
+        <label>Available SP: {{ character.available_sp }}</label>
+        <br>
+        <label title="{{ character.max_sp_per_skill_formula }}">
+            <i>Note: Max Assigned SP Per Skill: {{ character.max_sp_per_skill }}</i>
+        </label>
+    </div>
     {% include "snippets/bootstrap_form.html" with form=skill_points_form button_name="Assign SP" %}
 {% endblock %}
