@@ -52,10 +52,10 @@ def shops(request: HttpRequest, character_id: str, shop_id: str) -> HttpResponse
     character = get_object_or_404(Character, pk=character_id)
     shop = get_object_or_404(Shop, pk=shop_id)
     if not shop.visible:
-        messages.error(request, '{} shop is not visible'.format(shop.name))
+        messages.error(request, f'{shop.name} shop is not visible')
         return redirect(reverse(party, args=[character.id]))
     if shop.party != character.party:
-        messages.error(request, 'Shop is not available for party {}.'.format(shop.party.name))
+        messages.error(request, f'Shop is not available for party {shop.party.name}.')
         return redirect(reverse(party, args=[character.id]))
     if request.method == 'POST' and request.user.is_superuser:
         # Check if a delete input button was pressed to remove an ShopSlot.
@@ -93,10 +93,8 @@ def unlock_abilities(request: HttpRequest, character_id: str) -> HttpResponse:
                             for owned_ability in character.unlocked_abilities:
                                 if ability in owned_ability.prerequisites:
                                     messages.error(request,
-                                                   'Cannot lock ability {} because it is a '
-                                                   'prerequisite for {}.'.format(
-                                                       ability.name,
-                                                       owned_ability.name))
+                                                   f'Cannot lock ability {ability.name} because it is a prerequisite '
+                                                   f'for {owned_ability.name}.')
                                     lock_ability = False
                             if lock_ability:
                                 unlocked_ability.delete()
@@ -206,9 +204,8 @@ def equip(request: HttpRequest, character_id: str) -> HttpResponse:
                                            'other hand.')
             elif not character.can_use_weapon:
                 equip_form.add_error('weapon_enum',
-                                     error='Class {cls} cannot use {style} {type} weapons'.format(
-                                        cls=character.cls.name, style=character.weapon.style.name,
-                                        type=character.weapon.type.name))
+                                     error=f'Class {character.cls.name} cannot use {character.weapon.style.name} '
+                                           f'{character.weapon.type.name} weapons')
             else:
                 character.save()
                 return redirect(reverse(stats, args=[character.id]))
@@ -355,23 +352,19 @@ def level_up(request: HttpRequest, character_id: str) -> HttpResponse:
             sd_roll = level_up_form.cleaned_data['sd_roll']
             if hd_roll > character.cls.hd:
                 level_up_form.add_error('hd_roll',
-                                        error='HD roll higher than HD: {hd_roll}>{hd}'.format(
-                                            hd_roll=hd_roll, hd=character.cls.hd))
+                                        error=f'HD roll higher than HD: {hd_roll}>{character.cls.hd}')
             elif md_roll > character.cls.md:
                 level_up_form.add_error('md_roll',
-                                        error='MD roll higher than MD: {md_roll}>{md}'.format(
-                                            md_roll=md_roll, md=character.cls.md))
+                                        error=f'MD roll higher than MD: {md_roll}>{character.cls.md}')
             elif sd_roll > character.cls.sd:
                 level_up_form.add_error('sd_roll',
-                                        error='SD roll higher than SD: {sd_roll}>{sd}'.format(
-                                            sd_roll=sd_roll, sd=character.cls.sd))
+                                        error=f'SD roll higher than SD: {sd_roll}>{character.cls.sd}')
             elif (character.lvl == 0 and
                   (hd_roll != character.cls.hd or
                    md_roll != character.cls.md or
                    sd_roll != character.cls.sd)):
                 level_up_form.add_error('hd_roll',
-                                        error='For LVL 1: HD, MD, and SD are assigned maximum '
-                                              'roll values.')
+                                        error='For LVL 1: HD, MD, and SD are assigned maximum roll values.')
             else:
                 new_level_up = level_up_form.save(commit=False)
                 new_level_up.character = character
@@ -406,31 +399,25 @@ def skill_points(request: HttpRequest, character_id: str) -> HttpResponse:
             assigned_spe = skill_points_form.cleaned_data['assigned_spe']
             if (assigned_ath + assigned_ste + assigned_for + assigned_apt + assigned_per +
                     assigned_spe > character.sp):
-                messages.error(request, 'Too many SP assigned. Max: {sp}'.format(sp=character.sp))
+                messages.error(request, f'Too many SP assigned. Max: {character.sp}')
             elif assigned_ath > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_ath',
-                                            error='Assigned ATH too high. Max: {max_sp}'.format(
-                                                max_sp=character.max_sp_per_skill))
+                                            error=f'Assigned ATH too high. Max: {character.max_sp_per_skill}')
             elif assigned_ste > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_ste',
-                                            error='Assigned STE too high. Max: {max_sp}'.format(
-                                                max_sp=character.max_sp_per_skill))
+                                            error=f'Assigned STE too high. Max: {character.max_sp_per_skill}')
             elif assigned_for > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_for',
-                                            error='Assigned FOR too high. Max: {max_sp}'.format(
-                                                max_sp=character.max_sp_per_skill))
+                                            error=f'Assigned FOR too high. Max: {character.max_sp_per_skill}')
             elif assigned_apt > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_apt',
-                                            error='Assigned APT too high. Max: {max_sp}'.format(
-                                                max_sp=character.max_sp_per_skill))
+                                            error=f'Assigned APT too high. Max: {character.max_sp_per_skill}')
             elif assigned_per > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_per',
-                                            error='Assigned PER too high. Max: {max_sp}'.format(
-                                                max_sp=character.max_sp_per_skill))
+                                            error=f'Assigned PER too high. Max: {character.max_sp_per_skill}')
             elif assigned_spe > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_spe',
-                                            error='Assigned SPE too high. Max: {max_sp}'.format(
-                                                max_sp=character.max_sp_per_skill))
+                                            error=f'Assigned SPE too high. Max: {character.max_sp_per_skill}')
             else:
                 character.assigned_ath = assigned_ath
                 character.assigned_ste = assigned_ste
@@ -583,8 +570,7 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                             api.update_ability(login=roll20_login, character_id=character_id,
                                                ability_name=ability.name,
                                                ability_action=ability.macro)
-                    messages.info(request, 'Macros synced successfully to {}.'.format(
-                        roll20_login.campaign_name))
+                    messages.info(request, f'Macros synced successfully to {roll20_login.campaign_name}.')
 
                 except (login.Roll20AuthenticationError, RuntimeError,
                         api.Roll20CharacterNotFoundError) as ex:

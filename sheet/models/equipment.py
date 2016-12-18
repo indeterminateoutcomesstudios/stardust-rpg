@@ -147,25 +147,25 @@ class DamageTypeSet:
     def all_as_str(self) -> str:
         all_str = ''
         if self.slashing:
-            all_str += ' {}'.format(DamageType.slashing.name).title()
+            all_str += f' {DamageType.slashing.name}'.title()
         if self.piercing:
-            all_str += ' {}'.format(DamageType.piercing.name).title()
+            all_str += f' {DamageType.piercing.name}'.title()
         if self.bludgeoning:
-            all_str += ' {}'.format(DamageType.bludgeoning.name).title()
+            all_str += f' {DamageType.bludgeoning.name}'.title()
         if self.fire:
-            all_str += ' {}'.format(DamageType.fire.name).title()
+            all_str += f' {DamageType.fire.name}'.title()
         if self.cold:
-            all_str += ' {}'.format(DamageType.cold.name).title()
+            all_str += f' {DamageType.cold.name}'.title()
         if self.lightning:
-            all_str += ' {}'.format(DamageType.lightning.name).title()
+            all_str += f' {DamageType.lightning.name}'.title()
         if self.acid:
-            all_str += ' {}'.format(DamageType.acid.name).title()
+            all_str += f' {DamageType.acid.name}'.title()
         if self.poison:
-            all_str += ' {}'.format(DamageType.poison.name).title()
+            all_str += f' {DamageType.poison.name}'.title()
         if self.force:
-            all_str += ' {}'.format(DamageType.force.name).title()
+            all_str += f' {DamageType.force.name}'.title()
         if self.psychic:
-            all_str += ' {}'.format(DamageType.psychic.name).title()
+            all_str += f' {DamageType.psychic.name}'.title()
         return all_str
 
 

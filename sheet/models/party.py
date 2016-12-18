@@ -6,4 +6,4 @@ class Party(models.Model):
     roll20_campaign_id = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return '{}: {}'.format(self.name, self.roll20_campaign_id)
+        return f'{self.name}: {self.roll20_campaign_id}'

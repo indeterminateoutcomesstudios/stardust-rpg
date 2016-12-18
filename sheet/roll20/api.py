@@ -41,18 +41,17 @@ def get_character_id(login: Roll20Login, character_name: str) -> str:
             characters = json.loads(requests.get(url).text)
             json.dumps(characters, indent=4) for debugging.
     """
-    url = '{}{}/characters.json?auth={}'.format(login.firebase_root, login.campaign_path,
-                                                login.auth_token)
+    url = f'{login.firebase_root}{login.campaign_path}/characters.json?auth={login.auth_token}'
     characters = json.loads(requests.get(url).text)
     characters_data = {c['name']: c['id'] for c in characters.values()}
-    logger.debug('Found characters: {}'.format(characters_data.keys()))
+    logger.debug(f'Found characters: {characters_data.keys()}')
     try:
         character_id = characters_data[character_name]
-        logger.debug('Found character: {} {}'.format(character_name, character_id))
+        logger.debug(f'Found character: {character_name} {character_id}')
         return character_id
     except KeyError as ex:
         raise Roll20CharacterNotFoundError(
-            'Character {} does not exist in this campaign.'.format(character_name)) from ex
+            f'Character {character_name} does not exist in this campaign.') from ex
 
 
 @enum.unique
@@ -62,11 +61,10 @@ class AttributePosition(enum.Enum):
 
 
 def get_attribute_id(login: Roll20Login, character_id: str, attribute_name: str) -> str:
-    url = '{}{}/char-attribs/char/{}.json?auth={}'.format(login.firebase_root, login.campaign_path,
-                                                          character_id, login.auth_token)
+    url = f'{login.firebase_root}{login.campaign_path}/char-attribs/char/{character_id}.json?auth={login.auth_token}'
     attributes = json.loads(requests.get(url).text)
     attribs_data = {c['name']: c['id'] for c in attributes.values()}
-    logger.debug('Found attributes: {}'.format(attribs_data.keys()))
+    logger.debug(f'Found attributes: {attribs_data.keys()}')
     attribute_id = attribs_data[attribute_name]
     try:
         attribute_current = attributes[attribute_id][AttributePosition.current.value]
@@ -76,7 +74,7 @@ def get_attribute_id(login: Roll20Login, character_id: str, attribute_name: str)
         attribute_max = attributes[attribute_id][AttributePosition.max.value]
     except KeyError:
         attribute_max = ''
-    logger.debug('{}: {}/{}'.format(attribute_name, attribute_current, attribute_max))
+    logger.debug(f'{attribute_name}: {attribute_current}/{attribute_max}')
     return attribute_id
 
 
@@ -88,16 +86,15 @@ def set_attribute(login: Roll20Login, character_id: str, attribute_name: str,
 
     attribute_id = get_attribute_id(login=login, character_id=character_id,
                                     attribute_name=attribute_name)
-    url = '{}{}/char-attribs/char/{}/{}/.json?auth={}'.format(
-        login.firebase_root, login.campaign_path, character_id, attribute_id, login.auth_token)
+    url = (f'{login.firebase_root}{login.campaign_path}/char-attribs/char/{character_id}/'
+           f'{attribute_id}/.json?auth={login.auth_token}')
     response = requests.patch(url, data=json.dumps({attribute_position.value: attribute_value}))
     updated_attribute = json.loads(response.text)[attribute_position.value]
-    logger.debug('New {}: {}'.format(attribute_name, updated_attribute))
+    logger.debug(f'New {attribute_name}: {updated_attribute}')
 
 
 def get_player_id(login: Roll20Login, d20_user_id: int) -> str:
-    url = '{}{}/players/.json?auth={}'.format(login.firebase_root, login.campaign_path,
-                                              login.auth_token)
+    url = f'{login.firebase_root}{login.campaign_path}/players/.json?auth={login.auth_token}'
     players = json.loads(requests.get(url).text)
     correct_player_id = None
     for player_id, player_info in players.items():
@@ -110,8 +107,7 @@ def get_player_id(login: Roll20Login, d20_user_id: int) -> str:
 
 
 def get_macros(login: Roll20Login, player_id: str) -> Tuple[str, ...]:
-    url = '{}{}/macros/.json?auth={}'.format(login.firebase_root, login.campaign_path,
-                                             login.auth_token)
+    url = f'{login.firebase_root}{login.campaign_path}/macros/.json?auth={login.auth_token}'
     all_players_macros = json.loads(requests.get(url).text)
     logger.debug(json.dumps(all_players_macros, indent=4))
     try:
@@ -119,17 +115,16 @@ def get_macros(login: Roll20Login, player_id: str) -> Tuple[str, ...]:
         logger.debug(json.dumps(player_macros, indent=4))
         return player_macros
     except KeyError:
-        logger.debug('No macros found for Player ID: {}'.format(player_id))
+        logger.debug(f'No macros found for Player ID: {player_id}')
         return None
 
 
 def get_ability_id(login: Roll20Login, character_id: str, ability_name: str) -> str:
-    url = '{}{}/char-abils/char.json?auth={}'.format(login.firebase_root, login.campaign_path,
-                                                     login.auth_token)
+    url = f'{login.firebase_root}{login.campaign_path}/char-abils/char.json?auth={login.auth_token}'
     abilities = json.loads(requests.get(url).text)
     for ability in abilities[character_id].values():
         if ability['name'] == ability_name:
-            logger.debug('Found {name} Ability: {id}'.format(name=ability_name, id=ability['id']))
+            logger.debug(f'Found {ability_name} Ability: {ability["id"]}')
             return ability['id']
     raise ValueError('Ability does not exist.')
 
@@ -145,12 +140,11 @@ def ability_exists(login: Roll20Login, character_id: str, ability_name: str) -> 
 def update_ability(login: Roll20Login, character_id: str, ability_name: str,
                    ability_action: str) -> None:
     ability_id = get_ability_id(login=login, character_id=character_id, ability_name=ability_name)
-    url = '{}{}/char-abils/char/{}/{}/.json?auth={}'.format(
-        login.firebase_root, login.campaign_path, character_id, ability_id,
-        login.auth_token)
+    url = (f'{login.firebase_root}{login.campaign_path}/char-abils/char/'
+           f'{character_id}/{ability_id}/.json?auth={login.auth_token}')
     response = requests.patch(url, data=json.dumps({'action': ability_action}))
     updated_action = json.loads(response.text)['action']
-    logger.debug('{} updated action: {}'.format(ability_name, updated_action))
+    logger.debug(f'{ability_name} updated action: {updated_action}')
 
 
 def create_ability(login: Roll20Login, character_id: str, ability_name: str, ability_action: str,
@@ -158,12 +152,11 @@ def create_ability(login: Roll20Login, character_id: str, ability_name: str, abi
     new_ability = {'action': ability_action,
                    'name': ability_name,
                    'istokenaction': is_token_action}
-    url = '{}{}/char-abils/char/{}.json?auth={}'.format(login.firebase_root, login.campaign_path,
-                                                        character_id, login.auth_token)
+    url = f'{login.firebase_root}{login.campaign_path}/char-abils/char/{character_id}.json?auth={login.auth_token}'
     response = requests.post(url, data=json.dumps(new_ability))
     new_ability_id = json.loads(response.text)['name']
-    logger.debug('Created {} {}'.format(ability_name, new_ability_id))
+    logger.debug(f'Created {ability_name} {new_ability_id}')
 
-    url = '{}{}/char-abils/char/{}/{}/.json?auth={}'.format(
-        login.firebase_root, login.campaign_path, character_id, new_ability_id, login.auth_token)
+    url = (f'{login.firebase_root}{login.campaign_path}/char-abils/char/'
+           f'{character_id}/{new_ability_id}/.json?auth={login.auth_token}')
     response = requests.patch(url, data=json.dumps({'id': new_ability_id}))

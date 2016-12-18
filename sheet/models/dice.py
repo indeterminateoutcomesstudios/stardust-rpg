@@ -26,7 +26,7 @@ class Dice:
             num_dice_char = str(self.num_dice)
         else:
             num_dice_char = ''
-        return '{}d{}'.format(num_dice_char, self.sides)
+        return f'{num_dice_char}d{self.sides}'
 
 
 class DiceFormula:
@@ -47,7 +47,7 @@ class DiceFormula:
             elif modifier is None:
                 modifier = int(token)
             else:
-                raise ValueError('Invald token: {}'.format(token))
+                raise ValueError(f'Invald token: {token}')
 
         if modifier is None:
             return cls(dice_pool=tuple(dice_pool))
@@ -57,7 +57,7 @@ class DiceFormula:
     def __str__(self) -> str:
         s = ''
         for dice in self.dice_pool:
-            s += '{} + '.format(dice)
+            s += f'{dice} + '
 
         if self.modifier > 0:
             s += str(self.modifier)

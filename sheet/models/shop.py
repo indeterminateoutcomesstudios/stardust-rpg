@@ -51,7 +51,7 @@ class Shop(models.Model):
         return self._slot_items(equipment.Slot.feet)
 
     def __str__(self) -> str:
-        return '{} Shop: {}'.format(self.name, self.id)
+        return f'{self.name} Shop: {self.id}'
 
 
 class ShopSlot(inventory_slot.ItemQuantity):

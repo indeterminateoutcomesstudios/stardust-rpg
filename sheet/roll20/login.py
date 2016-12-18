@@ -50,12 +50,12 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
     found_campaign = None
     for campaign in campaigns:
         current_campaign_id = int(re.search(r'setcampaign/(\d+)', campaign['link']).group(1))
-        logger.debug('Found campaign #{} {}'.format(current_campaign_id, campaign['name']))
+        logger.debug(f'Found campaign #{current_campaign_id} {campaign["name"]}')
         if current_campaign_id == campaign_id:
             found_campaign = campaign
 
     if found_campaign is None:
-        raise RuntimeError('Campaign ID {} could not be found.'.format(campaign_id))
+        raise RuntimeError(f'Campaign ID {campaign_id} could not be found.')
 
     join_response = session.get(found_campaign['link'])
     startjs = None
@@ -73,9 +73,9 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
     campaign_path = re.search(r'window\.campaign_storage_path\s+=\s+"(.*)"',
                               js_response.text).group(1)
 
-    logger.debug('FIREBASE_ROOT: {}'.format(fb_root))
-    logger.debug('GNTKN: {}'.format(auth_token))
-    logger.debug('campaign_storage_path: {}'.format(campaign_path))
+    logger.debug(f'FIREBASE_ROOT: {fb_root}')
+    logger.debug(f'GNTKN: {auth_token}')
+    logger.debug(f'campaign_storage_path: {campaign_path}')
 
     return Roll20Login(firebase_root=fb_root, auth_token=auth_token, campaign_path=campaign_path,
                        campaign_name=found_campaign['name'])
