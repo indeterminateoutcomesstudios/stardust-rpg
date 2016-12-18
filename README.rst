@@ -290,6 +290,12 @@ Attribute Effects
 Releases
 ========
 
+2.0.0
+-----
+
+- Numerous updates and new features.
+- Support Python 3.6
+
 1.0.0
 -----
 
