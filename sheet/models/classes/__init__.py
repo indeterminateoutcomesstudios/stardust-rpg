@@ -31,4 +31,4 @@ def get_class(name: str) -> class_type.Class:
     for cls in classes.values():
         if name == cls.name:
             return cls
-    raise KeyError("Unable to find class '{}', invalid name.".format(name))
+    raise KeyError(f"Unable to find class '{name}', invalid name.")

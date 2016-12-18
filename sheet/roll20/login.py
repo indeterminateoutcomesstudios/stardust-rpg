@@ -35,7 +35,7 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
     if 'Login' in title.string:
         raise Roll20AuthenticationError('Roll20 password is not correct.')
 
-    campaigns = []  # type: List[Dict[str, str]]
+    campaigns: List[Dict[str, str]] = []
     for div in document.find_all('div'):
         if 'class' in div.attrs and 'gameinfo' in div['class']:
             if 'Join Game' in div.text:

@@ -29,7 +29,7 @@ def escape_attributes(macro_string: str) -> str:
 
 
 class Macroable(abc.ABC):
-    name = NotImplemented  # type: str
+    name: str = NotImplemented
     """Not exactly an approved 'abstract attribute' but makes PyCharm static analysis happy."""
 
     @property

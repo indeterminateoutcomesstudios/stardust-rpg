@@ -564,7 +564,7 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                                               attribute_value=attribute_value,
                                               attribute_position=api.AttributePosition.max)
 
-                    abilities_to_sync = ()  # type: Tuple[macro.Macroable, ...]
+                    abilities_to_sync: Tuple[macro.Macroable, ...] = ()
                     if sync_abilities:
                         abilities_to_sync += character.unlocked_abilities
                     if sync_combos:
