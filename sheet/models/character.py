@@ -1,5 +1,5 @@
 import copy
-from typing import Tuple
+from typing import Optional, Tuple
 
 from django.contrib.auth.models import User
 from django.db import models
@@ -226,7 +226,7 @@ class Character(models.Model):
                     is_available = False
             if is_available:
                 available_abilities.append(class_ability)
-        return available_abilities
+        return tuple(available_abilities)
 
     @property
     def class_combos(self) -> Tuple[combos.Combo, ...]:
@@ -567,18 +567,18 @@ class Character(models.Model):
         return str_damage
 
     @property
-    def weapon_pdam(self) -> dice.DiceFormula:
+    def weapon_pdam(self) -> Optional[dice.DiceFormula]:
         if self.weapon.pdam is None:
-            return self.weapon.pdam
+            return None
         else:
             pdam_dice = copy.deepcopy(self.weapon.pdam)
             pdam_dice.modifier += self._str_damage
             return pdam_dice
 
     @property
-    def weapon_mdam(self) -> dice.DiceFormula:
+    def weapon_mdam(self) -> Optional[dice.DiceFormula]:
         if self.weapon.mdam is None:
-            return self.weapon.mdam
+            return None
         else:
             mdam_dice = copy.deepcopy(self.weapon.mdam)
             mdam_dice.modifier += self._str_damage

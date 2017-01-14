@@ -277,7 +277,7 @@ class ItemSelectionWizard(SessionWizardView):
         item_form = form_dict.popitem()[1]
         return inventory_slot_form, item_form
 
-    def done(self, form_list: Sequence[forms.Form], **kwargs) -> HttpResponse:
+    def done(self, form_list: Sequence[forms.Form], **kwargs) -> None:
         """Call base class done(), effectively making this class abstract."""
         super().done(form_list, **kwargs)
 

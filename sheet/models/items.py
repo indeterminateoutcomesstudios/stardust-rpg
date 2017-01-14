@@ -34,6 +34,8 @@ def get_item(slot: Slot, item_index: int) -> Item:
     elif slot is Slot.feet:
         item_dict = feets
         item_enum = Feets
+    else:
+        raise NotImplementedError(f'Unexpected slot: {slot}')
 
     return item_dict[item_enum(item_index)]
 

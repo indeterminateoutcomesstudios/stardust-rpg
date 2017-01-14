@@ -21,7 +21,7 @@
 import enum
 import json
 import logging
-from typing import Tuple, Union
+from typing import Optional, Tuple, Union
 
 import requests
 
@@ -106,7 +106,7 @@ def get_player_id(login: Roll20Login, d20_user_id: int) -> str:
     return correct_player_id
 
 
-def get_macros(login: Roll20Login, player_id: str) -> Tuple[str, ...]:
+def get_macros(login: Roll20Login, player_id: str) -> Optional[Tuple[str, ...]]:
     url = f'{login.firebase_root}{login.campaign_path}/macros/.json?auth={login.auth_token}'
     all_players_macros = json.loads(requests.get(url).text)
     logger.debug(json.dumps(all_players_macros, indent=4))
@@ -159,4 +159,4 @@ def create_ability(login: Roll20Login, character_id: str, ability_name: str, abi
 
     url = (f'{login.firebase_root}{login.campaign_path}/char-abils/char/'
            f'{character_id}/{new_ability_id}/.json?auth={login.auth_token}')
-    response = requests.patch(url, data=json.dumps({'id': new_ability_id}))
+    requests.patch(url, data=json.dumps({'id': new_ability_id}))
