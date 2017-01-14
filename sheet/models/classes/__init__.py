@@ -1,18 +1,18 @@
-import aenum
+from enum import auto, Enum
 
 from . import geomancer, magus, marksman, paladin, spectre, telepath, templar, valkyrie
 from .. import class_type
 
 
-class Classes(aenum.AutoNumberEnum):
-    paladin = ()
-    templar = ()
-    magus = ()
-    valkyrie = ()
-    spectre = ()
-    telepath = ()
-    marksman = ()
-    geomancer = ()
+class Classes(Enum):
+    paladin = auto()
+    templar = auto()
+    magus = auto()
+    valkyrie = auto()
+    spectre = auto()
+    telepath = auto()
+    marksman = auto()
+    geomancer = auto()
 
 
 classes = {

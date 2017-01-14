@@ -1,7 +1,5 @@
-import enum
+from enum import auto, Enum, unique
 from typing import Any
-
-import aenum
 
 from . import dice
 from . import macro
@@ -13,8 +11,8 @@ def for_django_template(cls: Any) -> Any:
     return cls
 
 
-@enum.unique
-class Attribute(enum.Enum):
+@unique
+class Attribute(Enum):
     stren = 1
     dex = 2
     con = 3
@@ -24,40 +22,40 @@ class Attribute(enum.Enum):
 
 
 @for_django_template
-class Slot(aenum.AutoNumberEnum):
-    item = ()
-    utility = ()
-    weapon = ()
-    head = ()
-    neck = ()
-    chest = ()
-    shield = ()
-    hand = ()
-    feet = ()
+class Slot(Enum):
+    item = auto()
+    utility = auto()
+    weapon = auto()
+    head = auto()
+    neck = auto()
+    chest = auto()
+    shield = auto()
+    hand = auto()
+    feet = auto()
 
 
 @for_django_template
-class Rarity(enum.Enum):
+class Rarity(Enum):
     common = object()
     rare = object()
     unique = object()
     set = object()
 
 
-class Style(enum.Enum):
+class Style(Enum):
     melee = object()
     ranged = object()
     magic = object()
 
 
-class Type(enum.Enum):
+class Type(Enum):
     light = object()
     medium = object()
     heavy = object()
 
 
-@enum.unique
-class Shape(enum.Enum):
+@unique
+class Shape(Enum):
     point = 'http://i.imgur.com/Snx8fr2.png'
     multi_point = 'http://i.imgur.com/IB4CXeb.png'
     line = 'http://i.imgur.com/CbqMJ3N.png'
@@ -87,7 +85,7 @@ class Shape(enum.Enum):
     cone_3 = 'http://i.imgur.com/5qYh6je.png'
 
 
-class DamageType(enum.Enum):
+class DamageType(Enum):
     slashing = object()
     piercing = object()
     bludgeoning = object()
@@ -477,8 +475,8 @@ class Hand(Wearable):
                          equip_type=equip_type, vul_set=vul_set)
 
 
-@enum.unique
-class WeaponPicture(enum.Enum):
+@unique
+class WeaponPicture(Enum):
     hands = ('http://img1.wikia.nocookie.net/__cb20140420170312/finalfantasy/images/2/24/'
              'Unarmed.png')
     grey_knife = ('http://img4.wikia.nocookie.net/__cb20140415211502/finalfantasy/images/5/58/'
