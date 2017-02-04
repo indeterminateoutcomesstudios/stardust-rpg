@@ -51,7 +51,7 @@ def get_character_id(login: Roll20Login, character_name: str) -> str:
         return character_id
     except KeyError as ex:
         raise Roll20CharacterNotFoundError(
-            f'Character {character_name} does not exist in this campaign.') from ex
+            f'Character "{character_name}" does not exist in this campaign.') from ex
 
 
 @enum.unique

@@ -574,8 +574,8 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
 
                 except (login.Roll20AuthenticationError, RuntimeError,
                         api.Roll20CharacterNotFoundError) as ex:
-                    messages.error(request, ex)
-                    return reverse(roll20, args=[character.id])
+                    messages.error(request, str(ex))
+                    return redirect(reverse(roll20, args=[character.id]))
 
     else:
         roll20_form = Roll20Form()
