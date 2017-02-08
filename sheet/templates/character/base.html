@@ -9,14 +9,14 @@
     <a href="{% url 'sheet-views-stats' character.id %}">Stats</a>
     <a href="{% url 'sheet-views-abilities' character.id %}">
         Abilities{% if character.available_ap > 0 %}
-        ({{ character.available_ap }}){% endif %}</a>
+        <b>({{ character.available_ap }})</b>{% endif %}</a>
     <a href="{% url 'sheet-views-combos' character.id %}">Combos</a>
     <a href="{% url 'sheet-views-equip' character.id %}">Equip</a>
     <a href="{% url 'sheet-views-inventory' character.id %}">Inventory</a>
     <a href="{% url 'sheet-views-level-up' character.id %}">Level Up</a>
     <a href="{% url 'sheet-views-skill-points' character.id %}">
         Assign Skill Points{% if character.available_sp > 0 %}
-        ({{ character.available_sp }}){% endif %}</a>
+        <b>({{ character.available_sp }})</b>{% endif %}</a>
     <a href="{% url 'sheet-views-class' character.id %}">Class</a>
     <a href="{% url 'sheet-views-roll20' character.id %}">Roll20</a>
     <a href= {% url 'app-accounts-logout' %}>Logout</a>
