@@ -93,8 +93,9 @@ def unlock_abilities(request: HttpRequest, character_id: str) -> HttpResponse:
                             for owned_ability in character.unlocked_abilities:
                                 if ability in owned_ability.prerequisites:
                                     messages.error(request,
-                                                   f'Cannot lock ability {ability.name} because it is a prerequisite '
-                                                   f'for {owned_ability.name}.')
+                                                   f'Cannot lock ability {ability.name} because '
+                                                   f'it is a prerequisite for '
+                                                   f'{owned_ability.name}.')
                                     lock_ability = False
                             if lock_ability:
                                 unlocked_ability.delete()
@@ -204,7 +205,8 @@ def equip(request: HttpRequest, character_id: str) -> HttpResponse:
                                            'other hand.')
             elif not character.can_use_weapon:
                 equip_form.add_error('weapon_enum',
-                                     error=f'Class {character.cls.name} cannot use {character.weapon.style.name} '
+                                     error=f'Class {character.cls.name} '
+                                           f'cannot use {character.weapon.style.name} '
                                            f'{character.weapon.type.name} weapons')
             else:
                 character.save()
@@ -352,19 +354,23 @@ def level_up(request: HttpRequest, character_id: str) -> HttpResponse:
             sd_roll = level_up_form.cleaned_data['sd_roll']
             if hd_roll > character.cls.hd:
                 level_up_form.add_error('hd_roll',
-                                        error=f'HD roll higher than HD: {hd_roll}>{character.cls.hd}')
+                                        error=f'HD roll higher than HD: '
+                                              f'{hd_roll}>{character.cls.hd}')
             elif md_roll > character.cls.md:
                 level_up_form.add_error('md_roll',
-                                        error=f'MD roll higher than MD: {md_roll}>{character.cls.md}')
+                                        error=f'MD roll higher than MD: '
+                                              f'{md_roll}>{character.cls.md}')
             elif sd_roll > character.cls.sd:
                 level_up_form.add_error('sd_roll',
-                                        error=f'SD roll higher than SD: {sd_roll}>{character.cls.sd}')
+                                        error=f'SD roll higher than SD: '
+                                              f'{sd_roll}>{character.cls.sd}')
             elif (character.lvl == 0 and
                   (hd_roll != character.cls.hd or
                    md_roll != character.cls.md or
                    sd_roll != character.cls.sd)):
                 level_up_form.add_error('hd_roll',
-                                        error='For LVL 1: HD, MD, and SD are assigned maximum roll values.')
+                                        error='For LVL 1: HD, MD, and SD are assigned maximum '
+                                              'roll values.')
             else:
                 new_level_up = level_up_form.save(commit=False)
                 new_level_up.character = character
@@ -402,22 +408,28 @@ def skill_points(request: HttpRequest, character_id: str) -> HttpResponse:
                 messages.error(request, f'Too many SP assigned. Max: {character.sp}')
             elif assigned_ath > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_ath',
-                                            error=f'Assigned ATH too high. Max: {character.max_sp_per_skill}')
+                                            error=f'Assigned ATH too high. '
+                                                  f'Max: {character.max_sp_per_skill}')
             elif assigned_ste > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_ste',
-                                            error=f'Assigned STE too high. Max: {character.max_sp_per_skill}')
+                                            error=f'Assigned STE too high. '
+                                                  f'Max: {character.max_sp_per_skill}')
             elif assigned_for > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_for',
-                                            error=f'Assigned FOR too high. Max: {character.max_sp_per_skill}')
+                                            error=f'Assigned FOR too high. '
+                                                  f'Max: {character.max_sp_per_skill}')
             elif assigned_apt > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_apt',
-                                            error=f'Assigned APT too high. Max: {character.max_sp_per_skill}')
+                                            error=f'Assigned APT too high. '
+                                                  f'Max: {character.max_sp_per_skill}')
             elif assigned_per > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_per',
-                                            error=f'Assigned PER too high. Max: {character.max_sp_per_skill}')
+                                            error=f'Assigned PER too high. '
+                                                  f'Max: {character.max_sp_per_skill}')
             elif assigned_spe > character.max_sp_per_skill:
                 skill_points_form.add_error('assigned_spe',
-                                            error=f'Assigned SPE too high. Max: {character.max_sp_per_skill}')
+                                            error=f'Assigned SPE too high. '
+                                                  f'Max: {character.max_sp_per_skill}')
             else:
                 character.assigned_ath = assigned_ath
                 character.assigned_ste = assigned_ste
@@ -570,7 +582,8 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                             api.update_ability(login=roll20_login, character_id=character_id,
                                                ability_name=ability.name,
                                                ability_action=ability.macro)
-                    messages.info(request, f'Macros synced successfully to {roll20_login.campaign_name}.')
+                    messages.info(request, f'Macros synced successfully to '
+                                           f'{roll20_login.campaign_name}.')
 
                 except (login.Roll20AuthenticationError, RuntimeError,
                         api.Roll20CharacterNotFoundError) as ex:

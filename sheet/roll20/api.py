@@ -61,7 +61,8 @@ class AttributePosition(enum.Enum):
 
 
 def get_attribute_id(login: Roll20Login, character_id: str, attribute_name: str) -> str:
-    url = f'{login.firebase_root}{login.campaign_path}/char-attribs/char/{character_id}.json?auth={login.auth_token}'
+    url = (f'{login.firebase_root}{login.campaign_path}/'
+           f'char-attribs/char/{character_id}.json?auth={login.auth_token}')
     attributes = json.loads(requests.get(url).text)
     attribs_data = {c['name']: c['id'] for c in attributes.values()}
     logger.debug(f'Found attributes: {attribs_data.keys()}')
@@ -120,7 +121,8 @@ def get_macros(login: Roll20Login, player_id: str) -> Optional[Tuple[str, ...]]:
 
 
 def get_ability_id(login: Roll20Login, character_id: str, ability_name: str) -> str:
-    url = f'{login.firebase_root}{login.campaign_path}/char-abils/char.json?auth={login.auth_token}'
+    url = (f'{login.firebase_root}{login.campaign_path}/'
+           f'char-abils/char.json?auth={login.auth_token}')
     abilities = json.loads(requests.get(url).text)
     for ability in abilities[character_id].values():
         if ability['name'] == ability_name:
@@ -152,7 +154,8 @@ def create_ability(login: Roll20Login, character_id: str, ability_name: str, abi
     new_ability = {'action': ability_action,
                    'name': ability_name,
                    'istokenaction': is_token_action}
-    url = f'{login.firebase_root}{login.campaign_path}/char-abils/char/{character_id}.json?auth={login.auth_token}'
+    url = (f'{login.firebase_root}{login.campaign_path}/'
+           f'char-abils/char/{character_id}.json?auth={login.auth_token}')
     response = requests.post(url, data=json.dumps(new_ability))
     new_ability_id = json.loads(response.text)['name']
     logger.debug(f'Created {ability_name} {new_ability_id}')
