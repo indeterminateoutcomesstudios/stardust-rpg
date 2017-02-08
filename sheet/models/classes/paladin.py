@@ -351,14 +351,14 @@ mass_telekinesis_3 = Ability(
 master_telekinetic_1 = Ability(
     name='Master Telekinetic [Passive] I', picture=AbilityPicture.tempered_will,
     mp_cost=0, target_area='Self', time=Time.free_a,
-    effect='2*DAM to enemies hit with Reflect',
+    effect='2x DAM to enemies hit with Reflect',
     prerequisites=(provoke_2, vortex_2, mass_barrier_2)
 )
 
 master_telekinetic_2 = Ability(
     name='Master Telekinetic [Passive] II', picture=AbilityPicture.tempered_will,
     mp_cost=0, target_area='Self', time=Time.free_a,
-    effect='+50% DIS, 2*DAM on Telekinesis',
+    effect='+50% DIS, 2x DAM on Telekinesis',
     prerequisites=(master_telekinetic_1,)
 )
 

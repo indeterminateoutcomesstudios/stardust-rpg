@@ -814,7 +814,7 @@ feets = {
     Feets.juggernaut_greaves: Feet(name=Feets.juggernaut_greaves.name, price=350, min_str=1,
                                    equip_type=Type.heavy, rarity=Rarity.rare,
                                    effect='Spending all SPEED moving in a straight line ending '
-                                          'by hitting an enemy deals 1*SPEED PDAM and knocks back '
+                                          'by hitting an enemy deals SPEED PDAM and knocks back '
                                           '1DIS'),
     Feets.racers: Feet(name=Feets.racers.name, price=375, min_str=1,
                        effect='Spend StdA and AbA to move at +3SPEED for 1RND'),

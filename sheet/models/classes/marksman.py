@@ -51,7 +51,7 @@ mortar_1 = Ability(
     targets_mdef=True, max_range='24+4*WIS', time=Time.full_a,
     shape=Shape.circle, target_area='2RAD',
     duration_unit=DurationUnit.instant,
-    effect='Setup: 2*FullA. Mount/Dismount: 1FullA.  Incendiary Rounds',
+    effect='Setup: 2FullA. Mount/Dismount: 1FullA.  Incendiary Rounds',
 )
 
 mortar_2 = Ability(
@@ -177,7 +177,7 @@ siege_tech_mark_two_1 = Ability(
     targets_mdef=True, max_range='24+4*WIS', time=Time.full_a,
     shape=Shape.circle, target_area='2RAD',
     duration_unit=DurationUnit.instant,
-    effect='Setup: 2*FullA. Mount/Dismount: 1FullA.  Incendiary Rounds',
+    effect='Setup: 2FullA. Mount/Dismount: 1FullA.  Incendiary Rounds',
     prerequisites=(mortar_3, smoke_bomb_2,),
 )
 
@@ -330,7 +330,7 @@ gds_tech_2 = Ability(
     targets_mdef=True, max_range='24+4*WIS', time=Time.full_a,
     shape=Shape.circle, target_area='2RAD',
     duration_unit=DurationUnit.instant,
-    effect='Setup: 2*FullA. Mount/Dismount: 1FullA.  Incendiary Rounds',
+    effect='Setup: 2FullA. Mount/Dismount: 1FullA.  Incendiary Rounds',
     prerequisites=(gds_tech_1,),
 )
 

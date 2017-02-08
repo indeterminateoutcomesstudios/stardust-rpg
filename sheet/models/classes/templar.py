@@ -7,7 +7,7 @@ time_warp_1 = Ability(
     name='Time Warp I', picture=AbilityPicture.swift_song,
     mp_cost=2, target_area='Self', time=Time.free_a,
     duration='1', duration_unit=DurationUnit.rnd,
-    effect='2*SPEED on caster.  Can cast once per round'
+    effect='Double SPEED on caster.  Can cast once per round'
 )
 
 time_warp_2 = Ability(
@@ -22,7 +22,7 @@ time_warp_3 = Ability(
     name='Time Warp III', picture=AbilityPicture.swift_song,
     mp_cost=4, target_area='Self', time=Time.free_a,
     duration='1', duration_unit=DurationUnit.rnd,
-    effect='2*SPEED and +1AbA or FreeA on caster. Can cast once per RND',
+    effect='Double SPEED and +1AbA or FreeA on caster. Can cast once per RND',
     prerequisites=(time_warp_2,)
 )
 
@@ -123,7 +123,7 @@ mass_time_warp_1 = Ability(
     name='Mass Time Warp I', picture=AbilityPicture.swift_cast,
     mp_cost=3, target_area='Self + allies in [[4+WIS]]RAD', time=Time.free_a, max_range='6',
     shape=Shape.circle, duration='1', duration_unit=DurationUnit.rnd,
-    effect='2*SPEED on affected allies. Can cast once per round.',
+    effect='Double SPEED on affected allies. Can cast once per round.',
     prerequisites=(time_warp_3, slow_2)
 )
 
@@ -139,7 +139,7 @@ mass_time_warp_3 = Ability(
     name='Mass Time Warp III', picture=AbilityPicture.swift_cast,
     mp_cost=7, target_area='Self + allies in [[4+WIS]]RAD', time=Time.free_a, max_range='6',
     shape=Shape.circle, duration='1', duration_unit=DurationUnit.rnd,
-    effect='2*SPEED and +1AbA or FreeA on affected allies. Can cast once per round.',
+    effect='Double SPEED and +1AbA or FreeA on affected allies. Can cast once per round.',
     prerequisites=(mass_time_warp_2,)
 )
 
