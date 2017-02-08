@@ -4,7 +4,7 @@ from ..equipment import DamageType, Shape
 
 jump_1 = Ability(
     name='Jump I', picture=AbilityPicture.spine_shatter_dive,
-    mp_cost=2, target_area='One creature in [[2*SPEED]]DIS', time=Time.full_a,
+    mp_cost=2, target_area='One creature in [[2*@{SPEED}]]DIS', time=Time.full_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Jump into air, landing on opponent to ignore PRED on next attack, '
            'not targetable by melee attacks. Spend extra 1FullA in air before attacking.',
@@ -12,7 +12,7 @@ jump_1 = Ability(
 
 jump_2 = Ability(
     name='Jump II', picture=AbilityPicture.spine_shatter_dive,
-    mp_cost=2, target_area='One creature in [[2*SPEED+2]]DIS', time=Time.full_a,
+    mp_cost=2, target_area='One creature in [[2*@{SPEED}+2]]DIS', time=Time.full_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Jump into air, landing on opponent to ignore PRED on next attack, '
            'not targetable by melee attacks. Spend extra 1FullA in air before attacking.',
@@ -21,7 +21,7 @@ jump_2 = Ability(
 
 jump_3 = Ability(
     name='Jump III', picture=AbilityPicture.spine_shatter_dive,
-    mp_cost=2, target_area='One creature in [[2*SPEED+4]]DIS', time=Time.full_a,
+    mp_cost=2, target_area='One creature in [[2*@{SPEED}+4]]DIS', time=Time.full_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Jump into air, landing on opponent to ignore PRED and +1PDAM on next attack, '
            'not targetable by melee or ranged physical attacks. '

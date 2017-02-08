@@ -23,7 +23,7 @@ class MacroColorTag(enum.Enum):
 
 
 def escape_attributes(macro_string: str) -> str:
-    return re.sub(pattern=r'(?P<attribute>STR|DEX|CON|INT|WIS|CHA|SPEED)',
+    return re.sub(pattern=r'(?P<attribute>STR|DEX|CON|INT|WIS|CHA)',
                   repl='@{\g<attribute>}',
                   string=macro_string)
 
