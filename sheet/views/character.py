@@ -1,5 +1,5 @@
 import re
-from typing import Dict, Tuple, Sequence  # noqa: F401
+from typing import Dict, Sequence, Tuple  # noqa: F401
 
 from django import forms
 from django.contrib import messages
@@ -551,17 +551,12 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                     attributes_to_sync_max = {**attributes_to_sync_both, **hp_mp_attributes}
 
                     if sync_attributes:
-                        for attribute_name, attribute_value in attributes_to_sync_current.items():
-                            api.set_attribute(login=roll20_login, character_id=character_id,
-                                              attribute_name=attribute_name,
-                                              attribute_value=attribute_value,
-                                              attribute_position=api.AttributePosition.current)
-
-                        for attribute_name, attribute_value in attributes_to_sync_max.items():
-                            api.set_attribute(login=roll20_login, character_id=character_id,
-                                              attribute_name=attribute_name,
-                                              attribute_value=attribute_value,
-                                              attribute_position=api.AttributePosition.max)
+                        api.set_attributes(login=roll20_login, character_id=character_id,
+                                           attributes=attributes_to_sync_current,
+                                           attribute_position=api.AttributePosition.current)
+                        api.set_attributes(login=roll20_login, character_id=character_id,
+                                           attributes=attributes_to_sync_max,
+                                           attribute_position=api.AttributePosition.max)
 
                     abilities_to_sync: Tuple[macro.Macroable, ...] = ()
                     if sync_abilities:

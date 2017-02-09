@@ -21,7 +21,7 @@
 import enum
 import json
 import logging
-from typing import Optional, Tuple, Union
+from typing import Dict, Mapping, Optional, Tuple, Union
 
 import requests
 
@@ -60,38 +60,31 @@ class AttributePosition(enum.Enum):
     max = 'max'
 
 
-def get_attribute_id(login: Roll20Login, character_id: str, attribute_name: str) -> str:
+def get_attributes_ids(login: Roll20Login, character_id: str) -> Dict[str, str]:
     url = (f'{login.firebase_root}{login.campaign_path}/'
            f'char-attribs/char/{character_id}.json?auth={login.auth_token}')
     attributes = json.loads(requests.get(url).text)
     attribs_data = {c['name']: c['id'] for c in attributes.values()}
     logger.debug(f'Found attributes: {attribs_data.keys()}')
-    attribute_id = attribs_data[attribute_name]
-    try:
-        attribute_current = attributes[attribute_id][AttributePosition.current.value]
-    except KeyError:
-        attribute_current = ''
-    try:
-        attribute_max = attributes[attribute_id][AttributePosition.max.value]
-    except KeyError:
-        attribute_max = ''
-    logger.debug(f'{attribute_name}: {attribute_current}/{attribute_max}')
-    return attribute_id
+    return attribs_data
 
 
-def set_attribute(login: Roll20Login, character_id: str, attribute_name: str,
-                  attribute_value: Union[str, int],
-                  attribute_position: AttributePosition=AttributePosition.current) -> None:
-    # Cast int values to str
-    attribute_value = str(attribute_value)
+def set_attributes(login: Roll20Login, character_id: str,
+                   attributes: Mapping[str, Union[str, int]],
+                   attribute_position: AttributePosition = AttributePosition.current) -> None:
+    attribute_ids = get_attributes_ids(login=login, character_id=character_id)
 
-    attribute_id = get_attribute_id(login=login, character_id=character_id,
-                                    attribute_name=attribute_name)
-    url = (f'{login.firebase_root}{login.campaign_path}/char-attribs/char/{character_id}/'
-           f'{attribute_id}/.json?auth={login.auth_token}')
-    response = requests.patch(url, data=json.dumps({attribute_position.value: attribute_value}))
-    updated_attribute = json.loads(response.text)[attribute_position.value]
-    logger.debug(f'New {attribute_name}: {updated_attribute}')
+    for attribute_name, attribute_value in attributes.items():
+        # Cast int values to str.
+        attribute_value = str(attribute_value)
+
+        attribute_id = attribute_ids[attribute_name]
+        url = (f'{login.firebase_root}{login.campaign_path}/char-attribs/char/{character_id}/'
+               f'{attribute_id}/.json?auth={login.auth_token}')
+        response = requests.patch(url,
+                                  data=json.dumps({attribute_position.value: attribute_value}))
+        updated_attribute = json.loads(response.text)[attribute_position.value]
+        logger.debug(f'New {attribute_name}: {updated_attribute}')
 
 
 def get_player_id(login: Roll20Login, d20_user_id: int) -> str:
