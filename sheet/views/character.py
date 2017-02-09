@@ -487,7 +487,7 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                         'PRED': character.pred,
                         'MRED': character.mred,
                         'REG': character.reg,
-                        'RD': character.rd,
+                        'RD': str(character.rd),
                         'VIS': character.vis,
                         'BPAC': character.bpac,
                         'BMAC': character.bmac,
