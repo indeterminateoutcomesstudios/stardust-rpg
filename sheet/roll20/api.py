@@ -21,7 +21,7 @@
 import enum
 import json
 import logging
-from typing import Dict, Mapping, Optional, Tuple, Union
+from typing import Any, Dict, Mapping, Optional, Tuple, Union
 
 import requests
 
@@ -64,9 +64,9 @@ def get_attributes_ids(login: Roll20Login, character_id: str) -> Dict[str, str]:
     url = (f'{login.firebase_root}{login.campaign_path}/'
            f'char-attribs/char/{character_id}.json?auth={login.auth_token}')
     attributes = json.loads(requests.get(url).text)
-    attribs_data = {c['name']: c['id'] for c in attributes.values()}
-    logger.debug(f'Found attributes: {attribs_data.keys()}')
-    return attribs_data
+    attribute_ids = {c['name']: c['id'] for c in attributes.values()}
+    logger.debug(f'Found attributes: {attribute_ids.keys()}')
+    return attribute_ids
 
 
 def set_attributes(login: Roll20Login, character_id: str,
@@ -113,33 +113,13 @@ def get_macros(login: Roll20Login, player_id: str) -> Optional[Tuple[str, ...]]:
         return None
 
 
-def get_ability_id(login: Roll20Login, character_id: str, ability_name: str) -> str:
-    url = (f'{login.firebase_root}{login.campaign_path}/'
-           f'char-abils/char.json?auth={login.auth_token}')
-    abilities = json.loads(requests.get(url).text)
-    for ability in abilities[character_id].values():
-        if ability['name'] == ability_name:
-            logger.debug(f'Found {ability_name} Ability: {ability["id"]}')
-            return ability['id']
-    raise ValueError('Ability does not exist.')
-
-
-def ability_exists(login: Roll20Login, character_id: str, ability_name: str) -> bool:
-    try:
-        get_ability_id(login=login, character_id=character_id, ability_name=ability_name)
-        return True
-    except ValueError:
-        return False
-
-
-def update_ability(login: Roll20Login, character_id: str, ability_name: str,
+def update_ability(login: Roll20Login, character_id: str, ability_id: str,
                    ability_action: str) -> None:
-    ability_id = get_ability_id(login=login, character_id=character_id, ability_name=ability_name)
     url = (f'{login.firebase_root}{login.campaign_path}/char-abils/char/'
            f'{character_id}/{ability_id}/.json?auth={login.auth_token}')
     response = requests.patch(url, data=json.dumps({'action': ability_action}))
     updated_action = json.loads(response.text)['action']
-    logger.debug(f'{ability_name} updated action: {updated_action}')
+    logger.debug(f'{ability_id} updated action: {updated_action}')
 
 
 def create_ability(login: Roll20Login, character_id: str, ability_name: str, ability_action: str,
@@ -156,3 +136,29 @@ def create_ability(login: Roll20Login, character_id: str, ability_name: str, abi
     url = (f'{login.firebase_root}{login.campaign_path}/char-abils/char/'
            f'{character_id}/{new_ability_id}/.json?auth={login.auth_token}')
     requests.patch(url, data=json.dumps({'id': new_ability_id}))
+
+
+def get_ability_ids(login: Roll20Login, character_id: str) -> Dict[str, str]:
+    url = (f'{login.firebase_root}{login.campaign_path}/'
+           f'char-abils/char.json?auth={login.auth_token}')
+    all_character_abilities = json.loads(requests.get(url).text)
+    ability_ids = {c['name']: c['id'] for c in all_character_abilities[character_id].values()}
+    logger.debug(f'Found attributes: {ability_ids.keys()}')
+    return ability_ids
+
+
+def set_abilities(login: Roll20Login, character_id: str, abilities: Tuple[Any, ...]) -> None:
+    ability_ids = get_ability_ids(login=login, character_id=character_id)
+
+    for ability in abilities:
+        # See if ability already exists to decide whether to update or create it.
+        if ability.name in ability_ids.keys():
+            logger.debug(f'Updating {ability.name}')
+            update_ability(login=login,
+                           character_id=character_id,
+                           ability_id=ability_ids[ability.name],
+                           ability_action=ability.macro)
+        else:
+            logger.debug(f'Creating {ability.name}')
+            create_ability(login=login, character_id=character_id, ability_name=ability.name,
+                           ability_action=ability.macro)

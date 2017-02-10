@@ -567,16 +567,8 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                         abilities_to_sync += (character.weapon,)
                     if sync_utilities:
                         abilities_to_sync += character.utilities
-                    for ability in abilities_to_sync:
-                        if not api.ability_exists(login=roll20_login, character_id=character_id,
-                                                  ability_name=ability.name):
-                            api.create_ability(login=roll20_login, character_id=character_id,
-                                               ability_name=ability.name,
-                                               ability_action=ability.macro)
-                        else:
-                            api.update_ability(login=roll20_login, character_id=character_id,
-                                               ability_name=ability.name,
-                                               ability_action=ability.macro)
+                    api.set_abilities(login=roll20_login, character_id=character_id,
+                                      abilities=abilities_to_sync)
                     messages.info(request, f'Macros synced successfully to '
                                            f'{roll20_login.campaign_name}.')
 
