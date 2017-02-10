@@ -495,6 +495,9 @@ class Ability(macro.Macroable):
         self.target_area = target_area
         self.duration = duration
         self.duration_unit = duration_unit
+
+        if '*' in effect and '[[' not in effect and ']]' not in effect:
+            raise ValueError("Cannot have '*' in Effect description without [[ ]].")
         self.effect = effect
         self.attacks = attacks
         # TODO: Validate pdam/mdam formulas?
