@@ -60,13 +60,6 @@ class LevelUpForm(forms.ModelForm):
         fields = ['hd_roll', 'md_roll', 'sd_roll', 'ad_roll', 'selected_attribute']
 
 
-class SkillPointsForm(forms.ModelForm):
-    class Meta:
-        model = character.Character
-        fields = ['assigned_ath', 'assigned_ste', 'assigned_for', 'assigned_apt',
-                  'assigned_per', 'assigned_spe']
-
-
 class Roll20Form(forms.Form):
     sync_attributes = forms.BooleanField(label='Sync Attributes', required=False, initial=True)
     sync_current_hp_mp = forms.BooleanField(label='Sync Current HP/MP', required=False)

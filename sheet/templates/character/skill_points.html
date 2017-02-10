@@ -3,44 +3,161 @@
 {% block title %}Skill Points - {{ character.name }}{% endblock %}
 
 {% block content %}
-    <div align="center">
-        <table>
-            <thead>
-            <tr id="title">
-                <th>Skill</th>
-                <th>Value</th>
-            </tr>
-            </thead>
-            <tr>
-                <td title="Athletics">ATH</td>
-                <td title="{{ character.ath_formula }}">{{ character.ath }}</td>
-            </tr>
-            <tr>
-                <td title="Stealth">STE</td>
-                <td title="{{ character.ste_formula }}">{{ character.ste }}</td>
-            </tr>
-            <tr>
-                <td title="Fortitude">FOR</td>
-                <td title="{{ character.for_formula }}">{{ character.fort }}</td>
-            </tr>
-            <tr>
-                <td title="Aptitude">APT</td>
-                <td title="{{ character.apt_formula }}">{{ character.apt }}</td>
-            </tr>
-            <tr>
-                <td title="Perception">PER</td>
-                <td title="{{ character.per_formula }}">{{ character.per }}</td>
-            </tr>
-            <tr>
-                <td title="Speech">SPE</td>
-                <td title="{{ character.spe_formula }}">{{ character.spe }}</td>
-            </tr>
-        </table>
-        <label>Available SP: {{ character.available_sp }}</label>
-        <br>
-        <label title="{{ character.max_sp_per_skill_formula }}">
-            <i>Note: Max Assigned SP Per Skill: {{ character.max_sp_per_skill }}</i>
-        </label>
-    </div>
-    {% include "snippets/bootstrap_form.html" with form=skill_points_form button_name="Assign SP" %}
+    <form method="post">
+        {% csrf_token %}
+        <div align="center">
+            <table>
+                <thead>
+                <tr id="title">
+                    <th>Skill</th>
+                    <th>Value</th>
+                    <th>Assigned</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td title="Athletics">ATH</td>
+                    <td title="{{ character.ath_formula }}">{{ character.ath }}</td>
+                    <td>{{ character.assigned_ath }}</td>
+                    <td>
+                        <button type="submit" name="add ATH" class="btn btn-primary"
+                                value="add ATH" style="background: #00ffff;"
+                                {% if character.available_sp <= 0 or character.assigned_ath >= character.max_sp_per_skill %}
+                                disabled
+                                {% endif %}
+                        >
+                            +
+                        </button>
+                        <button type="submit" name="sub ATH" class="btn btn-primary"
+                                value="sub ATH" style="background: #ff0000;"
+                                {% if character.assigned_ath <= 0 %}
+                                disabled
+                                {% endif %}
+                        >
+                            -
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td title="Stealth">STE</td>
+                    <td title="{{ character.ste_formula }}">{{ character.ste }}</td>
+                    <td>{{ character.assigned_ste }}</td>
+                    <td>
+                        <button type="submit" name="add STE" class="btn btn-primary"
+                                value="add STE" style="background: #00ffff;"
+                                {% if character.available_sp <= 0 or character.assigned_ste >= character.max_sp_per_skill %}
+                                disabled
+                                {% endif %}
+                        >
+                            +
+                        </button>
+                        <button type="submit" name="sub STE" class="btn btn-primary"
+                                value="sub STE" style="background: #ff0000;"
+                                {% if character.assigned_ste <= 0 %}
+                                disabled
+                                {% endif %}
+                        >
+                            -
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td title="Fortitude">FOR</td>
+                    <td title="{{ character.for_formula }}">{{ character.fort }}</td>
+                    <td>{{ character.assigned_for }}</td>
+                    <td>
+                        <button type="submit" name="add FOR" class="btn btn-primary"
+                                value="add FOR" style="background: #00ffff;"
+                                {% if character.available_sp <= 0 or character.assigned_for >= character.max_sp_per_skill %}
+                                disabled
+                                {% endif %}
+                        >
+                            +
+                        </button>
+                        <button type="submit" name="sub FOR" class="btn btn-primary"
+                                value="sub FOR" style="background: #ff0000;"
+                                {% if character.assigned_for <= 0 %}
+                                disabled
+                                {% endif %}
+                        >
+                            -
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td title="Aptitude">APT</td>
+                    <td title="{{ character.apt_formula }}">{{ character.apt }}</td>
+                    <td>{{ character.assigned_apt }}</td>
+                    <td>
+                        <button type="submit" name="add APT" class="btn btn-primary"
+                                value="add APT" style="background: #00ffff;"
+                                {% if character.available_sp <= 0 or character.assigned_apt >= character.max_sp_per_skill %}
+                                disabled
+                                {% endif %}
+                        >
+                            +
+                        </button>
+                        <button type="submit" name="sub APT" class="btn btn-primary"
+                                value="sub APT" style="background: #ff0000;"
+                                {% if character.assigned_apt <= 0 %}
+                                disabled
+                                {% endif %}
+                        >
+                            -
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td title="Perception">PER</td>
+                    <td title="{{ character.per_formula }}">{{ character.per }}</td>
+                    <td>{{ character.assigned_per }}</td>
+                    <td>
+                        <button type="submit" name="add PER" class="btn btn-primary"
+                                value="add PER" style="background: #00ffff;"
+                                {% if character.available_sp <= 0 or character.assigned_per >= character.max_sp_per_skill %}
+                                disabled
+                                {% endif %}
+                        >
+                            +
+                        </button>
+                        <button type="submit" name="sub PER" class="btn btn-primary"
+                                value="sub PER" style="background: #ff0000;"
+                                {% if character.assigned_per <= 0 %}
+                                disabled
+                                {% endif %}
+                        >
+                            -
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td title="Speech">SPE</td>
+                    <td title="{{ character.spe_formula }}">{{ character.spe }}</td>
+                    <td>{{ character.assigned_spe }}</td>
+                    <td>
+                        <button type="submit" name="add SPE" class="btn btn-primary"
+                                value="add SPE" style="background: #00ffff;"
+                                {% if character.available_sp <= 0 or character.assigned_spe >= character.max_sp_per_skill %}
+                                disabled
+                                {% endif %}
+                        >
+                            +
+                        </button>
+                        <button type="submit" name="sub SPE" class="btn btn-primary"
+                                value="sub SPE" style="background: #ff0000;"
+                                {% if character.assigned_spe <= 0 %}
+                                disabled
+                                {% endif %}
+                        >
+                            -
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <label>Available SP: {{ character.available_sp }}</label>
+            <br>
+            <label title="{{ character.max_sp_per_skill_formula }}">
+               Current Max Assigned SP Per Skill: {{ character.max_sp_per_skill }}
+            </label>
+        </div>
+    </form>
 {% endblock %}

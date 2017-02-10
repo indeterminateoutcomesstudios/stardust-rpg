@@ -9,7 +9,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from formtools.wizard.views import SessionWizardView
 
-from ..forms import CharacterEquipForm, LevelUpForm, Roll20Form, SkillPointsForm
+from ..forms import CharacterEquipForm, LevelUpForm, Roll20Form
 from ..models import equipment, items, macro  # noqa: F401
 from ..models.abilities import inverse_abilities
 from ..models.character import Character, UnlockedAbility
@@ -137,7 +137,7 @@ def equip(request: HttpRequest, character_id: str) -> HttpResponse:
 
             # Validate character meets requirements for equipment.
             if (character.get_attribute(character.head.min_attribute) <
-               character.head.min_attribute_value):
+                    character.head.min_attribute_value):
                 equip_form.add_error('head_enum',
                                      error='Requirements not met for {}.  Need {}{}.'.format(
                                          character.head.name,
@@ -393,65 +393,78 @@ def level_up(request: HttpRequest, character_id: str) -> HttpResponse:
 @login_required
 def skill_points(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
-
     if request.method == 'POST' and owns_character_or_superuser(request, character):
-        skill_points_form = SkillPointsForm(request.POST)
-        if skill_points_form.is_valid():
-            assigned_ath = skill_points_form.cleaned_data['assigned_ath']
-            assigned_ste = skill_points_form.cleaned_data['assigned_ste']
-            assigned_for = skill_points_form.cleaned_data['assigned_for']
-            assigned_apt = skill_points_form.cleaned_data['assigned_apt']
-            assigned_per = skill_points_form.cleaned_data['assigned_per']
-            assigned_spe = skill_points_form.cleaned_data['assigned_spe']
-            if (assigned_ath + assigned_ste + assigned_for + assigned_apt + assigned_per +
-                    assigned_spe > character.sp):
-                messages.error(request, f'Too many SP assigned. Max: {character.sp}')
-            elif assigned_ath > character.max_sp_per_skill:
-                skill_points_form.add_error('assigned_ath',
-                                            error=f'Assigned ATH too high. '
-                                                  f'Max: {character.max_sp_per_skill}')
-            elif assigned_ste > character.max_sp_per_skill:
-                skill_points_form.add_error('assigned_ste',
-                                            error=f'Assigned STE too high. '
-                                                  f'Max: {character.max_sp_per_skill}')
-            elif assigned_for > character.max_sp_per_skill:
-                skill_points_form.add_error('assigned_for',
-                                            error=f'Assigned FOR too high. '
-                                                  f'Max: {character.max_sp_per_skill}')
-            elif assigned_apt > character.max_sp_per_skill:
-                skill_points_form.add_error('assigned_apt',
-                                            error=f'Assigned APT too high. '
-                                                  f'Max: {character.max_sp_per_skill}')
-            elif assigned_per > character.max_sp_per_skill:
-                skill_points_form.add_error('assigned_per',
-                                            error=f'Assigned PER too high. '
-                                                  f'Max: {character.max_sp_per_skill}')
-            elif assigned_spe > character.max_sp_per_skill:
-                skill_points_form.add_error('assigned_spe',
-                                            error=f'Assigned SPE too high. '
-                                                  f'Max: {character.max_sp_per_skill}')
-            else:
-                character.assigned_ath = assigned_ath
-                character.assigned_ste = assigned_ste
-                character.assigned_for = assigned_for
-                character.assigned_apt = assigned_apt
-                character.assigned_per = assigned_per
-                character.assigned_spe = assigned_spe
-                character.save()
-                messages.info(request, 'Skill points successfully assigned.')
-    else:
-        skill_points_form = SkillPointsForm(
-            initial={'assigned_ath': character.assigned_ath,
-                     'assigned_ste': character.assigned_ste,
-                     'assigned_for': character.assigned_for,
-                     'assigned_apt': character.assigned_apt,
-                     'assigned_per': character.assigned_per,
-                     'assigned_spe': character.assigned_spe}
-        )
+
+        assigned_ath = character.assigned_ath
+        assigned_ste = character.assigned_ste
+        assigned_for = character.assigned_for
+        assigned_apt = character.assigned_apt
+        assigned_per = character.assigned_per
+        assigned_spe = character.assigned_spe
+
+        is_add = True
+        for parameter, value in request.POST.items():
+            add_match = re.match(r'^add\s(?P<skill_name>[A-Z]{3})$', value)
+            if add_match is not None:
+                skill_name = add_match.group('skill_name')
+                break
+
+            sub_match = re.match(r'^sub\s(?P<skill_name>[A-Z]{3})$', value)
+            if sub_match is not None:
+                skill_name = sub_match.group('skill_name')
+                is_add = False
+                break
+        else:
+            return render(request, 'character/skill_points.html',
+                          context={'character': character})
+
+        if skill_name == 'ATH':
+            assigned_ath = assigned_ath + 1 if is_add else assigned_ath - 1
+        elif skill_name == 'STE':
+            assigned_ste = assigned_ste + 1 if is_add else assigned_ste - 1
+        elif skill_name == 'FOR':
+            assigned_for = assigned_for + 1 if is_add else assigned_for - 1
+        elif skill_name == 'APT':
+            assigned_apt = assigned_apt + 1 if is_add else assigned_apt - 1
+        elif skill_name == 'PER':
+            assigned_per = assigned_per + 1 if is_add else assigned_per - 1
+        elif skill_name == 'SPE':
+            assigned_spe = assigned_spe + 1 if is_add else assigned_spe - 1
+        else:
+            raise ValueError(f'Unknown skill name: {skill_name}')
+
+        if (assigned_ath + assigned_ste + assigned_for + assigned_apt + assigned_per +
+                assigned_spe > character.sp):
+            messages.error(request, f'Too many SP assigned. Max: {character.sp}')
+        elif assigned_ath > character.max_sp_per_skill or assigned_ath < 0:
+            messages.error(request,
+                           f'Invalid ATH. Max: {character.max_sp_per_skill} Min: 0.')
+        elif assigned_ste > character.max_sp_per_skill or assigned_ste < 0:
+            messages.error(request,
+                           f'Invalid STE. Max: {character.max_sp_per_skill} Min: 0.')
+        elif assigned_for > character.max_sp_per_skill or assigned_for < 0:
+            messages.error(request,
+                           f'Invalid FOR. Max: {character.max_sp_per_skill} Min: 0.')
+        elif assigned_apt > character.max_sp_per_skill or assigned_apt < 0:
+            messages.error(request,
+                           f'Invalid APT. Max: {character.max_sp_per_skill} Min: 0.')
+        elif assigned_per > character.max_sp_per_skill or assigned_per < 0:
+            messages.error(request,
+                           f'Invalid PER. Max: {character.max_sp_per_skill} Min: 0.')
+        elif assigned_spe > character.max_sp_per_skill or assigned_spe < 0:
+            messages.error(request,
+                           f'Invalid SPE. Max: {character.max_sp_per_skill} Min: 0.')
+        else:
+            character.assigned_ath = assigned_ath
+            character.assigned_ste = assigned_ste
+            character.assigned_for = assigned_for
+            character.assigned_apt = assigned_apt
+            character.assigned_per = assigned_per
+            character.assigned_spe = assigned_spe
+            character.save()
 
     return render(request, 'character/skill_points.html',
-                  context={'skill_points_form': skill_points_form,
-                           'character': character})
+                  context={'character': character})
 
 
 @login_required
