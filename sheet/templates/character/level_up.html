@@ -7,7 +7,6 @@
         {% csrf_token %}
         <label>Previous Levels</label>
         <br/>
-        <label><i>Note: For LVL 1, use maximum rolls for HD, MD, and SD.</i></label>
         <table>
             <thead>
             <tr id="title">
@@ -40,5 +39,8 @@
     <br>
     <label>New Level</label>
     <br/>
-    {% include "snippets/bootstrap_form.html" with form=level_up_form button_name="Level Up"%}
+    {% if character.lvl == 1 %}
+        <label><i>Note: For LVL 1, use maximum rolls for HD, MD, and SD.</i></label>
+    {% endif %}
+    {% include "snippets/bootstrap_form.html" with form=level_up_form button_name="Level Up" %}
 {% endblock %}
