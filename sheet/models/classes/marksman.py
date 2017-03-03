@@ -99,7 +99,7 @@ combat_enhancements_1 = Ability(
     mp_cost=1,
     shape=Shape.circle, target_area='Allies in [[1+WIS]]RAD',
     duration='3', duration_unit=DurationUnit.rnd,
-    effect='Passive: Studies 1 enemy type within sight and adds +1PDAM to '
+    effect='Studies 1 enemy type within sight and adds +1PDAM to '
            'allies’ equipment vs that enemy.',
 )
 
@@ -108,7 +108,7 @@ combat_enhancements_2 = Ability(
     mp_cost=1,
     shape=Shape.circle, target_area='Allies in [[1+WIS]]RAD',
     duration='3+WIS', duration_unit=DurationUnit.rnd,
-    effect='Passive: Studies 1 enemy type within sight and adds +1PRED to '
+    effect='Studies 1 enemy type within sight and adds +1PRED to '
            'allies’ equipment vs that enemy.',
 )
 
@@ -117,7 +117,7 @@ combat_enhancements_3 = Ability(
     mp_cost=2,
     shape=Shape.circle, target_area='Allies in [[1+WIS]]RAD',
     duration='3+WIS', duration_unit=DurationUnit.rnd,
-    effect='Passive: Studies 1 enemy type within sight and adds +1PDAM, +1PRED to '
+    effect='Studies 1 enemy type within sight and adds +1PDAM, +1PRED to '
            'allies’ equipment vs that enemy.',
 )
 
