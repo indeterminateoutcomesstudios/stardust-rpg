@@ -18,7 +18,7 @@ snipe_2 = Ability(
 )
 
 snipe_3 = Ability(
-    name='Snipe II', picture=AbilityPicture.hide,
+    name='Snipe III', picture=AbilityPicture.hide,
     mp_cost=1, target_area='One enemy', time=Time.std_a,
     duration_unit=DurationUnit.instant,
     effect='Rifle: +[[2+WIS]]Max Range, +2PDAM',
@@ -39,7 +39,7 @@ quick_draw_2 = Ability(
 )
 
 quick_draw_3 = Ability(
-    name='Quick Draw I', picture=AbilityPicture.dancing_edge,
+    name='Quick Draw III', picture=AbilityPicture.dancing_edge,
     mp_cost=0, target_area='Self', time=Time.free_a,
     duration_unit=DurationUnit.instant,
     effect='Passive: On failed REG check can take normal pistol',
