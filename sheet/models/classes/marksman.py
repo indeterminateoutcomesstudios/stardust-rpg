@@ -151,7 +151,7 @@ dual_wield_1 = Ability(
     name='Dual Wield I', picture=AbilityPicture.phlebotomize,
     mp_cost=0, target_area='Self', time=Time.free_a,
     duration_unit=DurationUnit.instant,
-    effect='Passive: Can equip a one handed firearm in each hand at -6PAC',
+    effect='Passive: Can equip a one handed firearm in each hand at -4PAC',
     prerequisites=(quick_draw_3, snipe_2,),
 )
 
@@ -159,7 +159,7 @@ dual_wield_2 = Ability(
     name='Dual Wield II', picture=AbilityPicture.phlebotomize,
     mp_cost=0, target_area='Self', time=Time.free_a,
     duration_unit=DurationUnit.instant,
-    effect='Passive: Can equip a one handed firearm in each hand at -4PAC',
+    effect='Passive: Can equip a one handed firearm in each hand at -2PAC',
     prerequisites=(dual_wield_1,),
 )
 
@@ -167,7 +167,7 @@ dual_wield_3 = Ability(
     name='Dual Wield III', picture=AbilityPicture.phlebotomize,
     mp_cost=0, target_area='Self', time=Time.free_a,
     duration_unit=DurationUnit.instant,
-    effect='Passive: Can equip a one handed firearm in each hand at -2PAC',
+    effect='Passive: Can equip a one handed firearm in each hand.',
     prerequisites=(dual_wield_2,),
 )
 
