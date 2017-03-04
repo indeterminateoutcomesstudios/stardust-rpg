@@ -1701,7 +1701,7 @@ weapons = {
         attacks=2, pdam=DiceFormula.from_str('d6'), damage_type=DamageType.piercing),
     Weapons.golden_gun: Weapon(
         name=Weapons.golden_gun.name, price=1950, picture=WeaponPicture.orange_pistol,
-        rarity=Rarity.unique, pac=-2,
+        rarity=Rarity.unique, pac=-3,
         style=Style.ranged, min_dex=2, min_range=1, max_range=5, shape=Shape.range_point,
         attacks=1, pdam=DiceFormula.from_str('d100'), damage_type=DamageType.piercing,
         effect='Wielder spends FullA and 5MP to attack. Cooldown 5RND.'),
