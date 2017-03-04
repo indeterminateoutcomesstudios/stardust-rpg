@@ -1700,7 +1700,7 @@ weapons = {
         style=Style.ranged, min_dex=2, min_range=1, max_range=8, shape=Shape.range_point,
         attacks=2, pdam=DiceFormula.from_str('d6'), damage_type=DamageType.piercing),
     Weapons.golden_gun: Weapon(
-        name=Weapons.pistol_mark_3.name, price=1950, picture=WeaponPicture.orange_pistol,
+        name=Weapons.golden_gun.name, price=1950, picture=WeaponPicture.orange_pistol,
         rarity=Rarity.unique,
         style=Style.ranged, min_dex=2, min_range=1, max_range=5, shape=Shape.range_point,
         attacks=1, pdam=DiceFormula.from_str('d100'), damage_type=DamageType.piercing,
@@ -1762,7 +1762,7 @@ weapons = {
         attacks=1, pdam=DiceFormula.from_str('d10'), damage_type=DamageType.bludgeoning,
         cdam=10),
     Weapons.purifier: Weapon(
-        name=Weapons.shotgun_mark_2.name, price=975, picture=WeaponPicture.white_shotgun,
+        name=Weapons.purifier.name, price=975, picture=WeaponPicture.white_shotgun,
         style=Style.ranged, equip_type=Type.medium, min_dex=1, rarity=Rarity.unique,
         min_range=1, max_range=3, shape=Shape.cone_3,
         attacks=1, pdam=DiceFormula.from_str('d10'), damage_type=DamageType.bludgeoning,
