@@ -1021,6 +1021,7 @@ class Weapons(Enum):
     pistol = auto()
     pistol_mark_2 = auto()
     pistol_mark_3 = auto()
+    golden_gun = auto()
     lunaweave_pistol = auto()
 
     rifle = auto()
@@ -1032,6 +1033,7 @@ class Weapons(Enum):
 
     shotgun = auto()
     shotgun_mark_2 = auto()
+    purifier = auto()
     shotgun_mark_3 = auto()
     lunaweave_shotgun = auto()
 
@@ -1697,6 +1699,12 @@ weapons = {
         name=Weapons.pistol_mark_3.name, price=850, picture=WeaponPicture.white_pistol,
         style=Style.ranged, min_dex=2, min_range=1, max_range=8, shape=Shape.range_point,
         attacks=2, pdam=DiceFormula.from_str('d6'), damage_type=DamageType.piercing),
+    Weapons.golden_gun: Weapon(
+        name=Weapons.pistol_mark_3.name, price=1950, picture=WeaponPicture.orange_pistol,
+        rarity=Rarity.unique,
+        style=Style.ranged, min_dex=2, min_range=1, max_range=5, shape=Shape.range_point,
+        attacks=1, pdam=DiceFormula.from_str('d100'), damage_type=DamageType.piercing,
+        effect='Wielder spends FullA and 5MP to attack. Cooldown 5RND.'),
     Weapons.lunaweave_pistol: Weapon(
         name=Weapons.lunaweave_pistol.name, price=2800, picture=WeaponPicture.blue_pistol,
         style=Style.ranged, min_dex=3, min_range=1, max_range=9, shape=Shape.range_point,
@@ -1753,6 +1761,12 @@ weapons = {
         min_range=1, max_range=3, shape=Shape.cone_3,
         attacks=1, pdam=DiceFormula.from_str('d10'), damage_type=DamageType.bludgeoning,
         cdam=10),
+    Weapons.purifier: Weapon(
+        name=Weapons.shotgun_mark_2.name, price=975, picture=WeaponPicture.white_shotgun,
+        style=Style.ranged, equip_type=Type.medium, min_dex=1, rarity=Rarity.unique,
+        min_range=1, max_range=3, shape=Shape.cone_3,
+        attacks=1, pdam=DiceFormula.from_str('d10'), damage_type=DamageType.bludgeoning,
+        cdam=10, effect='Blind'),
     Weapons.shotgun_mark_3: Weapon(
         name=Weapons.shotgun_mark_3.name, price=1200, picture=WeaponPicture.white_shotgun,
         style=Style.ranged, equip_type=Type.medium, min_dex=2,
