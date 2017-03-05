@@ -152,29 +152,29 @@ combos = (
     Combo(
         classes=(Paladin, Marksman), prerequisite_lvl=2,
         name='Shaped Round I', picture=AbilityPicture.steel_peak,
-        mp_cost=4, attacks=1, targets_mdef=True, mdam='1d6', damage_type=DamageType.force,
+        mp_cost=4, attacks=1, targets_mdef=False, mdam='1d6', damage_type=DamageType.force,
         time=Time.ab_a, min_range='1', max_range='5+WIS', shape=Shape.point,
         target_area='Marksman attack',
         effect='Trajectory of marksman weapon or ability attack bends up to 45 degrees and deals '
-               'extra Force damage.'
+               'extra Force damage on hit.'
     ),
     Combo(
         classes=(Paladin, Marksman), prerequisite_lvl=5,
         name='Shaped Round II', picture=AbilityPicture.steel_peak,
-        mp_cost=6, attacks=1, targets_mdef=True, mdam='1d8+WIS', damage_type=DamageType.force,
+        mp_cost=6, attacks=1, targets_mdef=False, mdam='1d8+WIS', damage_type=DamageType.force,
         time=Time.ab_a, min_range='1', max_range='7+WIS', shape=Shape.point,
         target_area='Marksman attack',
         effect='Trajectory of marksman weapon or ability attack bends up to 90 degrees and deals '
-               'extra Force damage.'
+               'extra Force damage on hit.'
     ),
     Combo(
         classes=(Paladin, Marksman), prerequisite_lvl=8,
         name='Shaped Round III', picture=AbilityPicture.steel_peak,
-        mp_cost=8, attacks=1, targets_mdef=True, mdam='1d12+2*WIS', damage_type=DamageType.force,
+        mp_cost=8, attacks=1, targets_mdef=False, mdam='1d12+2*WIS', damage_type=DamageType.force,
         time=Time.ab_a, min_range='1', max_range='9+WIS', shape=Shape.point,
         target_area='Marksman attack',
         effect='Trajectory of marksman weapon or ability attack bends up to 180 degrees and deals '
-               'extra Force damage.'
+               'extra Force damage on hit.'
     ),
     Combo(
         classes=(Templar, Magus), prerequisite_lvl=2,
