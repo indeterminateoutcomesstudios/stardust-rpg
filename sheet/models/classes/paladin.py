@@ -168,6 +168,7 @@ vortex_1 = Ability(
     mp_cost=4, attacks=1, mdam='1d4',
     damage_type=DamageType.force, targets_mdef=True,
     shape=Shape.circle, target_area='[[2+WIS]]RAD',
+    duration='1', duration_unit=DurationUnit.rnd,
     effect='Sucks objects and enemies towards caster and immobilizes.',
     prerequisites=(reflect_1, telekinesis_3)
 )
@@ -177,6 +178,7 @@ vortex_2 = Ability(
     mp_cost=5, attacks=1, mdam='1d6+WIS',
     damage_type=DamageType.force, targets_mdef=True,
     shape=Shape.circle, target_area='[[2+WIS]]RAD',
+    duration='1', duration_unit=DurationUnit.rnd,
     effect='Sucks objects and enemies towards caster and disables.',
     prerequisites=(vortex_1,)
 )
@@ -186,6 +188,7 @@ vortex_3 = Ability(
     mp_cost=6, attacks=1, mdam='1d8+2*WIS',
     damage_type=DamageType.force, targets_mdef=True,
     shape=Shape.circle, target_area='[[2+WIS]]RAD',
+    duration='1', duration_unit=DurationUnit.rnd,
     effect='Sucks objects and enemies towards caster and stuns.',
     prerequisites=(vortex_2,)
 )
