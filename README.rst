@@ -10,6 +10,9 @@ Stardust RPG
 .. image:: https://codeclimate.com/github/johnthagen/stardust-rpg/badges/issue_count.svg
    :target: https://codeclimate.com/github/johnthagen/stardust-rpg
 
+.. image:: https://codecov.io/github/johnthagen/stardust-rpg/coverage.svg
+    :target: https://codecov.io/github/johnthagen/stardust-rpg
+
 .. image:: https://img.shields.io/pypi/v/stardust-rpg.svg
     :target: https://pypi.python.org/pypi/stardust-rpg
 
