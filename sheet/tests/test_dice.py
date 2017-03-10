@@ -5,7 +5,7 @@ from sheet.models.dice import DiceFormula
 
 
 class StatisticsTestCase(TestCase):
-    def test_statistics(self):
+    def test_statistics(self) -> None:
         six = DiceFormula.from_str('d6')
         self.assertAlmostEqual(six.mean(), 3.5)
         # Variance from https://stats.stackexchange.com/questions/198025/

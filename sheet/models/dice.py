@@ -55,7 +55,7 @@ class DiceFormula:
             return cls(dice_pool=tuple(dice_pool), modifier=modifier)
 
     # The average value of a roll
-    def mean(self):
+    def mean(self) -> float:
         total_sum = self.modifier
         for die in self.dice_pool:
             total_sum += die.num_dice * (die.sides + 1) / 2
@@ -63,7 +63,7 @@ class DiceFormula:
         return total_sum
 
     # The standard deviation of a roll
-    def std(self):
+    def std(self) -> float:
         var = 0
         for die in self.dice_pool:
             var += die.num_dice * (die.sides ** 2 - 1) / 12
