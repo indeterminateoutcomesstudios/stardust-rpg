@@ -17,8 +17,8 @@
             <th>Shape</th>
             <th>Attacks</th>
             <th>PAC</th>
-            <th>PDAM</th>
-            <th>MDAM</th>
+            <th>PDAM (DPS)</th>
+            <th>MDAM (DPS)</th>
             <th>Damage Type</th>
             <th>CRAN</th>
             <th>CDAM</th>
@@ -57,8 +57,8 @@
                 </td>
                 <td>{{ weapon.attacks }}</td>
                 <td>{{ weapon.pac }}</td>
-                <td>{{ weapon.pdam }}</td>
-                <td>{{ weapon.mdam }}</td>
+                <td>{{ weapon.pdam }} ({{ weapon.pdam_dps }})</td>
+                <td>{{ weapon.mdam }} ({{ weapon.mdam_dps }})</td>
                 <td>{{ weapon.damage_type.name|capfirst }}</td>
                 <td>{{ weapon.cran }}</td>
                 <td>{{ weapon.cdam }}</td>

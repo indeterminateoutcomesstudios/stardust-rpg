@@ -584,6 +584,13 @@ class Character(models.Model):
             return pdam_dice
 
     @property
+    def weapon_pdam_dps(self) -> int:
+        if self.weapon_pdam is not None:
+            return round(self.weapon.attacks * self.weapon_pdam.mean(), 1)
+        else:
+            return 0
+
+    @property
     def weapon_mdam(self) -> Optional[dice.DiceFormula]:
         if self.weapon.mdam is None:
             return None
@@ -591,6 +598,13 @@ class Character(models.Model):
             mdam_dice = copy.deepcopy(self.weapon.mdam)
             mdam_dice.modifier += self._str_damage
             return mdam_dice
+
+    @property
+    def weapon_mdam_dps(self) -> int:
+        if self.weapon_mdam is not None:
+            return round(self.weapon.attacks * self.weapon_mdam.mean(), 1)
+        else:
+            return 0
 
 
 class UnlockedAbility(models.Model):

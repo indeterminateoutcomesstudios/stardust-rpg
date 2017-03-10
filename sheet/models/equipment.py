@@ -1007,6 +1007,20 @@ class Weapon(Wearable, macro.Macroable):
                          equip_type=equip_type, vul_set=vul_set)
 
     @property
+    def pdam_dps(self) -> int:
+        if self.pdam is not None:
+            return round(self.attacks * self.pdam.mean(), 1)
+        else:
+            return 0
+
+    @property
+    def mdam_dps(self) -> int:
+        if self.mdam is not None:
+            return round(self.attacks * self.mdam.mean(), 1)
+        else:
+            return 0
+
+    @property
     def macro(self):
         common_template = ('{template_tag}'
                            '{color}'
