@@ -56,11 +56,11 @@ class DiceFormula:
 
     # The average value of a roll
     def mean(self):
-        sum = self.modifier
+        total_sum = self.modifier
         for die in self.dice_pool:
-            sum += die.num_dice * (die.sides + 1) / 2
+            total_sum += die.num_dice * (die.sides + 1) / 2
 
-        return sum
+        return total_sum
 
     # The standard deviation of a roll
     def std(self):
