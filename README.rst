@@ -160,7 +160,7 @@ Combat Round (``RND``)
 
     #. Move Action (``MovA``)
 
-        #. Move your character up to Maximum Speed (``SPEED``).
+        #. Move your character up to Maximum Speed (``SPEED``) distance.
 
             #. You may move through squares occupied by allies, but may not move through grid
                squares occupied by enemies.
