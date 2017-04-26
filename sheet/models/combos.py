@@ -286,14 +286,14 @@ combos = (
     ),
     Combo(
         classes=(Templar, Geomancer), prerequisite_lvl=2,
-        name='Biome I', picture=AbilityPicture.aero,
+        name='Genesis I', picture=AbilityPicture.aero,
         mp_cost=6, time=Time.ab_a, min_range='1', max_range='1', shape=Shape.circle,
         target_area='Allies in 3RAD', duration='5', duration_unit=DurationUnit.rnd,
         effect='Lush jungle sprouts up and heals party [[d4]]HP per RND.'
     ),
     Combo(
         classes=(Templar, Geomancer), prerequisite_lvl=5,
-        name='Biome II', picture=AbilityPicture.aero,
+        name='Genesis II', picture=AbilityPicture.aero,
         mp_cost=8, time=Time.ab_a, min_range='1', max_range='1', shape=Shape.circle,
         target_area='Allies in [[3+WIS]]RAD', duration='5+WIS', duration_unit=DurationUnit.rnd,
         effect='Lush jungle sprouts up and heals party [[d10+WIS]]HP per RND. '
@@ -301,7 +301,7 @@ combos = (
     ),
     Combo(
         classes=(Templar, Geomancer), prerequisite_lvl=8,
-        name='Biome III', picture=AbilityPicture.aero,
+        name='Genesis III', picture=AbilityPicture.aero,
         mp_cost=12, time=Time.ab_a, min_range='1', max_range='1', shape=Shape.circle,
         attacks=2, targets_mdef=True, mdam='d4', damage_type=DamageType.poison,
         target_area='Allies in [[3+WIS]]RAD', duration='5+WIS', duration_unit=DurationUnit.rnd,
