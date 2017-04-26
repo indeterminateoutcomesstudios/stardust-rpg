@@ -248,6 +248,9 @@ stays the same but the area increases:
 
 .. image:: images/ability_2_rad.png
 
+Some weapons and abilities have multiple attacks. These attacks can be targeted at separate
+targets within range or concentrated on the same target.
+
 Incapacitation (``KO``)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
