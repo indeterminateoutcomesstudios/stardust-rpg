@@ -328,8 +328,8 @@ thunder_cloud_3 = Ability(
     prerequisites=(thunder_cloud_2,)
 )
 
-ice_wind_1 = Ability(
-    name='Ice Wind I', picture=AbilityPicture.blizzard_3,
+blizzard_1 = Ability(
+    name='Blizzard I', picture=AbilityPicture.blizzard_3,
     mp_cost=6, attacks=1, mdam='1d6+WIS',
     damage_type=DamageType.cold, targets_mdef=True, time=Time.full_a, max_range='4',
     shape=Shape.cone, target_area='4DIS cone',
@@ -339,26 +339,26 @@ ice_wind_1 = Ability(
     prerequisites=(lightning_strike_2, deep_freeze_3, infuse_1)
 )
 
-ice_wind_2 = Ability(
-    name='Ice Wind II', picture=AbilityPicture.blizzard_3,
+blizzard_2 = Ability(
+    name='Blizzard II', picture=AbilityPicture.blizzard_3,
     mp_cost=7, attacks=1, mdam='1d8+WIS',
     damage_type=DamageType.cold, targets_mdef=True, time=Time.full_a, max_range='6',
     shape=Shape.cone, target_area='6DIS cone',
     duration='4', duration_unit=DurationUnit.rnd,
     effect='Slows enemy -[[4+WIS]]SPEED, adds +[[WIS]]PRED to allies.  Must continue to cast '
            'for at least Duration.',
-    prerequisites=(ice_wind_1,)
+    prerequisites=(blizzard_1,)
 )
 
-ice_wind_3 = Ability(
-    name='Ice Wind III', picture=AbilityPicture.blizzard_3,
+blizzard_3 = Ability(
+    name='Blizzard III', picture=AbilityPicture.blizzard_3,
     mp_cost=8, attacks=1, mdam='1d12+2*WIS',
     damage_type=DamageType.cold, targets_mdef=True, time=Time.full_a, max_range='6',
     shape=Shape.cone, target_area='6DIS cone',
     duration='4', duration_unit=DurationUnit.rnd,
     effect='Slows enemy -[[4+WIS]]SPEED, adds +[[WIS]]PRED to allies.  Must continue to cast '
            'for at least Duration.',
-    prerequisites=(ice_wind_1,)
+    prerequisites=(blizzard_1,)
 )
 
 arcane_master_1 = Ability(
@@ -429,6 +429,6 @@ class Magus(Class):
                        infuse_1, infuse_2, infuse_3,
                        fire_storm_1, fire_storm_2, fire_storm_3,
                        thunder_cloud_1, thunder_cloud_2, thunder_cloud_3,
-                       ice_wind_1, ice_wind_2, ice_wind_3,
+                       blizzard_1, blizzard_2, blizzard_3,
                        arcane_master_1, arcane_master_2, arcane_master_3,
                        fury_1, fury_2, fury_3))

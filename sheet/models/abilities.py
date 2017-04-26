@@ -91,9 +91,9 @@ class Abilities(Enum):
     thunder_cloud_1 = auto()
     thunder_cloud_2 = auto()
     thunder_cloud_3 = auto()
-    ice_wind_1 = auto()
-    ice_wind_2 = auto()
-    ice_wind_3 = auto()
+    blizzard_1 = auto()
+    blizzard_2 = auto()
+    blizzard_3 = auto()
     arcane_master_1 = auto()
     arcane_master_2 = auto()
     arcane_master_3 = auto()
@@ -416,9 +416,9 @@ abilities = {
     Abilities.thunder_cloud_1: magus.thunder_cloud_1,
     Abilities.thunder_cloud_2: magus.thunder_cloud_2,
     Abilities.thunder_cloud_3: magus.thunder_cloud_3,
-    Abilities.ice_wind_1: magus.ice_wind_1,
-    Abilities.ice_wind_2: magus.ice_wind_2,
-    Abilities.ice_wind_3: magus.ice_wind_3,
+    Abilities.blizzard_1: magus.blizzard_1,
+    Abilities.blizzard_2: magus.blizzard_2,
+    Abilities.blizzard_3: magus.blizzard_3,
     Abilities.arcane_master_1: magus.arcane_master_1,
 
     # Templar.
