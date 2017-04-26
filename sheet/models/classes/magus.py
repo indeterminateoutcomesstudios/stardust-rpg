@@ -293,8 +293,8 @@ fire_storm_3 = Ability(
     prerequisites=(fire_storm_2,)
 )
 
-thunder_cloud_1 = Ability(
-    name='Thunder Cloud I', picture=AbilityPicture.thunder_3,
+tempest_1 = Ability(
+    name='Tempest I', picture=AbilityPicture.thunder_3,
     mp_cost=10, attacks=1, mdam='1d6+WIS',
     damage_type=DamageType.lightning, targets_mdef=True, time=Time.full_a,
     shape=Shape.circle, target_area='Allies and targets with 8RAD',
@@ -304,8 +304,8 @@ thunder_cloud_1 = Ability(
     prerequisites=(lightning_strike_3, sunray_2, infuse_2)
 )
 
-thunder_cloud_2 = Ability(
-    name='Thunder Cloud II', picture=AbilityPicture.thunder_3,
+tempest_2 = Ability(
+    name='Tempest II', picture=AbilityPicture.thunder_3,
     mp_cost=12, attacks=1, mdam='1d8+WIS',
     damage_type=DamageType.lightning, targets_mdef=True, time=Time.full_a,
     shape=Shape.circle, target_area='Allies and targets with [[8+WIS]]RAD',
@@ -313,11 +313,11 @@ thunder_cloud_2 = Ability(
     effect='Allies gain MDAM to successful and unsuccessful physical attacks, all allies gain '
            'Lightning Shield II, 1 bolt of Lightning Strike per enemy in range. '
            'Must continue cast for at least Duration.',
-    prerequisites=(thunder_cloud_1,)
+    prerequisites=(tempest_1,)
 )
 
-thunder_cloud_3 = Ability(
-    name='Thunder Cloud III', picture=AbilityPicture.thunder_3,
+tempest_3 = Ability(
+    name='Tempest III', picture=AbilityPicture.thunder_3,
     mp_cost=14, attacks=1, mdam='2d8+WIS',
     damage_type=DamageType.lightning, targets_mdef=True, time=Time.full_a,
     shape=Shape.circle, target_area='Allies and targets with [[12+WIS]]RAD',
@@ -325,7 +325,7 @@ thunder_cloud_3 = Ability(
     effect='Allies gain MDAM to successful and unsuccessful physical attacks, all allies gain '
            'Lightning Shield III, 1 bolt of Lightning Strike per enemy in range. '
            'Must continue to cast for at least Duration.',
-    prerequisites=(thunder_cloud_2,)
+    prerequisites=(tempest_2,)
 )
 
 blizzard_1 = Ability(
@@ -428,7 +428,7 @@ class Magus(Class):
                        deep_freeze_1, deep_freeze_2, deep_freeze_3,
                        infuse_1, infuse_2, infuse_3,
                        fire_storm_1, fire_storm_2, fire_storm_3,
-                       thunder_cloud_1, thunder_cloud_2, thunder_cloud_3,
+                       tempest_1, tempest_2, tempest_3,
                        blizzard_1, blizzard_2, blizzard_3,
                        arcane_master_1, arcane_master_2, arcane_master_3,
                        fury_1, fury_2, fury_3))

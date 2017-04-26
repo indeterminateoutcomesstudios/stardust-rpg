@@ -88,7 +88,7 @@ class Abilities(Enum):
     fire_storm_1 = auto()
     fire_storm_2 = auto()
     fire_storm_3 = auto()
-    thunder_cloud_1 = auto()
+    tempest_1 = auto()
     thunder_cloud_2 = auto()
     thunder_cloud_3 = auto()
     blizzard_1 = auto()
@@ -413,9 +413,9 @@ abilities = {
     Abilities.fire_storm_1: magus.fire_storm_1,
     Abilities.fire_storm_2: magus.fire_storm_2,
     Abilities.fire_storm_3: magus.fire_storm_3,
-    Abilities.thunder_cloud_1: magus.thunder_cloud_1,
-    Abilities.thunder_cloud_2: magus.thunder_cloud_2,
-    Abilities.thunder_cloud_3: magus.thunder_cloud_3,
+    Abilities.tempest_1: magus.tempest_1,
+    Abilities.tempest_2: magus.tempest_2,
+    Abilities.tempest_3: magus.tempest_3,
     Abilities.blizzard_1: magus.blizzard_1,
     Abilities.blizzard_2: magus.blizzard_2,
     Abilities.blizzard_3: magus.blizzard_3,
