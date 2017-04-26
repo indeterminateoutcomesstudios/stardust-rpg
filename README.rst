@@ -235,7 +235,7 @@ area of 1RAD (1 radius), and the following shape.
 
 .. image:: https://i.imgur.com/OgukZ2z.png
 
-For abilities the, the dot denotes where the ability lands, rather than the location of the
+For abilities the dot denotes where the ability lands, rather than the location of the
 caster.
 
 In this example, the ability is centered on the kobold (within the Max Range of 4) and also
