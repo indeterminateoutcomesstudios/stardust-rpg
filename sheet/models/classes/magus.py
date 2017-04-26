@@ -378,7 +378,7 @@ arcane_master_2 = Ability(
 arcane_master_3 = Ability(
     name='Arcane Master III', picture=AbilityPicture.divine_seal,
     mp_cost=0, target_area='Self',
-    effect='[Passive] +1DIS on fire abilities',
+    effect='[Passive] +1DIS area on fire abilities',
     prerequisites=(arcane_master_2,)
 )
 
