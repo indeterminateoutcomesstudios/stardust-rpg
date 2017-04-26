@@ -219,6 +219,15 @@ In this example, both goblins and the kobold would be hit with a single attack.
 
 .. image:: images/melee_t.png
 
+If an enemy is closer than Min Range to the wielder of a weapon, it cannot be targeted. If
+the enemy
+
+In this example, if the hero were wielding a bow with a Min Range of 2 and a Max Range of 4,
+he could only target Goblin 2, as Goblin 1 is closer than Min Range and Kobold is
+farther than Max Range.
+
+.. image:: images/min_max_range.png
+
 Incapacitation (``KO``)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
