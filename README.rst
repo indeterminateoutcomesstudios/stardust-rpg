@@ -201,6 +201,24 @@ Combat Round (``RND``)
         #. If d20 = 20, restore 2x ``RD`` MP.
         #. If d20 = 1, automatic failure.
 
+Targeting
+~~~~~~~~~
+
+Weapons and abilities have a Min Range, Max Range, and Shape that primarily control
+where an attack can be targeted. Abilities have another Target Area field which describes
+how large the Shape is, while weapons areas are defined solely by the Shape.
+
+An example melee weapon shape is the T:
+
+.. image:: https://i.imgur.com/P4kpZox.png
+
+The dot signifies the position of the wielder and the outline represents the area that
+a single attack can hit. All targets within the area are attacked.
+
+In this example, both goblins and the kobold would be hit with a single attack.
+
+.. image:: images/melee_t.png
+
 Incapacitation (``KO``)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
