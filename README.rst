@@ -228,6 +228,26 @@ farther than Max Range.
 
 .. image:: images/min_max_range.png
 
+Abilities work in a similar way.
+
+In this example, the hero casts a fireball that has a Min Range of 1, a Max Range of 4, an
+area of 1RAD (1 radius), and the following shape.
+
+.. image:: https://i.imgur.com/OgukZ2z.png
+
+For abilities the, the dot denotes where the ability lands, rather than the location of the
+caster.
+
+In this example, the ability is centered on the kobold (within the Max Range of 4) and also
+would hit Goblin 1.
+
+.. image:: images/ability_1_rad.png
+
+If the fireball had 2RAD (2 radius) it would cover the following area. Note the shape
+stays the same but the area increases:
+
+.. image:: images/ability_2_rad.png
+
 Incapacitation (``KO``)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
