@@ -469,6 +469,6 @@ combos = (
     # Valkyrie, Geomancer: Titanfall
     # Valkyrie, Marksman: Pavelow
     # Telepath, Geomancer
-    # Telepath, Marksman
+    # Telepath, Marksman: Shell Shock
     # Geomancer, Marksman: Rodeo
 )
