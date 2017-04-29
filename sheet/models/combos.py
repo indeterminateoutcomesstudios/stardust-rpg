@@ -155,8 +155,8 @@ combos = (
         mp_cost=4, attacks=1, targets_mdef=False, mdam='1d6', damage_type=DamageType.force,
         time=Time.ab_a, min_range='1', max_range='5+WIS', shape=Shape.point,
         target_area='Marksman attack',
-        effect='Trajectory of marksman weapon or ability attack bends up to 45 degrees and deals '
-               'extra Force damage on hit.'
+        effect='Trajectory of marksman weapon or ability attack bends up to 45 degrees twice '
+               'during its travel and deals extra Force damage on hit.'
     ),
     Combo(
         classes=(Paladin, Marksman), prerequisite_lvl=5,
@@ -164,8 +164,8 @@ combos = (
         mp_cost=6, attacks=1, targets_mdef=False, mdam='1d8+WIS', damage_type=DamageType.force,
         time=Time.ab_a, min_range='1', max_range='7+WIS', shape=Shape.point,
         target_area='Marksman attack',
-        effect='Trajectory of marksman weapon or ability attack bends up to 90 degrees and deals '
-               'extra Force damage on hit.'
+        effect='Trajectory of marksman weapon or ability attack bends up to 90 degrees twice '
+               'during its travel and deals extra Force damage on hit.'
     ),
     Combo(
         classes=(Paladin, Marksman), prerequisite_lvl=8,
@@ -173,8 +173,8 @@ combos = (
         mp_cost=8, attacks=1, targets_mdef=False, mdam='1d12+2*WIS', damage_type=DamageType.force,
         time=Time.ab_a, min_range='1', max_range='9+WIS', shape=Shape.point,
         target_area='Marksman attack',
-        effect='Trajectory of marksman weapon or ability attack bends up to 180 degrees and deals '
-               'extra Force damage on hit.'
+        effect='Trajectory of marksman weapon or ability attack bends up to 180 degrees three '
+               'times during its travel and deals extra Force damage on hit.'
     ),
     Combo(
         classes=(Templar, Magus), prerequisite_lvl=2,
