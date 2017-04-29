@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Type
 
 from .ability import Ability, AbilityPicture, DurationUnit, Time
 from .class_type import Class
@@ -14,7 +14,7 @@ from .equipment import DamageType, Shape
 
 
 class Combo(Ability):
-    def __init__(self, classes: Tuple[Class, Class], prerequisite_lvl: int,
+    def __init__(self, classes: Tuple[Type[Class], Type[Class]], prerequisite_lvl: int,
                  name: str, picture: AbilityPicture, mp_cost: int, target_area: str,
                  duration: str = None, duration_unit: DurationUnit = DurationUnit.instant,
                  damage_type: DamageType = None,
