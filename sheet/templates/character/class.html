@@ -93,51 +93,51 @@
         </tr>
         <tr>
             <td>Melee Light Weapons</td>
-            <td>{{ character.cls.use_melee_light|default:"" }}</td>
+            <td> {% if character.cls.use_melee_light %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Melee Medium Weapons</td>
-            <td>{{ character.cls.use_melee_medium|default:"" }}</td>
+            <td> {% if character.cls.use_melee_medium %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Melee Heavy Weapons</td>
-            <td>{{ character.cls.use_melee_heavy|default:"" }}</td>
+            <td> {% if character.cls.use_melee_heavy %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Ranged Light Weapons</td>
-            <td>{{ character.cls.use_ranged_light|default:"" }}</td>
+            <td> {% if character.cls.use_ranged_light %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Ranged Medium Weapons</td>
-            <td>{{ character.cls.use_ranged_medium|default:"" }}</td>
+            <td> {% if character.cls.use_ranged_medium %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Ranged Heavy Weapons</td>
-            <td>{{ character.cls.use_ranged_heavy|default:"" }}</td>
+            <td> {% if character.cls.use_ranged_heavy %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Magic Light Weapons</td>
-            <td>{{ character.cls.use_magic_light|default:"" }}</td>
+            <td> {% if character.cls.use_magic_light %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Magic Medium Weapons</td>
-            <td>{{ character.cls.use_magic_medium|default:"" }}</td>
+            <td> {% if character.cls.use_magic_medium %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Magic Heavy Weapons</td>
-            <td>{{ character.cls.use_magic_heavy|default:"" }}</td>
+            <td> {% if character.cls.use_magic_heavy %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Light Armor</td>
-            <td>{{ character.cls.use_light_armor|default:"" }}</td>
+            <td> {% if character.cls.use_light_armor %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Medium Armor</td>
-            <td>{{ character.cls.use_medium_armor|default:"" }}</td>
+            <td> {% if character.cls.use_medium_armor %} ✔ {% endif %} </td>
         </tr>
         <tr>
             <td>Heavy Armor</td>
-            <td>{{ character.cls.use_heavy_armor|default:"" }}</td>
+            <td> {% if character.cls.use_heavy_armor %} ✔ {% endif %} </td>
         </tr>
     </table>
 {% endblock %}

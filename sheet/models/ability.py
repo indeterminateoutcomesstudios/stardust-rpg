@@ -509,6 +509,7 @@ class Ability(macro.Macroable):
         self.max_range = max_range
         self.shape = shape
 
+    @property
     def mac(self) -> int:
         return round(self.mp_cost * self.mp_mac_modifier)
 

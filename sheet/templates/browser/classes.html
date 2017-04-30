@@ -66,18 +66,18 @@
                 <td>{{ class.per }}</td>
                 <td>{{ class.spe }}</td>
                 <td>{{ class.starting_ap }}</td>
-                <td>{{ class.use_melee_light|default:"" }}</td>
-                <td>{{ class.use_melee_medium|default:"" }}</td>
-                <td>{{ class.use_melee_heavy|default:"" }}</td>
-                <td>{{ class.use_ranged_light|default:"" }}</td>
-                <td>{{ class.use_ranged_medium|default:"" }}</td>
-                <td>{{ class.use_ranged_heavy|default:"" }}</td>
-                <td>{{ class.use_magic_light|default:"" }}</td>
-                <td>{{ class.use_magic_medium|default:"" }}</td>
-                <td>{{ class.use_magic_heavy|default:"" }}</td>
-                <td>{{ class.use_light_armor|default:"" }}</td>
-                <td>{{ class.use_medium_armor|default:"" }}</td>
-                <td>{{ class.use_heavy_armor|default:"" }}</td>
+                <td> {% if class.use_melee_light %} ✔ {% endif %} </td>
+                <td> {% if class.use_melee_medium %} ✔ {% endif %} </td>
+                <td> {% if class.use_melee_heavy %} ✔ {% endif %} </td>
+                <td> {% if class.use_ranged_light %} ✔ {% endif %} </td>
+                <td> {% if class.use_ranged_medium %} ✔ {% endif %} </td>
+                <td> {% if class.use_ranged_heavy %} ✔ {% endif %} </td>
+                <td> {% if class.use_magic_light %} ✔ {% endif %} </td>
+                <td> {% if class.use_magic_medium %} ✔ {% endif %} </td>
+                <td> {% if class.use_magic_heavy %} ✔ {% endif %} </td>
+                <td> {% if class.use_light_armor %} ✔ {% endif %} </td>
+                <td> {% if class.use_medium_armor %} ✔ {% endif %} </td>
+                <td> {% if class.use_heavy_armor %} ✔ {% endif %} </td>
             </tr>
         {% endfor %}
     </table>

@@ -49,7 +49,7 @@
                 <td>{{ weapon.style.name|capfirst }}</td>
                 <td>{{ weapon.type.name|capfirst }}</td>
                 <td>{{ weapon.min_attribute_value }}</td>
-                <td>{{ weapon.is_two_handed }}</td>
+                <td> {% if weapon.is_two_handed %} ✔ {% endif %} </td>
                 <td>{{ weapon.min_range }} - {{ weapon.max_range }}</td>
                 <td>
                     {{ weapon.shape.name|capfirst }}

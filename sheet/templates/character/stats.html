@@ -235,7 +235,7 @@
             <td>{{ character.weapon.style.name|capfirst }}</td>
             <td>{{ character.weapon.type.name|capfirst }}</td>
             <td>{{ character.weapon.min_attribute_value }}</td>
-            <td>{{ character.weapon.is_two_handed }}</td>
+            <td> {% if character.weapon.is_two_handed %} ✔ {% endif %} </td>
             <td>{{ character.weapon.min_range }} - {{ character.weapon.max_range }}</td>
             <td>
                 {{ character.weapon.shape.name|capfirst }}

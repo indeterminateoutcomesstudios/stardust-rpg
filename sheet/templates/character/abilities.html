@@ -68,11 +68,11 @@
                             {{ character.bmac|add:ability.mac }}
                         {% endif %}
                     </td>
-                    <td>{{ ability.pdam }}</td>
-                    <td>{{ ability.mdam }}</td>
+                    <td>{{ ability.pdam|default:"" }}</td>
+                    <td>{{ ability.mdam|default:"" }}</td>
                     <td>{{ ability.damage_type.name|capfirst }}</td>
-                    <td>{{ ability.targets_mdef }}</td>
-                    <td>{{ ability.time.name|capfirst }}</td>
+                    <td> {% if ability.targets_mdef %} ✔ {% endif %} </td>
+                    <td> {{ ability.time.name|capfirst }}</td>
                     <td>{{ ability.min_range }}</td>
                     <td>{{ ability.max_range }}</td>
                     <td>
