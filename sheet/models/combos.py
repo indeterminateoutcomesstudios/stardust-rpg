@@ -71,7 +71,7 @@ combos = (
         effect='Magus loses weapon attack & control of movement, moving to any adjacent space '
                'next to the Paladin.  Paladin takes 50% DAM for Magus.  When Magus or Paladin '
                'hit, Magus counters with weapon attack as FreeA.  All Paladin weapon attacks slow '
-               '[[-WIS]]SPEED.  -2SPEED'
+               '[[-WIS]]SPEED. -2SPEED to casters.'
     ),
     Combo(
         classes=(Paladin, Magus), prerequisite_lvl=5,
@@ -82,7 +82,7 @@ combos = (
         effect='Magus loses weapon attack & control of movement, moving to any adjacent space '
                'next to the Paladin.  Paladin takes 50% DAM for Magus.  When Magus or Paladin '
                'hit, Magus counters with weapon attack as FreeA.  All Paladin weapon attacks '
-               'deal extra MDAM. -1SPEED'
+               'deal extra MDAM. -1SPEED to casters.'
     ),
     Combo(
         classes=(Paladin, Magus), prerequisite_lvl=8,
@@ -93,7 +93,7 @@ combos = (
         effect='Magus loses weapon attack & control of movement, moving to any adjacent space '
                'next to the Paladin.  Paladin takes 50% DAM for Magus.  When Magus or Paladin '
                'hit, Magus counters with weapon attack as FreeA.  All Paladin weapon attacks deal '
-               'extra MDAM. -1SPEED'
+               'extra MDAM. -1SPEED to casters.'
     ),
     Combo(
         classes=(Paladin, Spectre), prerequisite_lvl=2,
