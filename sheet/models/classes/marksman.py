@@ -15,6 +15,7 @@ snipe_2 = Ability(
     mp_cost=1, target_area='One enemy', time=Time.std_a,
     duration_unit=DurationUnit.instant,
     effect='Rifle: +2Max Range, +1PDAM',
+    prerequisites=(snipe_1,),
 )
 
 snipe_3 = Ability(
@@ -22,6 +23,7 @@ snipe_3 = Ability(
     mp_cost=1, target_area='One enemy', time=Time.std_a,
     duration_unit=DurationUnit.instant,
     effect='Rifle: +[[2+WIS]]Max Range, +2PDAM',
+    prerequisites=(snipe_2,),
 )
 
 quick_draw_1 = Ability(
@@ -36,6 +38,7 @@ quick_draw_2 = Ability(
     mp_cost=0, target_area='Self', time=Time.free_a,
     duration_unit=DurationUnit.instant,
     effect='Passive: On failed REG check can take normal pistol attack for -2PAC',
+    prerequisites=(quick_draw_1,),
 )
 
 quick_draw_3 = Ability(
@@ -43,6 +46,7 @@ quick_draw_3 = Ability(
     mp_cost=0, target_area='Self', time=Time.free_a,
     duration_unit=DurationUnit.instant,
     effect='Passive: On failed REG check can take normal pistol',
+    prerequisites=(quick_draw_2,),
 )
 
 mortar_1 = Ability(
@@ -59,6 +63,7 @@ mortar_2 = Ability(
     mp_cost=0, max_range='24+4*WIS', time=Time.full_a,
     duration_unit=DurationUnit.instant, target_area='Smoke Bomb Ability',
     effect='Allows Smoke Bomb ability use Mortar Range.',
+    prerequisites=(mortar_1,),
 )
 
 mortar_3 = Ability(
@@ -68,6 +73,7 @@ mortar_3 = Ability(
     shape=Shape.circle, target_area='One enemy',
     duration_unit=DurationUnit.instant,
     effect='Armor Piercing: +4MAC; ignore PRED',
+    prerequisites=(mortar_2,),
 )
 
 smoke_bomb_1 = Ability(
@@ -84,6 +90,7 @@ smoke_bomb_2 = Ability(
     shape=Shape.circle, target_area='Up to [[2+WIS]]RAD', max_range='6',
     duration='3+WIS', duration_unit=DurationUnit.rnd,
     effect='Smoke causes -4PAC to enemies',
+    prerequisites=(smoke_bomb_1,),
 )
 
 smoke_bomb_3 = Ability(
@@ -92,6 +99,7 @@ smoke_bomb_3 = Ability(
     shape=Shape.circle, target_area='Up to [[2+WIS]]RAD', max_range='6',
     duration='3+WIS', duration_unit=DurationUnit.rnd,
     effect='Smoke staggers enemies',
+    prerequisites=(smoke_bomb_2,),
 )
 
 combat_enhancements_1 = Ability(
@@ -110,6 +118,7 @@ combat_enhancements_2 = Ability(
     duration='3+WIS', duration_unit=DurationUnit.rnd,
     effect='Studies 1 enemy type within sight and adds +1PRED to '
            'allies’ equipment vs that enemy.',
+    prerequisites=(combat_enhancements_1,),
 )
 
 combat_enhancements_3 = Ability(
@@ -119,6 +128,7 @@ combat_enhancements_3 = Ability(
     duration='3+WIS', duration_unit=DurationUnit.rnd,
     effect='Studies 1 enemy type within sight and adds +1PDAM, +1PRED to '
            'allies’ equipment vs that enemy.',
+    prerequisites=(combat_enhancements_2,),
 )
 
 # Tier 2.
