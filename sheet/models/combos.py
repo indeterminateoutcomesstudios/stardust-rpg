@@ -387,6 +387,33 @@ combos = (
         effect='Causes creatures to feel uncomfortably hot, causing them to generally want to '
                'leave the immediate area quietly.  Effect severity can be tuned.'
     ),
+    Combo(
+        classes=(Magus, Marksman), prerequisite_lvl=2,
+        name='Electrostasis I', picture=AbilityPicture.mana_ward,
+        mp_cost=12, attacks=1, targets_mdef=True,
+        time=Time.ab_a, min_range='1', max_range='1', shape=Shape.point,
+        duration='5', duration_unit=DurationUnit.rnd, target_area='One creature',
+        effect='Forms an electrical barrier around a creature, stunning them and making them '
+               'immune to physical and magical attacks and effects. 5RND cooldown.'
+    ),
+    Combo(
+        classes=(Magus, Marksman), prerequisite_lvl=5,
+        name='Electrostasis II', picture=AbilityPicture.mana_ward,
+        mp_cost=18, attacks=1, targets_mdef=True,
+        time=Time.ab_a, min_range='1', max_range='2', shape=Shape.circle,
+        duration='5', duration_unit=DurationUnit.rnd, target_area='1RAD',
+        effect='Forms an electrical barrier around creatures, stunning them and making them '
+               'immune to physical and magical attacks and effects. 5RND cooldown.'
+    ),
+    Combo(
+        classes=(Magus, Marksman), prerequisite_lvl=8,
+        name='Electrostasis III', picture=AbilityPicture.mana_ward,
+        mp_cost=30, attacks=1, targets_mdef=True,
+        time=Time.ab_a, min_range='1', max_range='1', shape=Shape.point,
+        duration='1', duration_unit=DurationUnit.day, target_area='One creature',
+        effect='Forms an electrical barrier around creatures, stunning them and making them '
+               'immune to physical and magical attacks and effects. 1 day cooldown.'
+    ),
     # Magus Geomancer: Meteor, Fire, Ice, Lightning.
     Combo(
         classes=(Spectre, Valkyrie), prerequisite_lvl=2,
