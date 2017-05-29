@@ -375,7 +375,7 @@ chests = {
     Chests.hardened_griffon_hide: Chest(name=Chests.hardened_griffon_hide.name, price=200,
                                         min_str=1, hp=2),
     Chests.bulletsteel: Chest(name=Chests.bulletsteel.name, price=500, min_str=2,
-                              rarity=Rarity.rare, pdef=1, pred=1, speed=-1),
+                              rarity=Rarity.rare, pdef=1, pred=1, speed=-0.5),
     Chests.ursa_hide: Chest(name=Chests.ursa_hide.name, price=1000, min_str=2, pdef=2),
     Chests.hardened_ursa_hide: Chest(name=Chests.hardened_ursa_hide.name, price=1000, min_str=2,
                                      pdef=1, hp=2),
