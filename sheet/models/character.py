@@ -1,9 +1,9 @@
 import copy
 from typing import Optional, Tuple
 
+import enumfields
 from django.contrib.auth.models import User
 from django.db import models
-import enumfields
 
 from . import abilities, ability, class_type, classes, combos, dice, equipment, items, party
 from .abilities import round_up
@@ -562,6 +562,16 @@ class Character(models.Model):
                 return self.cls.use_magic_medium
             elif self.weapon.type is equipment.Type.heavy:
                 return self.cls.use_magic_heavy
+
+    def can_use_wearable(self, wearable: equipment.Wearable) -> bool:
+        if wearable.type is equipment.Type.light and self.cls.use_light_armor:
+            return True
+        elif wearable.type is equipment.Type.medium and self.cls.use_medium_armor:
+            return True
+        elif wearable.type is equipment.Type.heavy and self.cls.use_heavy_armor:
+            return True
+        else:
+            return False
 
     @property
     def _str_damage(self) -> int:

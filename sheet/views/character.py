@@ -136,7 +136,35 @@ def equip(request: HttpRequest, character_id: str) -> HttpResponse:
             character.weapon_enum = equip_form.cleaned_data['weapon_enum']
 
             # Validate character meets requirements for equipment.
-            if (character.get_attribute(character.head.min_attribute) <
+            if not character.can_use_wearable(character.head):
+                equip_form.add_error('head_enum',
+                                     error='Class cannot wear {} armor.'.format(
+                                         character.head.type.name))
+            elif not character.can_use_wearable(character.neck):
+                equip_form.add_error('neck_enum',
+                                     error='Class cannot wear {} armor.'.format(
+                                         character.neck.type.name))
+            elif not character.can_use_wearable(character.chest):
+                equip_form.add_error('chest_enum',
+                                     error='Class cannot wear {} armor.'.format(
+                                         character.chest.type.name))
+            elif not character.can_use_wearable(character.shield):
+                equip_form.add_error('shield_enum',
+                                     error='Class cannot wear {} armor.'.format(
+                                         character.shield.type.name))
+            elif not character.can_use_wearable(character.right_hand):
+                equip_form.add_error('right_hand_enum',
+                                     error='Class cannot wear {} armor.'.format(
+                                         character.right_hand.type.name))
+            elif not character.can_use_wearable(character.left_hand):
+                equip_form.add_error('left_hand_enum',
+                                     error='Class cannot wear {} armor.'.format(
+                                         character.left_hand.type.name))
+            elif not character.can_use_wearable(character.feet):
+                equip_form.add_error('feet_enum',
+                                     error='Class cannot wear {} armor.'.format(
+                                         character.feet.type.name))
+            elif (character.get_attribute(character.head.min_attribute) <
                     character.head.min_attribute_value):
                 equip_form.add_error('head_enum',
                                      error='Requirements not met for {}.  Need {}{}.'.format(
