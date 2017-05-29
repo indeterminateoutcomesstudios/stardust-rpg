@@ -65,7 +65,7 @@
                 <td>{{ combo.pdam|default:"" }}</td>
                 <td>{{ combo.mdam|default:"" }}</td>
                 <td>{{ combo.damage_type.name|capfirst }}</td>
-                <td>{{ combo.targets_mdef|default:"" }}</td>
+                <td> {% if combo.targets_mdef %} ✔ {% endif %} </td>
                 <td>{{ combo.time.name|capfirst }}</td>
                 <td>{{ combo.min_range }}</td>
                 <td>{{ combo.max_range }}</td>
