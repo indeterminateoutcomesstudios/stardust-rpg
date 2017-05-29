@@ -6,14 +6,14 @@ from ..equipment import DamageType, Shape
 fireball_1 = Ability(
     name='Fireball I', picture=AbilityPicture.fire,
     mp_cost=2, attacks=2, mdam='1d4',
-    damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a, max_range='6',
+    damage_type=DamageType.fire, targets_mdef=True, time=Time.ab_a, max_range='6',
     shape=Shape.circle, target_area='1RAD',
 )
 
 fireball_2 = Ability(
     name='Fireball II', picture=AbilityPicture.fire,
     mp_cost=3, attacks=2, mdam='1d6+WIS',
-    damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a, max_range='8',
+    damage_type=DamageType.fire, targets_mdef=True, time=Time.ab_a, max_range='8',
     shape=Shape.circle, target_area='1RAD',
     prerequisites=(fireball_1,)
 )
@@ -21,7 +21,7 @@ fireball_2 = Ability(
 fireball_3 = Ability(
     name='Fireball III', picture=AbilityPicture.fire,
     mp_cost=4, attacks=2, mdam='1d8+WIS',
-    damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a, max_range='10',
+    damage_type=DamageType.fire, targets_mdef=True, time=Time.ab_a, max_range='10',
     shape=Shape.circle, target_area='1RAD',
     prerequisites=(fireball_2,)
 )
@@ -133,7 +133,7 @@ imbue_weapon_3 = Ability(
 inferno_1 = Ability(
     name='Inferno I', picture=AbilityPicture.fire_2,
     mp_cost=6, attacks=1, mdam='3d6',
-    damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.fire, targets_mdef=True, time=Time.ab_a,
     min_range='1', max_range='3', shape=Shape.cone, target_area='3DIS cone',
     prerequisites=(fireball_3, imbue_weapon_3)
 )
@@ -141,7 +141,7 @@ inferno_1 = Ability(
 inferno_2 = Ability(
     name='Inferno II', picture=AbilityPicture.fire_2,
     mp_cost=10, attacks=2, mdam='1d10+WIS',
-    damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.fire, targets_mdef=True, time=Time.ab_a,
     min_range='1', max_range='3', shape=Shape.cone, target_area='3DIS cone',
     prerequisites=(inferno_1,)
 )
@@ -149,7 +149,7 @@ inferno_2 = Ability(
 inferno_3 = Ability(
     name='Inferno III', picture=AbilityPicture.fire_2,
     mp_cost=14, attacks=3, mdam='1d10+2*WIS',
-    damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.fire, targets_mdef=True, time=Time.ab_a,
     min_range='1', max_range='3', shape=Shape.cone, target_area='3DIS cone',
     prerequisites=(inferno_2,)
 )
@@ -157,7 +157,7 @@ inferno_3 = Ability(
 sunray_1 = Ability(
     name='Sunray I', picture=AbilityPicture.flaming_arrow,
     mp_cost=3, attacks=1, mdam='1d8+WIS',
-    damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.fire, targets_mdef=True, time=Time.ab_a,
     shape=Shape.halo, target_area='1RAD Halo',
     effect='Sunray shoots down onto caster and explodes outward knocking back creatures 2DIS. '
            'and immobilizes',
@@ -167,7 +167,7 @@ sunray_1 = Ability(
 sunray_2 = Ability(
     name='Sunray II', picture=AbilityPicture.flaming_arrow,
     mp_cost=5, attacks=1, mdam='1d8+2*WIS',
-    damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.fire, targets_mdef=True, time=Time.ab_a,
     shape=Shape.halo, target_area='2RAD Halo',
     effect='Sunray shoots down onto caster and explodes outward knocking back creatures 2DIS and '
            'staggering',
@@ -177,7 +177,7 @@ sunray_2 = Ability(
 sunray_3 = Ability(
     name='Sunray III', picture=AbilityPicture.flaming_arrow,
     mp_cost=8, attacks=1, mdam='2d8+2*WIS',
-    damage_type=DamageType.fire, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.fire, targets_mdef=True, time=Time.ab_a,
     shape=Shape.halo, target_area='2RAD Halo',
     effect='Sunray shoots down onto caster and explodes outward knocking back creatures 2DIS and '
            'disabling',
@@ -187,7 +187,7 @@ sunray_3 = Ability(
 lightning_strike_1 = Ability(
     name='Lightning Strike I', picture=AbilityPicture.thunder_2,
     mp_cost=6, attacks=1, mdam='1d12',
-    damage_type=DamageType.lightning, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.lightning, targets_mdef=True, time=Time.ab_a,
     shape=Shape.multi_point, max_range='10', target_area='One creature per bolt',
     effect='2 lightning bolts strike enemies.  Maximum of 1 bolt per target.',
     prerequisites=(lightning_shield_3, ice_slick_2, imbue_weapon_2)
@@ -196,7 +196,7 @@ lightning_strike_1 = Ability(
 lightning_strike_2 = Ability(
     name='Lightning Strike II', picture=AbilityPicture.thunder_2,
     mp_cost=10, attacks=1, mdam='1d12+WIS',
-    damage_type=DamageType.lightning, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.lightning, targets_mdef=True, time=Time.ab_a,
     shape=Shape.multi_point, max_range='12', target_area='One creature per bolt',
     effect='[[2+WIS]] lightning bolts strike enemies.  Maximum of 1 bolt per target.',
     prerequisites=(lightning_strike_1,)
@@ -205,7 +205,7 @@ lightning_strike_2 = Ability(
 lightning_strike_3 = Ability(
     name='Lightning Strike III', picture=AbilityPicture.thunder_2,
     mp_cost=14, attacks=1, mdam='1d12+2*WIS',
-    damage_type=DamageType.lightning, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.lightning, targets_mdef=True, time=Time.ab_a,
     shape=Shape.multi_point, max_range='12', target_area='One creature per bolt',
     effect='[[3+WIS]] lightning bolts strike enemies.  Maximum of 1 bolt per target.',
     prerequisites=(lightning_strike_2,)
@@ -214,7 +214,7 @@ lightning_strike_3 = Ability(
 deep_freeze_1 = Ability(
     name='Deep Freeze I', picture=AbilityPicture.blizzard_2,
     mp_cost=2, attacks=1, mdam='1d10',
-    damage_type=DamageType.cold, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.cold, targets_mdef=True, time=Time.ab_a,
     shape=Shape.multi_point, max_range='5', target_area='One living creature',
     duration='3', duration_unit=DurationUnit.rnd,
     effect='Slows enemy -[[WIS]]SPEED',
@@ -224,7 +224,7 @@ deep_freeze_1 = Ability(
 deep_freeze_2 = Ability(
     name='Deep Freeze II', picture=AbilityPicture.blizzard_2,
     mp_cost=6, attacks=1, mdam='1d12+WIS',
-    damage_type=DamageType.cold, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.cold, targets_mdef=True, time=Time.ab_a,
     shape=Shape.multi_point, max_range='5', target_area='One living creature',
     duration='5', duration_unit=DurationUnit.rnd,
     effect='Immobilizes for 1 RND and slows enemy -[[WIS]]SPEED for Duration',
@@ -234,7 +234,7 @@ deep_freeze_2 = Ability(
 deep_freeze_3 = Ability(
     name='Deep Freeze III', picture=AbilityPicture.blizzard_2,
     mp_cost=10, attacks=1, mdam='1d12+2*WIS',
-    damage_type=DamageType.cold, targets_mdef=True, time=Time.std_ab_a,
+    damage_type=DamageType.cold, targets_mdef=True, time=Time.ab_a,
     shape=Shape.multi_point, max_range='7', target_area='One living creature',
     duration='5', duration_unit=DurationUnit.rnd,
     effect='Stuns for 1 RND and slows enemy -[[WIS]]SPEED for Duration',
