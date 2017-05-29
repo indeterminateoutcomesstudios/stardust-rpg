@@ -67,7 +67,7 @@ mortar_2 = Ability(
 )
 
 mortar_3 = Ability(
-    name='Mortar II', picture=AbilityPicture.doton,
+    name='Mortar III', picture=AbilityPicture.doton,
     mp_cost=3, attacks=1, mdam='1d20+WIS', damage_type=DamageType.piercing,
     targets_mdef=True, max_range='24+4*WIS', time=Time.full_a,
     shape=Shape.circle, target_area='One enemy',
@@ -200,7 +200,7 @@ siege_tech_mark_two_2 = Ability(
 )
 
 siege_tech_mark_two_3 = Ability(
-    name='Siege Tech Mark Two II', picture=AbilityPicture.doton,
+    name='Siege Tech Mark Two III', picture=AbilityPicture.doton,
     mp_cost=4, attacks=1, mdam='2d20+WIS', damage_type=DamageType.piercing,
     targets_mdef=True, max_range='24+4*WIS', time=Time.full_a,
     shape=Shape.circle, target_area='One enemy',
@@ -345,7 +345,7 @@ gds_tech_2 = Ability(
 )
 
 gds_tech_3 = Ability(
-    name='GDS Tech I', picture=AbilityPicture.flaming_arrow,
+    name='GDS Tech III', picture=AbilityPicture.flaming_arrow,
     mp_cost=7, attacks=1, mdam='2d20+2*WIS', damage_type=DamageType.fire,
     targets_mdef=True, max_range='24+4*WIS', time=Time.full_a,
     shape=Shape.circle, target_area='3RAD',
