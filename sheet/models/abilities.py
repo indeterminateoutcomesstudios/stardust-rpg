@@ -1,7 +1,7 @@
 from enum import auto, Enum
 from numbers import Real
 
-from .classes import geomancer, magus, marksman, paladin, spectre, telepath, templar
+from .classes import geomancer, magus, marksman, paladin, spectre, telepath, templar, valkyrie
 
 
 def round_up(num: Real) -> int:
@@ -333,6 +333,38 @@ class Abilities(Enum):
     petrify_2 = auto()
     petrify_3 = auto()
 
+    # Telepath
+    fly_1 = auto()
+    fly_2 = auto()
+    fly_3 = auto()
+    blink_1 = auto()
+    blink_2 = auto()
+    blink_3 = auto()
+    gale_1 = auto()
+    gale_2 = auto()
+    gale_3 = auto()
+    piercing_shot_1 = auto()
+    piercing_shot_2 = auto()
+    piercing_shot_3 = auto()
+    wind_stride_1 = auto()
+    wind_stride_2 = auto()
+    wind_stride_3 = auto()
+    mass_fly_1 = auto()
+    mass_fly_2 = auto()
+    mass_fly_3 = auto()
+    mass_blink_1 = auto()
+    mass_blink_2 = auto()
+    mass_blink_3 = auto()
+    counter_blink_1 = auto()
+    counter_blink_2 = auto()
+    counter_blink_3 = auto()
+    cyclone_1 = auto()
+    cyclone_2 = auto()
+    cyclone_3 = auto()
+    sky_watch_1 = auto()
+    sky_watch_2 = auto()
+    sky_watch_3 = auto()
+
 
 abilities = {
     # Paladin.
@@ -652,6 +684,38 @@ abilities = {
     Abilities.petrify_1: geomancer.petrify_1,
     Abilities.petrify_2: geomancer.petrify_2,
     Abilities.petrify_3: geomancer.petrify_3,
+
+    # Valkeryie.
+    Abilities.fly_1: valkyrie.fly_1,
+    Abilities.fly_2: valkyrie.fly_2,
+    Abilities.fly_3: valkyrie.fly_3,
+    Abilities.blink_1: valkyrie.blink_1,
+    Abilities.blink_2: valkyrie.blink_2,
+    Abilities.blink_3: valkyrie.blink_3,
+    Abilities.gale_1: valkyrie.gale_1,
+    Abilities.gale_2: valkyrie.gale_2,
+    Abilities.gale_3: valkyrie.gale_3,
+    Abilities.piercing_shot_1: valkyrie.piercing_shot_1,
+    Abilities.piercing_shot_2: valkyrie.piercing_shot_2,
+    Abilities.piercing_shot_3: valkyrie.piercing_shot_3,
+    Abilities.wind_stride_1: valkyrie.wind_stride_1,
+    Abilities.wind_stride_2: valkyrie.wind_stride_2,
+    Abilities.wind_stride_3: valkyrie.wind_stride_3,
+    Abilities.mass_fly_1: valkyrie.mass_fly_1,
+    Abilities.mass_fly_2: valkyrie.mass_fly_2,
+    Abilities.mass_fly_3: valkyrie.mass_fly_3,
+    Abilities.mass_blink_1: valkyrie.mass_blink_1,
+    Abilities.mass_blink_2: valkyrie.mass_blink_2,
+    Abilities.mass_blink_3: valkyrie.mass_blink_3,
+    Abilities.counter_blink_1: valkyrie.counter_blink_1,
+    Abilities.counter_blink_2: valkyrie.counter_blink_2,
+    Abilities.counter_blink_3: valkyrie.counter_blink_3,
+    Abilities.cyclone_1: valkyrie.cyclone_1,
+    Abilities.cyclone_2: valkyrie.cyclone_2,
+    Abilities.cyclone_3: valkyrie.cyclone_3,
+    Abilities.sky_watch_1: valkyrie.sky_watch_1,
+    Abilities.sky_watch_2: valkyrie.sky_watch_2,
+    Abilities.sky_watch_3: valkyrie.sky_watch_3,
 }
 
 inverse_abilities = {ability: enum for enum, ability in abilities.items()}
