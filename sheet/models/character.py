@@ -1,9 +1,9 @@
 import copy
 from typing import Optional, Tuple
 
-import enumfields
 from django.contrib.auth.models import User
 from django.db import models
+import enumfields
 
 from . import abilities, ability, class_type, classes, combos, dice, equipment, items, party
 from .abilities import round_up
