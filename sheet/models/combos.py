@@ -147,6 +147,7 @@ combos = (
         effect='Rips a hole in space.  Pulls creatures within area [[3+WIS]]DIS towards it. '
                'Deals double damage if creatures are adjacent to the rift.'
     ),
+    # Paladin Telepath
     # Paladin Geomancer: Rocket
     #   Paladin is thrown, taking StdA against all targets in Range along path, leaving a tremor.
     Combo(
@@ -387,6 +388,7 @@ combos = (
         effect='Causes creatures to feel uncomfortably hot, causing them to generally want to '
                'leave the immediate area quietly.  Effect severity can be tuned.'
     ),
+    # Magus Geomancer: Meteor, Fire, Ice, Lightning.
     Combo(
         classes=(Magus, Marksman), prerequisite_lvl=2,
         name='Electrostasis I', picture=AbilityPicture.mana_ward,
@@ -414,7 +416,6 @@ combos = (
         effect='Forms an electrical barrier around creatures, stunning them and making them '
                'immune to physical and magical attacks and effects. 1 day cooldown.'
     ),
-    # Magus Geomancer: Meteor, Fire, Ice, Lightning.
     Combo(
         classes=(Spectre, Valkyrie), prerequisite_lvl=2,
         name='Twilight I', picture=AbilityPicture.ninjutsu,
@@ -436,7 +437,6 @@ combos = (
         target_area='[[1+WIS]]RAD portal', duration='3+WIS', duration_unit=DurationUnit.rnd,
         effect='Look through a [[2+WIS]]DIS wall/surface and create a portal beyond it.'
     ),
-    # Spectre Marksman
     Combo(
         classes=(Spectre, Telepath), prerequisite_lvl=2,
         name='Mirror I', picture=AbilityPicture.perfect_dodge,
@@ -469,6 +469,8 @@ combos = (
                'medium, or large creatures that have been seen. Physical or magical '
                'attacks taken or received end the ability.'
     ),
+    # Spectre Geomancer
+    # Spectre Marksman
     Combo(
         classes=(Valkyrie, Telepath), prerequisite_lvl=2,
         name='Recall I', picture=AbilityPicture.aetherial_manipulation,
