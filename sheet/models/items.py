@@ -1041,6 +1041,8 @@ class Weapons(Enum):
     shotgun_mark_3 = auto()
     lunaweave_shotgun = auto()
 
+    # TODO: Move up with other staves when database reset.
+    hypocratic_staff = auto()
 
 weapons = {
     Weapons.empty: Weapon(name=Weapons.empty.name, picture=WeaponPicture.hands, style=Style.melee),
@@ -1671,6 +1673,12 @@ weapons = {
         min_range=2, max_range=10, shape=Shape.range_circle, bmac=1, vis=1,
         mdam=DiceFormula.from_str('1d6'), damage_type=DamageType.cold,
         cdam=6, effect='+0.5MP on hit, Ice abilities cost -1MP'),
+    Weapons.hypocratic_staff: Weapon(
+        name=Weapons.hypocratic_staff.name, price=750, picture=WeaponPicture.green_staff,
+        style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=2,
+        rarity=Rarity.unique,
+        min_range=2, max_range=10, shape=Shape.range_circle, pac=10, vis=1,
+        damage_type=DamageType.force, effect='Heals target +[[d4]]HP'),
     Weapons.steel_staff: Weapon(
         name=Weapons.steel_staff.name, price=1000, picture=WeaponPicture.purple_cross_staff,
         style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=2,
