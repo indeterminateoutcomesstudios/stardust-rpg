@@ -56,14 +56,14 @@ lightning_shield_3 = Ability(
 ice_wall_1 = Ability(
     name='Ice Wall I', picture=AbilityPicture.hyoton,
     mp_cost=2, max_range='8', target_area='7DIS long, 1DIS wide, 1DIS high line',
-    shape=Shape.line, duration='8', duration_unit=DurationUnit.rnd,
+    shape=Shape.line, duration='4', duration_unit=DurationUnit.rnd,
     effect='Creates a wall of ice.  Each section has 10HP',
 )
 
 ice_wall_2 = Ability(
     name='Ice Wall II', picture=AbilityPicture.hyoton,
     mp_cost=4, max_range='10', target_area='10DIS long, 1DIS wide, 1DIS high line',
-    shape=Shape.line, duration='8', duration_unit=DurationUnit.rnd,
+    shape=Shape.line, duration='4', duration_unit=DurationUnit.rnd,
     effect='Creates a wall of ice.  Each section has [[10+5*WIS]]HP',
     prerequisites=(ice_wall_1,)
 )
@@ -71,7 +71,7 @@ ice_wall_2 = Ability(
 ice_wall_3 = Ability(
     name='Ice Wall III', picture=AbilityPicture.hyoton,
     mp_cost=6, max_range='12', target_area='[[13+WIS]]DIS long, 1DIS wide, 1DIS high line',
-    shape=Shape.line, duration='8+WIS', duration_unit=DurationUnit.rnd,
+    shape=Shape.line, duration='4+WIS', duration_unit=DurationUnit.rnd,
     effect='Creates a wall of ice.  Each section has [[25+10*WIS]]HP',
     prerequisites=(ice_wall_2,)
 )
