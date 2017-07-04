@@ -499,6 +499,7 @@ class Shields(Enum):
     extendable_brace_shield = auto()
     the_two_towers = auto()
     steel_tower_shield = auto()
+    honor_guard = auto()
     plated_steel_tower_shield = auto()
     adamantine_shield = auto()
     lunaweave_tower_shield = auto()
@@ -605,6 +606,9 @@ shields = {
                                    mdef=2),
     Shields.steel_tower_shield: Shield(name=Shields.steel_tower_shield.name, price=1250,
                                        min_str=2, equip_type=Type.heavy, pdef=3, hp=9),
+    Shields.honor_guard: Shield(name=Shields.honor_guard.name, price=2750,
+                                min_str=2, equip_type=Type.heavy, rarity=Rarity.unique,
+                                pdef=3, hp=9, effect='When healed, heal an additional +5HP'),
     Shields.plated_steel_tower_shield: Shield(name=Shields.plated_steel_tower_shield.name,
                                               price=1500, min_str=2, equip_type=Type.heavy,
                                               pdef=2, hp=18),
