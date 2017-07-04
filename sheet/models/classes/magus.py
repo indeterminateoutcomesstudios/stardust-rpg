@@ -80,7 +80,7 @@ ice_slick_1 = Ability(
     name='Ice Slick I', picture=AbilityPicture.blizzard,
     mp_cost=3, attacks=1, mdam='1d2',
     damage_type=DamageType.cold, targets_mdef=True, max_range='5',
-    shape=Shape.circle, target_area='Up to 2RAD', duration='4', duration_unit=DurationUnit.rnd,
+    shape=Shape.circle, target_area='Up to 2RAD', duration='2', duration_unit=DurationUnit.rnd,
     effect='Creates a slippery patch of ice.  Enemies who fail MDEF are immobilized for 1RND'
 )
 
@@ -88,7 +88,7 @@ ice_slick_2 = Ability(
     name='Ice Slick II', picture=AbilityPicture.blizzard,
     mp_cost=4, attacks=1, mdam='1d2',
     damage_type=DamageType.cold, targets_mdef=True, max_range='7',
-    shape=Shape.circle, target_area='Up to 2RAD', duration='6', duration_unit=DurationUnit.rnd,
+    shape=Shape.circle, target_area='Up to 2RAD', duration='3', duration_unit=DurationUnit.rnd,
     effect='Creates a slippery patch of ice.  Enemies who fail MDEF are immobilized for 1RND',
     prerequisites=(ice_slick_1,)
 )
@@ -98,7 +98,7 @@ ice_slick_3 = Ability(
     mp_cost=4, attacks=1, mdam='1d4',
     damage_type=DamageType.cold, targets_mdef=True, max_range='7',
     shape=Shape.circle, target_area='Up to [[2+WIS]]RAD',
-    duration='6', duration_unit=DurationUnit.rnd,
+    duration='4', duration_unit=DurationUnit.rnd,
     effect='Creates a slippery patch of ice.  Enemies who fail MDEF are immobilized for 1RND',
     prerequisites=(ice_slick_2,)
 )
