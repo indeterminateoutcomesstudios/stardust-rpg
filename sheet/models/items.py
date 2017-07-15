@@ -1044,6 +1044,7 @@ class Weapons(Enum):
     # TODO: Move up with other staves when database reset.
     hypocratic_staff = auto()
 
+
 weapons = {
     Weapons.empty: Weapon(name=Weapons.empty.name, picture=WeaponPicture.hands, style=Style.melee),
     Weapons.fists: Weapon(
