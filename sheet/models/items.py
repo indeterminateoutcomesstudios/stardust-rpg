@@ -555,7 +555,7 @@ shields = {
     Shields.iron_kite_shield: Shield(name=Shields.iron_kite_shield.name, price=200, min_str=1,
                                      equip_type=Type.medium, pdef=2, hp=2),
     Shields.plated_iron_kite_shield: Shield(name=Shields.plated_iron_kite_shield.name, price=200,
-                                            equip_type=Type.medium, pdef=1, hp=4),
+                                            min_str=1, equip_type=Type.medium, pdef=1, hp=4),
     Shields.interlocking_kite_shield: Shield(name=Shields.interlocking_kite_shield.name,
                                              price=450, min_str=1, equip_type=Type.medium,
                                              rarity=Rarity.rare, pdef=2, hp=2,
