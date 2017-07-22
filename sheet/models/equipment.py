@@ -929,9 +929,6 @@ class WeaponPicture(Enum):
                        '6/6a/FFT_Poison_Bow.gif')
     blue_crossbow = ('https://img4.wikia.nocookie.net/__cb20100630201227/finalfantasy/images/1/19/'
                      'FFT_Gastrophetes.gif')
-    repeater_crossbow = 'https://www.pocketknives.biz/ImagesProductsLarge/mk45m.jpg'
-    yellow_crossbow = 'https://www.neptuneusa.net/Pic/X9505-TWN.jpg'
-    gem_crossbow = 'https://gamesdreams.com/attachment.php?attachmentid=19672&d=1358911506'
     brown_crossbow = ('https://img3.wikia.nocookie.net/__cb20130703182943/finalfantasy/images/'
                       '5/59/Bowgun-ffxii.png')
     grey_crossbow = ('https://img3.wikia.nocookie.net/__cb20130704165011/finalfantasy/images/7/7f/'

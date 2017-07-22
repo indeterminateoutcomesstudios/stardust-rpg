@@ -1568,7 +1568,7 @@ weapons = {
         cdam=16),
     Weapons.lunasteel_ternate_crossbow: Weapon(
         name=Weapons.lunasteel_ternate_crossbow.name, price=12500,
-        picture=WeaponPicture.gem_crossbow,
+        picture=WeaponPicture.diamond_crossbow,
         style=Style.ranged, equip_type=Type.heavy, is_two_handed=True, min_dex=4,
         min_range=3, max_range=14, shape=Shape.range_multi_point, pac=1,
         attacks=3, pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.piercing,
