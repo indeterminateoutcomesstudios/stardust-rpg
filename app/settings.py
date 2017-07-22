@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'formtools',
     'widget_tweaks',
+    'sslserver',
 ]
 
 MIDDLEWARE_CLASSES = [

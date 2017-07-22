@@ -82,12 +82,12 @@ Production Execution
 
 .. warning::
 
-    ``--insecure`` is used to serve static files in the absence of a
+    ``--static`` is used to serve static files in the absence of a
     web server (e.g. NGINX) running in front of Django.
 
 .. code:: shell-session
 
-    $ stardust-rpg runserver 0.0.0.0:80 --insecure
+    $ stardust-rpg runsslserver 0.0.0.0:443 --static
 
 Debug Execution
 ~~~~~~~~~~~~~~~
@@ -98,7 +98,7 @@ Debug Execution
 
 .. code:: shell-session
 
-    $ stardust-rpg runserver 0.0.0.0:80 --settings=app.debug_settings
+    $ stardust-rpg runsslserver 0.0.0.0:443 --static --settings=app.debug_settings
 
 Game Setup
 ----------
