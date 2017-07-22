@@ -269,7 +269,7 @@ necks = {
                                equip_type=Type.medium, effect='-1 Min STR on chest'),
     Necks.crystal_amulet: Neck(name=Necks.crystal_amulet.name, price=350, min_wis=1, reg=2),
     Necks.starlet_necklace: Neck(name=Necks.starlet_necklace.name, price=350, min_wis=1,
-                                 effect='When ability crits, it consumes no MP and grants +4MP'),
+                                 effect='When ability crits, it consumes no MP and grants +10MP'),
     Necks.heavy_quiver: Neck(name=Necks.heavy_quiver.name, price=400, min_wis=1,
                              effect='Allows use of heavy range weapons'),
     Necks.equalizer: Neck(name=Necks.equalizer.name, price=400, min_wis=1, reg=18,
