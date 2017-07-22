@@ -1449,7 +1449,7 @@ weapons = {
         name=Weapons.obsidian_blade.name, price=1550, picture=WeaponPicture.dark_tooth_royal_sword,
         style=Style.melee, equip_type=Type.heavy, min_dex=2, pac=2, mp=-10,
         pdam=DiceFormula.from_str('2d20'), damage_type=DamageType.slashing, cdam=40,
-        effect='On hit enemy is silenced'),
+        effect='On hit enemy is silenced for 1RND'),
     Weapons.lunaweave_great_sword: Weapon(
         name=Weapons.lunaweave_great_sword.name, price=4000,
         picture=WeaponPicture.blue_royal_sword,
