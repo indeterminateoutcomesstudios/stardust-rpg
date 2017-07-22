@@ -1,9 +1,10 @@
-from enum import auto, Enum
+from enum import auto
 
 from .dice import DiceFormula
 from .equipment import (Chest, DamageType, DamageTypeSet, Feet, Hand, Head, Item, Neck, Rarity,
                         Shape, Shield, Slot, Style, Type, Utility, VulnerabilitySet, Weapon,
                         WeaponPicture)
+from .named_enum import NamedEnum
 
 
 def get_item(slot: Slot, item_index: int) -> Item:
@@ -40,7 +41,7 @@ def get_item(slot: Slot, item_index: int) -> Item:
     return item_dict[item_enum(item_index)]
 
 
-class Utilities(Enum):
+class Utilities(NamedEnum):
     # TODO: Remove "empty" as there is no longer a Utility slot.
     empty = auto()
     candle = auto()
@@ -145,7 +146,7 @@ utilities = {
 }
 
 
-class Heads(Enum):
+class Heads(NamedEnum):
     empty = auto()
     cursed_helm = auto()
     mako_hood = auto()
@@ -234,7 +235,7 @@ heads = {
 }
 
 
-class Necks(Enum):
+class Necks(NamedEnum):
     empty = auto()
     mako_amulet = auto()
     spinal_support = auto()
@@ -320,7 +321,7 @@ necks = {
 }
 
 
-class Chests(Enum):
+class Chests(NamedEnum):
     empty = auto()
     hopper_scale = auto()
     spurclaw_scale = auto()
@@ -461,7 +462,7 @@ chests = {
 }
 
 
-class Shields(Enum):
+class Shields(NamedEnum):
     empty = auto()
     bronze_buckler = auto()
     iron_buckler = auto()
@@ -646,7 +647,7 @@ shields = {
 }
 
 
-class Hands(Enum):
+class Hands(NamedEnum):
     empty = auto()
     bronze_gauntlets = auto()
     adamantine_ring = auto()
@@ -755,7 +756,7 @@ hands = {
 }
 
 
-class Feets(Enum):
+class Feets(NamedEnum):
     empty = auto()
     nighthawke_boots = auto()
     spiked_soles = auto()
@@ -884,7 +885,7 @@ feets = {
 }
 
 
-class Weapons(Enum):
+class Weapons(NamedEnum):
     empty = auto()
     fists = auto()
 
@@ -1795,7 +1796,7 @@ weapons = {
 }
 
 
-class Items(Enum):
+class Items(NamedEnum):
     empty = auto()
     disguise_kit = auto()
     apprentice_disguise_kit = auto()
