@@ -103,7 +103,7 @@ Debug Execution
 Game Setup
 ----------
 
-Log into the admin interface by browsing to http://localhost/admin
+Log into the admin interface by browsing to https://localhost/admin
 
 Add ``Users`` for each player.  Configure the following fields:
 
