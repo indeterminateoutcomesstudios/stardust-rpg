@@ -39,7 +39,7 @@ def all_equipment(request: HttpRequest, wearables: Tuple[equipment.Wearable, ...
 @login_required
 def all_weapons(request: HttpRequest, weapons: Tuple[equipment.Weapon, ...]) -> HttpResponse:
     return render(request, 'browser/weapons.html',
-                  context={'weapons': weapons, 'Rarity': equipment.Rarity})
+                  context={'weapons': list(weapons), 'Rarity': equipment.Rarity})
 
 
 @login_required
