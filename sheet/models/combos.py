@@ -469,7 +469,7 @@ combos = (
                'medium, or large creatures that have been seen. Physical or magical '
                'attacks taken or received end the ability.'
     ),
-    # Spectre Geomancer
+    # Spectre Geomancer: Terraglow - light up large chunk of ground 2x REG
     # Spectre Marksman
     Combo(
         classes=(Valkyrie, Telepath), prerequisite_lvl=2,
@@ -497,7 +497,8 @@ combos = (
     ),
     # Valkyrie, Geomancer: Titanfall
     # Valkyrie, Marksman: Pavelow
-    # Telepath, Geomancer
-    # Telepath, Marksman: Shell Shock
+    # Telepath, Geomancer: Hallucinatory Pollen in RAD casters appear as anything until using
+    #   StdA or AbA
+    # Telepath, Marksman: Blank Shot - Target does not realized they have take damage
     # Geomancer, Marksman: Rodeo
 )
