@@ -74,7 +74,7 @@ class Character(models.Model):
     """Percent."""
 
     def __str__(self):
-        return f'{self.id}: {self.name} LVL {self.lvl} {self.cls.name}'
+        return f'{self.name}: LVL {self.lvl} {self.cls.name}'
 
     @property
     def cls(self) -> class_type.Class:
