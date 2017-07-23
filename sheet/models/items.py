@@ -1660,7 +1660,7 @@ weapons = {
         rarity=Rarity.set,
         min_range=2, max_range=10, shape=Shape.range_circle, bmac=1, vis=1,
         mdam=DiceFormula.from_str('1d6'), damage_type=DamageType.fire,
-        cdam=6, effect='+0.5MP on hit, +2 MDAM on Fire abilities'),
+        cdam=6, effect='+0.5MP on hit, +2MDAM on Fire abilities'),
     Weapons.thunder_staff: Weapon(
         name=Weapons.thunder_staff.name, price=450, picture=WeaponPicture.yellow_blue_staff,
         style=Style.magic, equip_type=Type.medium, is_two_handed=True, min_dex=2,
