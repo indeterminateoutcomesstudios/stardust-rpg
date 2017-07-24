@@ -188,7 +188,7 @@ heads = {
                           effect='+5STE when disguising, +5SPE with common'),
     Heads.mako_helm: Head(name=Heads.mako_helm.name, price=450, min_int=1, bmac=1),
     Heads.techno_eyepiece: Head(name=Heads.techno_eyepiece.name, price=450, min_int=1,
-                                effect='See in low light, Dwarf only'),
+                                effect='See in low light, Marksman only'),
     Heads.apprentice_helm: Head(name=Heads.apprentice_helm.name, price=500, min_int=1, ap=1),
     Heads.lunafabric_hood: Head(name=Heads.lunafabric_hood.name, price=550, min_int=1, mp=12,
                                 reg=-3),
