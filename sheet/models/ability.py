@@ -512,7 +512,7 @@ class Ability(macro.Macroable):
 
     @property
     def mac_formula(self) -> str:
-        return f'[BPAC] + (0.25 * {self.mp_cost}[MP Cost])'
+        return f'[BMAC] + (0.25 * {self.mp_cost}[MP Cost])'
 
     @property
     def mac(self) -> int:
