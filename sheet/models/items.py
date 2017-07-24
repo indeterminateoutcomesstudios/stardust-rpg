@@ -870,7 +870,7 @@ feets = {
                               effect='After being hit by magical attack, can ignore 4 MDAM by '
                                      'consuming 2MP'),
     Feets.grooved_soles: Feet(name=Feets.grooved_soles.name, price=300, min_str=1,
-                              effect='Marksman only, +2SPEED while Reaper is drawn'),
+                              effect='Marksman only, +1SPEED while Reaper is drawn'),
     Feets.cursed_greaves: Feet(name=Feets.cursed_greaves.name, mdef=-2, bmac=5, speed=1,
                                rarity=Rarity.set, effect='Resist corruption 2RND'),
     Feets.coral_greaves: Feet(name=Feets.coral_greaves.name, price=350, rarity=Rarity.set,
