@@ -3,6 +3,7 @@ from typing import Tuple
 
 from . import macro
 from .equipment import DamageType, Shape
+from .round_up import round_up
 
 
 @enum.unique
@@ -510,8 +511,12 @@ class Ability(macro.Macroable):
         self.shape = shape
 
     @property
+    def mac_formula(self) -> str:
+        return f'[BPAC] + (0.25 * {self.mp_cost}[MP Cost])'
+
+    @property
     def mac(self) -> int:
-        return round(self.mp_cost * self.mp_mac_modifier)
+        return round_up(self.mp_cost * self.mp_mac_modifier)
 
     @property
     def macro(self) -> str:

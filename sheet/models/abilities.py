@@ -1,12 +1,6 @@
 from enum import auto, Enum
-from numbers import Real
 
 from .classes import geomancer, magus, marksman, paladin, spectre, telepath, templar, valkyrie
-
-
-def round_up(num: Real) -> int:
-    """Add a small epsilon in order to force .5 values to round up."""
-    return round(num + 1e-8)
 
 
 class Abilities(Enum):

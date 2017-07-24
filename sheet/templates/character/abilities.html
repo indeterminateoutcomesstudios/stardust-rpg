@@ -18,7 +18,7 @@
                 <th title="Magic Accuracy">MAC</th>
                 <th title="Physical Damage">PDAM</th>
                 <th title="Magic Damage">MDAM</th>
-                <th>DAM Type</th>
+                <th title="Damage Type">DAM Type</th>
                 <th title="Magic Defense Used?">MDEF?</th>
                 <th>Time</th>
                 <th>Min Range</th>
@@ -63,9 +63,9 @@
                     <td>{{ ability.mp_cost }}</td>
                     <td>{{ ability.effect }}</td>
                     <td>{{ ability.attacks }}</td>
-                    <td>
+                    <td title="{{ character.bmac }}{{ ability.mac_formula }}">
                         {% if ability.targets_mdef %}
-                            {{ character.bmac|add:ability.mac }}
+                            {{ character.bmac|add:ability.mac }} (+{{ ability.mac }})
                         {% endif %}
                     </td>
                     <td>{{ ability.pdam|default:"" }}</td>

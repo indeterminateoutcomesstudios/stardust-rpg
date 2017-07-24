@@ -6,7 +6,7 @@ from django.db import models
 import enumfields
 
 from . import abilities, ability, class_type, classes, combos, dice, equipment, items, party
-from .abilities import round_up
+from .round_up import round_up
 from .equipment import Attribute
 
 
