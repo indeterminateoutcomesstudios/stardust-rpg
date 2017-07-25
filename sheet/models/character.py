@@ -6,8 +6,8 @@ from django.db import models
 import enumfields
 
 from . import abilities, ability, class_type, classes, combos, dice, equipment, items, party
-from .round_up import round_up
 from .equipment import Attribute
+from .round_up import round_up
 
 
 class Character(models.Model):
