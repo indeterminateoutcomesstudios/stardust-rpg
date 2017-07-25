@@ -3,7 +3,6 @@ from typing import Any
 
 from . import dice
 from . import macro
-from .round_up import round_up
 
 
 def for_django_template(cls: Any) -> Any:
