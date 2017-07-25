@@ -1007,14 +1007,14 @@ class Weapon(Wearable, macro.Macroable):
     @property
     def pdam_dps(self) -> int:
         if self.pdam is not None:
-            return round_up(self.attacks * self.pdam.mean(), 1)
+            return round(self.attacks * self.pdam.mean(), 1)
         else:
             return 0
 
     @property
     def mdam_dps(self) -> int:
         if self.mdam is not None:
-            return round_up(self.attacks * self.mdam.mean(), 1)
+            return round(self.attacks * self.mdam.mean(), 1)
         else:
             return 0
 
