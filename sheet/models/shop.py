@@ -51,8 +51,13 @@ class Shop(models.Model):
         return self._slot_items(equipment.Slot.feet)
 
     @property
-    def wearable_slots(self) -> Tuple['ShopSlot', ...]:
+    def min_att_slots(self) -> Tuple['ShopSlot', ...]:
         return (self.utility_slots + self.head_slots + self.neck_slots + self.chest_slots +
+                self.shield_slots + self.hand_slots + self.feet_slots + self.weapon_slots)
+
+    @property
+    def wearable_slots(self) -> Tuple['ShopSlot', ...]:
+        return (self.head_slots + self.neck_slots + self.chest_slots +
                 self.shield_slots + self.hand_slots + self.feet_slots)
 
     def __str__(self) -> str:
