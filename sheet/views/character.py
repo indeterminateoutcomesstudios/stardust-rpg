@@ -64,6 +64,22 @@ def shops(request: HttpRequest, character_id: str, shop_id: str) -> HttpResponse
             if match is not None:
                 ShopSlot.objects.get(pk=match.group('shop_slot_id')).delete()
 
+    # Monkey patch booleans that tell if the Items can be worn by this character.
+    for shop_slot in shop.wearable_slots:
+        shop_slot.item.can_use_type = character.can_use_wearable(shop_slot.item)
+
+        shop_slot.item.has_min_attr = (
+            character.get_attribute(shop_slot.item.min_attribute) >=
+            shop_slot.item.min_attribute_value)
+
+    for shop_slot in shop.weapon_slots:
+        character.weapon_enum = shop_slot.item_index
+        shop_slot.item.can_use_type = character.can_use_weapon
+
+        shop_slot.item.has_min_attr = (
+            character.get_attribute(shop_slot.item.min_attribute) >=
+            shop_slot.item.min_attribute_value)
+
     return render(request, 'character/shop.html',
                   context={'character': character,
                            'shop': shop,

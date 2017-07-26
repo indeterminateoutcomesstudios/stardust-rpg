@@ -7,7 +7,9 @@
             {% for character in shop.party.character_set.all %}
                 <th>{{ character.name }} <br> Price (-{{ character.buy }}%)</th>
             {% endfor %}
-            <th>Rarity</th>
+            {% if shop_slots.0.item.slot == Slot.weapon %}
+                <th>Style</th>
+            {% endif %}
             <th>Type</th>
             <th>Min<br>{{ shop_slots.0.item.min_attribute.name|upper }}</th>
             <th>Stat<br>Summary</th>
@@ -53,9 +55,30 @@
                     {# a*b use {% widthratio a 1 b %} #}
                     <td>{% widthratio character.buy_fraction 1 shop_slot.item.price %}</td>
                 {% endfor %}
-                <td>{{ shop_slot.item.rarity.name|capfirst }}</td>
-                <td>{{ shop_slot.item.type.name|capfirst }}</td>
-                <td>{{ shop_slot.item.min_attribute_value }}</td>
+                {% if shop_slot.item.slot == Slot.weapon %}
+                    <td
+                            {% if shop_slot.item.can_use_type %}
+                                class="item_can_equip"
+                            {% else %}
+                                class="item_cannot_equip"
+                            {% endif %}
+                    >{{ shop_slot.item.style.name|capfirst }}</td>
+                {% endif %}
+                <td
+                        {% if shop_slot.item.can_use_type %}
+                            class="item_can_equip"
+                        {% else %}
+                            class="item_cannot_equip"
+                        {% endif %}
+                >
+                    {{ shop_slot.item.type.name|capfirst }}</td>
+                <td
+                        {% if shop_slot.item.has_min_attr %}
+                            class="item_can_equip"
+                        {% else %}
+                            class="item_cannot_equip"
+                        {% endif %}
+                >{{ shop_slot.item.min_attribute_value }}</td>
                 <td>{{ shop_slot.item.stat_summary }}</td>
                 <td>{{ shop_slot.item.vul_set.vul.all_as_str|default:"" }}</td>
                 <td>{{ shop_slot.item.vul_set.res.all_as_str|default:"" }}</td>
