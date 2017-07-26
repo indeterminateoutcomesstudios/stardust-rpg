@@ -10,7 +10,9 @@
             {% if shop_slots.0.item.slot == Slot.weapon %}
                 <th>Style</th>
             {% endif %}
-            <th>Type</th>
+            {% if shop_slots.0.item.slot != Slot.utility %}
+                <th>Type</th>
+            {% endif %}
             <th>Min<br>{{ shop_slots.0.item.min_attribute.name|upper }}</th>
             <th>Stat<br>Summary</th>
             <th>VUL</th>
@@ -64,14 +66,16 @@
                             {% endif %}
                     >{{ shop_slot.item.style.name|capfirst }}</td>
                 {% endif %}
-                <td
-                        {% if shop_slot.item.can_use_type %}
-                            class="item_can_equip"
-                        {% else %}
-                            class="item_cannot_equip"
-                        {% endif %}
-                >
-                    {{ shop_slot.item.type.name|capfirst }}</td>
+                {% if shop_slot.item.slot != Slot.utility %}
+                    <td
+                            {% if shop_slot.item.can_use_type %}
+                                class="item_can_equip"
+                            {% else %}
+                                class="item_cannot_equip"
+                            {% endif %}
+                    >
+                        {{ shop_slot.item.type.name|capfirst }}</td>
+                {% endif %}
                 <td
                         {% if shop_slot.item.has_min_attr %}
                             class="item_can_equip"
