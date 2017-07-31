@@ -12,7 +12,11 @@
         </thead>
         {% for party in parties %}
             <tr>
-                <td>{{ party }}</td>
+                <td>
+                    <a href="{{ party.roll20_url }}">
+                        {{ party }}
+                    </a>
+                </td>
                 {% for character in party.character_set.all %}
                     <td>
                         {{ character.user }}

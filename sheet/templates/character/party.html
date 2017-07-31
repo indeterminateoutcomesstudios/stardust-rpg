@@ -4,7 +4,12 @@
 
 {% block content %}
     <table style="display: inline-block">
-        <label>Party: {{ character.party }}</label>
+        <label>Party:
+            <a href="{{ character.party.roll20_url }}">
+                {{ character.party }}
+            </a>
+        </label>
+
         <br/>
 
         <thead>

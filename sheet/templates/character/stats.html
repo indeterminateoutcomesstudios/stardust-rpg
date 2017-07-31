@@ -24,7 +24,11 @@
         </tr>
         <tr>
             <td>Party</td>
-            <td>{{ character.party }}</td>
+            <td>
+                <a href="{{ character.party.roll20_url }}">
+                    {{ character.party }}
+                </a>
+            </td>
         </tr>
         <tr>
             <td title="Level">LVL</td>

@@ -10,7 +10,12 @@
         <label>Roll20 Email: {{ user.email }}</label>
     </p>
     <p>
-        <label>Campaign ID: {{ character.party.roll20_campaign_id }}</label>
+        <label>
+            Campaign ID:
+            <a href="{{ character.party.roll20_url }}">
+                {{ character.party.roll20_campaign_id }}
+            </a>
+        </label>
     </p>
     <p>
         <label>Character Name: {{ character.name }}</label>
