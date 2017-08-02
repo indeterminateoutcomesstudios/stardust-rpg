@@ -496,7 +496,37 @@ combos = (
                'additional charge up rounds.'
     ),
     # Valkyrie, Geomancer: Titanfall
-    # Valkyrie, Marksman: Pavelow
+    Combo(
+        classes=(Valkyrie, Marksman), prerequisite_lvl=2,
+        name='Pavelow I', picture=AbilityPicture.rain_of_death,
+        mp_cost=6,
+        time=Time.free_a, min_range='1', max_range='1', shape=Shape.multi_point,
+        target_area='Self and 1 ally', duration='4', duration_unit=DurationUnit.rnd,
+        effect='Valkyrie picks up and flies with Marksman at -2SPEED, losing StdA. '
+               'Marksman loses control of movement and moves adjacent to Valkyrie. '
+               'All attacks must target Valkyrie. When targeted, can counter with Mass Blink.'
+    ),
+    Combo(
+        classes=(Valkyrie, Marksman), prerequisite_lvl=5,
+        name='Pavelow III', picture=AbilityPicture.rain_of_death,
+        mp_cost=8,
+        time=Time.free_a, min_range='1', max_range='1', shape=Shape.multi_point,
+        target_area='Self and 1 ally', duration='4+WIS', duration_unit=DurationUnit.rnd,
+        effect='Valkyrie picks up and flies with Marksman at -1SPEED, losing StdA. '
+               'Marksman loses control of movement and moves adjacent to Valkyrie. '
+               'Enemy attacks must target Valkyrie. When targeted, can counter with Mass Blink.'
+    ),
+    Combo(
+        classes=(Valkyrie, Marksman), prerequisite_lvl=8,
+        name='Pavelow III', picture=AbilityPicture.rain_of_death,
+        mp_cost=12,
+        time=Time.free_a, min_range='1', max_range='1', shape=Shape.multi_point,
+        target_area='Self and 1 ally', duration='6+WIS', duration_unit=DurationUnit.rnd,
+        effect='Valkyrie picks up and flies with Marksman at full SPEED, losing StdA. '
+               'Marksman loses control of movement and moves adjacent to Valkyrie. '
+               'Enemy attacks must target Valkyrie. '
+               'When targeted, can counter with Mass Blink. 1 free Mass Blink counter per RND.'
+    ),
     # Telepath, Geomancer: Hallucinatory Pollen in RAD casters appear as anything until using
     #   StdA or AbA
     # Telepath, Marksman: Blank Shot - Target does not realized they have take damage
