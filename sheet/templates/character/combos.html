@@ -57,9 +57,9 @@
                 <td>{{ combo.mp_cost }}</td>
                 <td>{{ combo.effect }}</td>
                 <td>{{ combo.attacks|default:"" }}</td>
-                <td>
+                <td title="{{ character.bmac }}{{ combo.mac_formula }}">
                     {% if combo.targets_mdef %}
-                        {{ character.bmac|add:combo.mac }}
+                        {{ character.bmac|add:combo.mac }} (+{{ combo.mac }})
                     {% endif %}
                 </td>
                 <td>{{ combo.pdam|default:"" }}</td>
