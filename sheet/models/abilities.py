@@ -327,7 +327,7 @@ class Abilities(Enum):
     petrify_2 = auto()
     petrify_3 = auto()
 
-    # Telepath
+    # Valkeryie
     fly_1 = auto()
     fly_2 = auto()
     fly_3 = auto()
@@ -355,6 +355,18 @@ class Abilities(Enum):
     cyclone_1 = auto()
     cyclone_2 = auto()
     cyclone_3 = auto()
+    ricochet_1 = auto()
+    ricochet_2 = auto()
+    ricochet_3 = auto()
+    refreshing_breeze_1 = auto()
+    refreshing_breeze_2 = auto()
+    refreshing_breeze_3 = auto()
+    cloud_soar_1 = auto()
+    cloud_soar_2 = auto()
+    cloud_soar_3 = auto()
+    teleport_1 = auto()
+    teleport_2 = auto()
+    teleport_3 = auto()
     sky_watch_1 = auto()
     sky_watch_2 = auto()
     sky_watch_3 = auto()
@@ -707,6 +719,18 @@ abilities = {
     Abilities.cyclone_1: valkyrie.cyclone_1,
     Abilities.cyclone_2: valkyrie.cyclone_2,
     Abilities.cyclone_3: valkyrie.cyclone_3,
+    Abilities.ricochet_1: valkyrie.ricochet_1,
+    Abilities.ricochet_2: valkyrie.ricochet_2,
+    Abilities.ricochet_3: valkyrie.ricochet_3,
+    Abilities.refreshing_breeze_1: valkyrie.refreshing_breeze_1,
+    Abilities.refreshing_breeze_2: valkyrie.refreshing_breeze_2,
+    Abilities.refreshing_breeze_3: valkyrie.refreshing_breeze_3,
+    Abilities.cloud_soar_1: valkyrie.cloud_soar_1,
+    Abilities.cloud_soar_2: valkyrie.cloud_soar_2,
+    Abilities.cloud_soar_3: valkyrie.cloud_soar_3,
+    Abilities.teleport_1: valkyrie.teleport_1,
+    Abilities.teleport_2: valkyrie.teleport_2,
+    Abilities.teleport_3: valkyrie.teleport_3,
     Abilities.sky_watch_1: valkyrie.sky_watch_1,
     Abilities.sky_watch_2: valkyrie.sky_watch_2,
     Abilities.sky_watch_3: valkyrie.sky_watch_3,
