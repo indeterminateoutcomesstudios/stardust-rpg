@@ -367,6 +367,12 @@ class Abilities(Enum):
     teleport_1 = auto()
     teleport_2 = auto()
     teleport_3 = auto()
+    tornado_1 = auto()
+    tornado_2 = auto()
+    tornado_3 = auto()
+    wind_shield_1 = auto()
+    wind_shield_2 = auto()
+    wind_shield_3 = auto()
     sky_watch_1 = auto()
     sky_watch_2 = auto()
     sky_watch_3 = auto()
@@ -731,6 +737,12 @@ abilities = {
     Abilities.teleport_1: valkyrie.teleport_1,
     Abilities.teleport_2: valkyrie.teleport_2,
     Abilities.teleport_3: valkyrie.teleport_3,
+    Abilities.tornado_1: valkyrie.tornado_1,
+    Abilities.tornado_2: valkyrie.tornado_2,
+    Abilities.tornado_3: valkyrie.tornado_3,
+    Abilities.wind_shield_1: valkyrie.wind_shield_1,
+    Abilities.wind_shield_2: valkyrie.wind_shield_2,
+    Abilities.wind_shield_3: valkyrie.wind_shield_3,
     Abilities.sky_watch_1: valkyrie.sky_watch_1,
     Abilities.sky_watch_2: valkyrie.sky_watch_2,
     Abilities.sky_watch_3: valkyrie.sky_watch_3,
