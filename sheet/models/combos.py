@@ -508,7 +508,7 @@ combos = (
     ),
     Combo(
         classes=(Valkyrie, Marksman), prerequisite_lvl=5,
-        name='Pavelow III', picture=AbilityPicture.rain_of_death,
+        name='Pavelow II', picture=AbilityPicture.rain_of_death,
         mp_cost=8,
         time=Time.free_a, min_range='1', max_range='1', shape=Shape.multi_point,
         target_area='Self and 1 ally', duration='4+WIS', duration_unit=DurationUnit.rnd,
