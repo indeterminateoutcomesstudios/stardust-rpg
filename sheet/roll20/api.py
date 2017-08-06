@@ -34,6 +34,10 @@ class Roll20CharacterNotFoundError(RuntimeError):
     pass
 
 
+class Roll20PermissionError(RuntimeError):
+    pass
+
+
 def get_character_id(login: Roll20Login, character_name: str) -> str:
     """
     Notes:
@@ -83,8 +87,11 @@ def set_attributes(login: Roll20Login, character_id: str,
                f'{attribute_id}/.json?auth={login.auth_token}')
         response = requests.patch(url,
                                   data=json.dumps({attribute_position.value: attribute_value}))
-        updated_attribute = json.loads(response.text)[attribute_position.value]
-        logger.debug(f'New {attribute_name}: {updated_attribute}')
+        if response.status_code == requests.status_codes.codes.UNAUTHORIZED:
+            raise Roll20PermissionError('Permission denied trying to set attribute.')
+        else:
+            updated_attribute = json.loads(response.text)[attribute_position.value]
+            logger.debug(f'New {attribute_name}: {updated_attribute}')
 
 
 def get_player_id(login: Roll20Login, d20_user_id: int) -> str:
@@ -118,8 +125,11 @@ def update_ability(login: Roll20Login, character_id: str, ability_id: str,
     url = (f'{login.firebase_root}{login.campaign_path}/char-abils/char/'
            f'{character_id}/{ability_id}/.json?auth={login.auth_token}')
     response = requests.patch(url, data=json.dumps({'action': ability_action}))
-    updated_action = json.loads(response.text)['action']
-    logger.debug(f'{ability_id} updated action: {updated_action}')
+    if response.status_code == requests.status_codes.codes.UNAUTHORIZED:
+        raise Roll20PermissionError('Permission denied trying to update ability.')
+    else:
+        updated_action = json.loads(response.text)['action']
+        logger.debug(f'{ability_id} updated action: {updated_action}')
 
 
 def create_ability(login: Roll20Login, character_id: str, ability_name: str, ability_action: str,
@@ -130,12 +140,15 @@ def create_ability(login: Roll20Login, character_id: str, ability_name: str, abi
     url = (f'{login.firebase_root}{login.campaign_path}/'
            f'char-abils/char/{character_id}.json?auth={login.auth_token}')
     response = requests.post(url, data=json.dumps(new_ability))
-    new_ability_id = json.loads(response.text)['name']
-    logger.debug(f'Created {ability_name} {new_ability_id}')
+    if response.status_code == requests.status_codes.codes.UNAUTHORIZED:
+        raise Roll20PermissionError('Permission denied trying to create ability.')
+    else:
+        new_ability_id = json.loads(response.text)['name']
+        logger.debug(f'Created {ability_name} {new_ability_id}')
 
-    url = (f'{login.firebase_root}{login.campaign_path}/char-abils/char/'
-           f'{character_id}/{new_ability_id}/.json?auth={login.auth_token}')
-    requests.patch(url, data=json.dumps({'id': new_ability_id}))
+        url = (f'{login.firebase_root}{login.campaign_path}/char-abils/char/'
+               f'{character_id}/{new_ability_id}/.json?auth={login.auth_token}')
+        requests.patch(url, data=json.dumps({'id': new_ability_id}))
 
 
 def get_ability_ids(login: Roll20Login, character_id: str) -> Dict[str, str]:

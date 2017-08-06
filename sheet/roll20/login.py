@@ -12,6 +12,10 @@ class Roll20AuthenticationError(RuntimeError):
     pass
 
 
+class Roll20LoginError(RuntimeError):
+    pass
+
+
 class Roll20Login:
     def __init__(self, firebase_root: str, auth_token: str, campaign_path: str,
                  campaign_name: str) -> None:
@@ -45,7 +49,7 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
                 })
 
     if len(campaigns) == 0:
-        raise RuntimeError('No campaigns found for this player.')
+        raise Roll20LoginError('No campaigns found for this player.')
 
     found_campaign = None
     for campaign in campaigns:
@@ -55,7 +59,7 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
             found_campaign = campaign
 
     if found_campaign is None:
-        raise RuntimeError(f'Campaign ID {campaign_id} could not be found.')
+        raise Roll20LoginError(f'Campaign ID {campaign_id} could not be found.')
 
     join_response = session.get(found_campaign['link'])
     startjs = None
@@ -65,7 +69,7 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
             startjs = script['src']
 
     if startjs is None:
-        raise RuntimeError('Could not find startjs.')
+        raise Roll20LoginError('Could not find startjs.')
 
     js_response = session.get('https://app.roll20.net' + startjs)
     fb_root = re.search(r'window\.FIREBASE_ROOT\s+=\s+"(.*)"', js_response.text).group(1)

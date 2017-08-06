@@ -626,8 +626,8 @@ def roll20(request: HttpRequest, character_id: str) -> HttpResponse:
                     messages.info(request, f'Macros synced successfully to '
                                            f'{roll20_login.campaign_name}.')
 
-                except (login.Roll20AuthenticationError, RuntimeError,
-                        api.Roll20CharacterNotFoundError) as ex:
+                except (login.Roll20AuthenticationError, login.Roll20LoginError,
+                        api.Roll20CharacterNotFoundError, api.Roll20PermissionError) as ex:
                     messages.error(request, str(ex))
                     return redirect(reverse(roll20, args=[character.id]))
 
