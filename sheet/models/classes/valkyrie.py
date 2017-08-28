@@ -29,20 +29,20 @@ fly_3 = Ability(
 blink_1 = Ability(
     name='Blink I', picture=AbilityPicture.aetherial_manipulation,
     mp_cost=1, target_area='Self', time=Time.free_a,
-    effect='Teleport 3DIS within line of sight. Can be cast once per RND.'
+    effect='Teleport 1DIS within line of sight. Can be cast once per RND.'
 )
 
 blink_2 = Ability(
     name='Blink II', picture=AbilityPicture.aetherial_manipulation,
     mp_cost=2, target_area='Self', time=Time.free_a,
-    effect='Teleport [[4+WIS]]DIS within line of sight. Can be cast once per RND.',
+    effect='Teleport [[3]]DIS within line of sight. Can be cast once per RND.',
     prerequisites=(blink_1,),
 )
 
 blink_3 = Ability(
     name='Blink III', picture=AbilityPicture.aetherial_manipulation,
     mp_cost=4, target_area='Self', time=Time.free_a,
-    effect='Teleport [[5+2*WIS]]DIS within line of sight. Can be cast once per RND.',
+    effect='Teleport [[4+WIS]]DIS within line of sight. Can be cast once per RND.',
     prerequisites=(blink_2,),
 )
 
