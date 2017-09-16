@@ -5,24 +5,24 @@ from ..equipment import Shape
 # Tier 1.
 time_warp_1 = Ability(
     name='Time Warp I', picture=AbilityPicture.swift_song,
-    mp_cost=2, target_area='Self', time=Time.free_a,
+    mp_cost=2, target_area='Self', time=Time.bon_a,
     duration='1', duration_unit=DurationUnit.rnd,
-    effect='Double SPEED on caster.  Can cast once per round'
+    effect='Double SPEED on caster.'
 )
 
 time_warp_2 = Ability(
     name='Time Warp II', picture=AbilityPicture.swift_song,
-    mp_cost=3, target_area='Self', time=Time.free_a,
+    mp_cost=3, target_area='Self', time=Time.bon_a,
     duration='1', duration_unit=DurationUnit.rnd,
-    effect='+1AbA or FreeA on caster. Can cast once per RND',
+    effect='+1AbA or BoA on caster.',
     prerequisites=(time_warp_1,)
 )
 
 time_warp_3 = Ability(
     name='Time Warp III', picture=AbilityPicture.swift_song,
-    mp_cost=4, target_area='Self', time=Time.free_a,
+    mp_cost=4, target_area='Self', time=Time.bon_a,
     duration='1', duration_unit=DurationUnit.rnd,
-    effect='Double SPEED and +1AbA or FreeA on caster. Can cast once per RND',
+    effect='Double SPEED and +1AbA or BoA on caster.',
     prerequisites=(time_warp_2,)
 )
 
@@ -54,14 +54,14 @@ slow_3 = Ability(
 
 rebound_1 = Ability(
     name='Rebound I', picture=AbilityPicture.feint,
-    mp_cost=0, target_area='Self', time=Time.free_a,
+    mp_cost=0, target_area='Self', time=Time.re_a,
     effect='[Counter] Caster bends time in order to cast Slow after target of melee attack. '
            'MP cost = ability cast.'
 )
 
 rebound_2 = Ability(
     name='Rebound II', picture=AbilityPicture.feint,
-    mp_cost=0, target_area='Self', time=Time.free_a,
+    mp_cost=0, target_area='Self', time=Time.re_a,
     effect='[Counter] Caster bends time in order to cast cast Cure after target of melee attack. '
            'MP cost = ability cast.',
     prerequisites=(rebound_1,)
@@ -69,7 +69,7 @@ rebound_2 = Ability(
 
 rebound_3 = Ability(
     name='Rebound III', picture=AbilityPicture.feint,
-    mp_cost=0, target_area='Self', time=Time.free_a,
+    mp_cost=0, target_area='Self', time=Time.re_a,
     effect='[Counter] Caster bends time in order to cast cast Stop after target of melee attack. '
            'MP cost = ability cast.',
     prerequisites=(rebound_2,)
@@ -121,25 +121,25 @@ cure_3 = Ability(
 # Tier 2.
 mass_time_warp_1 = Ability(
     name='Mass Time Warp I', picture=AbilityPicture.swift_cast,
-    mp_cost=3, target_area='Self + allies in [[4+WIS]]RAD', time=Time.free_a, max_range='6',
+    mp_cost=3, target_area='Self + allies in [[4+WIS]]RAD', time=Time.bon_a, max_range='6',
     shape=Shape.circle, duration='1', duration_unit=DurationUnit.rnd,
-    effect='Double SPEED on affected allies. Can cast once per round.',
+    effect='Double SPEED on affected allies.',
     prerequisites=(time_warp_3, slow_2)
 )
 
 mass_time_warp_2 = Ability(
     name='Mass Time Warp II', picture=AbilityPicture.swift_cast,
-    mp_cost=6, target_area='Self + allies in [[4+WIS]]RAD', time=Time.free_a, max_range='6',
+    mp_cost=6, target_area='Self + allies in [[4+WIS]]RAD', time=Time.bon_a, max_range='6',
     shape=Shape.circle, duration='1', duration_unit=DurationUnit.rnd,
-    effect='+1AbA or FreeA on caster. Can cast once per RND',
+    effect='+1AbA or BoA on caster.',
     prerequisites=(mass_time_warp_1,)
 )
 
 mass_time_warp_3 = Ability(
     name='Mass Time Warp III', picture=AbilityPicture.swift_cast,
-    mp_cost=7, target_area='Self + allies in [[4+WIS]]RAD', time=Time.free_a, max_range='6',
+    mp_cost=7, target_area='Self + allies in [[4+WIS]]RAD', time=Time.bon_a, max_range='6',
     shape=Shape.circle, duration='1', duration_unit=DurationUnit.rnd,
-    effect='Double SPEED and +1AbA or FreeA on affected allies. Can cast once per round.',
+    effect='Double SPEED and +1AbA or BoA on affected allies.',
     prerequisites=(mass_time_warp_2,)
 )
 
@@ -251,14 +251,14 @@ esuna_3 = Ability(
 # Tier 3.
 reset_1 = Ability(
     name='Reset I', picture=AbilityPicture.repelling_shot,
-    mp_cost=8, target_area='Self or 1 ally', time=Time.free_a, max_range='1',
+    mp_cost=8, target_area='Self or 1 ally', time=Time.bon_a, max_range='1',
     effect='Undo a MovA or Skill Check. Can be cast during ally\'s turn, once per instance.',
     prerequisites=(mass_time_warp_1, stop_2)
 )
 
 reset_2 = Ability(
     name='Reset II', picture=AbilityPicture.repelling_shot,
-    mp_cost=10, target_area='Self or 1 ally', time=Time.free_a, max_range='1',
+    mp_cost=10, target_area='Self or 1 ally', time=Time.bon_a, max_range='1',
     effect='Undo a StdA or AbA. Can be cast during ally\'s turn, once per instance. '
            'Does not refund MP cost of reset abilities.',
     prerequisites=(reset_1,)
@@ -266,7 +266,7 @@ reset_2 = Ability(
 
 reset_3 = Ability(
     name='Reset III', picture=AbilityPicture.repelling_shot,
-    mp_cost=12, target_area='Self or 1 ally', time=Time.free_a, max_range='1',
+    mp_cost=12, target_area='Self or 1 ally', time=Time.bon_a, max_range='1',
     effect='Undo FullA. Can be cast during ally\'s turn, once per instance.'
            'Does not refund MP cost of reset abilities.',
     prerequisites=(reset_2,)
@@ -346,21 +346,21 @@ curaga_3 = Ability(
 time_lord_1 = Ability(
     name='Time Lord I', picture=AbilityPicture.presence_of_mind,
     mp_cost=0, target_area='Self', time=Time.free_a,
-    effect='[Passive] +2RAD to all abilities',
+    effect='Passive: +2RAD to all abilities',
     prerequisites=(mass_time_warp_2, stop_2, healing_wind_2)
 )
 
 time_lord_2 = Ability(
     name='Time Lord II', picture=AbilityPicture.presence_of_mind,
     mp_cost=0, target_area='Self', time=Time.free_a,
-    effect='[Passive] +50% to all healing',
+    effect='Passive: +50% to all healing',
     prerequisites=(time_lord_1,)
 )
 
 time_lord_3 = Ability(
     name='Time Lord III', picture=AbilityPicture.presence_of_mind,
     mp_cost=0, target_area='Self', time=Time.free_a,
-    effect='[Passive] Time Warp allows +2AbA',
+    effect='Passive: Time Warp allows +2AbA',
     prerequisites=(time_cloud_2,)
 )
 

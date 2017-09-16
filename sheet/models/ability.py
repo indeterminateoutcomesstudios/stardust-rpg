@@ -454,6 +454,8 @@ class DurationUnit(enum.Enum):
 
 class Time(enum.Enum):
     free_a = object()
+    re_a = object()
+    bon_a = object()
     ab_a = object()
     std_a = object()
     full_a = object()

@@ -243,21 +243,21 @@ deep_freeze_3 = Ability(
 
 infuse_1 = Ability(
     name='Infuse I', picture=AbilityPicture.mana_wall,
-    mp_cost=4, max_range='1', target_area='1 ally', time=Time.free_a,
+    mp_cost=4, max_range='1', target_area='1 ally', time=Time.bon_a,
     effect='Adds [[4+WIS]]MP to ally',
     prerequisites=(fireball_2, ice_wall_2, lightning_shield_2)
 )
 
 infuse_2 = Ability(
     name='Infuse II', picture=AbilityPicture.mana_wall,
-    mp_cost=8, max_range='5', target_area='1 ally', time=Time.free_a,
+    mp_cost=8, max_range='5', target_area='1 ally', time=Time.bon_a,
     effect='Adds [[9+WIS]]MP to ally',
     prerequisites=(infuse_1,)
 )
 
 infuse_3 = Ability(
     name='Infuse III', picture=AbilityPicture.mana_wall,
-    mp_cost=12, max_range='9', target_area='1 ally', time=Time.free_a,
+    mp_cost=12, max_range='9', target_area='1 ally', time=Time.bon_a,
     effect='Adds [[14+2*WIS]]MP to ally',
     prerequisites=(infuse_2,)
 )
@@ -384,7 +384,7 @@ arcane_master_3 = Ability(
 
 fury_1 = Ability(
     name='Fury I', picture=AbilityPicture.aetherial_manipulation,
-    mp_cost=6, target_area='Self', time=Time.free_a,
+    mp_cost=6, target_area='Self', time=Time.bon_a,
     duration='3', duration_unit=DurationUnit.rnd,
     effect='-[[WIS]]HP per RND on caster.  +1AbA per RND. Must cast for at least Duration.',
     prerequisites=(inferno_2, lightning_strike_2, infuse_3)
@@ -392,7 +392,7 @@ fury_1 = Ability(
 
 fury_2 = Ability(
     name='Fury II', picture=AbilityPicture.aetherial_manipulation,
-    mp_cost=10, target_area='Self', time=Time.free_a,
+    mp_cost=10, target_area='Self', time=Time.bon_a,
     duration='4', duration_unit=DurationUnit.rnd,
     effect='-[[WIS+1]]HP per RND on caster. +1AbA +1StdA per RND. +[[WIS]]RAD to abilities. '
            'Must cast for at least Duration.',
@@ -401,7 +401,7 @@ fury_2 = Ability(
 
 fury_3 = Ability(
     name='Fury III', picture=AbilityPicture.aetherial_manipulation,
-    mp_cost=14, target_area='Self', time=Time.free_a,
+    mp_cost=14, target_area='Self', time=Time.bon_a,
     duration='4', duration_unit=DurationUnit.rnd,
     effect='-[[WIS+2]]HP per RND on caster. +2AbA +1StdA per RND. +[[WIS]]RAD to abilities. '
            '+[[WIS]]Range to abilities. Must cast for at least Duration.',

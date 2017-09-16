@@ -4,14 +4,14 @@ from ..equipment import DamageType, Shape
 
 invisibility_1 = Ability(
     name='Invisibility I', picture=AbilityPicture.hide,
-    mp_cost=2, target_area='Self', time=Time.free_a,
+    mp_cost=2, target_area='Self', time=Time.bon_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Caster becomes invisible and moves at ½SPEED.  Attacks while invisible have +1PAC',
 )
 
 invisibility_2 = Ability(
     name='Invisibility II', picture=AbilityPicture.hide,
-    mp_cost=2, target_area='Self', time=Time.free_a,
+    mp_cost=2, target_area='Self', time=Time.bon_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Caster becomes invisible and moves at 3/4SPEED.  Attacks while invisible have +2PAC',
     prerequisites=(invisibility_1,),
@@ -19,7 +19,7 @@ invisibility_2 = Ability(
 
 invisibility_3 = Ability(
     name='Invisibility III', picture=AbilityPicture.hide,
-    mp_cost=2, target_area='Self', time=Time.free_a,
+    mp_cost=2, target_area='Self', time=Time.bon_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Caster becomes invisible and moves at Full SPEED.  Attacks while invisible have +3PAC',
     prerequisites=(invisibility_2,),
@@ -163,7 +163,7 @@ mass_invisibility_3 = Ability(
 
 farsight_1 = Ability(
     name='Farsight I', picture=AbilityPicture.invigorate,
-    mp_cost=2, target_area='Self', time=Time.free_a,
+    mp_cost=2, target_area='Self', time=Time.bon_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Caster can see through 1DIS of material. +1VIS',
     prerequisites=(invisibility_2, blinding_ray_3,),
@@ -171,7 +171,7 @@ farsight_1 = Ability(
 
 farsight_2 = Ability(
     name='Farsight II', picture=AbilityPicture.invigorate,
-    mp_cost=3, target_area='Self', time=Time.free_a,
+    mp_cost=3, target_area='Self', time=Time.bon_a,
     max_range='1+WIS',
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Caster can see through [[1+WIS]]DIS material. +[[1+WIS]]VIS',
@@ -180,7 +180,7 @@ farsight_2 = Ability(
 
 farsight_3 = Ability(
     name='Farsight III', picture=AbilityPicture.invigorate,
-    mp_cost=3, target_area='Self', time=Time.free_a,
+    mp_cost=3, target_area='Self', time=Time.bon_a,
     max_range='3+WIS',
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Caster can see through [[3+WIS]]DIS material. +[[3+WIS]]VIS',
@@ -246,7 +246,7 @@ sleep_powder_3 = Ability(
 
 teamwork_1 = Ability(
     name='Teamwork I', picture=AbilityPicture.trick_attack,
-    mp_cost=1, target_area='Self + 1 flanking ally', time=Time.free_a,
+    mp_cost=1, target_area='Self + 1 flanking ally', time=Time.bon_a,
     max_range='3', shape=Shape.point,
     duration_unit=DurationUnit.instant,
     effect='+1PRED',
@@ -255,7 +255,7 @@ teamwork_1 = Ability(
 
 teamwork_2 = Ability(
     name='Teamwork II', picture=AbilityPicture.trick_attack,
-    mp_cost=2, target_area='Self + 1 flanking ally', time=Time.free_a,
+    mp_cost=2, target_area='Self + 1 flanking ally', time=Time.bon_a,
     max_range='3', shape=Shape.point,
     duration_unit=DurationUnit.instant,
     effect='+[[1+WIS]]PDAM on physical attacks',
@@ -264,7 +264,7 @@ teamwork_2 = Ability(
 
 teamwork_3 = Ability(
     name='Teamwork III', picture=AbilityPicture.trick_attack,
-    mp_cost=2, target_area='Self + 1 flanking ally', time=Time.free_a,
+    mp_cost=2, target_area='Self + 1 flanking ally', time=Time.bon_a,
     max_range='3', shape=Shape.point,
     duration_unit=DurationUnit.instant,
     effect='+[[2+WIS]]PDAM on physical attacks, +2PRED',
@@ -334,14 +334,14 @@ star_fire_3 = Ability(
 
 dodge_1 = Ability(
     name='Dodge I', picture=AbilityPicture.perfect_dodge,
-    mp_cost=4, target_area='Self', time=Time.free_a,
+    mp_cost=4, target_area='Self', time=Time.re_a,
     effect='[Counter] If a single melee attack hits caster, can choose to ignore 1/2 PDAM.',
     prerequisites=(farsight_2, teamwork_3,),
 )
 
 dodge_2 = Ability(
     name='Dodge II', picture=AbilityPicture.perfect_dodge,
-    mp_cost=5, target_area='Self', time=Time.free_a,
+    mp_cost=5, target_area='Self', time=Time.re_a,
     effect='[Counter] If a single melee or range attack hits caster, can choose to ignore 3/4 '
            'PDAM.',
     prerequisites=(dodge_1,),
@@ -349,7 +349,7 @@ dodge_2 = Ability(
 
 dodge_3 = Ability(
     name='Dodge III', picture=AbilityPicture.perfect_dodge,
-    mp_cost=6, target_area='Self', time=Time.free_a,
+    mp_cost=6, target_area='Self', time=Time.re_a,
     effect='[Counter] If a single melee or range attack hits caster, can choose to ignore Full '
            'PDAM.',
     prerequisites=(dodge_2,),

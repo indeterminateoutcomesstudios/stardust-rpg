@@ -31,7 +31,7 @@ jump_3 = Ability(
 
 telesthesia_1 = Ability(
     name='Telesthesia I', picture=AbilityPicture.miasma,
-    mp_cost=1, time=Time.free_a,
+    mp_cost=1, time=Time.bon_a,
     shape=Shape.circle, target_area='5RAD',
     duration_unit=DurationUnit.instant,
     effect='Detect the presence of living creatures',
@@ -39,7 +39,7 @@ telesthesia_1 = Ability(
 
 telesthesia_2 = Ability(
     name='Telesthesia II', picture=AbilityPicture.miasma,
-    mp_cost=2, time=Time.free_a,
+    mp_cost=2, time=Time.bon_a,
     shape=Shape.circle, target_area='[[5+WIS]]RAD',
     duration_unit=DurationUnit.instant,
     effect='Detect the presence, size, and number of living creatures',
@@ -48,7 +48,7 @@ telesthesia_2 = Ability(
 
 telesthesia_3 = Ability(
     name='Telesthesia III', picture=AbilityPicture.miasma,
-    mp_cost=2, time=Time.free_a,
+    mp_cost=2, time=Time.bon_a,
     shape=Shape.circle, target_area='[[5+2*WIS]]RAD',
     duration_unit=DurationUnit.instant,
     effect='Detect the number, size, and precise locations of living creatures',
@@ -86,7 +86,7 @@ confuse_3 = Ability(
 
 parry_1 = Ability(
     name='Parry I', picture=AbilityPicture.feint,
-    mp_cost=2, time=Time.free_a,
+    mp_cost=2, time=Time.re_a,
     shape=Shape.point, target_area='Self',
     duration_unit=DurationUnit.instant,
     effect='Counter: Can move 1DIS if target of melee attack to avoid a single melee attack',
@@ -94,7 +94,7 @@ parry_1 = Ability(
 
 parry_2 = Ability(
     name='Parry II', picture=AbilityPicture.feint,
-    mp_cost=2, time=Time.free_a,
+    mp_cost=2, time=Time.re_a,
     shape=Shape.point, target_area='Self',
     duration_unit=DurationUnit.instant,
     effect='Counter: Can move 1DIS if target of melee attack to avoid a single ranged attack',
@@ -103,7 +103,7 @@ parry_2 = Ability(
 
 parry_3 = Ability(
     name='Parry III', picture=AbilityPicture.feint,
-    mp_cost=2, time=Time.free_a,
+    mp_cost=2, time=Time.re_a,
     shape=Shape.point, target_area='Self',
     duration_unit=DurationUnit.instant,
     effect='Counter: Can cast Jump if target of melee or ranged attack to avoid attacks',
@@ -172,7 +172,7 @@ hallucinate_3 = Ability(
 
 telepathy_1 = Ability(
     name='Telepathy I', picture=AbilityPicture.miasma_2,
-    mp_cost=2, time=Time.free_a, attacks=1, targets_mdef=True, max_range='5',
+    mp_cost=2, time=Time.bon_a, attacks=1, targets_mdef=True, max_range='5',
     shape=Shape.point, target_area='One person',
     duration_unit=DurationUnit.instant,
     effect='Sense emotions of a person',
@@ -181,7 +181,7 @@ telepathy_1 = Ability(
 
 telepathy_2 = Ability(
     name='Telepathy II', picture=AbilityPicture.miasma_2,
-    mp_cost=3, time=Time.free_a, attacks=1, targets_mdef=True, max_range='5+WIS',
+    mp_cost=3, time=Time.bon_a, attacks=1, targets_mdef=True, max_range='5+WIS',
     shape=Shape.point, target_area='One person',
     duration_unit=DurationUnit.instant,
     effect='Sense thoughts of a person',
@@ -190,7 +190,7 @@ telepathy_2 = Ability(
 
 telepathy_3 = Ability(
     name='Telepathy III', picture=AbilityPicture.miasma_2,
-    mp_cost=4, time=Time.free_a, attacks=1, targets_mdef=True, max_range='10+WIS',
+    mp_cost=4, time=Time.bon_a, attacks=1, targets_mdef=True, max_range='10+WIS',
     shape=Shape.point, target_area='One person',
     duration_unit=DurationUnit.instant,
     effect='Communicate with a person',

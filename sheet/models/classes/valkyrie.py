@@ -5,14 +5,14 @@ from ..equipment import DamageType, Shape
 # Tier 1.
 fly_1 = Ability(
     name='Fly I', picture=AbilityPicture.huton,
-    mp_cost=2, target_area='Self', time=Time.free_a,
+    mp_cost=2, target_area='Self', time=Time.bon_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Fly at ½ SPEED.'
 )
 
 fly_2 = Ability(
     name='Fly II', picture=AbilityPicture.huton,
-    mp_cost=2, target_area='Self', time=Time.free_a,
+    mp_cost=2, target_area='Self', time=Time.bon_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Fly at ¾ SPEED. +1PRED.',
     prerequisites=(fly_1,),
@@ -20,7 +20,7 @@ fly_2 = Ability(
 
 fly_3 = Ability(
     name='Fly III', picture=AbilityPicture.huton,
-    mp_cost=2, target_area='Self', time=Time.free_a,
+    mp_cost=2, target_area='Self', time=Time.bon_a,
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Fly at Full SPEED. +1PRED +1MRED.',
     prerequisites=(fly_2,),
@@ -28,21 +28,21 @@ fly_3 = Ability(
 
 blink_1 = Ability(
     name='Blink I', picture=AbilityPicture.aetherial_manipulation,
-    mp_cost=1, target_area='Self', time=Time.free_a,
-    effect='Teleport 1DIS within line of sight. Can be cast once per RND.'
+    mp_cost=1, target_area='Self', time=Time.bon_a,
+    effect='Teleport 1DIS within line of sight.'
 )
 
 blink_2 = Ability(
     name='Blink II', picture=AbilityPicture.aetherial_manipulation,
-    mp_cost=2, target_area='Self', time=Time.free_a,
-    effect='Teleport [[3]]DIS within line of sight. Can be cast once per RND.',
+    mp_cost=2, target_area='Self', time=Time.bon_a,
+    effect='Teleport [[3]]DIS within line of sight.',
     prerequisites=(blink_1,),
 )
 
 blink_3 = Ability(
     name='Blink III', picture=AbilityPicture.aetherial_manipulation,
-    mp_cost=4, target_area='Self', time=Time.free_a,
-    effect='Teleport [[4+WIS]]DIS within line of sight. Can be cast once per RND.',
+    mp_cost=4, target_area='Self', time=Time.bon_a,
+    effect='Teleport [[4+WIS]]DIS within line of sight.',
     prerequisites=(blink_2,),
 )
 
@@ -122,7 +122,7 @@ wind_stride_3 = Ability(
 
 mass_fly_1 = Ability(
     name='Mass Fly I', picture=AbilityPicture.huton,
-    mp_cost=3, target_area='Self + 1 medium creature', time=Time.free_a, max_range='1',
+    mp_cost=3, target_area='Self + 1 medium creature', time=Time.bon_a, max_range='1',
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Fly at ½ SPEED.',
     prerequisites=(fly_3, gale_2),
@@ -130,7 +130,7 @@ mass_fly_1 = Ability(
 
 mass_fly_2 = Ability(
     name='Mass Fly II', picture=AbilityPicture.huton,
-    mp_cost=3, target_area='Self + 1 medium creature', time=Time.free_a, max_range='1',
+    mp_cost=3, target_area='Self + 1 medium creature', time=Time.bon_a, max_range='1',
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Fly at ¾ SPEED. +1PRED.',
     prerequisites=(mass_fly_1,),
@@ -138,7 +138,7 @@ mass_fly_2 = Ability(
 
 mass_fly_3 = Ability(
     name='Mass Fly III', picture=AbilityPicture.huton,
-    mp_cost=3, target_area='Self + 1 large or 2 medium creatures', time=Time.free_a, max_range='1',
+    mp_cost=3, target_area='Self + 1 large or 2 medium creatures', time=Time.bon_a, max_range='1',
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Fly at Full SPEED. +1PRED +1MRED.',
     prerequisites=(mass_fly_2,),
@@ -171,21 +171,21 @@ mass_blink_3 = Ability(
 
 counter_blink_1 = Ability(
     name='Counter Blink I', picture=AbilityPicture.aetherial_manipulation,
-    mp_cost=0, target_area='Self', time=Time.free_a,
+    mp_cost=0, target_area='Self', time=Time.re_a,
     effect='Can use Blink ability if target of melee attack to attempt to avoid AOE for +1MP.',
     prerequisites=(blink_2, gale_2, piercing_shot_2)
 )
 
 counter_blink_2 = Ability(
     name='Counter Blink II', picture=AbilityPicture.aetherial_manipulation,
-    mp_cost=0, target_area='Self', time=Time.free_a,
+    mp_cost=0, target_area='Self', time=Time.re_a,
     effect='Can use Blink ability if target of ranged attack to attempt to avoid AOE for +1MP.',
     prerequisites=(counter_blink_1,),
 )
 
 counter_blink_3 = Ability(
     name='Counter Blink III', picture=AbilityPicture.aetherial_manipulation,
-    mp_cost=0, target_area='Self', time=Time.free_a,
+    mp_cost=0, target_area='Self', time=Time.re_a,
     effect='Can use Blink ability if target of magic attack to attempt to avoid AOE for +2MP.',
     prerequisites=(counter_blink_1,),
 )
@@ -269,7 +269,7 @@ refreshing_breeze_3 = Ability(
 
 cloud_soar_1 = Ability(
     name='Cloud Soar I', picture=AbilityPicture.huton,
-    mp_cost=6, target_area='Self + 1 colossal, 2 large, or 4 medium', time=Time.free_a,
+    mp_cost=6, target_area='Self + 1 colossal, 2 large, or 4 medium', time=Time.bon_a,
     duration='5+WIS', duration_unit=DurationUnit.rnd, max_range='2',
     effect='Fly at ½ SPEED. 50% chance ([[d2]]) of physical ranged attacks to deflect.',
     prerequisites=(mass_fly_3, counter_blink_2),
@@ -277,7 +277,7 @@ cloud_soar_1 = Ability(
 
 cloud_soar_2 = Ability(
     name='Cloud Soar II', picture=AbilityPicture.huton,
-    mp_cost=12, target_area='Self + 1 colossal, 2 large, or 4 medium', time=Time.free_a,
+    mp_cost=12, target_area='Self + 1 colossal, 2 large, or 4 medium', time=Time.bon_a,
     duration='1+WIS', duration_unit=DurationUnit.min, max_range='2',
     effect='Fly at 3/4 SPEED. 50% chance ([[d2]]) of physical ranged attacks to deflect.',
     prerequisites=(cloud_soar_1,),
@@ -285,7 +285,7 @@ cloud_soar_2 = Ability(
 
 cloud_soar_3 = Ability(
     name='Cloud Soar III', picture=AbilityPicture.huton,
-    mp_cost=12, target_area='Self + 1 colossal, 2 large, or 4 medium', time=Time.free_a,
+    mp_cost=12, target_area='Self + 1 colossal, 2 large, or 4 medium', time=Time.bon_a,
     duration='3+WIS', duration_unit=DurationUnit.min, max_range='2',
     effect='Fly at full SPEED. 50% chance ([[d2]]) of physical ranged attacks to deflect.',
     prerequisites=(cloud_soar_2,),

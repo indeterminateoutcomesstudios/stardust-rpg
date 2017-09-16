@@ -194,12 +194,22 @@ Combat Round (``RND``)
                MP Cost and spend whatever Time is required to cast.  This time is deducted from
                their next turn.
 
+    #. Bonus Action (``BoA``)
+
+        #. Cast a single ability or perform some action that requires ``BonA``. Casting rules are
+           the same as for ``AbA``.
+
 #. At the conclusion of your turn, roll a d20 and Regeneration Dice (``RD``)
 
     #. If d20 + Magic Regeneration (``REG``) ≥ 18, restore ``RD`` MP.
 
         #. If d20 = 20, restore 2x ``RD`` MP.
         #. If d20 = 1, automatic failure.
+
+#. Reaction (``ReA``)
+
+    #. Some abilities can be triggered by the actions of other creatures during a ``RND`` when it
+       is not the player's turn. A single ``ReA`` can be used this way per ``RND``.
 
 Targeting
 ~~~~~~~~~

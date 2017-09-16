@@ -4,7 +4,7 @@ from ..equipment import DamageType, Shape
 
 taunt_1 = Ability(
     name='Taunt I', picture=AbilityPicture.provoke,
-    mp_cost=1, time=Time.free_a, attacks=1,
+    mp_cost=1, time=Time.bon_a, attacks=1,
     targets_mdef=True, max_range='4',
     shape=Shape.point, target_area='1 creature',
     duration='3', duration_unit=DurationUnit.rnd,
@@ -13,7 +13,7 @@ taunt_1 = Ability(
 
 taunt_2 = Ability(
     name='Taunt II', picture=AbilityPicture.provoke,
-    mp_cost=2, time=Time.free_a, attacks=1,
+    mp_cost=2, time=Time.bon_a, attacks=1,
     targets_mdef=True, max_range='4+WIS',
     shape=Shape.multi_point, target_area='Up to [[1+WIS]] creatures',
     duration='3', duration_unit=DurationUnit.rnd,
@@ -23,7 +23,7 @@ taunt_2 = Ability(
 
 taunt_3 = Ability(
     name='Taunt III', picture=AbilityPicture.provoke,
-    mp_cost=2, time=Time.free_a, attacks=1,
+    mp_cost=2, time=Time.bon_a, attacks=1,
     targets_mdef=True, max_range='4+WIS',
     shape=Shape.multi_point, target_area='Up to [[2+WIS]] creatures',
     duration='3+WIS', duration_unit=DurationUnit.rnd,
@@ -353,7 +353,7 @@ quake_3 = Ability(
 
 rage_1 = Ability(
     name='Rage I', picture=AbilityPicture.inner_beast,
-    mp_cost=6, time=Time.free_a,
+    mp_cost=6, time=Time.bon_a,
     target_area='Self',
     duration='3', duration_unit=DurationUnit.rnd,
     effect='+4PDAM to weapon, -2PAC, -1HP per RND, All creatures appear as enemies. '
@@ -363,7 +363,7 @@ rage_1 = Ability(
 
 rage_2 = Ability(
     name='Rage II', picture=AbilityPicture.inner_beast,
-    mp_cost=8, time=Time.free_a,
+    mp_cost=8, time=Time.bon_a,
     target_area='Self',
     duration='3', duration_unit=DurationUnit.rnd,
     effect='+[[6+WIS]]PDAM to weapon, -2PAC, -2HP per RND, All creatures appear as enemies. '
@@ -373,7 +373,7 @@ rage_2 = Ability(
 
 rage_3 = Ability(
     name='Rage III', picture=AbilityPicture.inner_beast,
-    mp_cost=16, time=Time.free_a,
+    mp_cost=16, time=Time.bon_a,
     target_area='Self',
     duration='3+WIS', duration_unit=DurationUnit.rnd,
     effect='+[[6+2*WIS]]PDAM to weapon. +1 Attack. -3PAC, -3HP per RND, All creatures appear as '

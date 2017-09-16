@@ -4,20 +4,20 @@ from ..equipment import DamageType, Shape
 
 reflect_1 = Ability(
     name='Reflect [Counter] I', picture=AbilityPicture.shield_oath,
-    mp_cost=2, target_area='Self', time=Time.free_a,
+    mp_cost=2, target_area='Self', time=Time.re_a,
     effect='If hit with melee attack, can reflect 1PDAM as TDAM.',
 )
 
 reflect_2 = Ability(
     name='Reflect [Counter] II', picture=AbilityPicture.shield_oath,
-    mp_cost=4, target_area='Self', time=Time.free_a,
+    mp_cost=4, target_area='Self', time=Time.re_a,
     effect='If hit with melee attack, can reflect [[1+WIS]]PDAM as TDAM.',
     prerequisites=(reflect_1,),
 )
 
 reflect_3 = Ability(
     name='Reflect [Counter] III', picture=AbilityPicture.shield_oath,
-    mp_cost=4, target_area='Self', time=Time.free_a,
+    mp_cost=4, target_area='Self', time=Time.re_a,
     effect='If hit with magic attack, can reflect [[1+WIS]]MDAM as TDAM.',
     prerequisites=(reflect_2,),
 )
@@ -108,14 +108,14 @@ earth_breaker_3 = Ability(
 
 barrier_1 = Ability(
     name='Barrier I', picture=AbilityPicture.protect,
-    mp_cost=2, time=Time.free_a, max_range='2', target_area='One ally',
+    mp_cost=2, time=Time.bon_a, max_range='2', target_area='One ally',
     duration='3', duration_unit=DurationUnit.rnd,
     effect='+2PDEF, can only cast once per RND.'
 )
 
 barrier_2 = Ability(
     name='Barrier II', picture=AbilityPicture.protect,
-    mp_cost=4, time=Time.free_a, max_range='2', target_area='One ally',
+    mp_cost=4, time=Time.bon_a, max_range='2', target_area='One ally',
     duration='4+WIS', duration_unit=DurationUnit.rnd,
     effect='+[[2+WIS]]PDEF, can only cast once per RND.',
     prerequisites=(barrier_1,)
@@ -123,7 +123,7 @@ barrier_2 = Ability(
 
 barrier_3 = Ability(
     name='Barrier III', picture=AbilityPicture.protect,
-    mp_cost=6, time=Time.free_a, max_range='2+WIS', target_area='One ally',
+    mp_cost=6, time=Time.bon_a, max_range='2+WIS', target_area='One ally',
     duration='6+WIS', duration_unit=DurationUnit.rnd,
     effect='+[[3+WIS]]PDEF, can only cast once per RND.',
     prerequisites=(barrier_2,)
@@ -354,21 +354,21 @@ mass_telekinesis_3 = Ability(
 master_telekinetic_1 = Ability(
     name='Master Telekinetic [Passive] I', picture=AbilityPicture.tempered_will,
     mp_cost=0, target_area='Self', time=Time.free_a,
-    effect='2x DAM to enemies hit with Reflect',
+    effect='Passive: 2x DAM to enemies hit with Reflect',
     prerequisites=(provoke_2, vortex_2, mass_barrier_2)
 )
 
 master_telekinetic_2 = Ability(
     name='Master Telekinetic [Passive] II', picture=AbilityPicture.tempered_will,
     mp_cost=0, target_area='Self', time=Time.free_a,
-    effect='+50% DIS, 2x DAM on Telekinesis',
+    effect='Passive: +50% DIS, 2x DAM on Telekinesis',
     prerequisites=(master_telekinetic_1,)
 )
 
 master_telekinetic_3 = Ability(
     name='Master Telekinetic [Passive] III', picture=AbilityPicture.tempered_will,
     mp_cost=0, target_area='Self', time=Time.free_a,
-    effect='Barriers also add to MDEF',
+    effect='Passive: Barriers also add to MDEF',
     prerequisites=(master_telekinetic_2,)
 )
 
