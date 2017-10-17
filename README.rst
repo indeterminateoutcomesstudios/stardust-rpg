@@ -319,12 +319,50 @@ Skills
 ======================= ===================================================================
 Skill                   Example Actions
 ======================= ===================================================================
-Athletics (``ATH``)     Climb, Jump, Swim, Grapple, Reflex, Balance, Fall
-Stealth (``STE``)       Sneak, Hide, Sleight of Hand, Disguise, Escape, Detect Trap
+Athletics (``ATH``)     Climb, Jump, Swim, Grapple, Reflex, Balance, Fall, Acrobatics, Escape,
+                        Throw
+Stealth (``STE``)       Sneak, Hide, Sleight of Hand, Disguise, Detect Trap
 Fortitude (``FOR``)     Endurance, Resist Status Effect, Death Save, Survival, Leadership, Heal
-Aptitude (``APT``)      Knowledge, Operate Device, Pick Lock, Forgery, Scan, Utility, Tinker, Pilot, Lore
+Aptitude (``APT``)      Knowledge, Operate Device, Pick Lock, Forgery, Scan, Utility, Tinker,
+                        Pilot, Lore
 Perception (``PER``)    Spot, Listen, Search, Touch, Smell, Taste
 Speech (``SPE``)        Diplomacy, Intimidate, Deception, Persuasion, Performance
+======================= ===================================================================
+
+Archetypes
+----------
+
+Archetypes provide an optional mechanic by which characters can specialize in specific
+skills.
+
+======================= ===================================================================
+Archetype               Description
+======================= ===================================================================
+Valiant                 Advantage on Leadership and Diplomacy. Party has disadvantage on
+                        Deception rolls within sight of character.
+Junker                  Advantage on Tinker and Utility. Disadvantage on ``ATH``.
+                        Tinker ability can be used to attempt to build utility items, within
+                        GM discretion.
+Hotshot                 Advantage on Pilot, Performance, Acrobatics. Disadvantage on ``PER``.
+                        Piloting becomes a ``FreeA``.
+Seer                    Advantage on Knowledge and Lore. Disadvantage on ``FOR``. Advantage
+                        when perceiving magical effects.
+Alley Cat               Advantage on Sneak and Sleight of Hand. Disadvantage on ``SPE``.
+                        Advantage to party on Hide checks taken in urban areas.
+Brute                   Advantage on Endurance and Intimidate. Disadvantage on Sneak, Hide,
+                        Diplomacy. Automatic success on Death Save due to bleed out.
+Chameleon               Advantage on Disguise, Hide, and ``PER`` checks to determine if someone
+                        else is disguised. Disadvantage on ``SPE``.
+Connoisseur             Advantage on Smell, Taste, Touch, Persuasion. Disadvantage on ``APT``.
+                        Automatic success on ``PER`` to detect poison in food.
+Cat Burglar             Advantage on Sneak, Pick Lock, Forgery, and Acrobatics. Disadvantage on
+                        ``FOR`` and Intimidate. Party has disadvantage opposing ``PER`` when
+                        NPCs are suspicious.
+Bard                    Advantage on Performance, Persuasion, Lore, and ``APT`` when using
+                        musical instruments. Disadvantage on ``PER`` and Swim.
+Big Game Hunter         Advantage on Endurance, Survival, Heal and all checks involving common
+                        non-hostile animals. Disadvantage on ``SPE``. Party gains advantage on
+                        Survival.
 ======================= ===================================================================
 
 Attribute Effects
