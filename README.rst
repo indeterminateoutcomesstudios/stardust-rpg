@@ -321,10 +321,10 @@ Skill                   Example Actions
 ======================= ===================================================================
 Athletics (``ATH``)     Climb, Jump, Swim, Grapple, Reflex, Balance, Fall
 Stealth (``STE``)       Sneak, Hide, Sleight of Hand, Disguise, Escape, Detect Trap
-Fortitude (``FOR``)     Endurance, Resist Status Effect, Death Save, Survival
-Aptitude (``APT``)      Knowledge, Heal, Operate Device, Pick Lock, Forgery, Scan, Utility
+Fortitude (``FOR``)     Endurance, Resist Status Effect, Death Save, Survival, Leadership, Heal
+Aptitude (``APT``)      Knowledge, Operate Device, Pick Lock, Forgery, Scan, Utility, Tinker, Pilot, Lore
 Perception (``PER``)    Spot, Listen, Search, Touch, Smell, Taste
-Speech (``SPE``)        Diplomacy, Intimidate, Bluff, Persuasion
+Speech (``SPE``)        Diplomacy, Intimidate, Deception, Persuasion, Performance
 ======================= ===================================================================
 
 Attribute Effects
