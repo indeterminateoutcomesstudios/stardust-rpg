@@ -22,9 +22,6 @@ Stardust RPG
 .. image:: https://img.shields.io/pypi/pyversions/stardust-rpg.svg
     :target: https://pypi.python.org/pypi/stardust-rpg/
 
-.. image:: https://img.shields.io/pypi/dm/stardust-rpg.svg
-    :target: https://pypi.python.org/pypi/stardust-rpg/
-
 Stardust RPG is a tactical d20 role-playing game designed to provide a variety of progression
 options for players and encourage teamwork.  Baseline content is based off the Stardust book
 series by John Hagen but is adaptable to a variety of fantasy settings.
