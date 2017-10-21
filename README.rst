@@ -338,8 +338,8 @@ skills.
 ======================= ===================================================================
 Archetype               Description
 ======================= ===================================================================
-Valiant                 Advantage on Leadership and Diplomacy. Party has disadvantage on
-                        Deception rolls within sight of character.
+Valiant                 Advantage on Leadership, Diplomacy, and resisting Fear. Party has
+                        disadvantage on Deception rolls within sight of character.
 Junker                  Advantage on Tinker and Utility. Disadvantage on ``ATH``.
                         Tinker ability can be used to attempt to build utility items, within
                         GM discretion.
@@ -363,6 +363,11 @@ Bard                    Advantage on Performance, Persuasion, Lore, and ``APT`` 
 Big Game Hunter         Advantage on Endurance, Survival, Heal and all checks involving common
                         non-hostile animals. Disadvantage on ``SPE``. Party gains advantage on
                         Survival.
+Nautilus                Advantage on Swim, Pilot when using on boats, and Survival in aquatic
+                        environments. Disadvantage on ``STE``.
+Circus Act              Advantage on Climb, Jump, Acrobatics, Escape, and Performance.
+                        Disadvantage on ``APT`` and Diplomacy. Party has Advantage on Performance
+                        and Disadvantage on Intimidate when within sight of character.
 ======================= ===================================================================
 
 Attribute Effects
