@@ -193,7 +193,7 @@ Combat Round (``RND``)
 
     #. Bonus Action (``BoA``)
 
-        #. Cast a single ability or perform some action that requires ``BonA``. Casting rules are
+        #. Cast a single ability or perform some action that requires ``BoA``. Casting rules are
            the same as for ``AbA``.
 
 #. At the conclusion of your turn, roll a d20 and Regeneration Dice (``RD``)
