@@ -1,5 +1,4 @@
 from django import forms
-
 import enumfields
 
 from .models import character, inventory_slot, items, level_up
