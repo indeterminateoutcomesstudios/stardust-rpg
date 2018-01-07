@@ -210,16 +210,16 @@ flashback_2 = Ability(
     name='Flashback II', picture=AbilityPicture.sleep,
     mp_cost=8, time=Time.std_ab_a, attacks=1, targets_mdef=True, max_range='1',
     shape=Shape.point, target_area='One enemy',
-    duration_unit=DurationUnit.instant,
+    duration='10*WIS', duration_unit=DurationUnit.min,
     effect='Temporarily wipe a recent memory up to [[5+WIS]] minutes old',
     prerequisites=(flashback_1,),
 )
 
 flashback_3 = Ability(
     name='Flashback III', picture=AbilityPicture.sleep,
-    mp_cost=10, time=Time.std_ab_a, attacks=1, targets_mdef=True, max_range='1',
+    mp_cost=12, time=Time.std_ab_a, attacks=1, targets_mdef=True, max_range='1',
     shape=Shape.point, target_area='One enemy',
-    duration_unit=DurationUnit.instant,
+    duration='5*WIS', duration_unit=DurationUnit.min,
     effect='Temporarily inject a recent memory up to [[5+WIS]] minutes old',
     prerequisites=(flashback_2,),
 )
