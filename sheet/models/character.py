@@ -12,9 +12,9 @@ from .round_up import round_up
 
 class Character(models.Model):
     # Fields
-    user = models.ForeignKey(User, unique=False)
+    user = models.ForeignKey(User, unique=False, on_delete=models.CASCADE)
     name = models.CharField(max_length=25)
-    party = models.ForeignKey(party.Party, unique=False)
+    party = models.ForeignKey(party.Party, unique=False, on_delete=models.CASCADE)
 
     class_enum = enumfields.EnumIntegerField(classes.Classes,
                                              verbose_name='Class',

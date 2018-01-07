@@ -42,7 +42,7 @@ def login(email: str, password: str, campaign_id: int) -> Roll20Login:
     campaigns: List[Dict[str, str]] = []
     for div in document.find_all('div'):
         if 'class' in div.attrs and 'gameinfo' in div['class']:
-            if 'Join Game' in div.text:
+            if 'Launch Game' in div.text:
                 campaigns.append({
                     'name': div.a.text,
                     'link': div.find_all('a')[1]['href']

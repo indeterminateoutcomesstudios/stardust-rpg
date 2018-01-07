@@ -5,3 +5,4 @@ __pycache__
 .tox
 db.sqlite3
 .cache
+.coverage
