@@ -286,7 +286,7 @@ necks = {
                            effect='Muffles ignition of firearm, can only be heard within 3DIS, '
                                   'Marksman only'),
     Necks.duraform_pendant: Neck(name=Necks.duraform_pendant.name, price=950, min_wis=2,
-                                 effect='+6REG is no movement taken that RND'),
+                                 effect='+6REG if no movement taken that RND'),
     Necks.lunavein_necklace: Neck(name=Necks.lunavein_necklace.name, price=1250, min_wis=2,
                                   effect='On hit, ignore 2PDAM by consuming 2MP'),
     Necks.long_barrel: Neck(name=Necks.long_barrel.name, price=975, min_wis=2,

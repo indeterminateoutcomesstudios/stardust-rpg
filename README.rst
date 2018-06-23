@@ -197,9 +197,9 @@ Combat Round (``RND``)
                MP Cost and spend whatever Time is required to cast.  This time is deducted from
                their next turn.
 
-    #. Bonus Action (``BoA``)
+    #. Bonus Action (``BonA``)
 
-        #. Cast a single ability or perform some action that requires ``BoA``. Casting rules are
+        #. Cast a single ability or perform some action that requires ``BonA``. Casting rules are
            the same as for ``AbA``.
 
 #. At the conclusion of your turn, roll a d20 and Regeneration Dice (``RD``)
@@ -315,6 +315,27 @@ Vulnerability (``VUL``) Take 2x from a particular damage type.
 Resistance (``RES``)    Take ½ from a particular damage type.
 Immunity (``IMU``)      Take no damage from a particular damage type.
 ======================= ==============================================
+
+Leveling Up
+~~~~~~~~~~~
+
+To level up, open the Level Up character tab. Roll the ``HD``, ``MD``, and ``SD`` for the
+character's class and input the resulting, unmodified rolls into the corresponding Roll input
+boxes.
+
+Next, roll a ``d6`` and fill in the Attribute Dice (``AD``) roll to randomly select an
+attribute to increase by 1 using the following mapping.
+
+- 1: ``STR``
+- 2: ``DEX``
+- 3: ``CON``
+- 4: ``INT``
+- 5: ``WIS``
+- 6: ``CHA``
+
+Now, select an attribute to increase by 1 and fill in the Selected Attribute Field.
+
+To finish, press the Level Up button.
 
 Skills
 ------

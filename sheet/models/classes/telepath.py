@@ -174,16 +174,16 @@ telepathy_1 = Ability(
     name='Telepathy I', picture=AbilityPicture.miasma_2,
     mp_cost=2, time=Time.bon_a, attacks=1, targets_mdef=True, max_range='5',
     shape=Shape.point, target_area='One person',
-    duration_unit=DurationUnit.instant,
+    duration='1', duration_unit=DurationUnit.rnd,
     effect='Sense emotions of a person',
     prerequisites=(telesthesia_3, synergize_2),
 )
 
 telepathy_2 = Ability(
     name='Telepathy II', picture=AbilityPicture.miasma_2,
-    mp_cost=3, time=Time.bon_a, attacks=1, targets_mdef=True, max_range='5+WIS',
+    mp_cost=4, time=Time.bon_a, attacks=1, targets_mdef=True, max_range='5+WIS',
     shape=Shape.point, target_area='One person',
-    duration_unit=DurationUnit.instant,
+    duration='1', duration_unit=DurationUnit.rnd,
     effect='Sense thoughts of a person',
     prerequisites=(telepathy_1,),
 )
@@ -192,7 +192,7 @@ telepathy_3 = Ability(
     name='Telepathy III', picture=AbilityPicture.miasma_2,
     mp_cost=4, time=Time.bon_a, attacks=1, targets_mdef=True, max_range='10+WIS',
     shape=Shape.point, target_area='One person',
-    duration_unit=DurationUnit.instant,
+    duration='5+WIS', duration_unit=DurationUnit.rnd,
     effect='Communicate with a person',
     prerequisites=(telepathy_2,),
 )
@@ -210,16 +210,16 @@ flashback_2 = Ability(
     name='Flashback II', picture=AbilityPicture.sleep,
     mp_cost=8, time=Time.std_ab_a, attacks=1, targets_mdef=True, max_range='1',
     shape=Shape.point, target_area='One enemy',
-    duration_unit=DurationUnit.instant,
+    duration='10*WIS', duration_unit=DurationUnit.min,
     effect='Temporarily wipe a recent memory up to [[5+WIS]] minutes old',
     prerequisites=(flashback_1,),
 )
 
 flashback_3 = Ability(
     name='Flashback III', picture=AbilityPicture.sleep,
-    mp_cost=10, time=Time.std_ab_a, attacks=1, targets_mdef=True, max_range='1',
+    mp_cost=12, time=Time.std_ab_a, attacks=1, targets_mdef=True, max_range='1',
     shape=Shape.point, target_area='One enemy',
-    duration_unit=DurationUnit.instant,
+    duration='5*WIS', duration_unit=DurationUnit.min,
     effect='Temporarily inject a recent memory up to [[5+WIS]] minutes old',
     prerequisites=(flashback_2,),
 )
