@@ -86,6 +86,12 @@ Production Execution
 
     $ stardust-rpg runsslserver 0.0.0.0:443 --static
 
+Or optionally run over HTTP instead of HTTPS:
+
+.. code:: shell-session
+
+    $ stardust-rpg runserver 0.0.0.0:80 --insecure
+
 Debug Execution
 ~~~~~~~~~~~~~~~
 
