@@ -338,7 +338,7 @@ dominate_3 = Ability(
 
 mind_cloak_1 = Ability(
     name='Mind Cloak I', picture=AbilityPicture.hide,
-    mp_cost=6, max_range='5', time=Time.std_a,
+    mp_cost=6, time=Time.ab_a,
     shape=Shape.point, target_area='Self',
     duration='6+WIS', duration_unit=DurationUnit.rnd,
     effect='Caster becomes difficult to notice and can blends into a crowd/scene. 16PER to target',
@@ -347,7 +347,7 @@ mind_cloak_1 = Ability(
 
 mind_cloak_2 = Ability(
     name='Mind Cloak II', picture=AbilityPicture.hide,
-    mp_cost=6, max_range='5', time=Time.std_a,
+    mp_cost=6, time=Time.ab_a,
     shape=Shape.point, target_area='Self',
     duration='6+WIS', duration_unit=DurationUnit.rnd,
     effect='Target must be actively looking for caster to notice. 18PER to target',
@@ -356,10 +356,11 @@ mind_cloak_2 = Ability(
 
 mind_cloak_3 = Ability(
     name='Mind Cloak III', picture=AbilityPicture.hide,
-    mp_cost=10, max_range='5', time=Time.std_a,
-    shape=Shape.circle, target_area='Self',
+    mp_cost=10, time=Time.ab_a,
+    shape=Shape.circle, target_area='Self + Allies in [[4+WIS]]RAD',
     duration='6+WIS', duration_unit=DurationUnit.rnd,
-    effect='Allies in [[4+WIS]]RAD',
+    effect='Caster and allies become difficult to notice unless target actively looking for them.'
+           '18PER to target',
     prerequisites=(hallucinate_2, shoulder_side_2,),
 )
 
