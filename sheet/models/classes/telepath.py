@@ -97,7 +97,7 @@ parry_2 = Ability(
     mp_cost=2, time=Time.re_a,
     shape=Shape.point, target_area='Self',
     duration_unit=DurationUnit.instant,
-    effect='Counter: Can move 1DIS if target of melee attack to avoid a single ranged attack',
+    effect='Counter: Can move 1DIS if target of ranged attack to avoid a single ranged attack',
     prerequisites=(parry_1,),
 )
 
