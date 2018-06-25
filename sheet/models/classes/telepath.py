@@ -256,7 +256,7 @@ synchronize_3 = Ability(
 shoulder_side_1 = Ability(
     name='Shoulder Side I', picture=AbilityPicture.shoulder_tackle,
     mp_cost=0,
-    shape=Shape.multi_point, target_area='One ally',
+    shape=Shape.point, target_area='One ally',
     duration='1', duration_unit=DurationUnit.rnd,
     effect='Passive: +1PRED to adjacent ally',
     prerequisites=(parry_3, synergize_2,),
