@@ -44,14 +44,15 @@ def cls(request: HttpRequest, character_id: str) -> HttpResponse:
 @login_required
 def party(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
-    return render(request, 'character/party.html', context={'character': character})
+    return render(request, 'character/party.html', context={'character': character,
+                                                            'user': request.user})
 
 
 @login_required
 def shops(request: HttpRequest, character_id: str, shop_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
     shop = get_object_or_404(Shop, pk=shop_id)
-    if not shop.visible:
+    if not shop.visible and not request.user.is_superuser:
         messages.error(request, f'{shop.name} shop is not visible')
         return redirect(reverse(party, args=[character.id]))
     if shop.party != character.party:

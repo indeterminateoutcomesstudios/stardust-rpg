@@ -35,7 +35,7 @@
         </tr>
         </thead>
         {% for shop in character.party.shop_set.all %}
-            {% if shop.visible %}
+            {% if shop.visible or user.is_superuser %}
                 <tr>
                     <td>
                         <a href="{% url 'sheet-views-shops' character.id shop.id %}">
