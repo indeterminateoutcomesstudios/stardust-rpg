@@ -141,7 +141,7 @@ utilities = {
                                                       'dropped'),
     Utilities.mirrored_lunacite_lantern: Utility(name=Utilities.mirrored_lunacite_lantern.name,
                                                  price=8500, min_int=4, rarity=Rarity.rare,
-                                                 effect='16APT to light, lights tVIS forever when '
+                                                 effect='16APT to light, lights 5VIS forever when '
                                                         'dropped')
 }
 
