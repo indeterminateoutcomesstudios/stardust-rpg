@@ -144,7 +144,7 @@ Roll20 Campaign Setup
 
 In the Settings page for the Roll20 campaign, under **Character Sheet Template**, select
 ``5th Edition (Community Contributed)``. ``stardust-rpg`` uses specific macro templates defined
-in character sheet to enhance macro visuals.
+in this character sheet to enhance macro visuals.
 
 Rules
 =====
