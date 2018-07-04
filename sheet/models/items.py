@@ -1047,6 +1047,7 @@ class Weapons(NamedEnum):
 
     # TODO: Move up with other staves when database reset.
     hypocratic_staff = auto()
+    coral_longbow = auto()
 
 
 weapons = {
@@ -1519,6 +1520,12 @@ weapons = {
         min_range=2, max_range=13, shape=Shape.range_point, min_dex=1,
         attacks=1, pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.piercing,
         cdam=12),
+    Weapons.coral_longbow: Weapon(
+        name=Weapons.coral_longbow.name, price=600, picture=WeaponPicture.leaf_bow,
+        style=Style.ranged, equip_type=Type.medium, is_two_handed=True,
+        min_range=2, max_range=13, shape=Shape.range_point, min_dex=1, rarity=Rarity.unique,
+        attacks=1, pdam=DiceFormula.from_str('1d12'), damage_type=DamageType.cold,
+        cdam=12, effect='Heal allies 2HP within 2RAD of target'),
     Weapons.volcanic_longbow: Weapon(
         name=Weapons.volcanic_longbow.name, price=850, picture=WeaponPicture.red_feather_bow,
         style=Style.ranged, equip_type=Type.medium, is_two_handed=True,
