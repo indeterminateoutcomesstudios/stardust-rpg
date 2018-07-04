@@ -31,9 +31,10 @@ Features
 
 - Cross platform.  Run the server on any platform that supports Python.  Clients can
   connect and manage their characters using a standard web browser with no install required.
-- Roll20 integration. Players can to automatically sync their character stats and
-  automatically generated weapon and ability macros right into a Roll20 campaign. Special thanks
-  to `@theandrewdavis <https://github.com/theandrewdavis>`_ for his analysis of the roll20.net API.
+- `Roll20 <https://roll20.net/>`_ integration. Players can to automatically sync their character
+  stats and automatically generated weapon and ability macros right into a Roll20 campaign.
+  Special thanks to `@theandrewdavis <https://github.com/theandrewdavis>`_ for his analysis of
+  the roll20.net API.
 - Extensible. Easily add new content, such as classes, weapons, or abilities.
 - Persistent. Store characters in a persistent database for easy reuse.
 
@@ -143,7 +144,7 @@ Roll20 Campaign Setup
 
 In the Settings page for the Roll20 campaign, under **Character Sheet Template**, select
 ``5th Edition (Community Contributed)``. ``stardust-rpg`` uses specific macro templates defined
-in character sheet to enhance macro visuals.
+in this character sheet to enhance macro visuals.
 
 Rules
 =====
