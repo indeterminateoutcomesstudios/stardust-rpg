@@ -1272,43 +1272,43 @@ weapons = {
         style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
         min_range=0, max_range=0, is_two_handed=True,
         pdam=DiceFormula.from_str('1d10'), damage_type=DamageType.slashing, cdam=10,
-        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK'),
+        effect='[Counter] If adjacent ally is hit by melee attack, can spend ReA to take 1ATTACK'),
     Weapons.iron_double_bladed_spear: Weapon(
         name=Weapons.iron_double_bladed_spear.name, price=200,
         picture=WeaponPicture.white_two_handed_spear, min_dex=1,
         style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
         min_range=0, max_range=0, is_two_handed=True,
         pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.slashing, cdam=14,
-        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK'),
+        effect='[Counter] If adjacent ally is hit by melee attack, can spend ReA to take 1ATTACK'),
     Weapons.savior: Weapon(
         name=Weapons.savior.name, price=450,
         picture=WeaponPicture.white_two_handed_spear, min_dex=1,
         style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
         min_range=0, max_range=0, is_two_handed=True, rarity=Rarity.unique,
         pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.slashing, cdam=14,
-        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK, '
-               'Adjecent allies gains +1PRED'),
+        effect='[Counter] If adjacent ally is hit by melee attack, can spend ReA to take 1ATTACK, '
+               'Adjacent allies gains +1PRED'),
     Weapons.steel_double_bladed_spear: Weapon(
         name=Weapons.steel_double_bladed_spear.name, price=1000,
         picture=WeaponPicture.white_two_handed_spear, min_dex=2,
         style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
         min_range=0, max_range=0, is_two_handed=True,
         pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.slashing, cdam=20,
-        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK'),
+        effect='[Counter] If adjacent ally is hit by melee attack, can spend ReA to take 1ATTACK'),
     Weapons.lunaweave_double_bladed_spear: Weapon(
         name=Weapons.lunaweave_double_bladed_spear.name, price=3500,
         picture=WeaponPicture.white_two_handed_spear, min_dex=3,
         style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
         min_range=0, max_range=0, is_two_handed=True,
         pdam=DiceFormula.from_str('3d10'), damage_type=DamageType.slashing, cdam=30,
-        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK'),
+        effect='[Counter] If adjacent ally is hit by melee attack, can spend ReA to take 1ATTACK'),
     Weapons.lunasteel_double_bladed_spear: Weapon(
         name=Weapons.lunasteel_double_bladed_spear.name, price=10000,
         picture=WeaponPicture.white_two_handed_spear, min_dex=4,
         style=Style.melee, equip_type=Type.medium, shape=Shape.melee_x,
         min_range=0, max_range=0, is_two_handed=True,
         pdam=DiceFormula.from_str('4d10'), damage_type=DamageType.slashing, cdam=40,
-        effect='[Counter] If adjecent ally is hit by melee attack, can take 1ATTACK'),
+        effect='[Counter] If adjacent ally is hit by melee attack, can spend ReA to take 1ATTACK'),
 
     Weapons.bronze_lance: Weapon(
         name=Weapons.bronze_lance.name, price=50, picture=WeaponPicture.gold_spear,
