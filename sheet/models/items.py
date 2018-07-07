@@ -1327,7 +1327,7 @@ weapons = {
         pdam=DiceFormula.from_str('1d10 + 1d4'), damage_type=DamageType.piercing, cdam=14,
         effect='Extended max range.'),
     Weapons.steel_lance: Weapon(
-        name=Weapons.iron_lance.name, price=1000, picture=WeaponPicture.grey_spear,
+        name=Weapons.steel_lance.name, price=1000, picture=WeaponPicture.grey_spear,
         style=Style.melee, equip_type=Type.medium, shape=Shape.line_3,
         min_range=1, max_range=3, is_two_handed=True, min_dex=2,
         pdam=DiceFormula.from_str('2d10'), damage_type=DamageType.piercing, cdam=20),
