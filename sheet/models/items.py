@@ -838,7 +838,7 @@ feets = {
                                effect='+3SPEED for 1RND if moving in a straight line'),
     Feets.three_heroes: Feet(name=Feets.three_heroes.name, price=500, min_str=1,
                              rarity=Rarity.unique,
-                             effect='+1SPEED per adjecent ally wearing Three Heroes'),
+                             effect='+1SPEED per adjacent ally wearing Three Heroes'),
     Feets.lunabeam_walkers: Feet(name=Feets.lunabeam_walkers.name, price=950, min_str=2,
                                  equip_type=Type.medium, effect='Add Chest HP Bonus also to MP'),
     Feets.ocean_striders: Feet(name=Feets.ocean_striders.name, price=1000, min_str=2,
