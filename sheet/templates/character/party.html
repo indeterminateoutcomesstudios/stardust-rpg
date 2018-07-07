@@ -32,6 +32,7 @@
         <thead>
         <tr id="title">
             <th>Shops</th>
+            <th>Visibility</th>
         </tr>
         </thead>
         {% for shop in character.party.shop_set.all %}
@@ -41,6 +42,13 @@
                         <a href="{% url 'sheet-views-shops' character.id shop.id %}">
                             {{ shop.name }}
                         </a>
+                    </td>
+                    <td>
+                        {% if shop.visible %}
+                            Visible
+                        {% else %}
+                            Invisible
+                        {% endif %}
                     </td>
                 </tr>
             {% endif %}
