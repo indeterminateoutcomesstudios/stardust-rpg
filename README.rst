@@ -104,6 +104,10 @@ Debug Execution
 
     $ stardust-rpg runsslserver 0.0.0.0:443 --static --settings=app.debug_settings
 
+Or optionally run over HTTP instead of HTTPS:
+
+    $ stardust-rpg runserver 0.0.0.0:80 --insecure --settings=app.debug_settings
+
 Game Setup
 ----------
 
