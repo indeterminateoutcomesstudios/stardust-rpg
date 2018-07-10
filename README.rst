@@ -106,6 +106,8 @@ Debug Execution
 
 Or optionally run over HTTP instead of HTTPS:
 
+.. code:: shell-session
+
     $ stardust-rpg runserver 0.0.0.0:80 --insecure --settings=app.debug_settings
 
 Game Setup
