@@ -806,7 +806,7 @@ feets = {
     Feets.iron_brackets: Feet(name=Feets.iron_brackets.name, price=125,
                               effect='Immune to knockback'),
     Feets.fencing_boots: Feet(name=Feets.fencing_boots.name, price=200,
-                              effect='Enemies diagonally adjacent can be targetted as if they '
+                              effect='Enemies diagonally adjacent can be targeted as if they '
                                      'were 1DIS away'),
     Feets.tender_soles: Feet(name=Feets.tender_soles.name, price=200, min_str=1,
                              effect='+6STE vs. Detect Trap'),
