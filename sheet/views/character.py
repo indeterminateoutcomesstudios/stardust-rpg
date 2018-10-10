@@ -331,12 +331,15 @@ class InventorySlotWizard(ItemSelectionWizard):
              character_id: str, **kwargs) -> HttpResponse:
         character = get_object_or_404(Character, pk=character_id)
         inventory_slot_form, item_form = self.get_forms(form_dict)
-        new_inventory_slot = InventorySlot(
-            character=character,
-            slot=inventory_slot_form.cleaned_data['slot'],
-            quantity=inventory_slot_form.cleaned_data['quantity'],
-            item_index=item_form.cleaned_data['item_enum'].value)
-        new_inventory_slot.save()
+
+        if owns_character_or_superuser(self.request, character):
+            new_inventory_slot = InventorySlot(
+                character=character,
+                slot=inventory_slot_form.cleaned_data['slot'],
+                quantity=inventory_slot_form.cleaned_data['quantity'],
+                item_index=item_form.cleaned_data['item_enum'].value)
+            new_inventory_slot.save()
+
         return redirect(reverse(inventory, args=[character.id]))
 
 
@@ -359,6 +362,7 @@ class ShopSlotWizard(ItemSelectionWizard):
         return redirect(reverse(shops, args=[character.id, shop.id]))
 
 
+@login_required
 def inventory(request: HttpRequest, character_id: str) -> HttpResponse:
     character = get_object_or_404(Character, pk=character_id)
 
