@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.contrib.auth.views import login, logout
+from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url='sheet/parties/')),
     url(r'^sheet/', include('sheet.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/login/$', login,
-        {'template_name': 'admin/login.html'}, name='app-accounts-login'),
-    url(r'^accounts/logout/$', logout, name='app-accounts-logout'),
+    url(r'^accounts/login/$', LoginView.as_view(template_name='admin/login.html'),
+        name='app-accounts-login'),
+    url(r'^accounts/logout/$', LogoutView.as_view(), name='app-accounts-logout'),
 ]
