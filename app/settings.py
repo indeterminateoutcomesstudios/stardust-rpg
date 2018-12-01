@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 try:
     SECRET_KEY = os.environ['SECRET_KEY']
-except KeyError as ex:
+except KeyError:
     print('SECRET_KEY environment variable must be set.', file=sys.stderr)
     sys.exit(ExitStatus.failure)
 

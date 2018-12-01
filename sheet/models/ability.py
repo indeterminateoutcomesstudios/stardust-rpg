@@ -471,7 +471,7 @@ class Ability(macro.Macroable):
 
     def __init__(self, name: str, picture: AbilityPicture, mp_cost: int, target_area: str,
                  duration: str = None, duration_unit: DurationUnit = DurationUnit.instant,
-                 prerequisites: Tuple['Ability', ...]=(), damage_type: DamageType = None,
+                 prerequisites: Tuple['Ability', ...] = (), damage_type: DamageType = None,
                  effect='',
                  attacks: int = 0, pdam: str = None, mdam: str = None,
                  targets_mdef: bool = False, time: Time = Time.ab_a, min_range: str = '0',
